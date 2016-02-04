@@ -6,7 +6,7 @@ namespace Maze.Generator.Results
 {
     public class MazeGenerationResults
     {
-        public MazeGenerationResults(GenerationResultsType type)
+        public MazeGenerationResults(GenerationResultsType type = GenerationResultsType.Success)
         {
             Results = new List<MazeGenerationResult>();
             ResultsType = type;

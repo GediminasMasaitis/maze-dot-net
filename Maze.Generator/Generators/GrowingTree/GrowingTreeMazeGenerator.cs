@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Maze.Generator.Cells;
 using Maze.Generator.Maps;
@@ -28,17 +27,7 @@ namespace Maze.Generator.Generators.GrowingTree
             var results = new MazeGenerationResults(GenerationResultsType.Success);
             if (Path.Count == 0)
             {
-                Point startingCoord;
-                if (Map.Infinite)
-                {
-                    startingCoord = Point.CreateSameAllDimensions(Map.Dimensions, 0);
-                }
-                else
-                {
-                    var corner1 = Point.CreateSameAllDimensions(Map.Dimensions, 1);
-                    var corner2 = Map.Size;
-                    startingCoord = CreateRandomCoordinate(corner1, corner2);
-                }
+                var startingCoord = MazeGenerationUtils.PickStartingPoint(Map, RNG);
 
                 Path.Add(startingCoord);
                 var cell = Map.GetCell(startingCoord);
@@ -60,7 +49,7 @@ namespace Maze.Generator.Generators.GrowingTree
             var currentCoordinateIndex = doBreadth && Path.Count > 1 ? RNG.Next(1, Path.Count/2+1)*2 : Path.Count - 1;
             var currentCoordinate = Path[currentCoordinateIndex];
 
-            var offsets = GenerateNewOffsets();
+            var offsets = MazeGenerationUtils.GenerateNewOffsets(Map);
 
             while (offsets.Count > 0)
             {
@@ -127,43 +116,5 @@ namespace Maze.Generator.Generators.GrowingTree
             }
             return results;
         }
-
-        private Point CreateRandomCoordinate(Point corner1, Point corner2)
-        {
-            if (Map.Dimensions != corner1.Dimensions)
-            {
-                throw new ArgumentException("Point dimensions doesn't match map dimensions", nameof(corner1));
-            }
-            if (Map.Dimensions != corner2.Dimensions)
-            {
-                throw new ArgumentException("Point dimensions doesn't match map dimensions", nameof(corner2));
-            }
-
-            var coords = new int[Map.Dimensions];
-            for (var i = 0; i < Map.Dimensions; i++)
-            {
-                coords[i] = RNG.Next(corner1[i], corner2[i] / 2) * 2 - 1;
-            }
-            var resultCoord = new Point(coords);
-            return resultCoord;
-        }
-
-        private List<Point> GenerateNewOffsets()
-        {
-            var offsets = new List<Point>();
-
-            for (var i = 0; i < Map.Dimensions; i++)
-            {
-                var coordinateNegative = Point.CreateSameAllDimensions(Map.Dimensions, 0);
-                coordinateNegative[i] = -1;
-                offsets.Add(coordinateNegative);
-
-                var coordinatePositive = Point.CreateSameAllDimensions(Map.Dimensions, 0);
-                coordinatePositive[i] = 1;
-                offsets.Add(coordinatePositive);
-            }
-            return offsets;
-        }
-
     }
 }
