@@ -35,7 +35,7 @@ namespace Maze.Generator.Generators.Kruskal
             if (map.Dimensions != 2)
             {
                 // For now
-                throw new IncorrectDimensionsException("Kruskal maze generation algorithm requires 2D maps", 2, map.Dimensions);
+                throw new IncorrectDimensionsException(expectedDimensions: 2, foundDimensions: map.Dimensions, message: "Kruskal maze generation algorithm requires 2D maps");
             }
             Tree = new KruskalTree(map.Size[0], map.Size[1]);
             Map = map;
@@ -100,9 +100,9 @@ namespace Maze.Generator.Generators.Kruskal
                 var sideCell1 = Map.GetCell(sidePoint1);
                 var sideCell2 = Map.GetCell(sidePoint2);
 
-                results.Add(new MazeGenerationResult(wallPoint, wallCell.State, CellDisplayState.Path));
-                results.Add(new MazeGenerationResult(sidePoint1, sideCell1.State, CellDisplayState.Path));
-                results.Add(new MazeGenerationResult(sidePoint2, sideCell2.State, CellDisplayState.Path));
+                //results.Add(new MazeGenerationResult(wallPoint, wallCell.State, CellDisplayState.Path));
+                //results.Add(new MazeGenerationResult(sidePoint1, sideCell1.State, CellDisplayState.Path));
+                //results.Add(new MazeGenerationResult(sidePoint2, sideCell2.State, CellDisplayState.Path));
 
                 wallCell.State = CellState.Empty;
                 sideCell1.State = CellState.Empty;

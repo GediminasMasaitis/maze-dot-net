@@ -36,11 +36,15 @@ namespace Maze.TestConsole
             var innerGenerator = new GrowingTreeMazeGenerator(map);
             //var innerGenerator = new KruskalMazeGenerator(map);
             //innerGenerator.GenerationParameters.Breadth = 1;
-            IMazeGenerator generator = new ActiveCellsMazeGeneratorDecorator(innerGenerator);
+            var generator = new ActiveCellsMazeGeneratorDecorator(innerGenerator);
             //IMazeGenerator generator = innerGenerator;
             Console.CursorVisible = false;
             var renderer = new ConsoleMapRenderer(displayMap, true);
-            var runner = new MazeGenerationRunner(generator, renderer, true, TimeSpan.FromMilliseconds(10), TimeSpan.FromMilliseconds(1000/60));
+            var generatorDelay = 1d;
+            var rendererDelay = 1000d / 60d;
+            var generatorDelaySpan = TimeSpan.FromTicks((long)(generatorDelay * TimeSpan.TicksPerMillisecond));
+            var rendererDelaySpan = TimeSpan.FromTicks((long)(rendererDelay * TimeSpan.TicksPerMillisecond));
+            var runner = new MazeGenerationRunner(generator, renderer, true, generatorDelaySpan, rendererDelaySpan);
             var generatorSteps = 0;
             var rendererSteps = 0;
             runner.AfterGenerate += results =>

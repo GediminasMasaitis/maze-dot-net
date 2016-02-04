@@ -47,7 +47,7 @@ namespace Maze.Generator.Renderers
             }
             if (map.Dimensions != 2)
             {
-                throw new IncorrectDimensionsException("Map can only be two-dimensional using this renderer", 2, map.Dimensions);
+                throw new IncorrectDimensionsException(expectedDimensions: 2, foundDimensions: map.Dimensions, message: "Map can only be two-dimensional using this renderer");
             }
             if (ShouldClear)
             {
