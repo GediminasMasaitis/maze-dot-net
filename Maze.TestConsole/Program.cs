@@ -31,18 +31,18 @@ namespace Maze.TestConsole
         {
             Maximize();
             var track = false;
-            var map = new FiniteMap2D(55,75);
-            //var map = new FiniteMap2D(15,25);
+            //var map = new FiniteMap2D(55,75);
+            var map = new FiniteMap2D(15,25);
             //var map = new InfiniteMap(2);
             var displayMap = new AsFiniteMapDecorator(map, map.Size ?? new Point(55,75));
-            var innerGenerator = new AldousBroderMazeGenerator(map);
-            //var innerGenerator = new KruskalMazeGenerator(map);
+            //var innerGenerator = new TestMazeGenerator(map);
+            var innerGenerator = new KruskalMazeGenerator(map);
             //innerGenerator.GenerationParameters.Breadth = 1;
             var generator = new ActiveCellsMazeGeneratorDecorator(innerGenerator);
             //var generator = innerGenerator;
             Console.CursorVisible = false;
-            var renderer = new ConsoleMapRenderer(map, true);
-            var generatorDelay = 1d;
+            var renderer = new ConsoleMapRenderer(map, true, true);
+            var generatorDelay = 500d;
             var rendererDelay = 1000d / 60d;
             var generatorDelaySpan = TimeSpan.FromTicks((long)(generatorDelay * TimeSpan.TicksPerMillisecond));
             var rendererDelaySpan = TimeSpan.FromTicks((long)(rendererDelay * TimeSpan.TicksPerMillisecond));

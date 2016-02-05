@@ -54,6 +54,7 @@
     <Compile Include="Generators\Kruskal\KruskalMazeGenerator.cs" />
     <Compile Include="Generators\Kruskal\KruskalTree.cs" />
     <Compile Include="Generators\Decorators\ActiveCellsMazeGeneratorDecorator.cs" />
+    <Compile Include="Generators\TestMazeGenerator.cs" />
     <Compile Include="Maps\AsFiniteMapDecorator.cs" />
     <Compile Include="Maps\InfiniteMap.cs" />
     <Compile Include="Maps\InfiniteMapDecorator.cs" />

@@ -32,6 +32,7 @@ namespace Maze.Generator.Renderers
         public IMap Map { get; }
         public bool ShouldClear { get; set; }
         public IDictionary<CellDisplayState, string> DisplayChars { get; set; }
+        public virtual bool Bulk { get; }
         //public IDictionary<CellState, string> DisplayChars { get; set; }
 
         public void Render(MazeGenerationResults results)
@@ -61,19 +62,37 @@ namespace Maze.Generator.Renderers
                     var cell = map.GetCell(new Point(i, j));
                     var state = cell.DisplayState;
                     var ch = DisplayChars[state];
-                    //TextOut(ch);
-                    builder.Append(ch);
+                    if (Bulk)
+                    {
+                        builder.Append(ch);
+                    }
+                    else
+                    {
+                        TextOut(ch, cell);
+                    }
                 }
-                //TextOut(Environment.NewLine);
-                builder.AppendLine();
+                if (Bulk)
+                {
+                    builder.AppendLine();
+                }
+                else
+                {
+                    TextOut(Environment.NewLine);
+                }   
             }
-            //TextOut(Environment.NewLine);
-            builder.AppendLine();
-            var finalStr = builder.ToString();
-            TextOut(finalStr);
+            if (Bulk)
+            {
+                builder.AppendLine();
+                var finalStr = builder.ToString();
+                TextOut(finalStr);
+            }
+            else
+            {
+                TextOut(Environment.NewLine);
+            }
         }
 
-        public abstract void TextOut(string str);
+        public abstract void TextOut(string str, ICell cell = null);
 
         public virtual void Clear()
         {

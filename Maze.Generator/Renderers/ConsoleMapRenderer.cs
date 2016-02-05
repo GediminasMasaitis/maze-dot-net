@@ -1,18 +1,36 @@
 using System;
+using System.Collections.Generic;
+using Maze.Generator.Cells;
 using Maze.Generator.Maps;
 
 namespace Maze.Generator.Renderers
 {
     public class ConsoleMapRenderer : TextMapRenderer
     {
-        public ConsoleMapRenderer(IMap map, bool shouldClear) : base(map, shouldClear)
+        private int ClearedBefore { get; set; }
+        public IDictionary<CellDisplayState, ConsoleColor> Colors { get; set; }
+        public bool ShouldColor { get; set; }
+        public ConsoleMapRenderer(IMap map, bool shouldClear, bool shouldColor) : base(map, shouldClear)
         {
+            ShouldColor = shouldColor;
+            Colors = new Dictionary<CellDisplayState, ConsoleColor>
+            {
+                { CellDisplayState.Active, ConsoleColor.Red },
+                { CellDisplayState.Path, ConsoleColor.Green },
+                { CellDisplayState.PathWillReturn, ConsoleColor.Yellow },
+                { CellDisplayState.Wall, ConsoleColor.Gray },
+                { CellDisplayState.Unspecified, ConsoleColor.Gray }
+            };
         }
 
-        private int ClearedBefore { get; set; }
 
-        public override void TextOut(string str)
+        public override void TextOut(string str, ICell cell = null)
         {
+            if (ShouldColor && cell != null)
+            {
+                var color = Colors[cell.DisplayState];
+                Console.ForegroundColor = color;
+            }
             Console.Write(str);
         }
 

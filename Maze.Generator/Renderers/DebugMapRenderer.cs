@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using Maze.Generator.Cells;
 using Maze.Generator.Maps;
 
 namespace Maze.Generator.Renderers
@@ -10,7 +11,7 @@ namespace Maze.Generator.Renderers
         {
         }
 
-        public override void TextOut(string str)
+        public override void TextOut(string str, ICell cell = null)
         {
             Debug.Write(str);
         }

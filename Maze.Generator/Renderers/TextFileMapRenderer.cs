@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Text;
+using Maze.Generator.Cells;
 using Maze.Generator.Maps;
 
 namespace Maze.Generator.Renderers
@@ -14,7 +15,7 @@ namespace Maze.Generator.Renderers
 
         private FileStream FileStream { get; }
 
-        public override void TextOut(string str)
+        public override void TextOut(string str, ICell cell = null)
         {
             var strBytes = Encoding.UTF8.GetBytes(str);
             FileStream.Write(strBytes,0,strBytes.Length);
