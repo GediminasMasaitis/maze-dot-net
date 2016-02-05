@@ -6,11 +6,12 @@ namespace Maze.Generator.Generators.Kruskal
     {
         private double _looping;
 
-        public KruskalMazeGeneratorParameters(double looping = 0)
+        public KruskalMazeGeneratorParameters(double looping = 0, bool showAllWallChecking = false)
         {
             Looping = looping;
+            ShowAllWallChecking = showAllWallChecking;
         }
-
+        public bool ShowAllWallChecking { get; }
         public double Looping
         {
             get { return _looping; }

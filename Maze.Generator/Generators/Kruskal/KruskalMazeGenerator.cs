@@ -22,7 +22,7 @@ namespace Maze.Generator.Generators.Kruskal
         private Random RNG { get; }
         public IMap Map { get; private set; }
         private KruskalTree Tree { get; set; }
-        private LinkedList<Point> W { get; set; }
+        private LinkedList<Point> Walls { get; set; }
 
         public KruskalMazeGeneratorParameters GenerationParameters { get; set; }
 
@@ -40,8 +40,8 @@ namespace Maze.Generator.Generators.Kruskal
             Tree = new KruskalTree(map.Size[0], map.Size[1]);
             Map = map;
 
-            W = GenerateWallsLinkedList(Map);
-            W.Shuffle();
+            Walls = GenerateWallsLinkedList(Map);
+            Walls.Shuffle();
         }
 
         private LinkedList<Point> GenerateWallsLinkedList(IMap map)
@@ -68,13 +68,14 @@ namespace Maze.Generator.Generators.Kruskal
         public MazeGenerationResults Generate()
         {
             var results = new MazeGenerationResults(GenerationResultsType.Success);
-            if (W.Count == 0)
+            if (Walls.Count == 0)
             {
                 results.ResultsType = GenerationResultsType.GenerationCompleted;
                 return results;
             }
 
-            var wall = W.First.Value;
+            var wall = Walls.First.Value;
+            Walls.RemoveFirst();
             var x = 0;
             var y = 0;
             if (wall[0]%2 == 0 && wall[1]%2 == 1)
@@ -90,13 +91,15 @@ namespace Maze.Generator.Generators.Kruskal
 
             var loop = RNG.NextDouble() < GenerationParameters.Looping;
 
+            var wallPoint = new Point(wall[0], wall[1]);
+            var wallCell = Map.GetCell(wallPoint);
             if (loop || !connected)
             {
-                var wallPoint = new Point(wall[0], wall[1]);
+                
                 var sidePoint1 = new Point(wall[0] - x, wall[1] - y);
                 var sidePoint2 = new Point(wall[0] + x, wall[1] + y);
 
-                var wallCell = Map.GetCell(wallPoint);
+                
                 var sideCell1 = Map.GetCell(sidePoint1);
                 var sideCell2 = Map.GetCell(sidePoint2);
 
@@ -127,8 +130,17 @@ namespace Maze.Generator.Generators.Kruskal
 
 
             }
-
-            W.RemoveFirst();
+            else
+            {
+                if (GenerationParameters.ShowAllWallChecking)
+                {
+                    results.Add(new MazeGenerationResult(wallPoint, wallCell.State, wallCell.DisplayState));
+                }
+                else
+                {
+                    return Generate();
+                }
+            }
 
             return results;
         }

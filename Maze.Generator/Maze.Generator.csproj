@@ -50,7 +50,7 @@
     <Compile Include="Generators\GameOfLife\GameOfLifeGenerator.cs" />
     <Compile Include="Generators\GrowingTree\GrowingTreeMazeGeneratorParameters.cs" />
     <Compile Include="Generators\MazeGenerationUtils.cs" />
-    <Compile Include="Generators\Kruskal\GrowingTreeMazeGeneratorParameters.cs" />
+    <Compile Include="Generators\Kruskal\KruskalMazeGeneratorParameters.cs" />
     <Compile Include="Generators\Kruskal\KruskalMazeGenerator.cs" />
     <Compile Include="Generators\Kruskal\KruskalTree.cs" />
     <Compile Include="Generators\Decorators\ActiveCellsMazeGeneratorDecorator.cs" />

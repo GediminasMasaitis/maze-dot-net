@@ -27,6 +27,7 @@ namespace Maze.TestConsole
             ShowWindow(p.MainWindowHandle, 3); //SW_MAXIMIZE = 3
         }
 
+        // TODO: Clean it up
         static void Main(string[] args)
         {
             Maximize();
@@ -36,13 +37,14 @@ namespace Maze.TestConsole
             //var map = new InfiniteMap(2);
             var displayMap = new AsFiniteMapDecorator(map, map.Size ?? new Point(55,75));
             //var innerGenerator = new TestMazeGenerator(map);
-            var innerGenerator = new KruskalMazeGenerator(map);
+            var innerGenerator = new KruskalMazeGenerator(map, new KruskalMazeGeneratorParameters(0, false));
+
             //innerGenerator.GenerationParameters.Breadth = 1;
             var generator = new ActiveCellsMazeGeneratorDecorator(innerGenerator);
             //var generator = innerGenerator;
             Console.CursorVisible = false;
             var renderer = new ConsoleMapRenderer(map, true, true);
-            var generatorDelay = 500d;
+            var generatorDelay = 200d;
             var rendererDelay = 1000d / 60d;
             var generatorDelaySpan = TimeSpan.FromTicks((long)(generatorDelay * TimeSpan.TicksPerMillisecond));
             var rendererDelaySpan = TimeSpan.FromTicks((long)(rendererDelay * TimeSpan.TicksPerMillisecond));
