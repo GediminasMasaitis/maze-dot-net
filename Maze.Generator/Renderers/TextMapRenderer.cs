@@ -32,7 +32,7 @@ namespace Maze.Generator.Renderers
         public IMap Map { get; }
         public bool ShouldClear { get; set; }
         public IDictionary<CellDisplayState, string> DisplayChars { get; set; }
-        public virtual bool Bulk { get; }
+        public virtual bool Bulk { get; set; }
         //public IDictionary<CellState, string> DisplayChars { get; set; }
 
         public void Render(MazeGenerationResults results)

@@ -4,7 +4,6 @@ using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
-using System.Threading.Tasks;
 using Maze.Generator;
 using Maze.Generator.Generators;
 using Maze.Generator.Generators.AldousBroder;
@@ -32,18 +31,21 @@ namespace Maze.TestConsole
         {
             Maximize();
             var track = false;
-            //var map = new FiniteMap2D(55,75);
+            Console.CursorVisible = false;
+
             var map = new FiniteMap2D(15,25);
             //var map = new InfiniteMap(2);
             var displayMap = new AsFiniteMapDecorator(map, map.Size ?? new Point(55,75));
-            //var innerGenerator = new TestMazeGenerator(map);
-            var innerGenerator = new KruskalMazeGenerator(map, new KruskalMazeGeneratorParameters(0, false));
+            //var displayMap = map;
 
-            //innerGenerator.GenerationParameters.Breadth = 1;
+            //var innerGenerator = new TestMazeGenerator(map);
+            //var innerGenerator = new KruskalMazeGenerator(map, new KruskalMazeGeneratorParameters(0, false));
+            //var innerGenerator = new AldousBroderMazeGenerator(map, null, new AldousBroderMazeGeneratorParameters(0));
+            var innerGenerator = new GrowingTreeMazeGenerator(map, null, new GrowingTreeMazeGeneratorParameters(0,0,0));
             var generator = new ActiveCellsMazeGeneratorDecorator(innerGenerator);
             //var generator = innerGenerator;
-            Console.CursorVisible = false;
-            var renderer = new ConsoleMapRenderer(map, true, true);
+
+            var renderer = new ConsoleMapRenderer(displayMap, true, false);
             var generatorDelay = 200d;
             var rendererDelay = 1000d / 60d;
             var generatorDelaySpan = TimeSpan.FromTicks((long)(generatorDelay * TimeSpan.TicksPerMillisecond));

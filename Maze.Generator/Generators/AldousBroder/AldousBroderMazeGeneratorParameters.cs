@@ -16,6 +16,11 @@ namespace Maze.Generator.Generators.AldousBroder
             }
         }
 
+        public AldousBroderMazeGeneratorParameters(double looping = 0)
+        {
+            Looping = looping;
+        }
+
         private void ParameterCheck(double parameter)
         {
             if (parameter < 0 || parameter > 1)

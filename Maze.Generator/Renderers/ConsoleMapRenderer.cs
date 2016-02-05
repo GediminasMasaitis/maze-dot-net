@@ -12,6 +12,7 @@ namespace Maze.Generator.Renderers
         public bool ShouldColor { get; set; }
         public ConsoleMapRenderer(IMap map, bool shouldClear, bool shouldColor) : base(map, shouldClear)
         {
+            Bulk = !shouldColor;
             ShouldColor = shouldColor;
             Colors = new Dictionary<CellDisplayState, ConsoleColor>
             {

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Maze.Generator.Cells;
 using Maze.Generator.Maps;
@@ -7,7 +8,7 @@ namespace Maze.Generator.Generators.GrowingTree
 {
     public class GrowingTreeMazeGenerator : MazeGeneratorBase, IParametrizedMazeGenerator<GrowingTreeMazeGeneratorParameters>
     {
-        public GrowingTreeMazeGenerator(IMap map, GrowingTreeMazeGeneratorParameters parameters = null) : base(map)
+        public GrowingTreeMazeGenerator(IMap map, Random rng = null, GrowingTreeMazeGeneratorParameters parameters = null) : base(map, rng)
         {
             //Path = new LinkedList<Point>();
             Path = new List<Point>();

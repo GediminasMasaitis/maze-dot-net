@@ -17,5 +17,10 @@ namespace Maze.Generator.Results
         public Point Point { get; set; }
         public CellState State { get; set; }
         public CellDisplayState DisplayState { get; set; }
+
+        public override string ToString()
+        {
+            return nameof(Point) + ": " + Point + ", " + nameof(State) + ": " + State + ", " + nameof(DisplayState) + ": " + DisplayState;
+        }
     }
 }

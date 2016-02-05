@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using Maze.Generator.Cells;
 using Maze.Generator.Maps;
 using Maze.Generator.Results;
@@ -18,6 +20,7 @@ namespace Maze.Generator.Generators.Decorators
         {
             Generator = generator;
             AlterMap = alterMap;
+            AllResults = new List<IList<MazeGenerationResult>>();
         }
 
         public TMazeGenerator Generator { get; }
@@ -59,7 +62,10 @@ namespace Maze.Generator.Generators.Decorators
                 }
             }
 
+            AllResults.Add(newResults.Results);
             return newResults;
         }
+
+        private IList<IList<MazeGenerationResult>> AllResults { get; }
     }
 }

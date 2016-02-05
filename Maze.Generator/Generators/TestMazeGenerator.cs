@@ -19,7 +19,14 @@ namespace Maze.Generator.Generators
         {
             ResultsQueue = new Queue<MazeGenerationResults>();
 
-            var results = new MazeGenerationResults();
+            //var results = new MazeGenerationResults();
+            MazeGenerationResults results;
+
+            results = new MazeGenerationResults();
+            A(results, 5, 4);
+            ResultsQueue.Enqueue(results);
+
+            results = new MazeGenerationResults();
             A(results, 5,5);
             A(results, 5,6);
             ResultsQueue.Enqueue(results);
@@ -35,8 +42,15 @@ namespace Maze.Generator.Generators
             ResultsQueue.Enqueue(results);
 
             results = new MazeGenerationResults();
-            A(results, 6, 6);
-            A(results, 7, 6);
+            //A(results, 6, 6);
+            //A(results, 7, 6);
+            A(results, 5, 7);
+            A(results, 5, 8);
+            ResultsQueue.Enqueue(results);
+
+            results = new MazeGenerationResults();
+            A(results, 5, 9);
+            A(results, 5, 10);
             ResultsQueue.Enqueue(results);
         }
 

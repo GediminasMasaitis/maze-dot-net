@@ -49,7 +49,7 @@ namespace Maze.Generator.Generators.AldousBroder
                 var offsetIndex = RNG.Next(0, offsets.Count);
                 var offset = offsets[offsetIndex];
                 pathToCellPoint = CurrentPoint + offset;
-                otherCellPoint = CurrentPoint + (offset*2);
+                otherCellPoint = CurrentPoint + offset*2;
                 var cellExists = Map.CellExists(otherCellPoint);
                 if (cellExists)
                 {
@@ -65,10 +65,10 @@ namespace Maze.Generator.Generators.AldousBroder
             {
                 otherCell.State = CellState.Empty;
                 pathToCell.State = CellState.Empty;
-
-                otherCell.DisplayState = CellDisplayState.Path;
-                pathToCell.DisplayState = CellDisplayState.Path;
             }
+
+            otherCell.DisplayState = otherCell.State == CellState.Empty ? CellDisplayState.Path : CellDisplayState.Wall;
+            pathToCell.DisplayState = pathToCell.State == CellState.Empty ? CellDisplayState.Path : CellDisplayState.Wall;
 
             var otherResult = new MazeGenerationResult(otherCellPoint, otherCell.State, otherCell.DisplayState);
             var pathResult = new MazeGenerationResult(pathToCellPoint, pathToCell.State, pathToCell.DisplayState);
