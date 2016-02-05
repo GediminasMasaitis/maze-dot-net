@@ -11,22 +11,50 @@ namespace Maze.Generator.Generators.AldousBroder
 {
     public class AldousBroderMazeGenerator : IParametrizedMazeGenerator<AldousBroderMazeGeneratorParameters>
     {
-        public IMap Map { get; }
+        public IMap Map { get; private set; }
         private Random RNG { get; }
         public AldousBroderMazeGeneratorParameters GenerationParameters { get; set; }
-
         private Point CurrentPoint { get; set; }
+        private HashSet<Point> RemainingPoints { get; set; }
 
         public AldousBroderMazeGenerator(IMap map, Random rng = null, AldousBroderMazeGeneratorParameters generationParameters = null)
         {
-            Map = map;
+            SetMap(map);
             RNG = rng ?? new Random();
             GenerationParameters = generationParameters ?? new AldousBroderMazeGeneratorParameters();
+        }
+
+        private void SetMap(IMap map)
+        {
+            Map = map;
+            if (!Map.Infinite)
+            {
+                RemainingPoints = new HashSet<Point>();
+                for (var i = 1; i < Map.Size[0] - 1; i += 2)
+                {
+                    for (var j = 1; j < Map.Size[0] -1; j += 2)
+                    {
+                        var point = new Point(i,j);
+                        RemainingPoints.Add(point);
+                    }
+                }
+            }
         }
 
         public MazeGenerationResults Generate()
         {
             var results = new MazeGenerationResults();
+
+            if (!Map.Infinite)
+            {
+                // TODO: Ending generation sometimes ends prematurely. Find out why and fix.
+                if (RemainingPoints.Count == 0)
+                {
+                    results.ResultsType = GenerationResultsType.GenerationCompleted;
+                    return results;
+                }
+            }
+
             if (CurrentPoint == null)
             {
                 CurrentPoint = MazeGenerationUtils.PickStartingPoint(Map, RNG);
@@ -66,6 +94,8 @@ namespace Maze.Generator.Generators.AldousBroder
                 otherCell.State = CellState.Empty;
                 pathToCell.State = CellState.Empty;
             }
+
+            RemainingPoints.Remove(otherCellPoint);
 
             otherCell.DisplayState = otherCell.State == CellState.Empty ? CellDisplayState.Path : CellDisplayState.Wall;
             pathToCell.DisplayState = pathToCell.State == CellState.Empty ? CellDisplayState.Path : CellDisplayState.Wall;

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Maze.Generator;
 using Maze.Generator.Generators;
+using Maze.Generator.Generators.AldousBroder;
 using Maze.Generator.Generators.Decorators;
 using Maze.Generator.Generators.GrowingTree;
 using Maze.Generator.Maps;
