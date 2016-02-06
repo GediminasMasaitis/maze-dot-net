@@ -1,9 +1,7 @@
 using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
-using System.Threading.Tasks;
 using Maze.Generator.Generators;
 using Maze.Generator.Renderers;
 using Maze.Generator.Results;
@@ -53,9 +51,9 @@ namespace Maze.Generator
             Synchro = new object();
         }
 
-        public event Action GeneratorCompleted;
         public event Action BeforeGenerate;
         public event Action<MazeGenerationResults> AfterGenerate;
+        public event Action<MazeGenerationResults> GeneratorCompleted;
         public event Action<MazeGenerationResults> BeforeRender;
         public event Action<MazeGenerationResults> AfterRender;
 
@@ -110,7 +108,7 @@ namespace Maze.Generator
                 GeneratorStopwatch.Restart();
 
                 BeforeGenerate?.Invoke();
-                var results = MazeGenerator.Generate();
+                var results = Generate();
                 lock (Synchro)
                 {
                     ResultsQueue.Enqueue(results);
@@ -119,10 +117,16 @@ namespace Maze.Generator
                 AfterGenerate?.Invoke(results);
                 if (results.ResultsType == GenerationResultsType.GenerationCompleted)
                 {
-                    GeneratorCompleted?.Invoke();
+                    GeneratorCompleted?.Invoke(results);
                     StopGenerator(false);
                 }
             }
+        }
+
+        public virtual MazeGenerationResults Generate()
+        {
+            var results = MazeGenerator.Generate();
+            return results;
         }
 
         private void RunRenderer()
@@ -165,11 +169,16 @@ namespace Maze.Generator
 
                 if (MapRenderer != null)
                 {
-                    MapRenderer.Render(results);
+                    Render(results);
                 }
 
                 AfterRender?.Invoke(results);
             }
+        }
+
+        public virtual void Render(MazeGenerationResults results)
+        {
+            MapRenderer.Render(results);
         }
 
         public void Start()
