@@ -4,13 +4,13 @@ namespace Maze.Generator.Exceptions
 {
     public class MapInfiniteException : Exception
     {
-        public MapInfiniteException(string message = "", bool? shouldBeInfinite = null, bool? wasInfinite = null) : base(message)
+        public MapInfiniteException(bool? expectedInfinite = null, bool? foundInfinite = null, string message = "Incorect map finity type") : base(message)
         {
-            ShouldBeInfinite = shouldBeInfinite;
-            WasInfinite = wasInfinite;
+            ExpectedInfinite = expectedInfinite;
+            FoundInfinite = foundInfinite;
         }
 
-        public bool? ShouldBeInfinite { get; }
-        public bool? WasInfinite { get; }
+        public bool? ExpectedInfinite { get; }
+        public bool? FoundInfinite { get; }
     }
 }

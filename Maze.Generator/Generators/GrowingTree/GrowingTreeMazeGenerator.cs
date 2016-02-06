@@ -6,14 +6,13 @@ using Maze.Generator.Results;
 
 namespace Maze.Generator.Generators.GrowingTree
 {
-    public class GrowingTreeMazeGenerator : MazeGeneratorBase, IParametrizedMazeGenerator<GrowingTreeMazeGeneratorParameters>
+    public class GrowingTreeMazeGenerator : MazeGeneratorBase
     {
-        public GrowingTreeMazeGenerator(IMap map, Random rng = null, GrowingTreeMazeGeneratorParameters parameters = null) : base(map, rng)
+        public GrowingTreeMazeGenerator(IMap map, Random rng = null) : base(map, rng)
         {
             //Path = new LinkedList<Point>();
             Path = new List<Point>();
             New = true;
-            GenerationParameters = parameters ?? new GrowingTreeMazeGeneratorParameters();
         }
 
         //public LinkedList<Point> Path { get; }
@@ -21,11 +20,74 @@ namespace Maze.Generator.Generators.GrowingTree
 
         public bool New { get; private set; }
 
-        public GrowingTreeMazeGeneratorParameters GenerationParameters { get; set; }
+        private double _breadth;
+        private double _lastChanceLooping;
+        private double _firstChanceLooping;
+        private double _horizontalBias;
+        private double _verticalBias;
+
+        public double Breadth
+        {
+            get { return _breadth; }
+            set
+            {
+                ParameterCheck(value);
+                _breadth = value;
+            }
+        }
+
+        public double LastChanceLooping
+        {
+            get { return _lastChanceLooping; }
+            set
+            {
+                ParameterCheck(value);
+                _lastChanceLooping = value;
+            }
+        }
+
+        public double FirstChanceLooping
+        {
+            get { return _firstChanceLooping; }
+            set
+            {
+                ParameterCheck(value);
+                _firstChanceLooping = value;
+            }
+        }
+
+        public double HorizontalBias
+        {
+            get { return _horizontalBias; }
+            set
+            {
+                ParameterCheck(value);
+                _horizontalBias = value;
+            }
+        }
+
+        public double VerticalBias
+        {
+            get { return _verticalBias; }
+            set
+            {
+                ParameterCheck(value);
+                _verticalBias = value;
+            }
+        }
+
+        private void ParameterCheck(double parameter)
+        {
+            if (parameter < 0 || parameter > 1)
+            {
+                throw new ArgumentException("Value must be between 0 and 1");
+            }
+        }
+
 
         public override MazeGenerationResults Generate()
         {
-            var results = new MazeGenerationResults(GenerationResultsType.Success);
+            var results = new MazeGenerationResults();
             if (Path.Count == 0)
             {
                 var startingCoord = MazeGenerationUtils.PickStartingPoint(Map, RNG);
@@ -43,9 +105,9 @@ namespace Maze.Generator.Generators.GrowingTree
                 return results;
             }
 
-            var doBreadth = RNG.NextDouble() < GenerationParameters.Breadth;
-            var doFirstChanceLooping = RNG.NextDouble() < GenerationParameters.FirstChanceLooping;
-            var doLastChanceLooping = RNG.NextDouble() < GenerationParameters.LastChanceLooping;
+            var doBreadth = RNG.NextDouble() < Breadth;
+            var doFirstChanceLooping = RNG.NextDouble() < FirstChanceLooping;
+            var doLastChanceLooping = RNG.NextDouble() < LastChanceLooping;
 
             var currentCoordinateIndex = doBreadth && Path.Count > 1 ? RNG.Next(1, Path.Count/2+1)*2 : Path.Count - 1;
             var currentCoordinate = Path[currentCoordinateIndex];

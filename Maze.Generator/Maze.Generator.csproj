@@ -45,12 +45,9 @@
     <Compile Include="Cells\CellState.cs" />
     <Compile Include="Cells\ICell.cs" />
     <Compile Include="Generators\AldousBroder\AldousBroderMazeGenerator.cs" />
-    <Compile Include="Generators\AldousBroder\AldousBroderMazeGeneratorParameters.cs" />
     <Compile Include="Generators\Decorators\SetDefaultDisplayStatesMazeGeneratorDecorator.cs" />
     <Compile Include="Generators\GameOfLife\GameOfLifeGenerator.cs" />
-    <Compile Include="Generators\GrowingTree\GrowingTreeMazeGeneratorParameters.cs" />
     <Compile Include="Generators\MazeGenerationUtils.cs" />
-    <Compile Include="Generators\Kruskal\KruskalMazeGeneratorParameters.cs" />
     <Compile Include="Generators\Kruskal\KruskalMazeGenerator.cs" />
     <Compile Include="Generators\Kruskal\KruskalTree.cs" />
     <Compile Include="Generators\Decorators\ActiveCellsMazeGeneratorDecorator.cs" />

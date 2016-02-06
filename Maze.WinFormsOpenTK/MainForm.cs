@@ -55,8 +55,6 @@ namespace Maze.WinFormsOpenTK
             //kruskalGenerator.GenerationParameters.Looping = 0;
 
             var growingTreeGenerator = new GrowingTreeMazeGenerator(Map);
-            growingTreeGenerator.GenerationParameters.Breadth = 0;
-            growingTreeGenerator.GenerationParameters.FirstChanceLooping = 0;
 
             var activeGenerator = new ActiveCellsMazeGeneratorDecorator(growingTreeGenerator);
             MazeGenerator = activeGenerator;

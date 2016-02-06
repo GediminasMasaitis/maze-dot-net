@@ -12,7 +12,15 @@ namespace Maze.Generator.Generators
             RNG = random ?? new Random();
         }
         protected Random RNG { get; }
-        public IMap Map { get; }
+        public virtual IMap Map { get; protected set; }
+
+        protected void DoubleParameterCheck(double parameter)
+        {
+            if (parameter < 0 || parameter > 1)
+            {
+                throw new ArgumentException("Value must be between 0 and 1");
+            }
+        }
 
         public abstract MazeGenerationResults Generate();
     }

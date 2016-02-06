@@ -14,11 +14,6 @@ namespace Maze.Generator.Renderers
         {
             Map = map;
             ShouldClear = shouldClear;
-            /*DisplayChars = new Dictionary<CellState, string>
-            {
-                { CellState.Wall, "#" },
-                { CellState.Empty, " " }
-            };*/
             DisplayChars = new Dictionary<CellDisplayState, string>
             {
                 { CellDisplayState.Wall, "#" },
@@ -33,7 +28,6 @@ namespace Maze.Generator.Renderers
         public bool ShouldClear { get; set; }
         public IDictionary<CellDisplayState, string> DisplayChars { get; set; }
         public virtual bool Bulk { get; set; }
-        //public IDictionary<CellState, string> DisplayChars { get; set; }
 
         public void Render(MazeGenerationResults results)
         {
@@ -44,11 +38,11 @@ namespace Maze.Generator.Renderers
         {
             if (map.Infinite)
             {
-                throw new MapInfiniteException("Map cannot be infinite using this renderer", false, map.Infinite);
+                throw new MapInfiniteException(false, map.Infinite);
             }
             if (map.Dimensions != 2)
             {
-                throw new IncorrectDimensionsException(expectedDimensions: 2, foundDimensions: map.Dimensions, message: "Map can only be two-dimensional using this renderer");
+                throw new IncorrectDimensionsException(2, map.Dimensions);
             }
             if (ShouldClear)
             {

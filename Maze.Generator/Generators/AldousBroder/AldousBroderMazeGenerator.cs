@@ -9,39 +9,56 @@ using Maze.Generator.Results;
 
 namespace Maze.Generator.Generators.AldousBroder
 {
-    public class AldousBroderMazeGenerator : IParametrizedMazeGenerator<AldousBroderMazeGeneratorParameters>
+    public class AldousBroderMazeGenerator : MazeGeneratorBase
     {
-        public IMap Map { get; private set; }
-        private Random RNG { get; }
-        public AldousBroderMazeGeneratorParameters GenerationParameters { get; set; }
-        private Point CurrentPoint { get; set; }
-        private HashSet<Point> RemainingPoints { get; set; }
+        private IMap _map;
 
-        public AldousBroderMazeGenerator(IMap map, Random rng = null, AldousBroderMazeGeneratorParameters generationParameters = null)
+        public override IMap Map
         {
-            SetMap(map);
-            RNG = rng ?? new Random();
-            GenerationParameters = generationParameters ?? new AldousBroderMazeGeneratorParameters();
-        }
-
-        private void SetMap(IMap map)
-        {
-            Map = map;
-            if (!Map.Infinite)
+            get { return _map; }
+            protected set
             {
-                RemainingPoints = new HashSet<Point>();
-                for (var i = 1; i < Map.Size[0] - 1; i += 2)
+                _map = value;
+                if (!Map.Infinite)
                 {
-                    for (var j = 1; j < Map.Size[0] -1; j += 2)
+                    RemainingPoints = new HashSet<Point>();
+                    for (var i = 1; i < Map.Size[0] - 1; i += 2)
                     {
-                        var point = new Point(i,j);
-                        RemainingPoints.Add(point);
+                        for (var j = 1; j < Map.Size[0] - 1; j += 2)
+                        {
+                            var point = new Point(i, j);
+                            RemainingPoints.Add(point);
+                        }
                     }
                 }
             }
         }
 
-        public MazeGenerationResults Generate()
+        private double _looping;
+
+        public double Looping
+        {
+            get { return _looping; }
+            set
+            {
+                DoubleParameterCheck(value);
+                _looping = value;
+            }
+        }
+
+        public AldousBroderMazeGenerator(IMap map, Random random = null) : base(map, random)
+        {
+        }
+
+        private Point CurrentPoint { get; set; }
+        private HashSet<Point> RemainingPoints { get; set; }
+
+        private void SetMap(IMap map)
+        {
+
+        }
+
+        public override MazeGenerationResults Generate()
         {
             var results = new MazeGenerationResults();
 
@@ -67,7 +84,7 @@ namespace Maze.Generator.Generators.AldousBroder
                 return results;
             }
 
-            var doLooping = RNG.NextDouble() < GenerationParameters.Looping;
+            var doLooping = RNG.NextDouble() < Looping;
             var offsets = Point.GeneratePerpendicularOffsets(Map.Dimensions);
 
             Point pathToCellPoint = null;

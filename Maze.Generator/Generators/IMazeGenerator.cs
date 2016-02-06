@@ -9,8 +9,4 @@ namespace Maze.Generator.Generators
         MazeGenerationResults Generate();
     }
 
-    public interface IParametrizedMazeGenerator<TParameters> : IMazeGenerator
-    {
-        TParameters GenerationParameters { get; set; }
-    }
 }

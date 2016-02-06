@@ -10,38 +10,51 @@ using Maze.Generator.Results;
 
 namespace Maze.Generator.Generators.Kruskal
 {
-    public class KruskalMazeGenerator : IParametrizedMazeGenerator<KruskalMazeGeneratorParameters>
+    public class KruskalMazeGenerator : MazeGeneratorBase
     {
-        public KruskalMazeGenerator(IMap map, KruskalMazeGeneratorParameters generationParameters = null, Random random = null)
+        public KruskalMazeGenerator(IMap map, Random random = null) : base(map, random)
         {
-            SetMap(map);
-            RNG = random ?? new Random();
-            GenerationParameters = generationParameters ?? new KruskalMazeGeneratorParameters();
         }
 
-        private Random RNG { get; }
-        public IMap Map { get; private set; }
         private KruskalTree Tree { get; set; }
         private LinkedList<Point> Walls { get; set; }
 
-        public KruskalMazeGeneratorParameters GenerationParameters { get; set; }
-
-        public void SetMap(IMap map)
+        private IMap _map;
+        public override IMap Map
         {
-            if (map.Infinite)
+            get { return _map; }
+            protected set
             {
-                throw new MapInfiniteException("Kruskal maze generation algorithm doesn't support infinite maps", false, map.Infinite);
+                if (value.Infinite)
+                {
+                    throw new MapInfiniteException(false, value.Infinite);
+                }
+                if (value.Dimensions != 2)
+                {
+                    // For now
+                    throw new IncorrectDimensionsException(2, value.Dimensions);
+                }
+                _map = value;
+                Tree = new KruskalTree(value.Size[0], value.Size[1]);
+                Walls = GenerateWallsLinkedList(value);
+                Walls.Shuffle();
             }
-            if (map.Dimensions != 2)
-            {
-                // For now
-                throw new IncorrectDimensionsException(expectedDimensions: 2, foundDimensions: map.Dimensions, message: "Kruskal maze generation algorithm requires 2D maps");
-            }
-            Tree = new KruskalTree(map.Size[0], map.Size[1]);
-            Map = map;
+        }
 
-            Walls = GenerateWallsLinkedList(Map);
-            Walls.Shuffle();
+        public bool ShowAllWallChecking { get; }
+
+        private double _looping;
+        public double Looping
+        {
+            get { return _looping; }
+            set
+            {
+                if (value < 0 || value > 1)
+                {
+                    throw new ArgumentException("Value must be between 0 and 1");
+                }
+                _looping = value;
+            }
         }
 
         private LinkedList<Point> GenerateWallsLinkedList(IMap map)
@@ -65,7 +78,7 @@ namespace Maze.Generator.Generators.Kruskal
         }
 
 
-        public MazeGenerationResults Generate()
+        public override MazeGenerationResults Generate()
         {
             var results = new MazeGenerationResults(GenerationResultsType.Success);
             if (Walls.Count == 0)
@@ -89,7 +102,7 @@ namespace Maze.Generator.Generators.Kruskal
 
             var connected = Tree.AreConnected(wall[0] - x, wall[1] - y, wall[0] + x, wall[1] + y);
 
-            var loop = RNG.NextDouble() < GenerationParameters.Looping;
+            var loop = RNG.NextDouble() < Looping;
 
             var wallPoint = new Point(wall[0], wall[1]);
             var wallCell = Map.GetCell(wallPoint);
@@ -132,7 +145,7 @@ namespace Maze.Generator.Generators.Kruskal
             }
             else
             {
-                if (GenerationParameters.ShowAllWallChecking)
+                if (ShowAllWallChecking)
                 {
                     results.Add(new MazeGenerationResult(wallPoint, wallCell.State, wallCell.DisplayState));
                 }
@@ -144,5 +157,6 @@ namespace Maze.Generator.Generators.Kruskal
 
             return results;
         }
+
     }
 }

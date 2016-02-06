@@ -4,7 +4,7 @@ namespace Maze.Generator.Exceptions
 {
     public class IncorrectDimensionsException : Exception
     {
-        public IncorrectDimensionsException(int? expectedDimensions = null, int? foundDimensions = null, string message = "Incorrect count of dimension") : base(message)
+        public IncorrectDimensionsException(int? expectedDimensions = null, int? foundDimensions = null, string message = "Incorrect amount of dimensions") : base(message)
         {
             ExpectedDimensions = expectedDimensions;
             FoundDimensions = foundDimensions;
