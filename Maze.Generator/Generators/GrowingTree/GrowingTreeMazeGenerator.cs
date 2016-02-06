@@ -113,6 +113,7 @@ namespace Maze.Generator.Generators.GrowingTree
             var currentCoordinate = Path[currentCoordinateIndex];
 
             var offsets = Point.GeneratePerpendicularOffsets(Map.Dimensions);
+            var lastChanceLooping = false;
 
             while (offsets.Count > 0)
             {
@@ -126,10 +127,18 @@ namespace Maze.Generator.Generators.GrowingTree
                     offsets.RemoveAt(offsetIndex);
                     continue;
                 }
-                var cell = Map.GetCell(otherCellCoord);
+
+                var cell = Map.GetCell(lastChanceLooping ? pathToCellCoord : otherCellCoord);
                 if (!doFirstChanceLooping && cell.State != CellState.Filled)
                 {
                     offsets.RemoveAt(offsetIndex);
+
+                    if (doLastChanceLooping && !lastChanceLooping && offsets.Count == 0)
+                    {
+                        offsets = Point.GeneratePerpendicularOffsets(Map.Dimensions);
+                        lastChanceLooping = true;
+                    }
+
                     continue;
                 }
 
