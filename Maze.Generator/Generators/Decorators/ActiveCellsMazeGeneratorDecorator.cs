@@ -57,8 +57,11 @@ namespace Maze.Generator.Generators.Decorators
             {
                 foreach (var result in newResults.Results)
                 {
-                    var cell = Map.GetCell(result.Point);
-                    cell.DisplayState = result.DisplayState;
+                    if (Map.CellExists(result.Point))
+                    {
+                        var cell = Map.GetCell(result.Point);
+                        cell.DisplayState = result.DisplayState;
+                    }
                 }
             }
 

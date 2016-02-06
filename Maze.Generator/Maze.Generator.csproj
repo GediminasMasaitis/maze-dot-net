@@ -56,6 +56,7 @@
     <Compile Include="Generators\Decorators\ActiveCellsMazeGeneratorDecorator.cs" />
     <Compile Include="Generators\TestMazeGenerator.cs" />
     <Compile Include="Maps\AsFiniteMapDecorator.cs" />
+    <Compile Include="Maps\NonCreatingInfiniteMap.cs" />
     <Compile Include="Maps\InfiniteMap.cs" />
     <Compile Include="Maps\InfiniteMapDecorator.cs" />
     <Compile Include="Maps\MapConvert.cs" />

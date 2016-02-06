@@ -5,9 +5,11 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using Maze.Generator;
+using Maze.Generator.Cells;
 using Maze.Generator.Generators;
 using Maze.Generator.Generators.AldousBroder;
 using Maze.Generator.Generators.Decorators;
+using Maze.Generator.Generators.GameOfLife;
 using Maze.Generator.Generators.GrowingTree;
 using Maze.Generator.Generators.Kruskal;
 using Maze.Generator.Maps;
@@ -35,13 +37,20 @@ namespace Maze.TestConsole
 
             var map = new FiniteMap2D(15,25);
             //var map = new InfiniteMap(2);
+            //var map = new NonCreatingInfiniteMap(2);
+            //map.SetCell(new Cell(), new Point(0, 1));
+            //map.SetCell(new Cell(), new Point(1, 2));
+            //map.SetCell(new Cell(), new Point(2, 0));
+            //map.SetCell(new Cell(), new Point(2, 1));
+            //map.SetCell(new Cell(), new Point(2, 3));
             var displayMap = new AsFiniteMapDecorator(map, map.Size ?? new Point(55,75));
             //var displayMap = map;
 
             //var innerGenerator = new TestMazeGenerator(map);
-            //var innerGenerator = new KruskalMazeGenerator(map, new KruskalMazeGeneratorParameters(0, false));
+            var innerGenerator = new KruskalMazeGenerator(map, new KruskalMazeGeneratorParameters(0, false));
             //var innerGenerator = new AldousBroderMazeGenerator(map, null, new AldousBroderMazeGeneratorParameters(0));
-            var innerGenerator = new GrowingTreeMazeGenerator(map, null, new GrowingTreeMazeGeneratorParameters(0,0,0));
+            //var innerGenerator = new GameOfLifeGenerator(map);
+            //var innerGenerator = new GrowingTreeMazeGenerator(map, null, new GrowingTreeMazeGeneratorParameters(0,0,0));
             var generator = new ActiveCellsMazeGeneratorDecorator(innerGenerator);
             //var generator = innerGenerator;
 
