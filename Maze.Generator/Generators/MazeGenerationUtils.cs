@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.InteropServices;
 using Maze.Generator.Maps;
 
 namespace Maze.Generator.Generators
 {
-    static class MazeGenerationUtils
+    public static class MazeGenerationUtils
     {
         public static Point PickStartingPoint(IMap map, Random rng = null)
         {
@@ -43,28 +45,10 @@ namespace Maze.Generator.Generators
             var coords = new int[map.Dimensions];
             for (var i = 0; i < map.Dimensions; i++)
             {
-                coords[i] = rng.Next(corner1[i], corner2[i] / 2) * 2 - 1;
+                coords[i] = rng.Next(corner1[i], corner2[i]/2)*2 - 1;
             }
             var resultCoord = new Point(coords);
             return resultCoord;
         }
-
-        public static List<Point> GenerateNewOffsets(IMap map)
-        {
-            var offsets = new List<Point>();
-
-            for (var i = 0; i < map.Dimensions; i++)
-            {
-                var coordinateNegative = Point.CreateSameAllDimensions(map.Dimensions, 0);
-                coordinateNegative[i] = -1;
-                offsets.Add(coordinateNegative);
-
-                var coordinatePositive = Point.CreateSameAllDimensions(map.Dimensions, 0);
-                coordinatePositive[i] = 1;
-                offsets.Add(coordinatePositive);
-            }
-            return offsets;
-        }
-
     }
 }

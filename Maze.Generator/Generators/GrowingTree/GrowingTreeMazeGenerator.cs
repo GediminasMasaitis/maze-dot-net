@@ -50,7 +50,7 @@ namespace Maze.Generator.Generators.GrowingTree
             var currentCoordinateIndex = doBreadth && Path.Count > 1 ? RNG.Next(1, Path.Count/2+1)*2 : Path.Count - 1;
             var currentCoordinate = Path[currentCoordinateIndex];
 
-            var offsets = MazeGenerationUtils.GenerateNewOffsets(Map);
+            var offsets = Point.GeneratePerpendicularOffsets(Map.Dimensions);
 
             while (offsets.Count > 0)
             {
