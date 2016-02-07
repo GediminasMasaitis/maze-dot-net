@@ -31,7 +31,7 @@ namespace Maze.WinFormsGDI
             var displayMap = new AsFiniteMapDecorator(map, map.Size ?? new Point(49, 49));
             var innerGenerator = new GrowingTreeMazeGenerator(map);
             //var innerGenerator = new KruskalMazeGenerator(map);
-            //innerGenerator.GenerationParameters.Breadth = 1;
+            //innerGenerator.Breadth = 1;
             IMazeGenerator generator = new ActiveCellsMazeGeneratorDecorator(innerGenerator);
             //IMazeGenerator generator = innerGenerator;
             var renderer = new PictureBoxMapRenderer(MainPictureBox, map);

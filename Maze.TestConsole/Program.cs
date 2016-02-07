@@ -8,6 +8,7 @@ using Maze.Generator;
 using Maze.Generator.Cells;
 using Maze.Generator.Generators;
 using Maze.Generator.Generators.AldousBroder;
+using Maze.Generator.Generators.BinaryTree;
 using Maze.Generator.Generators.Decorators;
 using Maze.Generator.Generators.GameOfLife;
 using Maze.Generator.Generators.GrowingTree;
@@ -33,13 +34,14 @@ namespace Maze.TestConsole
             //var map = new NonCreatingInfiniteMap(2);
 
             var finiteMap = new AsFiniteMapDecorator(map, map.Size ?? new Point(55,75));
-            var map2D = new AsSmallerDimensionMapDecorator(map, new [] {0});
-            var displayMap = map2D;
+            var map2D = new AsSmallerDimensionMapDecorator(map, new int[]{});
+            var displayMap = finiteMap;
 
             //var innerGenerator = new TestMazeGenerator(map);
             //var innerGenerator = new KruskalMazeGenerator(map);
             //var innerGenerator = new AldousBroderMazeGenerator(map);
             //var innerGenerator = new GameOfLifeGenerator(map);
+            //var innerGenerator = new BinaryTreeMazeGenerator(map);
             var innerGenerator = new GrowingTreeMazeGenerator(map);
 
             var generator = new ActiveCellsMazeGeneratorDecorator(innerGenerator);

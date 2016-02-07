@@ -29,7 +29,7 @@ namespace Maze.Generator.Generators.GrowingTree
             get { return _breadth; }
             set
             {
-                ParameterCheck(value);
+                DoubleParameterCheck(value);
                 _breadth = value;
             }
         }
@@ -40,7 +40,7 @@ namespace Maze.Generator.Generators.GrowingTree
             get { return _firstChanceLooping; }
             set
             {
-                ParameterCheck(value);
+                DoubleParameterCheck(value);
                 _firstChanceLooping = value;
             }
         }
@@ -51,7 +51,7 @@ namespace Maze.Generator.Generators.GrowingTree
             get { return _lastChanceLooping; }
             set
             {
-                ParameterCheck(value);
+                DoubleParameterCheck(value);
                 _lastChanceLooping = value;
             }
         }
@@ -62,16 +62,8 @@ namespace Maze.Generator.Generators.GrowingTree
             get { return _goBackAfterLooping; }
             set
             {
-                ParameterCheck(value);
+                DoubleParameterCheck(value);
                 _goBackAfterLooping = value;
-            }
-        }
-
-        private void ParameterCheck(double parameter)
-        {
-            if (parameter < 0 || parameter > 1)
-            {
-                throw new ArgumentException("Value must be between 0 and 1");
             }
         }
 
