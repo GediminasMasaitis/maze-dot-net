@@ -67,6 +67,17 @@ namespace Maze.Generator.Generators.GrowingTree
             }
         }
 
+        private double _blocking;
+        public double Blocking
+        {
+            get { return _blocking; }
+            set
+            {
+                DoubleParameterCheck(value);
+                _blocking = value;
+            }
+        }
+
         private Point LastOffset { get; set; }
         private bool LastLooped { get; set; }
 
@@ -93,6 +104,7 @@ namespace Maze.Generator.Generators.GrowingTree
             var doFirstChanceLooping = RNG.NextDouble() < FirstChanceLooping;
             var doLastChanceLooping = RNG.NextDouble() < LastChanceLooping;
             var doGoBackAfterLooping = RNG.NextDouble() < GoBackAfterLooping;
+            var doBlocking = RNG.NextDouble() < Blocking;
 
             var currentCoordinateIndex = doBreadth && Path.Count > 1 ? RNG.Next(1, Path.Count/2+1)*2 : Path.Count - 1;
             var currentCoordinate = Path[currentCoordinateIndex];
@@ -168,7 +180,7 @@ namespace Maze.Generator.Generators.GrowingTree
                 var otherCellCoord = currentCoordinate + (offset*2);
                 var cellExists = Map.CellExists(otherCellCoord);
                 var cell = cellExists ? Map.GetCell(lastChanceLooping ? pathToCellCoord : otherCellCoord) : null;
-                if (cell == null || (!doFirstChanceLooping && cell.State != CellState.Filled))
+                if (cell == null || doBlocking || (!doFirstChanceLooping && cell.State != CellState.Filled))
                 {
                     offsets.RemoveAt(offsetIndex);
                     biases.RemoveAt(offsetIndex);

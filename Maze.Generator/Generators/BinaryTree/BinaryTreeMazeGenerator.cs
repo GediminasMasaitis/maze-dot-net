@@ -1,5 +1,6 @@
 ﻿using System;
 using Maze.Generator.Cells;
+using Maze.Generator.Exceptions;
 using Maze.Generator.Maps;
 using Maze.Generator.Results;
 
@@ -17,6 +18,15 @@ namespace Maze.Generator.Generators.BinaryTree
             get { return _map; }
             protected set
             {
+                if (value.Infinite)
+                {
+                    throw new MapInfiniteException(false, value.Infinite);
+                }
+                if (value.Dimensions != 2)
+                {
+                    // TODO: Find out if possible on higher dimensions
+                    throw new IncorrectDimensionsException(new[] { 2 }, value.Dimensions);
+                }
                 _map = value;
                 CurrentSetLength = 1;
                 CurrentPoint = Point.CreateSameAllDimensions(Map.Dimensions, 1);
