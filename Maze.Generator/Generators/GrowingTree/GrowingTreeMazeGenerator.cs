@@ -20,12 +20,10 @@ namespace Maze.Generator.Generators.GrowingTree
         //public LinkedList<Point> Path { get; }
         public List<Point> Path { get; }
 
-        private double _breadth;
-        private double _lastChanceLooping;
-        private double _firstChanceLooping;
-        private double _horizontalBias;
-        private double _verticalBias;
+        public double[] Biases { get; }
+        public double[] Runs { get; }
 
+        private double _breadth;
         public double Breadth
         {
             get { return _breadth; }
@@ -36,16 +34,7 @@ namespace Maze.Generator.Generators.GrowingTree
             }
         }
 
-        public double LastChanceLooping
-        {
-            get { return _lastChanceLooping; }
-            set
-            {
-                ParameterCheck(value);
-                _lastChanceLooping = value;
-            }
-        }
-
+        private double _firstChanceLooping;
         public double FirstChanceLooping
         {
             get { return _firstChanceLooping; }
@@ -56,8 +45,27 @@ namespace Maze.Generator.Generators.GrowingTree
             }
         }
 
-        public double[] Biases { get; }
-        public double[] Runs { get; }
+        private double _lastChanceLooping;
+        public double LastChanceLooping
+        {
+            get { return _lastChanceLooping; }
+            set
+            {
+                ParameterCheck(value);
+                _lastChanceLooping = value;
+            }
+        }
+
+        private double _goBackAfterLooping;
+        public double GoBackAfterLooping
+        {
+            get { return _goBackAfterLooping; }
+            set
+            {
+                ParameterCheck(value);
+                _goBackAfterLooping = value;
+            }
+        }
 
         private void ParameterCheck(double parameter)
         {
@@ -68,6 +76,7 @@ namespace Maze.Generator.Generators.GrowingTree
         }
 
         private Point LastOffset { get; set; }
+        private bool LastLooped { get; set; }
 
         public override MazeGenerationResults Generate()
         {
@@ -91,6 +100,7 @@ namespace Maze.Generator.Generators.GrowingTree
             var doBreadth = RNG.NextDouble() < Breadth;
             var doFirstChanceLooping = RNG.NextDouble() < FirstChanceLooping;
             var doLastChanceLooping = RNG.NextDouble() < LastChanceLooping;
+            var doGoBackAfterLooping = RNG.NextDouble() < GoBackAfterLooping;
 
             var currentCoordinateIndex = doBreadth && Path.Count > 1 ? RNG.Next(1, Path.Count/2+1)*2 : Path.Count - 1;
             var currentCoordinate = Path[currentCoordinateIndex];
@@ -138,6 +148,7 @@ namespace Maze.Generator.Generators.GrowingTree
 
             var lastChanceLooping = false;
 
+            //if(!doGoBackAfterLooping || !LastLooped)
             while (offsets.Count > 0)
             {
                 var biasTotal = biases.Sum();
@@ -164,15 +175,8 @@ namespace Maze.Generator.Generators.GrowingTree
                 var pathToCellCoord = currentCoordinate + offset;
                 var otherCellCoord = currentCoordinate + (offset*2);
                 var cellExists = Map.CellExists(otherCellCoord);
-                if (!cellExists)
-                {
-                    offsets.RemoveAt(offsetIndex);
-                    biases.RemoveAt(offsetIndex);
-                    continue;
-                }
-
-                var cell = Map.GetCell(lastChanceLooping ? pathToCellCoord : otherCellCoord);
-                if (!doFirstChanceLooping && cell.State != CellState.Filled)
+                var cell = cellExists ? Map.GetCell(lastChanceLooping ? pathToCellCoord : otherCellCoord) : null;
+                if (cell == null || (!doFirstChanceLooping && cell.State != CellState.Filled))
                 {
                     offsets.RemoveAt(offsetIndex);
                     biases.RemoveAt(offsetIndex);
@@ -182,7 +186,6 @@ namespace Maze.Generator.Generators.GrowingTree
                         biases = Biases.ToList();
                         lastChanceLooping = true;
                     }
-
                     continue;
                 }
 
@@ -191,11 +194,31 @@ namespace Maze.Generator.Generators.GrowingTree
                 var otherCell = Map.GetCell(otherCellCoord);
                 var pathToCell = Map.GetCell(pathToCellCoord);
 
+                var wouldLoop = otherCell.State == CellState.Empty;
+
+                if (doGoBackAfterLooping && LastLooped && wouldLoop)
+                {
+                    // TODO: Fix going back with first chance looping.
+                    break;
+                }
+
+                LastLooped = wouldLoop;
+
                 otherCell.State = CellState.Empty;
                 pathToCell.State = CellState.Empty;
 
-                otherCell.DisplayState = CellDisplayState.PathWillReturn;
-                pathToCell.DisplayState = CellDisplayState.PathWillReturn;
+                if (wouldLoop)
+                {
+                    otherCell.DisplayState = CellDisplayState.Path;
+                    pathToCell.DisplayState = CellDisplayState.Path;
+                }
+                else
+                {
+                    otherCell.DisplayState = CellDisplayState.PathWillReturn;
+                    pathToCell.DisplayState = CellDisplayState.PathWillReturn;
+                    Path.Push(pathToCellCoord);
+                    Path.Push(otherCellCoord);
+                }
 
                 var otherResult = new MazeGenerationResult(otherCellCoord, otherCell.State, otherCell.DisplayState);
                 var pathResult = new MazeGenerationResult(pathToCellCoord, pathToCell.State, pathToCell.DisplayState);
@@ -203,14 +226,12 @@ namespace Maze.Generator.Generators.GrowingTree
                 results.Results.Add(otherResult);
                 results.Results.Add(pathResult);
 
-                Path.Push(pathToCellCoord);
-                Path.Push(otherCellCoord);
-
                 return results;
             }
 
             if (Path.Count <= 1)
             {
+                // TODO: Doesn't generate a full-braid map if nothing looped into the start point before. Fix to have full-braid maps in the future.
                 results.ResultsType = GenerationResultsType.GenerationCompleted;
                 return new MazeGenerationResults(GenerationResultsType.GenerationCompleted);
             }
