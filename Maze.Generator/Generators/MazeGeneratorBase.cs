@@ -16,7 +16,7 @@ namespace Maze.Generator.Generators
         public virtual IMap Map { get; protected set; }
 
         // ReSharper disable once UnusedParameter.Global
-        protected void DoubleParameterCheck(double parameter, double minValue = 0, double maxValue = 0)
+        protected void DoubleParameterCheck(double parameter, double minValue = 0, double maxValue = 1)
         {
             if (parameter < minValue || parameter > maxValue)
             {

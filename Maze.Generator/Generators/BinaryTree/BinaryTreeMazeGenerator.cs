@@ -1,22 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Maze.Generator.Cells;
 using Maze.Generator.Maps;
 using Maze.Generator.Results;
 
 namespace Maze.Generator.Generators.BinaryTree
 {
-    public enum BinaryTreeBias
-    {
-        NorthWest,
-        NorthEast = 0,
-        SouthWest,
-        SouthEast
-    }
-
     public class BinaryTreeMazeGenerator : MazeGeneratorBase
     {
         public BinaryTreeMazeGenerator(IMap map, Random random = null) : base(map, random)
@@ -73,6 +61,7 @@ namespace Maze.Generator.Generators.BinaryTree
             {
                 currentCoords[0] = 1;
                 currentCoords[1] += 2;
+                CurrentSetLength = 0;
             }
 
             if (currentCoords[1] >= Map.Size[1])
@@ -91,7 +80,7 @@ namespace Maze.Generator.Generators.BinaryTree
             //var dirX = binaryTreeValue == 0 && (NWBiasRadioButton.Checked || SWBiasRadioButton.Checked) ? -1 : 1;
             //var dirY = binaryTreeValue == 0 && (SWBiasRadioButton.Checked || SEBiasRadioButton.Checked) ? 1 : -1;
             var dirX = useBinaryTree && (Bias == BinaryTreeBias.NorthWest || Bias == BinaryTreeBias.SouthWest) ? -1 : 1;
-            var dirY = useBinaryTree && (Bias == BinaryTreeBias.SouthWest || Bias == BinaryTreeBias.SouthEast) ? 1 : -1;
+            var dirY = Bias == BinaryTreeBias.SouthWest || Bias == BinaryTreeBias.SouthEast ? 1 : -1;
 
             var horizontalPoint = new Point(currentCoords[0] + dirX * 2, currentCoords[1]);
             var verticalPoint = new Point(currentCoords[0], currentCoords[1] + dirY * 2);
