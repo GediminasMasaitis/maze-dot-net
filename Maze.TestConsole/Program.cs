@@ -35,7 +35,8 @@ namespace Maze.TestConsole
 
             var finiteMap = new AsFiniteMapDecorator(map, map.Size ?? new Point(55,75));
             var map2D = new AsSmallerDimensionMapDecorator(map, new int[]{});
-            var displayMap = finiteMap;
+            IMap displayMap = finiteMap;
+            //displayMap = new TransposeMapDecorator(displayMap);
 
             //var innerGenerator = new TestMazeGenerator(map);
             //var innerGenerator = new KruskalMazeGenerator(map);

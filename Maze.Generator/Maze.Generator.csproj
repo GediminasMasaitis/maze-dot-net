@@ -56,6 +56,7 @@
     <Compile Include="Maps\Decorators\AsSmallerDimensionMapDecorator.cs" />
     <Compile Include="Maps\Decorators\AsFiniteMapDecorator.cs" />
     <Compile Include="Maps\Decorators\IMapDecorator.cs" />
+    <Compile Include="Maps\Decorators\TransposeMapDecorator.cs" />
     <Compile Include="Maps\FiniteMap3D.cs" />
     <Compile Include="Maps\NonCreatingInfiniteMap.cs" />
     <Compile Include="Maps\InfiniteMap.cs" />
