@@ -23,7 +23,7 @@ namespace Maze.Generator.Generators.GameOfLife
         {
             if (map.Dimensions != 2)
             {
-                throw new IncorrectDimensionsException(2, map.Dimensions);
+                throw new IncorrectDimensionsException(new [] { 2 }, map.Dimensions);
             }
             InnerMap = map;
             DieIf = new HashSet<int> { 0, 1, 4, 5, 6, 7, 8 };

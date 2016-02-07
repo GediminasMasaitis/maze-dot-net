@@ -52,7 +52,10 @@
     <Compile Include="Generators\Kruskal\KruskalTree.cs" />
     <Compile Include="Generators\Decorators\ActiveCellsMazeGeneratorDecorator.cs" />
     <Compile Include="Generators\TestMazeGenerator.cs" />
-    <Compile Include="Maps\AsFiniteMapDecorator.cs" />
+    <Compile Include="Maps\Decorators\AsSmallerDimensionMapDecorator.cs" />
+    <Compile Include="Maps\Decorators\AsFiniteMapDecorator.cs" />
+    <Compile Include="Maps\Decorators\IMapDecorator.cs" />
+    <Compile Include="Maps\FiniteMap3D.cs" />
     <Compile Include="Maps\NonCreatingInfiniteMap.cs" />
     <Compile Include="Maps\InfiniteMap.cs" />
     <Compile Include="Maps\InfiniteMapDecorator.cs" />

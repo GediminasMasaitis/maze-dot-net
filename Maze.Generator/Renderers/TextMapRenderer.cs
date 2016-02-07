@@ -26,6 +26,7 @@ namespace Maze.Generator.Renderers
 
         public IMap Map { get; }
         public bool ShouldClear { get; set; }
+        public int Layer { get; set; }
         public IDictionary<CellDisplayState, string> DisplayChars { get; set; }
         public virtual bool Bulk { get; set; }
 
@@ -40,9 +41,9 @@ namespace Maze.Generator.Renderers
             {
                 throw new MapInfiniteException(false, map.Infinite);
             }
-            if (map.Dimensions != 2)
+            if (map.Dimensions != 2 && map.Dimensions != 3)
             {
-                throw new IncorrectDimensionsException(2, map.Dimensions);
+                throw new IncorrectDimensionsException(new[] { 2, 3 }, map.Dimensions);
             }
             if (ShouldClear)
             {
@@ -53,7 +54,8 @@ namespace Maze.Generator.Renderers
             {
                 for (var j = 0; j < map.Size[1]; j++)
                 {
-                    var cell = map.GetCell(new Point(i, j));
+                    var point = Map.Dimensions == 2 ? new Point(i, j) : new Point(i, j, Layer);
+                    var cell = map.GetCell(point);
                     var state = cell.DisplayState;
                     var ch = DisplayChars[state];
                     if (Bulk)

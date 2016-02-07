@@ -31,8 +31,8 @@ namespace Maze.Generator.Generators.Kruskal
                 }
                 if (value.Dimensions != 2)
                 {
-                    // For now
-                    throw new IncorrectDimensionsException(2, value.Dimensions);
+                    // TODO: Make it do all dimensions, if possible.
+                    throw new IncorrectDimensionsException(new[] { 2 }, value.Dimensions);
                 }
                 _map = value;
                 Tree = new KruskalTree(value.Size[0], value.Size[1]);

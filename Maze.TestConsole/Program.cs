@@ -13,6 +13,7 @@ using Maze.Generator.Generators.GameOfLife;
 using Maze.Generator.Generators.GrowingTree;
 using Maze.Generator.Generators.Kruskal;
 using Maze.Generator.Maps;
+using Maze.Generator.Maps.Decorators;
 using Maze.Generator.Renderers;
 
 namespace Maze.TestConsole
@@ -27,11 +28,13 @@ namespace Maze.TestConsole
             Console.CursorVisible = false;
 
             var map = new FiniteMap2D(15,25);
+            //var map = new FiniteMap3D(15, 25, 5);
             //var map = new InfiniteMap(2);
             //var map = new NonCreatingInfiniteMap(2);
 
-            var displayMap = new AsFiniteMapDecorator(map, map.Size ?? new Point(55,75));
-            //var displayMap = map;
+            var finiteMap = new AsFiniteMapDecorator(map, map.Size ?? new Point(55,75));
+            var map2D = new AsSmallerDimensionMapDecorator(map, new [] {0});
+            var displayMap = map2D;
 
             //var innerGenerator = new TestMazeGenerator(map);
             //var innerGenerator = new KruskalMazeGenerator(map);
@@ -60,7 +63,7 @@ namespace Maze.TestConsole
             {
                 if (track && results.Results.Count > 0)
                 {
-                    displayMap.Offset = displayMap.Size/2 - results.Results[0].Point;
+                    finiteMap.Offset = displayMap.Size/2 - results.Results[0].Point;
                 }
             };
             runner.AfterRender += results =>
@@ -83,28 +86,34 @@ namespace Maze.TestConsole
                 {
                     case ConsoleKey.NumPad8:
                     case ConsoleKey.UpArrow:
-                        displayMap.Offset[0]++;
+                        finiteMap.Offset[0]++;
                         break;
                     case ConsoleKey.NumPad2:
                     case ConsoleKey.DownArrow:
-                        displayMap.Offset[0]--;
+                        finiteMap.Offset[0]--;
                         break;
                     case ConsoleKey.NumPad6:
                     case ConsoleKey.RightArrow:
-                        displayMap.Offset[1]--;
+                        finiteMap.Offset[1]--;
                         break;
                     case ConsoleKey.NumPad4:
                     case ConsoleKey.LeftArrow:
-                        displayMap.Offset[1]++;
+                        finiteMap.Offset[1]++;
                         break;
                     case ConsoleKey.NumPad5:
                         track = !track;
                         break;
                     case ConsoleKey.NumPad7:
-                        displayMap.Size -= 1;
+                        finiteMap.Size -= 1;
                         break;
                     case ConsoleKey.NumPad9:
-                        displayMap.Size += 1;
+                        finiteMap.Size += 1;
+                        break;
+                    case ConsoleKey.NumPad3:
+                        map2D.ExtraLayers[0] += 1;
+                        break;
+                    case ConsoleKey.NumPad1:
+                        map2D.ExtraLayers[0] -= 1;
                         break;
                     case ConsoleKey.X:
                         runner.Stop();

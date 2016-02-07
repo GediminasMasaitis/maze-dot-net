@@ -1,20 +1,13 @@
 ﻿using System;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Maze.Generator;
 using Maze.Generator.Generators;
-using Maze.Generator.Generators.AldousBroder;
 using Maze.Generator.Generators.Decorators;
 using Maze.Generator.Generators.GrowingTree;
 using Maze.Generator.Maps;
-using Maze.Generator.Renderers;
-using Maze.Generator.Results;
+using Maze.Generator.Maps.Decorators;
 using Point = Maze.Generator.Point;
 
 namespace Maze.WinFormsGDI
