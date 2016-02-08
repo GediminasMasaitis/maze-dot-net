@@ -10,7 +10,7 @@ namespace Maze.Generator
 {
     public class MazeGenerationRunner : MazeGenerationRunner<IMazeGenerator>
     {
-        public MazeGenerationRunner(IMazeGenerator mazeGenerator, IMapRenderer mapRenderer, bool bulkRender, TimeSpan generatorMinCycleTime, TimeSpan rendererMinCycleTime) : base(mazeGenerator, mapRenderer, bulkRender, generatorMinCycleTime, rendererMinCycleTime)
+        public MazeGenerationRunner(IMazeGenerator mazeGenerator, IMapRenderer mapRenderer, TimeSpan? generatorMinCycleTime = null, TimeSpan? rendererMinCycleTime = null, bool bulkRender = true) : base(mazeGenerator, mapRenderer, generatorMinCycleTime, rendererMinCycleTime, bulkRender)
         {
         }
     }
@@ -18,7 +18,7 @@ namespace Maze.Generator
     public class MazeGenerationRunner<TMazeGenerator> : MazeGenerationRunner<TMazeGenerator, IMapRenderer>
         where TMazeGenerator : IMazeGenerator
     {
-        public MazeGenerationRunner(TMazeGenerator mazeGenerator, IMapRenderer mapRenderer, bool bulkRender, TimeSpan generatorMinCycleTime, TimeSpan rendererMinCycleTime) : base(mazeGenerator, mapRenderer, bulkRender, generatorMinCycleTime, rendererMinCycleTime)
+        public MazeGenerationRunner(TMazeGenerator mazeGenerator, IMapRenderer mapRenderer, TimeSpan? generatorMinCycleTime = null, TimeSpan? rendererMinCycleTime = null, bool bulkRender = true) : base(mazeGenerator, mapRenderer, generatorMinCycleTime, rendererMinCycleTime, bulkRender)
         {
         }
     }
@@ -27,7 +27,7 @@ namespace Maze.Generator
         where TMazeGenerator: IMazeGenerator
         where TMapRenderer: IMapRenderer
     {
-        public MazeGenerationRunner(TMazeGenerator mazeGenerator, TMapRenderer mapRenderer, bool bulkRender, TimeSpan generatorMinCycleTime, TimeSpan rendererMinCycleTime)
+        public MazeGenerationRunner(TMazeGenerator mazeGenerator, TMapRenderer mapRenderer, TimeSpan? generatorMinCycleTime = null, TimeSpan? rendererMinCycleTime = null, bool bulkRender = true)
         {
             if (mazeGenerator == null)
             {
@@ -39,8 +39,8 @@ namespace Maze.Generator
 
             BulkRender = bulkRender;
 
-            GeneratorMinCycleTime = generatorMinCycleTime;
-            RendererMinCycleTime = rendererMinCycleTime;
+            GeneratorMinCycleTime = generatorMinCycleTime ?? TimeSpan.FromMilliseconds(100);
+            RendererMinCycleTime = rendererMinCycleTime ?? TimeSpan.FromMilliseconds(100);
 
             GeneratorStopwatch = new Stopwatch();
             RendererStopwatch = new Stopwatch();

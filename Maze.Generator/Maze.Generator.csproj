@@ -70,7 +70,7 @@
     <Compile Include="Exceptions\MapInfiniteException.cs" />
     <Compile Include="Results\MazeGenerationResult.cs" />
     <Compile Include="Cells\CellDisplayState.cs" />
-    <Compile Include="MazeGenerationRunner.cs" />
+    <Compile Include="Runners\MazeGenerationRunner.cs" />
     <Compile Include="Point.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="Maps\FiniteMap2D.cs" />

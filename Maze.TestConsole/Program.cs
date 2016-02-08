@@ -54,7 +54,7 @@ namespace Maze.TestConsole
             var rendererDelay = 1000d / 60d;
             var generatorDelaySpan = TimeSpan.FromTicks((long)(generatorDelay * TimeSpan.TicksPerMillisecond));
             var rendererDelaySpan = TimeSpan.FromTicks((long)(rendererDelay * TimeSpan.TicksPerMillisecond));
-            var runner = new MazeGenerationRunner(generator, renderer, true, generatorDelaySpan, rendererDelaySpan);
+            var runner = new MazeGenerationRunner(generator, renderer, generatorDelaySpan, rendererDelaySpan);
 
             var generatorSteps = 0;
             var rendererSteps = 0;
