@@ -49,6 +49,10 @@
     <Compile Include="Generators\BinaryTree\BinaryTreeMazeGenerator.cs" />
     <Compile Include="Generators\Decorators\SetDefaultDisplayStatesMazeGeneratorDecorator.cs" />
     <Compile Include="Generators\GameOfLife\GameOfLifeGenerator.cs" />
+    <Compile Include="Common\IGenericFactory.cs" />
+    <Compile Include="Generators\Kruskal\INode.cs" />
+    <Compile Include="Generators\Kruskal\Node.cs" />
+    <Compile Include="Generators\Kruskal\NodeFactory.cs" />
     <Compile Include="Generators\MazeGenerationUtils.cs" />
     <Compile Include="Generators\Kruskal\KruskalMazeGenerator.cs" />
     <Compile Include="Generators\Kruskal\KruskalTree.cs" />
@@ -71,14 +75,14 @@
     <Compile Include="Results\MazeGenerationResult.cs" />
     <Compile Include="Cells\CellDisplayState.cs" />
     <Compile Include="Runners\MazeGenerationRunner.cs" />
-    <Compile Include="Point.cs" />
+    <Compile Include="Common\Point.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="Maps\FiniteMap2D.cs" />
     <Compile Include="Generators\GrowingTree\GrowingTreeMazeGenerator.cs" />
     <Compile Include="Maps\IMap.cs" />
     <Compile Include="Generators\IMazeGenerator.cs" />
     <Compile Include="Maps\MapBase2D.cs" />
-    <Compile Include="GenerationResultsType.cs" />
+    <Compile Include="Results\GenerationResultsType.cs" />
     <Compile Include="Results\MazeGenerationResults.cs" />
     <Compile Include="Generators\MazeGeneratorBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -6,34 +6,28 @@ using System.Threading.Tasks;
 
 namespace Maze.Generator.Generators.Kruskal
 {
-    public class KruskalTree
+    public class KruskalTree<TNode>
+        where TNode : INode<TNode>
     {
 
-        public KruskalTree(int width, int height)
+        public KruskalTree(int width, int height, IGenericFactory<TNode> nodeFactory)
         {
-            InnerMatrix = new KruskalNode[width, height];
+            NodeFactory = nodeFactory;
+            InnerMatrix = new TNode[width, height];
             for (var i = 0; i < width; i++)
             {
                 for (var j = 0; j < height; j++)
                 {
-                    InnerMatrix[i, j] = new KruskalNode();
+                    InnerMatrix[i, j] = NodeFactory.Create();
                 }
             }
         }
 
-        private class KruskalNode
-        {
-            public KruskalNode Parent;
+        private IGenericFactory<TNode> NodeFactory { get; }
 
-            public KruskalNode()
-            {
-                Parent = null;
-            }
-        }
+        private TNode[,] InnerMatrix { get; }
 
-        private KruskalNode[,] InnerMatrix { get; }
-
-        private KruskalNode FindRoot(int x, int y)
+        private TNode FindRoot(int x, int y)
         {
             var origNode = InnerMatrix[x, y];
             if (origNode.Parent == null)
@@ -52,15 +46,19 @@ namespace Maze.Generator.Generators.Kruskal
 
         public bool AreConnected(int aX, int aY, int bX, int bY)
         {
-            return FindRoot(aX, aY) == FindRoot(bX, bY);
+            var rootA = FindRoot(aX, aY);
+            var rootB = FindRoot(bX, bY);
+            return rootA.Equals(rootB);
         }
 
         public bool Connect(int aX, int aY, int bX, int bY)
         {
             var rootA = FindRoot(aX, aY);
             var rootB = FindRoot(bX, bY);
-            if (rootA == rootB)
+            if (rootA.Equals(rootB))
+            {
                 return false;
+            }
             rootA.Parent = rootB;
             return true;
         }

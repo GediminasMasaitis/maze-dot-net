@@ -16,7 +16,7 @@ namespace Maze.Generator.Generators.Kruskal
         {
         }
 
-        private KruskalTree Tree { get; set; }
+        private KruskalTree<Node> Tree { get; set; }
         private LinkedList<Point> Walls { get; set; }
 
         private IMap _map;
@@ -35,7 +35,8 @@ namespace Maze.Generator.Generators.Kruskal
                     throw new IncorrectDimensionsException(new[] { 2 }, value.Dimensions);
                 }
                 _map = value;
-                Tree = new KruskalTree(value.Size[0], value.Size[1]);
+                var nodeFactory = new NodeFactory();
+                Tree = new KruskalTree<Node>(value.Size[0], value.Size[1], nodeFactory);
                 Walls = GenerateWallsLinkedList(value);
                 Walls.Shuffle();
             }
