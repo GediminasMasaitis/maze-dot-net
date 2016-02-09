@@ -18,14 +18,6 @@ namespace Maze.Generator.Generators.GrowingTree
             Runs = Enumerable.Repeat(1d, map.Dimensions*2).ToArray();
         }
 
-        private IList<Tree> RunningTrees { get; set; }
-        private IList<Tree> StoppedTrees { get; set; }
-
-        private enum MyEnum
-        {
-            
-        }
-
         private class Tree
         {
             public Tree()
@@ -36,6 +28,11 @@ namespace Maze.Generator.Generators.GrowingTree
             public Point LastOffset { get; set; }
         }
 
+        private ConnectingTree<Tree> TreeTree { get; set; }
+        private IDictionary<Point, Tree> CellsTreeDict { get; set; }
+        private IList<Tree> RunningTrees { get; set; }
+        private IList<Tree> StoppedTrees { get; set; }
+        
         private IMap _map;
         public override IMap Map
         {
@@ -83,14 +80,14 @@ namespace Maze.Generator.Generators.GrowingTree
             }
         }
 
-        private double _goBackAfterLooping;
-        public double GoBackAfterLooping
+        private double _dontGoBackAfterLooping;
+        public double DontGoBackAfterLooping
         {
-            get { return _goBackAfterLooping; }
+            get { return _dontGoBackAfterLooping; }
             set
             {
                 DoubleParameterCheck(value);
-                _goBackAfterLooping = value;
+                _dontGoBackAfterLooping = value;
             }
         }
 
@@ -114,9 +111,12 @@ namespace Maze.Generator.Generators.GrowingTree
             {
                 RunningTrees = new List<Tree>();
                 StoppedTrees = new List<Tree>();
+                TreeTree = new ConnectingTree<Tree>();
+                CellsTreeDict = new Dictionary<Point, Tree>();
                 for (var i = 0; i < TreeCount; i++)
                 {
                     var newTree = new Tree();
+                    TreeTree.Add(newTree);
                     RunningTrees.Add(newTree);
                 }
             }
@@ -127,16 +127,24 @@ namespace Maze.Generator.Generators.GrowingTree
             CurrentLoop++;
             if (path.Count == 0)
             {
-                var startingPoint = MazeGenerationUtils.PickStartingPoint(Map, RNG);
+                Point startingPoint;
+                ICell startingCell;
+                do
+                {
+                    // TODO: This one is retarded. Need to think of a better way.
+                    startingPoint = MazeGenerationUtils.PickStartingPoint(Map, RNG);
+                    startingCell = Map.GetCell(startingPoint);
+                } while (startingCell.State == CellState.Empty);
                 path.Add(startingPoint);
                 ChangeCell(results,startingPoint,CellState.Empty, CellDisplayState.Path);
+                CellsTreeDict.Add(startingPoint, tree);
                 return results;
             }
 
             var doBreadth = RNG.NextDouble() < Breadth;
             var doFirstChanceLooping = RNG.NextDouble() < FirstChanceLooping;
             var doLastChanceLooping = RNG.NextDouble() < LastChanceLooping;
-            var doGoBackAfterLooping = RNG.NextDouble() < GoBackAfterLooping;
+            var dontGoBackAfterLooping = RNG.NextDouble() < DontGoBackAfterLooping;
             var doBlocking = RNG.NextDouble() < Blocking;
 
             var currentCoordinateIndex = doBreadth && path.Count > 1 ? RNG.Next(1, path.Count/2+1)*2 : path.Count - 1;
@@ -213,11 +221,12 @@ namespace Maze.Generator.Generators.GrowingTree
                 var otherCellCoord = currentCoordinate + (offset*2);
                 var cellExists = Map.CellExists(otherCellCoord);
                 var cell = cellExists ? Map.GetCell(lastChanceLooping ? pathToCellCoord : otherCellCoord) : null;
+                
                 if (cell == null || doBlocking || (!doFirstChanceLooping && cell.State != CellState.Filled))
                 {
                     offsets.RemoveAt(offsetIndex);
                     biases.RemoveAt(offsetIndex);
-                    if (doLastChanceLooping && !lastChanceLooping && offsets.Count == 0)
+                    if (!lastChanceLooping && offsets.Count == 0)
                     {
                         offsets = Point.GeneratePerpendicularOffsets(Map.Dimensions);
                         biases = Biases.ToList();
@@ -226,17 +235,33 @@ namespace Maze.Generator.Generators.GrowingTree
                     continue;
                 }
 
-                tree.LastOffset = offset;
-
                 var otherCell = Map.GetCell(otherCellCoord);
                 var pathToCell = Map.GetCell(pathToCellCoord);
 
                 var wouldLoop = otherCell.State == CellState.Empty;
 
-                if (doGoBackAfterLooping && LastLooped && wouldLoop)
+                Tree otherTree;
+                var treeJoinForceConnect = CellsTreeDict.TryGetValue(otherCellCoord, out otherTree) && TreeTree.Connect(tree, otherTree);
+
+                if (wouldLoop)
+                {
+                    if (!doLastChanceLooping && !treeJoinForceConnect)
+                    {
+                        break;
+                    }
+                }
+
+                tree.LastOffset = offset;
+                
+                if (!dontGoBackAfterLooping && LastLooped && wouldLoop)
                 {
                     // TODO: Fix going back with first chance looping.
                     break;
+                }
+
+                if (!treeJoinForceConnect)
+                {
+                    CellsTreeDict.Add(otherCellCoord, tree);
                 }
 
                 LastLooped = wouldLoop;

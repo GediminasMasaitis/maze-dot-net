@@ -51,7 +51,7 @@
     <Compile Include="Generators\GameOfLife\GameOfLifeGenerator.cs" />
     <Compile Include="Common\IGenericFactory.cs" />
     <Compile Include="Common\ConnectingTree.cs" />
-    <Compile Include="Generators\Kruskal\Node.cs" />
+    <Compile Include="Common\Node.cs" />
     <Compile Include="Generators\Kruskal\NodeFactory.cs" />
     <Compile Include="Generators\MazeGenerationUtils.cs" />
     <Compile Include="Generators\Kruskal\KruskalMazeGenerator.cs" />

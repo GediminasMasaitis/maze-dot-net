@@ -1,16 +1,23 @@
+using System.Collections;
 using System.Collections.Generic;
 using Maze.Generator.Generators.Kruskal;
 
 namespace Maze.Generator.Common
 {
-    public class ConnectingTree<TKey>
+    public class ConnectingTree<TKey> : IEnumerable<TKey>
     {
-        public ConnectingTree(int width, int height)
+        public ConnectingTree()
         {
             InnerDictionary = new Dictionary<TKey, Node>();
         }
 
         private Dictionary<TKey, Node> InnerDictionary { get; }
+
+        public void Add(TKey key)
+        {
+            var node = new Node();
+            InnerDictionary.Add(key, node);
+        }
 
         private Node FindRoot(TKey key)
         {
@@ -39,7 +46,7 @@ namespace Maze.Generator.Common
             for (var i = 1; i < keys.Length; i++)
             {
                 var root = FindRoot(keys[i]);
-                if (firstRoot.Equals(root))
+                if (!firstRoot.Equals(root))
                 {
                     return false;
                 }
@@ -53,7 +60,10 @@ namespace Maze.Generator.Common
             {
                 return true;
             }
-            // TODO: Check if connected
+            if (AreConnected(keys))
+            {
+                return false;
+            }
             var firstRoot = FindRoot(keys[0]);
             for (var i = 1; i < keys.Length; i++)
             {
@@ -62,5 +72,9 @@ namespace Maze.Generator.Common
             }
             return true;
         }
+
+        public IEnumerator<TKey> GetEnumerator() => InnerDictionary.Keys.GetEnumerator();
+
+        IEnumerator IEnumerable.GetEnumerator() => InnerDictionary.Keys.GetEnumerator();
     }
 }
