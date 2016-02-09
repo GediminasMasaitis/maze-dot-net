@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Maze.Generator.Cells;
+using Maze.Generator.Common;
 using Maze.Generator.Maps;
 using Maze.Generator.Results;
 

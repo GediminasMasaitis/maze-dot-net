@@ -1,4 +1,6 @@
-﻿namespace Maze.Generator.Generators.Kruskal
+﻿using Maze.Generator.Common;
+
+namespace Maze.Generator.Generators.Kruskal
 {
     public class NodeFactory : IGenericFactory<Node>
     {

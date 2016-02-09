@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Maze.Generator.Cells;
+using Maze.Generator.Common;
 
 namespace Maze.Generator.Maps.Decorators
 {

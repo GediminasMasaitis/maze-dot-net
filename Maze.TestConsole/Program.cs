@@ -6,6 +6,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using Maze.Generator;
 using Maze.Generator.Cells;
+using Maze.Generator.Common;
 using Maze.Generator.Generators;
 using Maze.Generator.Generators.AldousBroder;
 using Maze.Generator.Generators.BinaryTree;
@@ -16,6 +17,8 @@ using Maze.Generator.Generators.Kruskal;
 using Maze.Generator.Maps;
 using Maze.Generator.Maps.Decorators;
 using Maze.Generator.Renderers;
+using Maze.Generator.Results;
+using Maze.Generator.Runners;
 
 namespace Maze.TestConsole
 {

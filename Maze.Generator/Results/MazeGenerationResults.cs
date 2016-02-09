@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Maze.Generator.Common;
 
 namespace Maze.Generator.Results
 {

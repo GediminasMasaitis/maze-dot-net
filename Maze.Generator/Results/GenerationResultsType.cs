@@ -1,4 +1,4 @@
-namespace Maze.Generator
+namespace Maze.Generator.Results
 {
     public enum GenerationResultsType
     {

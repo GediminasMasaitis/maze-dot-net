@@ -1,5 +1,6 @@
 using System;
 using Maze.Generator.Cells;
+using Maze.Generator.Common;
 using Maze.Generator.Maps;
 using Maze.Generator.Results;
 

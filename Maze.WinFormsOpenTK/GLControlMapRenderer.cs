@@ -11,7 +11,7 @@ using Maze.Generator.Results;
 using OpenTK;
 using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
-using Point = Maze.Generator.Point;
+using Point = Maze.Generator.Common.Point;
 
 namespace Maze.WinFormsOpenTK
 {

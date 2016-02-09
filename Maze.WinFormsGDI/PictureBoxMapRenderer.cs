@@ -8,7 +8,7 @@ using Maze.Generator.Cells;
 using Maze.Generator.Maps;
 using Maze.Generator.Renderers;
 using Maze.Generator.Results;
-using Point = Maze.Generator.Point;
+using Point = Maze.Generator.Common.Point;
 
 namespace Maze.WinFormsGDI
 {

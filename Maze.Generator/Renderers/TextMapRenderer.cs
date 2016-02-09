@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Maze.Generator.Cells;
+using Maze.Generator.Common;
 using Maze.Generator.Exceptions;
 using Maze.Generator.Maps;
 using Maze.Generator.Results;

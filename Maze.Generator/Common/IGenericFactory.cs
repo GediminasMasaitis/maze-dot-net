@@ -1,4 +1,4 @@
-﻿namespace Maze.Generator.Generators.Kruskal
+﻿namespace Maze.Generator.Common
 {
     public interface IGenericFactory<out TObject>
     {

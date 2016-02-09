@@ -6,7 +6,7 @@ using Maze.Generator.Generators;
 using Maze.Generator.Renderers;
 using Maze.Generator.Results;
 
-namespace Maze.Generator
+namespace Maze.Generator.Runners
 {
     public class MazeGenerationRunner : MazeGenerationRunner<IMazeGenerator>
     {

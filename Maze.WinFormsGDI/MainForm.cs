@@ -8,7 +8,8 @@ using Maze.Generator.Generators.Decorators;
 using Maze.Generator.Generators.GrowingTree;
 using Maze.Generator.Maps;
 using Maze.Generator.Maps.Decorators;
-using Point = Maze.Generator.Point;
+using Maze.Generator.Runners;
+using Point = Maze.Generator.Common.Point;
 
 namespace Maze.WinFormsGDI
 {

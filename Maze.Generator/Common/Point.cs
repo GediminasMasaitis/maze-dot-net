@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Maze.Generator
+namespace Maze.Generator.Common
 {
     public class Point
     {
