@@ -85,7 +85,6 @@ namespace Maze.Generator.Generators.BinaryTree
 
 
             bool digHorizontal;
-
             var useBinaryTree = RNG.NextDouble() > UseSidewinder;
 
             //var dirX = binaryTreeValue == 0 && (NWBiasRadioButton.Checked || SWBiasRadioButton.Checked) ? -1 : 1;

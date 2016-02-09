@@ -50,7 +50,7 @@
     <Compile Include="Generators\Decorators\SetDefaultDisplayStatesMazeGeneratorDecorator.cs" />
     <Compile Include="Generators\GameOfLife\GameOfLifeGenerator.cs" />
     <Compile Include="Common\IGenericFactory.cs" />
-    <Compile Include="Generators\Kruskal\INode.cs" />
+    <Compile Include="Common\ConnectingTree.cs" />
     <Compile Include="Generators\Kruskal\Node.cs" />
     <Compile Include="Generators\Kruskal\NodeFactory.cs" />
     <Compile Include="Generators\MazeGenerationUtils.cs" />
@@ -66,7 +66,6 @@
     <Compile Include="Maps\NonCreatingInfiniteMap.cs" />
     <Compile Include="Maps\InfiniteMap.cs" />
     <Compile Include="Maps\InfiniteMapDecorator.cs" />
-    <Compile Include="Maps\MapConvert.cs" />
     <Compile Include="Renderers\ConsoleMapRenderer.cs" />
     <Compile Include="Renderers\DebugMapRenderer.cs" />
     <Compile Include="Renderers\IMapRenderer.cs" />

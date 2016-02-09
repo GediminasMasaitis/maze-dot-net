@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,28 +6,25 @@ using Maze.Generator.Common;
 
 namespace Maze.Generator.Generators.Kruskal
 {
-    public class KruskalTree<TNode>
-        where TNode : INode<TNode>
+    public class KruskalTree
     {
 
-        public KruskalTree(int width, int height, IGenericFactory<TNode> nodeFactory)
+        public KruskalTree(int width, int height)
         {
-            NodeFactory = nodeFactory;
-            InnerMatrix = new TNode[width, height];
+            InnerMatrix = new Node[width, height];
             for (var i = 0; i < width; i++)
             {
                 for (var j = 0; j < height; j++)
                 {
-                    InnerMatrix[i, j] = NodeFactory.Create();
+                    InnerMatrix[i, j] = new Node();
                 }
             }
         }
 
-        private IGenericFactory<TNode> NodeFactory { get; }
 
-        private TNode[,] InnerMatrix { get; }
+        private Node[,] InnerMatrix { get; }
 
-        private TNode FindRoot(int x, int y)
+        private Node FindRoot(int x, int y)
         {
             var origNode = InnerMatrix[x, y];
             if (origNode.Parent == null)
