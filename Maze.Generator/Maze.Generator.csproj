@@ -47,6 +47,7 @@
     <Compile Include="Generators\AldousBroder\AldousBroderMazeGenerator.cs" />
     <Compile Include="Generators\BinaryTree\BinaryTreeBias.cs" />
     <Compile Include="Generators\BinaryTree\BinaryTreeMazeGenerator.cs" />
+    <Compile Include="Generators\Decorators\IMazeGeneratorDecorator.cs" />
     <Compile Include="Generators\Decorators\SetDefaultDisplayStatesMazeGeneratorDecorator.cs" />
     <Compile Include="Generators\GameOfLife\GameOfLifeGenerator.cs" />
     <Compile Include="Common\IGenericFactory.cs" />

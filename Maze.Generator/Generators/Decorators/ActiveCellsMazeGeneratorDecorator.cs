@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Maze.Generator.Cells;
 using Maze.Generator.Maps;
@@ -9,29 +8,31 @@ namespace Maze.Generator.Generators.Decorators
 {
     public class ActiveCellsMazeGeneratorDecorator : ActiveCellsMazeGeneratorDecorator<IMazeGenerator>
     {
-        public ActiveCellsMazeGeneratorDecorator(IMazeGenerator generator, bool alterMap = true) : base(generator, alterMap)
+        public ActiveCellsMazeGeneratorDecorator(IMazeGenerator innerGenerator, int activeForSteps = 1, bool alterMap = true) : base(innerGenerator, activeForSteps, alterMap)
         {
         }
     }
 
-    public class ActiveCellsMazeGeneratorDecorator<TMazeGenerator> : IMazeGenerator where TMazeGenerator : IMazeGenerator
+    public class ActiveCellsMazeGeneratorDecorator<TMazeGenerator> : IMazeGeneratorDecorator<TMazeGenerator>
+        where TMazeGenerator : IMazeGenerator
     {
-        public ActiveCellsMazeGeneratorDecorator(TMazeGenerator generator, bool alterMap = true)
+        public ActiveCellsMazeGeneratorDecorator(TMazeGenerator generator, int activeForSteps = 1, bool alterMap = true)
         {
-            Generator = generator;
+            InnerGenerator = generator;
+            ActiveForSteps = activeForSteps;
             AlterMap = alterMap;
-            AllResults = new List<IList<MazeGenerationResult>>();
+            PreviousResults = new Queue<MazeGenerationResults>();
         }
 
-        public TMazeGenerator Generator { get; }
+        public TMazeGenerator InnerGenerator { get; }
+        public int ActiveForSteps { get; set; }
         public bool AlterMap { get; set; }
-        public IMap Map => Generator.Map;
-
-        private MazeGenerationResults LastResults { get; set; }
+        public IMap Map => InnerGenerator.Map;
+        private Queue<MazeGenerationResults> PreviousResults { get; set; }
 
         public MazeGenerationResults Generate()
         {
-            var results = Generator.Generate();
+            var results = InnerGenerator.Generate();
             var points = results.Results.Select(x => x.Point).ToList();
 
             var newResults = new MazeGenerationResults(results.ResultsType);
@@ -41,9 +42,15 @@ namespace Maze.Generator.Generators.Decorators
                 newResults.Results.Add(newResult);
             }
 
-            if (LastResults != null)
+            if (PreviousResults.Count >= ActiveForSteps)
             {
-                var nonOverlapping = LastResults.Results.Where(x => !points.Contains(x.Point)).ToList();
+                var previousResult = PreviousResults.Dequeue();
+                while (PreviousResults.Count >= ActiveForSteps)
+                {
+                    var otherResult = PreviousResults.Dequeue();
+                    previousResult = MazeGenerationResults.Merge(new []{previousResult, otherResult}, true);
+                }
+                var nonOverlapping = previousResult.Results.Where(x => !points.Contains(x.Point)).ToList();
                 foreach (var result in nonOverlapping)
                 {
                     var newResult = new MazeGenerationResult(result.Point, result.State, result.DisplayState);
@@ -51,7 +58,9 @@ namespace Maze.Generator.Generators.Decorators
                 }
             }
 
-            LastResults = results;
+            PreviousResults.Enqueue(results);
+
+            // TODO: if generation ended, get all results from queue
 
             if (AlterMap)
             {
@@ -65,10 +74,8 @@ namespace Maze.Generator.Generators.Decorators
                 }
             }
 
-            AllResults.Add(newResults.Results);
             return newResults;
         }
 
-        private IList<IList<MazeGenerationResult>> AllResults { get; }
     }
 }

@@ -12,20 +12,20 @@ namespace Maze.Generator.Generators.Decorators
         }
     }
 
-    public class SetDefaultDisplayStatesMazeGeneratorDecorator<TMazeGenerator> : IMazeGenerator
+    public class SetDefaultDisplayStatesMazeGeneratorDecorator<TMazeGenerator> : IMazeGeneratorDecorator<TMazeGenerator>
         where TMazeGenerator : IMazeGenerator
     {
         public SetDefaultDisplayStatesMazeGeneratorDecorator(TMazeGenerator generator)
         {
-            Generator = generator;
+            InnerGenerator = generator;
         }
 
-        public TMazeGenerator Generator { get; }
-        public IMap Map => Generator.Map;
+        public TMazeGenerator InnerGenerator { get; }
+        public IMap Map => InnerGenerator.Map;
 
         public MazeGenerationResults Generate()
         {
-            var results = Generator.Generate();
+            var results = InnerGenerator.Generate();
             foreach (var result in results.Results)
             {
                 if (result.DisplayState != CellDisplayState.Unspecified)
@@ -47,7 +47,7 @@ namespace Maze.Generator.Generators.Decorators
             foreach (var result in results.Results)
             {
                 var point = result.Point;
-                var cell = Generator.Map.GetCell(point);
+                var cell = InnerGenerator.Map.GetCell(point);
                 cell.DisplayState = result.DisplayState;
             }
             return results;

@@ -45,8 +45,5 @@ namespace Maze.Generator.Maps
         public bool Infinite => true;
         public int Dimensions => InnerMap.Dimensions;
         public Point Size => null;
-        //public IEnumerator<ICell> GetEnumerator() =>InnerMap.GetEnumerator();
-
-        //IEnumerator IEnumerable.GetEnumerator() => InnerMap.GetEnumerator();
     }
 }
