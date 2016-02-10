@@ -1,7 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
 using Maze.Generator.Common;
 using Maze.Generator.Maps;
 

@@ -105,7 +105,8 @@ namespace Maze.Generator.Runners
                 {
                     SmartSleep(remainingTime);
                 }
-                GeneratorStopwatch.Restart();
+                GeneratorStopwatch.Reset();
+                GeneratorStopwatch.Start();
 
                 BeforeGenerate?.Invoke();
                 var results = Generate();
@@ -158,7 +159,8 @@ namespace Maze.Generator.Runners
                 {
                     SmartSleep(remainingTime);
                 }
-                RendererStopwatch.Restart();
+                GeneratorStopwatch.Reset();
+                GeneratorStopwatch.Start();
 
                 if (BulkRender)
                 {

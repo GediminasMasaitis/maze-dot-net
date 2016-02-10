@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Maze.Generator.Generators.Kruskal;
 
 namespace Maze.Generator.Common
 {

@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Maze.Generator.Cells;
 using Maze.Generator.Common;
 using Maze.Generator.Exceptions;
