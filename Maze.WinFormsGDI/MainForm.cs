@@ -6,6 +6,7 @@ using Maze.Generator;
 using Maze.Generator.Generators;
 using Maze.Generator.Generators.Decorators;
 using Maze.Generator.Generators.GrowingTree;
+using Maze.Generator.Generators.Kruskal;
 using Maze.Generator.Maps;
 using Maze.Generator.Maps.Decorators;
 using Maze.Generator.Runners;
@@ -30,7 +31,7 @@ namespace Maze.WinFormsGDI
             var map = new FiniteMap2D(249,249);
             //var map = new InfiniteMap(2);
             var displayMap = new AsFiniteMapDecorator(map, map.Size ?? new Point(49, 49));
-            var innerGenerator = new GrowingTreeMazeGenerator(map);
+            var innerGenerator = new KruskalMazeGenerator(map);
             //var innerGenerator = new KruskalMazeGenerator(map);
             //innerGenerator.Breadth = 1;
             IMazeGenerator generator = new ActiveCellsMazeGeneratorDecorator(innerGenerator);

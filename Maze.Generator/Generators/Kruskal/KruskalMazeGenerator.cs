@@ -14,7 +14,7 @@ namespace Maze.Generator.Generators.Kruskal
         {
         }
 
-        private KruskalTree Tree { get; set; }
+        private ConnectingTree<Point> Tree { get; set; }
         private LinkedList<Point> Walls { get; set; }
 
         private IMap _map;
@@ -33,7 +33,7 @@ namespace Maze.Generator.Generators.Kruskal
                     throw new IncorrectDimensionsException(new[] { 2 }, value.Dimensions);
                 }
                 _map = value;
-                Tree = new KruskalTree(value.Size[0], value.Size[1]);
+                Tree = new ConnectingTree<Point>(true);
                 Walls = GenerateWallsLinkedList(value);
                 Walls.Shuffle();
             }
@@ -98,7 +98,9 @@ namespace Maze.Generator.Generators.Kruskal
                 y = 1;
             }
 
-            var connected = Tree.AreConnected(wall[0] - x, wall[1] - y, wall[0] + x, wall[1] + y);
+            var wallA = new Point(wall[0] - x, wall[1] - y);
+            var wallB = new Point(wall[0] + x, wall[1] + y);
+            var connected = Tree.AreConnected(wallA, wallB);
 
             var loop = RNG.NextDouble() < Looping;
 
@@ -114,10 +116,6 @@ namespace Maze.Generator.Generators.Kruskal
                 var sideCell1 = Map.GetCell(sidePoint1);
                 var sideCell2 = Map.GetCell(sidePoint2);
 
-                //results.Add(new MazeGenerationResult(wallPoint, wallCell.State, CellDisplayState.Path));
-                //results.Add(new MazeGenerationResult(sidePoint1, sideCell1.State, CellDisplayState.Path));
-                //results.Add(new MazeGenerationResult(sidePoint2, sideCell2.State, CellDisplayState.Path));
-
                 wallCell.State = CellState.Empty;
                 sideCell1.State = CellState.Empty;
                 sideCell2.State = CellState.Empty;
@@ -132,13 +130,8 @@ namespace Maze.Generator.Generators.Kruskal
 
                 if (!connected)
                 {
-                    Tree.Connect(wall[0] - x, wall[1] - y, wall[0] + x, wall[1] + y);
+                    Tree.Connect(wallA, wallB);
                 }
-
-                //DrawCell(wall.X - x, wall.Y - y, MazeColors.Walkway.Brush);
-                //DrawCell(wall.X, wall.Y, MazeColors.Walkway.Brush);
-                //DrawCell(wall.X + x, wall.Y + y, MazeColors.Walkway.Brush);
-
 
             }
             else

@@ -5,8 +5,11 @@ namespace Maze.Generator.Common
 {
     public class ConnectingTree<TKey> : IEnumerable<TKey>
     {
-        public ConnectingTree()
+        public bool ImplicitlyAdding { get; set; }
+
+        public ConnectingTree(bool implicitlyAdding = false)
         {
+            ImplicitlyAdding = implicitlyAdding;
             InnerDictionary = new Dictionary<TKey, Node>();
         }
 
@@ -20,7 +23,13 @@ namespace Maze.Generator.Common
 
         private Node FindRoot(TKey key)
         {
-            var origNode = InnerDictionary[key];
+            Node origNode = null;
+            if (ImplicitlyAdding && !InnerDictionary.TryGetValue(key, out origNode))
+            {
+                origNode = new Node();
+                InnerDictionary.Add(key, origNode);
+            }
+            //var origNode = InnerDictionary[key];
             if (origNode.Parent == null)
             {
                 return origNode;

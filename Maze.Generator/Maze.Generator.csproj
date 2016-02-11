@@ -54,10 +54,9 @@
     <Compile Include="Common\IGenericFactory.cs" />
     <Compile Include="Common\ConnectingTree.cs" />
     <Compile Include="Common\Node.cs" />
-    <Compile Include="Generators\Kruskal\NodeFactory.cs" />
+    <Compile Include="Generators\IMazeGeneratorExtensionMethods.cs" />
     <Compile Include="Generators\MazeGenerationUtils.cs" />
     <Compile Include="Generators\Kruskal\KruskalMazeGenerator.cs" />
-    <Compile Include="Generators\Kruskal\KruskalTree.cs" />
     <Compile Include="Generators\Decorators\ActiveCellsMazeGeneratorDecorator.cs" />
     <Compile Include="Generators\RecursiveDivision\RecursiveDivisionMazeGenerator.cs" />
     <Compile Include="Generators\TestMazeGenerator.cs" />
@@ -76,6 +75,7 @@
     <Compile Include="Exceptions\MapInfiniteException.cs" />
     <Compile Include="Results\MazeGenerationResult.cs" />
     <Compile Include="Cells\CellDisplayState.cs" />
+    <Compile Include="Runners\JustGenerateRunner.cs" />
     <Compile Include="Runners\MazeGenerationRunner.cs" />
     <Compile Include="Common\Point.cs" />
     <Compile Include="ExtensionMethods.cs" />
