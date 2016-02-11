@@ -28,16 +28,17 @@ namespace Maze.WinFormsGDI
         private async void GenerateButton_Click(object sender, EventArgs e)
         {
             var track = false;
-            var map = new FiniteMap2D(249,249);
+            var map = new FiniteMap2D(49,49);
             //var map = new InfiniteMap(2);
             var displayMap = new AsFiniteMapDecorator(map, map.Size ?? new Point(49, 49));
-            var innerGenerator = new KruskalMazeGenerator(map);
+            var innerGenerator = new GrowingTreeMazeGenerator(map);
             //var innerGenerator = new KruskalMazeGenerator(map);
+            //innerGenerator.Sparseness = 4;
             //innerGenerator.Breadth = 1;
             IMazeGenerator generator = new ActiveCellsMazeGeneratorDecorator(innerGenerator);
             //IMazeGenerator generator = innerGenerator;
             var renderer = new PictureBoxMapRenderer(MainPictureBox, map);
-            var generatorDelay = 1d;
+            var generatorDelay = 10d;
             var rendererDelay = 1000d / 60d;
             var generatorDelaySpan = TimeSpan.FromTicks((long)(generatorDelay * TimeSpan.TicksPerMillisecond));
             var rendererDelaySpan = TimeSpan.FromTicks((long)(rendererDelay * TimeSpan.TicksPerMillisecond));
