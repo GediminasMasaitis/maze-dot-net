@@ -284,7 +284,7 @@ namespace Maze.Generator.Generators.GrowingTree
                     break;
                 }
 
-                if (!treeJoinForceConnect)
+                if (!treeJoinForceConnect && !wouldLoop)
                 {
                     CellsTreeDict.Add(lastPoint, tree);
                 }
