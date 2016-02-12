@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
-using Maze.Generator;
-using Maze.Generator.Cells;
-using Maze.Generator.Maps;
-using Maze.Generator.Renderers;
-using Maze.Generator.Results;
+using Maze.Core.Cells;
+using Maze.Core.Maps;
+using Maze.Core.Renderers;
+using Maze.Core.Results;
 using OpenTK;
 using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
-using Point = Maze.Generator.Common.Point;
+using Point = Maze.Core.Common.Point;
 
 namespace Maze.WinFormsOpenTK
 {

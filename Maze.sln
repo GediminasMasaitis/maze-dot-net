@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maze.Generator", "Maze.Generator\Maze.Generator.csproj", "{ED62D7AC-6E2B-4076-80ED-343F4D1C6F14}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maze.Core", "Maze.Core\Maze.Core.csproj", "{ED62D7AC-6E2B-4076-80ED-343F4D1C6F14}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maze.TestConsole", "Maze.TestConsole\Maze.TestConsole.csproj", "{E5029ECE-78B2-44ED-BE42-35B1AA238912}"
 EndProject
@@ -17,6 +17,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.gitignore = .gitignore
 		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Maze.NET", "Maze.NET", "{FB811C1D-CD90-4315-A4B7-D20A65E3E251}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demo UIs", "Demo UIs", "{5387DD09-0F32-4904-9D80-A47B57420F0B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,5 +47,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{ED62D7AC-6E2B-4076-80ED-343F4D1C6F14} = {FB811C1D-CD90-4315-A4B7-D20A65E3E251}
+		{E5029ECE-78B2-44ED-BE42-35B1AA238912} = {5387DD09-0F32-4904-9D80-A47B57420F0B}
+		{18A15EFA-97BC-4055-AF45-15E1C942382D} = {5387DD09-0F32-4904-9D80-A47B57420F0B}
+		{8C6B9544-96BF-4B38-A29A-8FA0198FCF58} = {5387DD09-0F32-4904-9D80-A47B57420F0B}
 	EndGlobalSection
 EndGlobal

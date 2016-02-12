@@ -4,21 +4,14 @@ using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
-using Maze.Generator;
-using Maze.Generator.Cells;
-using Maze.Generator.Common;
-using Maze.Generator.Generators;
-using Maze.Generator.Generators.AldousBroder;
-using Maze.Generator.Generators.BinaryTree;
-using Maze.Generator.Generators.Decorators;
-using Maze.Generator.Generators.GameOfLife;
-using Maze.Generator.Generators.GrowingTree;
-using Maze.Generator.Generators.Kruskal;
-using Maze.Generator.Maps;
-using Maze.Generator.Maps.Decorators;
-using Maze.Generator.Renderers;
-using Maze.Generator.Results;
-using Maze.Generator.Runners;
+using Maze.Core.Common;
+using Maze.Core.Generators.Decorators;
+using Maze.Core.Generators.GrowingTree;
+using Maze.Core.Maps;
+using Maze.Core.Maps.Decorators;
+using Maze.Core.Renderers;
+using Maze.Core.Results;
+using Maze.Core.Runners;
 
 namespace Maze.TestConsole
 {

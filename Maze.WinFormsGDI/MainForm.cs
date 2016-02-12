@@ -2,15 +2,13 @@
 using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
-using Maze.Generator;
-using Maze.Generator.Generators;
-using Maze.Generator.Generators.Decorators;
-using Maze.Generator.Generators.GrowingTree;
-using Maze.Generator.Generators.Kruskal;
-using Maze.Generator.Maps;
-using Maze.Generator.Maps.Decorators;
-using Maze.Generator.Runners;
-using Point = Maze.Generator.Common.Point;
+using Maze.Core.Generators;
+using Maze.Core.Generators.Decorators;
+using Maze.Core.Generators.GrowingTree;
+using Maze.Core.Maps;
+using Maze.Core.Maps.Decorators;
+using Maze.Core.Runners;
+using Point = Maze.Core.Common.Point;
 
 namespace Maze.WinFormsGDI
 {

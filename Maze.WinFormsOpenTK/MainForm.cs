@@ -9,13 +9,10 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Maze.Generator;
-using Maze.Generator.Generators;
-using Maze.Generator.Generators.Decorators;
-using Maze.Generator.Generators.GrowingTree;
-using Maze.Generator.Generators.Kruskal;
-using Maze.Generator.Maps;
-using Maze.Generator.Results;
+using Maze.Core.Generators;
+using Maze.Core.Generators.Decorators;
+using Maze.Core.Generators.GrowingTree;
+using Maze.Core.Maps;
 using OpenTK.Graphics.OpenGL;
 
 namespace Maze.WinFormsOpenTK
