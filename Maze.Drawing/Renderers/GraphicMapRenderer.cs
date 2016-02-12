@@ -54,12 +54,11 @@ namespace Maze.Drawing.Renderers
                 RecalculateParameters(true);
             }
         }
-
+        public bool ForceRerender { get; set; }
         public bool Cache { get; set; }
         public IDictionary<CellDisplayState, Color> Colors { get; }
 
         private IDictionary<Point, Color> MapCache { get; set; }
-
         private int MapWidth { get; set; }
         private int MapHeight { get; set; }
         private int OffsetX { get; set; }
@@ -71,22 +70,8 @@ namespace Maze.Drawing.Renderers
 
         private void RecalculateParameters(bool squareCells)
         {
-            if (Map.Infinite)
-            {
-                MapWidth = 49;
-                MapHeight = 49;
-                RecalculateParametersInner(true);
-            }
-            else
-            {
-                MapWidth = Map.Size[0];
-                MapHeight = Map.Size[1];
-                RecalculateParametersInner(squareCells);
-            }
-        }
-
-        private void RecalculateParametersInner(bool squareCells)
-        {
+            MapWidth = Map.Size[0];
+            MapHeight = Map.Size[1];
             CellWidth = TargetSize[0] / MapWidth;
             CellHeight = TargetSize[1] / MapHeight;
             if (squareCells)
@@ -108,6 +93,33 @@ namespace Maze.Drawing.Renderers
         }
 
         public virtual void Render(MazeGenerationResults results)
+        {
+            if (ForceRerender)
+            {
+                RenderMap();
+            }
+            else
+            {
+                RenderResults(results);
+            }
+        }
+
+        private void RenderMap()
+        {
+            for (var i = 0; i < Map.Size[0]; i++)
+            {
+                for (var j = 0; j < Map.Size[1]; j++)
+                {
+                    var point = new Point(i,j);
+                    var cell = Map.GetCell(point);
+                    var displayState = cell.DisplayState;
+                    var color = Colors[displayState];
+                    DrawCell(point, color);
+                }
+            }
+        }
+
+        private void RenderResults(MazeGenerationResults results)
         {
             foreach (var result in results.Results)
             {
