@@ -142,7 +142,7 @@ namespace Maze.Generator.Generators.GrowingTree
             var doBlocking = RNG.NextDouble() < Blocking;
 
             var currentCoordinateIndex = doBreadth && path.Count > 1 ? RNG.Next(1, path.Count/Sparseness+1)*Sparseness : path.Count - 1;
-            var currentCoordinate = path[currentCoordinateIndex];
+            var currentPoint = path[currentCoordinateIndex];
 
             var offsets = Point.GeneratePerpendicularOffsets(Map.Dimensions);
             var biases = GetCurrentOffsetProbabilities(tree.LastOffset);
@@ -150,39 +150,20 @@ namespace Maze.Generator.Generators.GrowingTree
             var lastChanceLooping = false;
             while (offsets.Count > 0)
             {
-                var biasTotal = biases.Sum();
-                var biasMultiplier = RNG.NextDouble();
-                var biasThreshold = biasMultiplier * biasTotal;
-                int offsetIndex;
-                if (biasTotal == 0)
-                {
-                    offsetIndex = RNG.Next(0, offsets.Count);
-                }
-                else
-                {
-                    var currentThreshold = 0d;
-                    for (offsetIndex = 0; offsetIndex < biases.Count; offsetIndex++)
-                    {
-                        currentThreshold += biases[offsetIndex];
-                        if (currentThreshold > biasThreshold)
-                        {
-                            break;
-                        }
-                    }
-                }
+                var offsetIndex = PickNextDirection(biases, offsets);
                 var offset = offsets[offsetIndex];
                 var points = new List<Point>(Sparseness);
                 {
                     for (var i = 1; i <= Sparseness; i++)
                     {
-                        var point = currentCoordinate + (offset * i);
+                        var point = currentPoint + (offset * i);
                         points.Add(point);
                     }
                 }
                 var firstPoint = points[0];
                 var lastPoint = points[points.Count - 1];
-                var cellExists = Map.CellExists(lastPoint);
-                var testCell = cellExists ? Map.GetCell(lastChanceLooping ? firstPoint : lastPoint) : null;
+                var lastCellExists = Map.CellExists(lastPoint);
+                var testCell = lastCellExists ? Map.GetCell(lastChanceLooping ? firstPoint : lastPoint) : null;
                 
                 if (testCell == null || doBlocking || (!doFirstChanceLooping && testCell.State != CellState.Filled))
                 {
@@ -251,15 +232,7 @@ namespace Maze.Generator.Generators.GrowingTree
 
             if (path.Count <= 1)
             {
-                RunningTrees.RemoveAt(treeIndex);
-                StoppedTrees.Add(tree);
-                if (RunningTrees.Count == 0)
-                {
-                    // TODO: Doesn't generate a full-braid map if nothing looped into the start point before. Fix to have full-braid maps in the future.
-                    results.ResultsType = GenerationResultsType.GenerationCompleted;
-                    return new MazeGenerationResults(GenerationResultsType.GenerationCompleted);
-                }
-                return results;
+                return CompleteTree(treeIndex, results);
             }
 
             if (currentCoordinateIndex != 0)
@@ -277,7 +250,45 @@ namespace Maze.Generator.Generators.GrowingTree
             return results;
         }
 
-        private MazeGenerationResults InitializeTree(List<Point> path, MazeGenerationResults results, Tree tree)
+        private MazeGenerationResults CompleteTree(int treeIndex, MazeGenerationResults results)
+        {
+            var tree = RunningTrees[treeIndex];
+            RunningTrees.RemoveAt(treeIndex);
+            StoppedTrees.Add(tree);
+            if (RunningTrees.Count == 0)
+            {
+                // TODO: Doesn't generate a full-braid map if nothing looped into the start point before. Fix to have full-braid maps in the future.
+                return new MazeGenerationResults(GenerationResultsType.GenerationCompleted);
+            }
+            return results;
+        }
+
+        private int PickNextDirection(IList<double> directionProbabilities, ICollection<Point> offsets)
+        {
+            var biasTotal = directionProbabilities.Sum();
+            var biasMultiplier = RNG.NextDouble();
+            var biasThreshold = biasMultiplier*biasTotal;
+            int offsetIndex;
+            if (biasTotal == 0)
+            {
+                offsetIndex = RNG.Next(0, offsets.Count);
+            }
+            else
+            {
+                var currentThreshold = 0d;
+                for (offsetIndex = 0; offsetIndex < directionProbabilities.Count; offsetIndex++)
+                {
+                    currentThreshold += directionProbabilities[offsetIndex];
+                    if (currentThreshold > biasThreshold)
+                    {
+                        break;
+                    }
+                }
+            }
+            return offsetIndex;
+        }
+
+        private MazeGenerationResults InitializeTree(ICollection<Point> path, MazeGenerationResults results, Tree tree)
         {
             Point startingPoint;
             ICell startingCell;
