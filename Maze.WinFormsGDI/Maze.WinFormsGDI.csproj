@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ControlMapRenderer.cs" />
     <Compile Include="LockBitmap.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>

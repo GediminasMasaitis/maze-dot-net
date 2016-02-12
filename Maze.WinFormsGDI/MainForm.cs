@@ -35,7 +35,8 @@ namespace Maze.WinFormsGDI
             //innerGenerator.Breadth = 1;
             IMazeGenerator generator = new ActiveCellsMazeGeneratorDecorator(innerGenerator);
             //IMazeGenerator generator = innerGenerator;
-            var renderer = new PictureBoxMapRenderer(MainPictureBox, map);
+            DoubleBuffered = true;
+            var renderer = new ControlMapRenderer(map,this);
             var generatorDelay = 10d;
             var rendererDelay = 1000d / 60d;
             var generatorDelaySpan = TimeSpan.FromTicks((long)(generatorDelay * TimeSpan.TicksPerMillisecond));

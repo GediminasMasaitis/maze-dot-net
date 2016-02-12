@@ -96,7 +96,7 @@ namespace Maze.Drawing.Renderers
         {
             if (ForceRerender)
             {
-                RenderMap();
+                RerenderMap();
             }
             else
             {
@@ -104,7 +104,7 @@ namespace Maze.Drawing.Renderers
             }
         }
 
-        private void RenderMap()
+        protected void RerenderMap()
         {
             for (var i = 0; i < Map.Size[0]; i++)
             {
@@ -119,7 +119,7 @@ namespace Maze.Drawing.Renderers
             }
         }
 
-        private void RenderResults(MazeGenerationResults results)
+        protected void RenderResults(MazeGenerationResults results)
         {
             foreach (var result in results.Results)
             {

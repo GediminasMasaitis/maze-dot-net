@@ -8,7 +8,7 @@ namespace Maze.WinFormsGDI
 {
     internal class PictureBoxMapRenderer : ImageMapRenderer
     {
-        public PictureBoxMapRenderer(PictureBox pictureBox, IMap map) : base(map, MakeImageForPictureBox(pictureBox))
+        public PictureBoxMapRenderer(IMap map, PictureBox pictureBox) : base(map, MakeImageForPictureBox(pictureBox))
         {
             PictureBox = pictureBox;
         }
