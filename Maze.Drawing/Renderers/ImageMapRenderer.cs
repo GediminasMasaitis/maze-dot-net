@@ -10,7 +10,7 @@ namespace Maze.Drawing.Renderers
         public ImageMapRenderer(IMap map, Image image) : base(map, new Point(image.Width, image.Height))
         {
             Image = image;
-
+            Cache = true;
             Brushes = new Dictionary<Color, Brush>();
             foreach (var color in Colors)
             {

@@ -33,7 +33,16 @@ namespace Maze.Drawing.Renderers
             TargetSize = targetSize;
         }
 
-        public IMap Map { get; }
+        private IMap _map;
+        public IMap Map
+        {
+            get { return _map; }
+            set
+            {
+                _map = value;
+                MapCache = new Dictionary<Point, Color>();
+            }
+        }
 
         private Point _targetSize;
         public Point TargetSize
@@ -46,6 +55,7 @@ namespace Maze.Drawing.Renderers
             }
         }
 
+        public bool Cache { get; set; }
         public IDictionary<CellDisplayState, Color> Colors { get; }
 
         private IDictionary<Point, Color> MapCache { get; set; }
@@ -109,13 +119,16 @@ namespace Maze.Drawing.Renderers
 
         private void DrawCell(Point point, Color color)
         {
-            Color cachedColor;
-            var exists = MapCache.TryGetValue(point, out cachedColor);
-            if (exists)
+            if (Cache)
             {
-                if (cachedColor.Equals(color))
+                Color cachedColor;
+                var exists = MapCache.TryGetValue(point, out cachedColor);
+                if (exists)
                 {
-                    return;
+                    if (cachedColor.Equals(color))
+                    {
+                        return;
+                    }
                 }
                 MapCache[point] = color;
             }
