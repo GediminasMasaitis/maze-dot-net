@@ -117,42 +117,22 @@ namespace Maze.Generator.Generators.GrowingTree
         }
 
         private bool LastLooped { get; set; }
-        private int CurrentLoop { get; set; }
+        private int CurrentIteration { get; set; }
         public override MazeGenerationResults Generate()
         {
             var results = new MazeGenerationResults();
-            if (CurrentLoop == 0)
+            if (CurrentIteration == 0)
             {
-                RunningTrees = new List<Tree>();
-                StoppedTrees = new List<Tree>();
-                TreeTree = new ConnectingTree<Tree>(true);
-                CellsTreeDict = new Dictionary<Point, Tree>();
-                for (var i = 0; i < TreeCount; i++)
-                {
-                    var newTree = new Tree();
-                    TreeTree.Add(newTree);
-                    RunningTrees.Add(newTree);
-                }
+                InitializeMap();
             }
 
-            var treeIndex = CurrentLoop%RunningTrees.Count;
+            var treeIndex = CurrentIteration%RunningTrees.Count;
             var tree = RunningTrees[treeIndex];
             var path = tree.Path;
-            CurrentLoop++;
+            CurrentIteration++;
             if (path.Count == 0)
             {
-                Point startingPoint;
-                ICell startingCell;
-                do
-                {
-                    // TODO: This one is retarded. Need to think of a better way.
-                    startingPoint = MazeGenerationUtils.PickStartingPoint(Map, RNG);
-                    startingCell = Map.GetCell(startingPoint);
-                } while (startingCell.State == CellState.Empty);
-                path.Add(startingPoint);
-                ChangeCell(results,startingPoint,CellState.Empty, CellDisplayState.Path);
-                CellsTreeDict.Add(startingPoint, tree);
-                return results;
+                return InitializeTree(path, results, tree);
             }
 
             var doBreadth = RNG.NextDouble() < Breadth;
@@ -161,52 +141,13 @@ namespace Maze.Generator.Generators.GrowingTree
             var dontGoBackAfterLooping = RNG.NextDouble() < DontGoBackAfterLooping;
             var doBlocking = RNG.NextDouble() < Blocking;
 
-            var currentCoordinateIndex = doBreadth && path.Count > 1 ? RNG.Next(1, path.Count/2+1)*2 : path.Count - 1;
+            var currentCoordinateIndex = doBreadth && path.Count > 1 ? RNG.Next(1, path.Count/Sparseness+1)*Sparseness : path.Count - 1;
             var currentCoordinate = path[currentCoordinateIndex];
 
             var offsets = Point.GeneratePerpendicularOffsets(Map.Dimensions);
-            IList<double> biases;
-            if (tree.LastOffset != null)
-            {
-                // TODO: Possibly optimize this search.
-                var lastPositive = Array.IndexOf(tree.LastOffset.Coordinates, 1);
-                var lastNegative = Array.IndexOf(tree.LastOffset.Coordinates, -1);
-
-                var lastDimension = lastNegative == -1 ? lastPositive : lastNegative;
-                var lastForward = lastNegative == -1;
-
-                var lastDirection = lastDimension*2;
-                if (lastForward)
-                {
-                    lastDirection++;
-                }
-
-                biases = new List<double>(Biases.Length);
-                for (var i = 0; i < Biases.Length; i++)
-                {
-                    var runIndex = i - lastDirection;
-                    while (runIndex < 0)
-                    {
-                        runIndex += Biases.Length;
-                    }
-                    while (runIndex >= Biases.Length)
-                    {
-                        runIndex -= Biases.Length;
-                    }
-                    var run = Runs[runIndex];
-                    var initialBias = Biases[i];
-
-                    var bias = initialBias*run;
-                    biases.Add(bias);
-                }
-            }
-            else
-            {
-                biases = Biases.ToList();
-            }
-
+            var biases = GetCurrentOffsetProbabilities(tree.LastOffset);
+            
             var lastChanceLooping = false;
-            //if(!doGoBackAfterLooping || !LastLooped)
             while (offsets.Count > 0)
             {
                 var biasTotal = biases.Sum();
@@ -238,8 +179,6 @@ namespace Maze.Generator.Generators.GrowingTree
                         points.Add(point);
                     }
                 }
-                //var pathToCellCoord = currentCoordinate + offset;
-                //var otherCellCoord = currentCoordinate + (offset*2);
                 var firstPoint = points[0];
                 var lastPoint = points[points.Count - 1];
                 var cellExists = Map.CellExists(lastPoint);
@@ -259,9 +198,7 @@ namespace Maze.Generator.Generators.GrowingTree
                 }
 
                 var cells = points.Select(x => Map.GetCell(x)).ToList();
-
                 var lastCell = cells[cells.Count - 1];
-                //var pathToCell = Map.GetCell(pathToCellCoord);
 
                 var wouldLoop = lastCell.State == CellState.Empty;
 
@@ -336,23 +273,95 @@ namespace Maze.Generator.Generators.GrowingTree
                     var lastResult = new MazeGenerationResult(coord, lastCell.State, lastCell.DisplayState);
                     results.Results.Add(lastResult);
                 }
-
-                /*var lastCoord = path[currentCoordinateIndex];
-                path.RemoveAt(currentCoordinateIndex);
-                var lastCell = Map.GetCell(lastCoord);
-                lastCell.DisplayState = CellDisplayState.Path;
-                var lastResult = new MazeGenerationResult(lastCoord, lastCell.State, lastCell.DisplayState);
-                results.Results.Add(lastResult);
-
-
-                var secondLastCoord = path[currentCoordinateIndex - 1];
-                path.RemoveAt(currentCoordinateIndex - 1);
-                var secondLastCell = Map.GetCell(secondLastCoord);
-                secondLastCell.DisplayState = CellDisplayState.Path;
-                var secondLastResult = new MazeGenerationResult(secondLastCoord, secondLastCell.State, secondLastCell.DisplayState);
-                results.Results.Add(secondLastResult);*/
             }
             return results;
+        }
+
+        private MazeGenerationResults InitializeTree(List<Point> path, MazeGenerationResults results, Tree tree)
+        {
+            Point startingPoint;
+            ICell startingCell;
+            do
+            {
+                // TODO: This one is retarded. Need to think of a better way.
+                startingPoint = MazeGenerationUtils.PickStartingPoint(Map, RNG);
+                startingCell = Map.GetCell(startingPoint);
+            } while (startingCell.State == CellState.Empty);
+            path.Add(startingPoint);
+            ChangeCell(results, startingPoint, CellState.Empty, CellDisplayState.Path);
+            CellsTreeDict.Add(startingPoint, tree);
+            return results;
+        }
+
+        private void InitializeMap()
+        {
+            RunningTrees = new List<Tree>();
+            StoppedTrees = new List<Tree>();
+            TreeTree = new ConnectingTree<Tree>(true);
+            CellsTreeDict = new Dictionary<Point, Tree>();
+            for (var i = 0; i < TreeCount; i++)
+            {
+                var newTree = new Tree();
+                TreeTree.Add(newTree);
+                RunningTrees.Add(newTree);
+            }
+        }
+
+        private class OffsetInfo
+        {
+            public int Dimension { get; set; }
+            public bool Forward { get; set; }
+            public int Direction { get; set; }
+        }
+
+        private OffsetInfo GetOffsetInfo(Point offset)
+        {
+            var info = new OffsetInfo();
+            var lastPositive = Array.IndexOf(offset.Coordinates, 1);
+            var lastNegative = Array.IndexOf(offset.Coordinates, -1);
+
+            info.Dimension = lastNegative == -1 ? lastPositive : lastNegative;
+            info.Forward = lastNegative == -1;
+            info.Direction = info.Dimension * 2;
+            if (info.Forward)
+            {
+                info.Direction++;
+            }
+            return info;
+        }
+
+        private IList<double> GetCurrentOffsetProbabilities(Point lastOffset = null)
+        {
+            IList<double> probabilities;
+            if (lastOffset != null)
+            {
+                // TODO: Possibly optimize this search.
+                var lastOffsetInfo = GetOffsetInfo(lastOffset);
+
+                probabilities = new List<double>(Biases.Length);
+                for (var i = 0; i < Biases.Length; i++)
+                {
+                    var runIndex = i - lastOffsetInfo.Direction;
+                    while (runIndex < 0)
+                    {
+                        runIndex += Biases.Length;
+                    }
+                    while (runIndex >= Biases.Length)
+                    {
+                        runIndex -= Biases.Length;
+                    }
+                    var run = Runs[runIndex];
+                    var initialBias = Biases[i];
+
+                    var bias = initialBias * run;
+                    probabilities.Add(bias);
+                }
+            }
+            else
+            {
+                probabilities = Biases.ToList();
+            }
+            return probabilities;
         }
     }
 }
