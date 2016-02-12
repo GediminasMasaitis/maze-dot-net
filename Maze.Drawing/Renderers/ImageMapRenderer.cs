@@ -3,9 +3,9 @@ using System.Drawing;
 using Maze.Core.Maps;
 using Point = Maze.Core.Common.Point;
 
-namespace Maze.WinFormsGDI
+namespace Maze.Drawing.Renderers
 {
-    public class ImageMapRenderer : GraphicMapRendererBase
+    public class ImageMapRenderer : GraphicMapRenderer
     {
         public ImageMapRenderer(IMap map, Image image) : base(map, new Point(image.Width, image.Height))
         {

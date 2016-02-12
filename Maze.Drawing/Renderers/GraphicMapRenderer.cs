@@ -7,14 +7,11 @@ using Maze.Core.Renderers;
 using Maze.Core.Results;
 using Point = Maze.Core.Common.Point;
 
-namespace Maze.WinFormsGDI
+namespace Maze.Drawing.Renderers
 {
-    public abstract class GraphicMapRendererBase : IMapRenderer
+    public abstract class GraphicMapRenderer : IMapRenderer
     {
-        public IMap Map { get; }
-        public Point TargetSize { get; set; }
-        public IDictionary<CellDisplayState, Color> Colors { get; }
-        public GraphicMapRendererBase(IMap map, Point targetSize)
+        public GraphicMapRenderer(IMap map, Point targetSize)
         {
             if (map.Dimensions != 2)
             {
@@ -25,7 +22,6 @@ namespace Maze.WinFormsGDI
                 throw new IncorrectFinityException(false, map.Infinite);
             }
             Map = map;
-            TargetSize = targetSize;
             Colors = new Dictionary<CellDisplayState, Color>
             {
                 { CellDisplayState.Wall, Color.Black },
@@ -34,11 +30,25 @@ namespace Maze.WinFormsGDI
                 { CellDisplayState.Active, Color.Brown },
                 { CellDisplayState.Unspecified, Color.Magenta }
             };
-
-            RecalculateParameters(true);
+            TargetSize = targetSize;
         }
 
-        private IDictionary<Point, Color> MapCache;
+        public IMap Map { get; }
+
+        private Point _targetSize;
+        public Point TargetSize
+        {
+            get { return _targetSize; }
+            set
+            {
+                _targetSize = value;
+                RecalculateParameters(true);
+            }
+        }
+
+        public IDictionary<CellDisplayState, Color> Colors { get; }
+
+        private IDictionary<Point, Color> MapCache { get; set; }
 
         private int MapWidth { get; set; }
         private int MapHeight { get; set; }
@@ -49,7 +59,7 @@ namespace Maze.WinFormsGDI
         private int TotalWidth { get; set; }
         private int TotalHeight { get; set; }
 
-        protected void RecalculateParameters(bool squareCells)
+        private void RecalculateParameters(bool squareCells)
         {
             if (Map.Infinite)
             {

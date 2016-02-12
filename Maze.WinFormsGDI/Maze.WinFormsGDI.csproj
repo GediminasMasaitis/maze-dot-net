@@ -46,8 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GraphicMapRendererBase.cs" />
-    <Compile Include="ImageMapRenderer.cs" />
     <Compile Include="LockBitmap.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -87,6 +85,10 @@
     <ProjectReference Include="..\Maze.Core\Maze.Core.csproj">
       <Project>{ed62d7ac-6e2b-4076-80ed-343f4d1c6f14}</Project>
       <Name>Maze.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Maze.Drawing\Maze.Drawing.csproj">
+      <Project>{5f79aa45-4a4f-490f-87a7-35deda6875e0}</Project>
+      <Name>Maze.Drawing</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

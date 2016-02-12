@@ -1,9 +1,8 @@
 using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
 using Maze.Core.Maps;
-using Maze.Core.Renderers;
 using Maze.Core.Results;
+using Maze.Drawing.Renderers;
 
 namespace Maze.WinFormsGDI
 {
