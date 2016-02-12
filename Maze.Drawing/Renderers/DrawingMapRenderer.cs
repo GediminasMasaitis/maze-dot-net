@@ -9,9 +9,9 @@ using Point = Maze.Core.Common.Point;
 
 namespace Maze.Drawing.Renderers
 {
-    public abstract class GraphicMapRenderer : IMapRenderer
+    public abstract class DrawingMapRenderer : IMapRenderer
     {
-        public GraphicMapRenderer(IMap map, Point targetSize)
+        public DrawingMapRenderer(IMap map, Point targetSize)
         {
             if (map.Dimensions != 2)
             {

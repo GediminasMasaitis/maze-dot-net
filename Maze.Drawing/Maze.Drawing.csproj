@@ -36,7 +36,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Renderers\GraphicMapRenderer.cs" />
+    <Compile Include="Renderers\DrawingMapRenderer.cs" />
+    <Compile Include="Renderers\GraphicsMapRenderer.cs" />
     <Compile Include="Renderers\ImageMapRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
