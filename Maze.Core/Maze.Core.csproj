@@ -52,6 +52,7 @@
     <Compile Include="Generators\MazeGenerationUtils.cs" />
     <Compile Include="Generators\Kruskal\KruskalMazeGenerator.cs" />
     <Compile Include="Generators\Decorators\ActiveCellsMazeGeneratorDecorator.cs" />
+    <Compile Include="Common\Rectangle.cs" />
     <Compile Include="Generators\RecursiveDivision\RecursiveDivisionMazeGenerator.cs" />
     <Compile Include="Generators\TestMazeGenerator.cs" />
     <Compile Include="Maps\Decorators\AsSmallerDimensionMapDecorator.cs" />
