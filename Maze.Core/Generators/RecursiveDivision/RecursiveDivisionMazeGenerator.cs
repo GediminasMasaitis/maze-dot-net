@@ -15,6 +15,8 @@ namespace Maze.Core.Generators.RecursiveDivision
             ShowMapInitializationStep = true;
             Biases = new[] {1d, 1d};
             ProportionalSplits = 1;
+            FixedSplits = 0;
+            FixedSplitLocation = 0.5;
         }
 
         private IMap _map;
@@ -41,6 +43,27 @@ namespace Maze.Core.Generators.RecursiveDivision
         public bool ShowMapInitializationStep { get; }
         public double ProportionalSplits { get; set; }
 
+        private double _fixedSplits;
+        public double FixedSplits
+        {
+            get { return _fixedSplits; }
+            set
+            {
+                DoubleParameterCheck(value);
+                _fixedSplits = value;
+            }
+        }
+
+        private double _fixedSplitLocation;
+        public double FixedSplitLocation
+        {
+            get { return _fixedSplitLocation; }
+            set
+            {
+                DoubleParameterCheck(value);
+                _fixedSplitLocation = value;
+            }
+        }
 
         private int CurrentIteration { get; set; }
 
@@ -188,32 +211,46 @@ namespace Maze.Core.Generators.RecursiveDivision
                 Vertical = verticalChance > RNG.NextDouble()*sum;
             }
 
+
             if (Vertical)
             {
-                //var randPart = 2;
-                //var randPart = RNG.Next(1, size[1]/2)*2;
-                var randPart = size[1]/2;
-                if (randPart % 2 == 1)
-                {
-                    randPart++;
-                }
+                var randPart = GetRandomPart(size[1]);
                 var coord = CurrentRectangle.From[1]-1 + randPart;
                 InitialPoint = new Point(CurrentRectangle.From[0] - 1, coord);
             }
             else
             {
-                //var randPart = 2;
-                //var randPart = RNG.Next(1, size[0] / 2) * 2;
-                var randPart = size[0]/2;
-                if (randPart%2==1)
-                {
-                    randPart++;
-                }
+                var randPart = GetRandomPart(size[0]);
                 var coord = CurrentRectangle.From[0]-1 + randPart;
                 InitialPoint = new Point(coord, CurrentRectangle.From[1] - 1);
             }
             LastPoint = InitialPoint;
             return true;
+        }
+
+        private int GetRandomPart(int size)
+        {
+            // TODO: With FixedSplitLocation = 1 it breaks the end of generation. Need to fix
+            size -= 4;
+            var doFixedSplit = FixedSplits > RNG.NextDouble();
+            int randPart;
+
+            if (doFixedSplit)
+            {
+                randPart = (int)(size * FixedSplitLocation);
+            }
+            else
+            {
+                randPart = RNG.Next(0, size/2)*2;
+            }
+
+            if (randPart % 2 == 1)
+            {
+                randPart++;
+            }
+
+            randPart += 2;
+            return randPart;
         }
 
         private MazeGenerationResults InitializeMap()
