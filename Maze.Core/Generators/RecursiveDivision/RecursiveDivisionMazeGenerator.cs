@@ -17,6 +17,8 @@ namespace Maze.Core.Generators.RecursiveDivision
             ProportionalSplits = 1;
             FixedSplits = 0;
             FixedSplitLocation = 0.5;
+            FixedRecursion = 1;
+            FixedRecursionLocation = 1;
         }
 
         private IMap _map;
@@ -62,6 +64,28 @@ namespace Maze.Core.Generators.RecursiveDivision
             {
                 DoubleParameterCheck(value);
                 _fixedSplitLocation = value;
+            }
+        }
+
+        private double _fixedRecursion;
+        public double FixedRecursion
+        {
+            get { return _fixedRecursion; }
+            set
+            {
+                DoubleParameterCheck(value);
+                _fixedRecursion = value;
+            }
+        }
+
+        private double _fixedRecursionLocation;
+        public double FixedRecursionLocation
+        {
+            get { return _fixedRecursionLocation; }
+            set
+            {
+                DoubleParameterCheck(value);
+                _fixedRecursionLocation = value;
             }
         }
 
@@ -115,15 +139,11 @@ namespace Maze.Core.Generators.RecursiveDivision
             
             if (CurrentRectangle == null)
             {
-                while (Rectangles.Count != 0)
+                if (Rectangles.Count != 0)
                 {
-                    var success = BeginNewRectangle();
-                    if (success)
-                    {
-                        break;
-                    }
+                    BeginNewRectangle();
                 }
-                if (CurrentRectangle == null)
+                else
                 {
                     return new MazeGenerationResults(GenerationResultsType.GenerationCompleted);
                 }
@@ -178,10 +198,9 @@ namespace Maze.Core.Generators.RecursiveDivision
             return results;
         }
 
-        private bool BeginNewRectangle()
+        private void BeginNewRectangle()
         {
-            //var rectangleIndex = Rectangles.Count - 1;
-            var rectangleIndex = 0;
+            var rectangleIndex = GetNextRectangleIndex();
             CurrentRectangle = Rectangles[rectangleIndex];
             Rectangles.RemoveAt(rectangleIndex);
             
@@ -225,7 +244,21 @@ namespace Maze.Core.Generators.RecursiveDivision
                 InitialPoint = new Point(coord, CurrentRectangle.From[1] - 1);
             }
             LastPoint = InitialPoint;
-            return true;
+        }
+
+        private int GetNextRectangleIndex()
+        {
+            int rectangleIndex;
+            var doFixedRecursion = FixedRecursion > RNG.NextDouble();
+            if (doFixedRecursion)
+            {
+                rectangleIndex = Convert.ToInt32((Rectangles.Count - 1)*FixedRecursionLocation);
+            }
+            else
+            {
+                rectangleIndex = RNG.Next(0, Rectangles.Count);
+            }
+            return rectangleIndex;
         }
 
         private int GetRandomPart(int size)
