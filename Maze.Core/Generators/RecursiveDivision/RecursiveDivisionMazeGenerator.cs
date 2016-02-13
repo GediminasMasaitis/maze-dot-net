@@ -13,6 +13,8 @@ namespace Maze.Core.Generators.RecursiveDivision
         public RecursiveDivisionMazeGenerator(IMap map, Random random = null) : base(map, random)
         {
             ShowMapInitializationStep = true;
+            Biases = new[] {1d, 1d};
+            ProportionalSplits = 1;
         }
 
         private IMap _map;
@@ -35,8 +37,10 @@ namespace Maze.Core.Generators.RecursiveDivision
                 CurrentIteration = 0;
             }
         }
-
+        public double[] Biases { get; }
         public bool ShowMapInitializationStep { get; }
+        public double ProportionalSplits { get; set; }
+
 
         private int CurrentIteration { get; set; }
 
@@ -130,11 +134,12 @@ namespace Maze.Core.Generators.RecursiveDivision
                 ChangeCell(results, path, CellState.Empty, CellDisplayState.Path);
 
                 var addA = rectA.Size[0] > 2 || rectA.Size[1] > 2;
+                var addB = rectB.Size[0] > 2 || rectB.Size[1] > 2;
+
                 if (addA)
                 {
                     Rectangles.Add(rectA);
                 }
-                var addB = rectB.Size[0] > 2 || rectB.Size[1] > 2;
                 if (addB)
                 {
                     Rectangles.Add(rectB);
@@ -152,25 +157,12 @@ namespace Maze.Core.Generators.RecursiveDivision
 
         private bool BeginNewRectangle()
         {
-            var rectangleIndex = Rectangles.Count - 1;
-            //var rectangleIndex = 0;
+            //var rectangleIndex = Rectangles.Count - 1;
+            var rectangleIndex = 0;
             CurrentRectangle = Rectangles[rectangleIndex];
             Rectangles.RemoveAt(rectangleIndex);
-
-            /*var availableDimensions = new List<int>();
-            for (var i = 0; i < CurrentRectangle.Size.Coordinates.Length; i++)
-            {
-                var coordinate = CurrentRectangle.Size[i];
-                if (coordinate > 2)
-                {
-                    availableDimensions.Add(i);
-                }
-            }*/
+            
             var size = CurrentRectangle.Size;
-            // (size[0] <= 2 && size[1] <= 2)
-            //{
-            //    return false;
-            //}
             if (size[0] <= 2)
             {
                 Vertical = true;
@@ -181,22 +173,44 @@ namespace Maze.Core.Generators.RecursiveDivision
             }
             else
             {
-                Vertical = RNG.NextDouble() > 0.5;
+                var horizontalChance = Biases[0];
+                var verticalChance = Biases[1];
+                if (size[0] > size[1])
+                {
+                    horizontalChance *= ProportionalSplits;
+                }
+                else if(size[0] < size[1])
+                {
+                    verticalChance *= ProportionalSplits;
+                }
+
+                var sum = horizontalChance + verticalChance;
+                Vertical = verticalChance > RNG.NextDouble()*sum;
             }
 
             if (Vertical)
             {
-                var randPart = RNG.Next(1, size[1]/2)*2;
+                //var randPart = 2;
+                //var randPart = RNG.Next(1, size[1]/2)*2;
+                var randPart = size[1]/2;
+                if (randPart % 2 == 1)
+                {
+                    randPart++;
+                }
                 var coord = CurrentRectangle.From[1]-1 + randPart;
                 InitialPoint = new Point(CurrentRectangle.From[0] - 1, coord);
-                //LastOffset = new Point(1,0);
             }
             else
             {
-                var randPart = RNG.Next(1, size[0] / 2) * 2;
+                //var randPart = 2;
+                //var randPart = RNG.Next(1, size[0] / 2) * 2;
+                var randPart = size[0]/2;
+                if (randPart%2==1)
+                {
+                    randPart++;
+                }
                 var coord = CurrentRectangle.From[0]-1 + randPart;
                 InitialPoint = new Point(coord, CurrentRectangle.From[1] - 1);
-                //LastOffset = new Point(0, 1);
             }
             LastPoint = InitialPoint;
             return true;
