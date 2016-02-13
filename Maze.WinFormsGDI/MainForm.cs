@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using Maze.Core.Generators;
 using Maze.Core.Generators.Decorators;
 using Maze.Core.Generators.GrowingTree;
+using Maze.Core.Generators.RecursiveDivision;
 using Maze.Core.Maps;
 using Maze.Core.Maps.Decorators;
 using Maze.Core.Runners;
@@ -36,7 +37,8 @@ namespace Maze.WinFormsGDI
             IMazeGenerator generator = new ActiveCellsMazeGeneratorDecorator(innerGenerator);
             //IMazeGenerator generator = innerGenerator;
             DoubleBuffered = true;
-            var renderer = new ControlMapRenderer(map,this);
+            var renderer = new PictureBoxMapRenderer(map,MainPictureBox);
+            //renderer.ForceRerender = true;
             var generatorDelay = 10d;
             var rendererDelay = 1000d / 60d;
             var generatorDelaySpan = TimeSpan.FromTicks((long)(generatorDelay * TimeSpan.TicksPerMillisecond));

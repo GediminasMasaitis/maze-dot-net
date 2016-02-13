@@ -21,7 +21,7 @@ namespace Maze.Drawing.Renderers
 
         private IDictionary<Color, Brush> Brushes { get; }
 
-        protected override void DrawRectangle(Rectangle rectangle, Color color)
+        protected override void DrawRectangle(Point mapPoint, Rectangle rectangle, Color color)
         {
             var brush = Brushes[color];
             Graphics.FillRectangle(brush, rectangle);

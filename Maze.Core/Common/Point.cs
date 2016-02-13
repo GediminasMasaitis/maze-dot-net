@@ -139,7 +139,8 @@ namespace Maze.Core.Common
         public override string ToString()
         {
             var coordinatesStr = "[" + Coordinates.Select(x => x.ToString()).Aggregate((x, n) => x + "; " + n) + "]";
-            return "Dimensions: " + Dimensions + ", Coordinates: " + coordinatesStr;
+            //return "Dimensions: " + Dimensions + ", Coordinates: " + coordinatesStr;
+            return coordinatesStr;
         }
 
         public static Point CreateSameAllDimensions(int dimensions, int distance)

@@ -145,10 +145,10 @@ namespace Maze.Drawing.Renderers
                 MapCache[point] = color;
             }
             var rect = MapPointToRectangle(point);
-            DrawRectangle(rect, color);
+            DrawRectangle(point, rect, color);
         }
 
-        protected abstract void DrawRectangle(Rectangle rectangle, Color color);
+        protected abstract void DrawRectangle(Point mapPoint, Rectangle rectangle, Color color);
 
         private Rectangle MapPointToRectangle(Point point)
         {

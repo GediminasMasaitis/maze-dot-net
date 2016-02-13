@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using Maze.Core.Maps;
 using Maze.Core.Results;
 using Maze.Drawing.Renderers;
+using Point = Maze.Core.Common.Point;
 
 namespace Maze.WinFormsGDI
 {
@@ -43,9 +44,11 @@ namespace Maze.WinFormsGDI
             UpdateTarget();
         }
 
-        protected override void DrawRectangle(Rectangle rectangle, Color color)
+        protected override void DrawRectangle(Point mapPoint, Rectangle rectangle, Color color)
         {
-            base.DrawRectangle(rectangle, color);
+            base.DrawRectangle(mapPoint, rectangle, color);
+            //var text = mapPoint.ToString();
+            //Graphics.DrawString(text, new Font(FontFamily.GenericMonospace, 10, FontStyle.Bold), Brushes.Red, rectangle);
             PictureBox.Invalidate(rectangle);
         }
     }
