@@ -13,6 +13,7 @@ namespace Maze.Core.Generators.RecursiveDivision
         public RecursiveDivisionMazeGenerator(IMap map, Random random = null) : base(map, random)
         {
             ShowMapInitializationStep = true;
+            ProcessSingleCellBlocks = false;
             Biases = new[] {1d, 1d};
             ProportionalSplits = 1;
             FixedSplits = 0;
@@ -42,6 +43,8 @@ namespace Maze.Core.Generators.RecursiveDivision
                 CurrentIteration = 0;
             }
         }
+
+        public bool ProcessSingleCellBlocks { get; set; }
         public double[] Biases { get; }
         public bool ShowMapInitializationStep { get; }
         public double ProportionalSplits { get; set; }
@@ -200,7 +203,10 @@ namespace Maze.Core.Generators.RecursiveDivision
                 {
                     if (rect.Size[0] > 2 || rect.Size[1] > 2)
                     {
-                        Rectangles.Add(rect);
+                        if (ProcessSingleCellBlocks || (rect.Size[0] > 1 && rect.Size[1] > 1))
+                        {
+                            Rectangles.Add(rect);
+                        }
                     }
                 }
 
