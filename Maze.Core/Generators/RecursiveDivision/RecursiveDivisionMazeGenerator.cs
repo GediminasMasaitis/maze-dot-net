@@ -19,6 +19,7 @@ namespace Maze.Core.Generators.RecursiveDivision
             FixedSplitLocation = 0.5;
             FixedRecursion = 1;
             FixedRecursionLocation = 1;
+            ReverseRecursionOrder = 0;
         }
 
         private IMap _map;
@@ -89,6 +90,17 @@ namespace Maze.Core.Generators.RecursiveDivision
             }
         }
 
+        private double _reverseRecursionOrder;
+        public double ReverseRecursionOrder
+        {
+            get { return _reverseRecursionOrder; }
+            set
+            {
+                DoubleParameterCheck(value);
+                _reverseRecursionOrder = value;
+            }
+        }
+
         private int CurrentIteration { get; set; }
 
         private class Rectangle
@@ -154,41 +166,45 @@ namespace Maze.Core.Generators.RecursiveDivision
             var currentPoint = LastPoint + offset;
             if (!CurrentRectangle.Contains(currentPoint))
             {
-                Rectangle rectA;
-                Rectangle rectB;
+                var rects = new List<Rectangle>
+                {
+                    new Rectangle(CurrentRectangle.From, currentPoint)
+                };
                 Point path;
+                Point newRectFrom;
                 if (Vertical)
                 {
-                    rectA = new Rectangle(CurrentRectangle.From, currentPoint);
-                    var newPoint = new Point(CurrentRectangle.From[0], LastPoint[1]+1);
-                    rectB = new Rectangle(newPoint, CurrentRectangle.To);
+                    newRectFrom = new Point(CurrentRectangle.From[0], LastPoint[1]+1);
                     var pathCoord = RNG.Next(InitialPoint[0]/2, LastPoint[0]/2)*2 + 1;
                     path = new Point(pathCoord, InitialPoint[1]);
                 }
                 else
                 {
-                    rectA = new Rectangle(CurrentRectangle.From, currentPoint);
-                    var newPoint = new Point(LastPoint[0]+1, CurrentRectangle.From[1]);
-                    rectB = new Rectangle(newPoint, CurrentRectangle.To);
-                    var pathCoord = RNG.Next(InitialPoint[1]/2, LastPoint[1]/2) * 2 + 1;
+                    newRectFrom = new Point(LastPoint[0]+1, CurrentRectangle.From[1]);
+                    var pathCoord = RNG.Next(InitialPoint[1]/2, LastPoint[1]/2)*2 + 1;
                     path = new Point(InitialPoint[0], pathCoord);
                 }
-
+                
                 ChangeCell(results, path, CellState.Empty, CellDisplayState.Path);
 
-                var addA = rectA.Size[0] > 2 || rectA.Size[1] > 2;
-                var addB = rectB.Size[0] > 2 || rectB.Size[1] > 2;
+                var newRect = new Rectangle(newRectFrom, CurrentRectangle.To);
+                rects.Add(newRect);
 
-                if (addA)
+                var doReverseRecursionOrder = ReverseRecursionOrder > RNG.NextDouble();
+                if (doReverseRecursionOrder)
                 {
-                    Rectangles.Add(rectA);
+                    rects.Reverse();
                 }
-                if (addB)
+
+                foreach (var rect in rects)
                 {
-                    Rectangles.Add(rectB);
+                    if (rect.Size[0] > 2 || rect.Size[1] > 2)
+                    {
+                        Rectangles.Add(rect);
+                    }
                 }
+
                 CurrentRectangle = null;
-                //return Generate();
             }
             else
             {
