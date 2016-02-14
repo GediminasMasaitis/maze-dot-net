@@ -7,6 +7,19 @@ namespace Maze.Core.Common
 {
     public class RectangleOptimizer
     {
+        public IDictionary<CellState, IList<Rectangle>> OptimizeAll(IDictionary<Point, ICell> cells)
+        {
+            var allRectangles = new Dictionary<CellState, IList<Rectangle>>();
+            var allStates = Enum.GetValues(typeof (CellState)).Cast<CellState>();
+            foreach (var cellState in allStates)
+            {
+                var pointsEnum = cells.Where(x => x.Value.State == cellState).Select(x => x.Key);
+                var optimizedRectangles = Optimize(pointsEnum);
+                allRectangles.Add(cellState, optimizedRectangles);
+            }
+            return allRectangles;
+        }
+
         public IList<Rectangle> Optimize(IDictionary<Point, ICell> cells, CellState targetState)
         {
             var pointsEnum = cells.Where(x => x.Value.State == targetState).Select(x => x.Key);
