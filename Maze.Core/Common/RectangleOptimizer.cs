@@ -7,14 +7,19 @@ namespace Maze.Core.Common
 {
     public class RectangleOptimizer
     {
-        public IList<Rectangle> Optimize(IDictionary<Point, ICell> initialDict, CellState targetState)
+        public IList<Rectangle> Optimize(IDictionary<Point, ICell> cells, CellState targetState)
         {
+            var pointsEnum = cells.Where(x => x.Value.State == targetState).Select(x => x.Key);
+            return Optimize(pointsEnum);
+        }
+
+        public IList<Rectangle> Optimize(IEnumerable<Point> points)
+        {
+            var pointSet = new HashSet<Point>(points);
             var rectangles = new List<Rectangle>();
-            var cells = initialDict.Where(x => x.Value.State == targetState).ToDictionary(x=>x.Key, x=>x.Value);
-            while (cells.Count > 0)
+            while (pointSet.Count > 0)
             {
-                var pair = cells.First();
-                var point = pair.Key;
+                var point = pointSet.First();
                 var offsets = Point.GeneratePerpendicularOffsets(point.Dimensions);
                 List<Point> maxOtherPoints = null;
                 Point maxFirstPoint = null;
@@ -31,8 +36,7 @@ namespace Maze.Core.Common
                         while (true)
                         {
                             var currentPoint = previousPoint + offset;
-                            ICell currentCell;
-                            if (cells.TryGetValue(currentPoint, out currentCell))
+                            if (pointSet.Contains(currentPoint))
                             {
                                 otherPoints.Add(currentPoint);
                                 previousPoint = currentPoint;
@@ -62,9 +66,9 @@ namespace Maze.Core.Common
                 rectangles.Add(rect);
                 foreach (var maxOtherPoint in maxOtherPoints)
                 {
-                    cells.Remove(maxOtherPoint);
+                    pointSet.Remove(maxOtherPoint);
                 }
-                cells.Remove(point);
+                pointSet.Remove(point);
             }
 
             return rectangles;
