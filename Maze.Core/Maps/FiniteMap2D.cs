@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Maze.Core.Cells;
 using Maze.Core.Common;
 
@@ -14,7 +15,8 @@ namespace Maze.Core.Maps
             {
                 for (var j = 0; j < Height; j++)
                 {
-                    InnerCells[i,j] = new Cell();
+                    var cell = new Cell();
+                    InnerCells[i,j] = cell ;
                 }
             }
         }

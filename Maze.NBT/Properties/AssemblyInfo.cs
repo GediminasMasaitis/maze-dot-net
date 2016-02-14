@@ -1,10 +1,11 @@
 ﻿using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Maze.NET Core")]
+[assembly: AssemblyTitle("Maze.NET NBT")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
@@ -19,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("ed62d7ac-6e2b-4076-80ed-343f4d1c6f14")]
+[assembly: Guid("f2658371-d2f2-45b5-a951-835b79de95f6")]
 
 // Version information for an assembly consists of the following four values:
 //
