@@ -3,7 +3,7 @@ using Maze.Core.Results;
 
 namespace Maze.Core.Runners
 {
-    class JustGenerateRunner
+    public class JustGenerateRunner
     {
         private IMazeGenerator Generator { get; }
 

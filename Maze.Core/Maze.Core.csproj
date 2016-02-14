@@ -39,6 +39,7 @@
     <Compile Include="Cells\CellExtensionMethods.cs" />
     <Compile Include="Cells\CellState.cs" />
     <Compile Include="Cells\ICell.cs" />
+    <Compile Include="Common\RectangleOptimizer.cs" />
     <Compile Include="Generators\AldousBroder\AldousBroderMazeGenerator.cs" />
     <Compile Include="Generators\BinaryTree\BinaryTreeBias.cs" />
     <Compile Include="Generators\BinaryTree\BinaryTreeMazeGenerator.cs" />

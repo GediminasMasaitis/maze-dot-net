@@ -4,7 +4,7 @@ namespace Maze.Core.Common
 {
     public class Rectangle
     {
-        public Rectangle(Point from, Point to)
+        public Rectangle(Point from, Point to, bool toInclusive = false)
         {
             if (from.Dimensions != to.Dimensions)
             {
@@ -12,11 +12,17 @@ namespace Maze.Core.Common
             }
             From = from;
             To = to;
+            ToInclusive = toInclusive;
             Size = To - From;
+            if (ToInclusive)
+            {
+                Size += 1;
+            }
         }
 
         public Point From { get; }
         public Point To { get; }
+        public bool ToInclusive { get; }
         public Point Size { get; }
         public int Dimensions => From.Dimensions;
 
