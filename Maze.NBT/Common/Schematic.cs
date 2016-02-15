@@ -7,9 +7,9 @@ using fNbt;
 
 namespace Maze.NBT.Common
 {
-    class McSchematic
+    internal class Schematic
     {
-        public McSchematic(short width, short length, short height, NbtCompression compression = NbtCompression.None)
+        public Schematic(short width, short length, short height, NbtCompression compression = NbtCompression.None)
         {
             Width = width;
             Length = length;
