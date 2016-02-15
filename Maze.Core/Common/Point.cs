@@ -143,16 +143,16 @@ namespace Maze.Core.Common
             return coordinatesStr;
         }
 
-        public static Point CreateSameAllDimensions(int dimensions, int distance)
+        public static Point CreateSameAllDimensions(int dimensions, int distance = 0)
         {
             var coords = Enumerable.Repeat(distance, dimensions).ToArray();
             return new Point(coords);
         }
 
-        public static List<Point> GeneratePerpendicularOffsets(int dimensions, bool includeSelf = false)
+        public virtual IList<Point> GetAxisOffsets(bool includeSelf = false)
         {
             var offsets = new List<Point>();
-
+            var dimensions = Dimensions;
             for (var i = 0; i < dimensions; i++)
             {
                 var coordinateNegative = CreateSameAllDimensions(dimensions, 0);
@@ -173,8 +173,9 @@ namespace Maze.Core.Common
             return offsets;
         }
 
-        public static List<Point> GenerateAllOffsets(int dimensions, bool includeSelf)
+        public virtual IList<Point> GetAllOffsets(bool includeSelf = false)
         {
+            var dimensions = Dimensions;
             if (dimensions < 0)
             {
                 throw new ArgumentOutOfRangeException(nameof(dimensions));

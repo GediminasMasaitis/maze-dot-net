@@ -33,7 +33,7 @@ namespace Maze.Core.Common
             while (pointSet.Count > 0)
             {
                 var point = pointSet.First();
-                var offsets = Point.GeneratePerpendicularOffsets(point.Dimensions);
+                var offsets = point.GetAxisOffsets();
                 List<Point> maxOtherPoints = null;
                 Point maxFirstPoint = null;
                 Point maxLastPoint = null;

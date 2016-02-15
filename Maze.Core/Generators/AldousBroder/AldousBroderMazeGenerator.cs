@@ -83,7 +83,7 @@ namespace Maze.Core.Generators.AldousBroder
             }
 
             var doLooping = RNG.NextDouble() < Looping;
-            var offsets = Point.GeneratePerpendicularOffsets(Map.Dimensions);
+            var offsets = CurrentPoint.GetAxisOffsets();
 
             Point pathToCellPoint = null;
             Point otherCellPoint = null;

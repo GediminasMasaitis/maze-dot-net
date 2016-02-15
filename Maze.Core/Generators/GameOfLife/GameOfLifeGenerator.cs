@@ -32,7 +32,7 @@ namespace Maze.Core.Generators.GameOfLife
         {
             var results = new MazeGenerationResults();
             var targets = new Dictionary<Point, bool>();
-            var offsets = Point.GenerateAllOffsets(Map.Dimensions, false);
+            var offsets = new Point(new int[2]).GetAllOffsets();
 
             foreach (var cell in InnerMap.Cells)
             {

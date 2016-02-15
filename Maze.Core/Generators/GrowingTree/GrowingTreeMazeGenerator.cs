@@ -144,7 +144,7 @@ namespace Maze.Core.Generators.GrowingTree
             var currentCoordinateIndex = doBreadth && path.Count > 1 ? RNG.Next(1, path.Count/Sparseness+1)*Sparseness : path.Count - 1;
             var currentPoint = path[currentCoordinateIndex];
 
-            var offsets = Point.GeneratePerpendicularOffsets(Map.Dimensions);
+            var offsets = currentPoint.GetAxisOffsets();
             var biases = GetCurrentOffsetProbabilities(tree.LastOffset);
             
             var lastChanceLooping = false;
@@ -171,7 +171,7 @@ namespace Maze.Core.Generators.GrowingTree
                     biases.RemoveAt(offsetIndex);
                     if (!lastChanceLooping && offsets.Count == 0)
                     {
-                        offsets = Point.GeneratePerpendicularOffsets(Map.Dimensions);
+                        offsets = currentPoint.GetAxisOffsets();
                         biases = Biases.ToList();
                         lastChanceLooping = true;
                     }
