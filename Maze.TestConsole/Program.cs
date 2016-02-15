@@ -10,6 +10,7 @@ using Maze.Core.Generators.GrowingTree;
 using Maze.Core.Maps;
 using Maze.Core.Maps.Decorators;
 using Maze.Core.Renderers;
+using Maze.Core.Renderers.Text;
 using Maze.Core.Results;
 using Maze.Core.Runners;
 
@@ -46,7 +47,7 @@ namespace Maze.TestConsole
 
             var renderer = new ConsoleMapRenderer(displayMap, true, false);
 
-            var generatorDelay = 200d;
+            var generatorDelay = 100d;
             var rendererDelay = 1000d / 60d;
             var generatorDelaySpan = TimeSpan.FromTicks((long)(generatorDelay * TimeSpan.TicksPerMillisecond));
             var rendererDelaySpan = TimeSpan.FromTicks((long)(rendererDelay * TimeSpan.TicksPerMillisecond));

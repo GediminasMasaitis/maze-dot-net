@@ -64,8 +64,9 @@
     <Compile Include="Maps\NonCreatingInfiniteMap.cs" />
     <Compile Include="Maps\InfiniteMap.cs" />
     <Compile Include="Maps\InfiniteMapDecorator.cs" />
-    <Compile Include="Renderers\ConsoleMapRenderer.cs" />
-    <Compile Include="Renderers\DebugMapRenderer.cs" />
+    <Compile Include="Renderers\CompositeMapRenderer.cs" />
+    <Compile Include="Renderers\Text\ConsoleMapRenderer.cs" />
+    <Compile Include="Renderers\Text\DebugMapRenderer.cs" />
     <Compile Include="Renderers\IMapRenderer.cs" />
     <Compile Include="Exceptions\IncorrectDimensionsException.cs" />
     <Compile Include="Exceptions\IncorrectFinityException.cs" />
@@ -84,8 +85,8 @@
     <Compile Include="Results\MazeGenerationResults.cs" />
     <Compile Include="Generators\MazeGeneratorBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Renderers\TextFileMapRenderer.cs" />
-    <Compile Include="Renderers\TextMapRenderer.cs" />
+    <Compile Include="Renderers\Text\TextFileMapRenderer.cs" />
+    <Compile Include="Renderers\Text\TextMapRenderer.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

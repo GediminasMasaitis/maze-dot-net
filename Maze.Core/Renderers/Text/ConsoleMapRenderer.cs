@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Maze.Core.Cells;
 using Maze.Core.Maps;
 
-namespace Maze.Core.Renderers
+namespace Maze.Core.Renderers.Text
 {
     public class ConsoleMapRenderer : TextMapRenderer
     {

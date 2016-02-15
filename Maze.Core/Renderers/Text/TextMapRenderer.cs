@@ -7,7 +7,7 @@ using Maze.Core.Exceptions;
 using Maze.Core.Maps;
 using Maze.Core.Results;
 
-namespace Maze.Core.Renderers
+namespace Maze.Core.Renderers.Text
 {
     public abstract class TextMapRenderer : IMapRenderer
     {

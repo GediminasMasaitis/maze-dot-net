@@ -2,7 +2,7 @@ using System.Diagnostics;
 using Maze.Core.Cells;
 using Maze.Core.Maps;
 
-namespace Maze.Core.Renderers
+namespace Maze.Core.Renderers.Text
 {
     // LOL
     public class DebugMapRenderer : TextMapRenderer
