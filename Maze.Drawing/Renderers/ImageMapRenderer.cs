@@ -1,5 +1,6 @@
 using System.Drawing;
 using Maze.Core.Maps;
+using Maze.Core.Results;
 using Point = Maze.Core.Common.Point;
 
 namespace Maze.Drawing.Renderers
@@ -10,7 +11,12 @@ namespace Maze.Drawing.Renderers
         {
             Image = image;
             Cache = true;
+            SaveImageOnCompletion = false;
+            ImagePath = @".\maze.png";
         }
+
+        public bool SaveImageOnCompletion { get; set; }
+        public string ImagePath { get; set; }
 
         private Image _image;
         public Image Image
@@ -27,6 +33,15 @@ namespace Maze.Drawing.Renderers
         {
             var graphics = Graphics.FromImage(image);
             return graphics;
+        }
+
+        public override void Render(MazeGenerationResults results)
+        {
+            base.Render(results);
+            if (SaveImageOnCompletion)
+            {
+                Image.Save(ImagePath);
+            }
         }
     }
 }
