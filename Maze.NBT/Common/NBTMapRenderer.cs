@@ -39,11 +39,11 @@ namespace Maze.NBT.Common
             var length = (short)Map.Size[1];
             var height = (short)(Map.Dimensions > 2 ? Map.Size[2] : HeightOn2DMaps);
 
-            var data = new byte[width*length*height];
+            var sch = new McSchematic(width, length, height);
 
-            for (var i = 0; i < width; i++)
+            for (short i = 0; i < width; i++)
             {
-                for (var j = 0; j < length; j++)
+                for (short j = 0; j < length; j++)
                 {
                     Point point = null;
                     var fill = false;
@@ -53,7 +53,7 @@ namespace Maze.NBT.Common
                         fill = Map.CellExists(point) && Map.GetCell(point).State == CellState.Filled;
                     }
 
-                    for (var k = 0; k < height; k++)
+                    for (short k = 0; k < height; k++)
                     {
                         if (Map.Dimensions == 3)
                         {
@@ -62,13 +62,12 @@ namespace Maze.NBT.Common
                         }
                         if (fill)
                         {
-                            data[k*width*length + j*width + i] = 1;
+                            sch.Set(i,j,k,5,4);
                         }
                     }
                 }
             }
-
-            var sch = new McSchematic(width, length, height, data);
+            
             sch.SaveFile(Path);
         }
 
