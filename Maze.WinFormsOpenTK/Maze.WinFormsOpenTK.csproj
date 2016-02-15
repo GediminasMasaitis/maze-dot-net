@@ -57,6 +57,7 @@
     <Compile Include="GLControlMapRenderer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RectangleWithColor.cs" />
     <EmbeddedResource Include="MaiNForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -86,6 +87,10 @@
     <ProjectReference Include="..\Maze.Core\Maze.Core.csproj">
       <Project>{ed62d7ac-6e2b-4076-80ed-343f4d1c6f14}</Project>
       <Name>Maze.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Maze.Drawing\Maze.Drawing.csproj">
+      <Project>{5f79aa45-4a4f-490f-87a7-35deda6875e0}</Project>
+      <Name>Maze.Drawing</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

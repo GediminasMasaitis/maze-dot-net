@@ -18,7 +18,7 @@ namespace Maze.Core.Renderers
         {
             foreach (var renderer in Renderers)
             {
-                renderer.Dispose();
+                renderer?.Dispose();
             }
         }
 
@@ -26,7 +26,7 @@ namespace Maze.Core.Renderers
         {
             foreach (var renderer in Renderers)
             {
-                renderer.Render(results);
+                renderer?.Render(results);
             }
         }
     }
