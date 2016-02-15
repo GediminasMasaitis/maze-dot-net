@@ -24,6 +24,11 @@ namespace Maze.WinFormsGDI
             InitializeComponent();
         }
 
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
         private async void GenerateButton_Click(object sender, EventArgs e)
         {
             var track = false;
@@ -60,76 +65,8 @@ namespace Maze.WinFormsGDI
             runner.AfterRender += results =>
             {
                 rendererSteps++;
-                /*Console.WriteLine("Generated steps: " + generatorSteps);
-                Console.WriteLine("Rendered steps: " + rendererSteps);
-                if (results.ResultsType == GenerationResultsType.GenerationCompleted)
-                {
-                    Console.WriteLine("Completed!");
-                }*/
             };
             runner.Start();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            var bitmap = new Bitmap(MainPictureBox.Width, MainPictureBox.Height);
-            MainPictureBox.Image = bitmap;
-
-            var locked = new LockBitmap(bitmap);
-
-            var sw = new Stopwatch();
-            sw.Start();
-            using (locked.LockBits())
-            {
-                for (int i = 0; i < MainPictureBox.Width; i++)
-                {
-                    for (int j = 0; j < MainPictureBox.Height; j++)
-                    {
-                        locked.SetPixel(i,j,Color.Blue);
-                    }
-                }
-            }
-            sw.Stop();
-            MessageBox.Show(sw.Elapsed.TotalMilliseconds.ToString());
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            var bitmap = new Bitmap(MainPictureBox.Width, MainPictureBox.Height);
-            MainPictureBox.Image = bitmap;
-
-            var sw = new Stopwatch();
-            sw.Start();
-            for (int i = 0; i < MainPictureBox.Width; i++)
-            {
-                for (int j = 0; j < MainPictureBox.Height; j++)
-                {
-                    bitmap.SetPixel(i, j, Color.Red);
-                }
-            }
-            sw.Stop();
-            MessageBox.Show(sw.Elapsed.TotalMilliseconds.ToString());
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            var bitmap = new Bitmap(MainPictureBox.Width, MainPictureBox.Height);
-            MainPictureBox.Image = bitmap;
-            var graphics = Graphics.FromImage(bitmap);
-
-            var sw = new Stopwatch();
-            sw.Start();
-            var size = 1;
-            for (int i = 0; i < MainPictureBox.Width; i+= size)
-            {
-                for (int j = 0; j < MainPictureBox.Height; j+= size)
-                {
-                    graphics.FillRectangle(Brushes.Green, i, j, size, size);
-                }
-            }
-            //graphics.FillRectangle(Brushes.Green, 100, 100, 400, 400);
-            sw.Stop();
-            MessageBox.Show(sw.Elapsed.TotalMilliseconds.ToString());
         }
     }
 }
