@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Maze.Core.Cells;
 using Maze.Core.Common;
+using Maze.Core.Exceptions;
 using Maze.Core.Maps;
 using Maze.Core.Renderers;
 using Maze.Core.Results;
@@ -26,7 +27,24 @@ namespace Maze.NBT.Renderers
             CeilingBlock = new SchematicBlock(1,0);
         }
 
-        public IMap Map { get; set; }
+        private IMap _map;
+        public IMap Map
+        {
+            get { return _map; }
+            set
+            {
+                if (value.Infinite)
+                {
+                    throw new IncorrectFinityException(false, value.Infinite);
+                }
+                if (value.Dimensions != 2 && value.Dimensions != 3)
+                {
+                    throw new IncorrectDimensionsException(new []{2,3}, value.Dimensions);
+                }
+                _map = value;
+            }
+        }
+
         public string Path { get; set; }
         public int HeightOn2DMaps { get; set; }
         public IDictionary<CellState, SchematicBlock> Blocks { get; }
@@ -46,9 +64,12 @@ namespace Maze.NBT.Renderers
 
         private Schematic MapToSchematic()
         {
+            var twoDimensional = Map.Dimensions == 2;
+            var threeDimensional = Map.Dimensions == 3;
+
             var width = (short)Map.Size[0];
             var length = (short)Map.Size[1];
-            var height = (short)(Map.Dimensions > 2 ? Map.Size[2] : HeightOn2DMaps);
+            var height = (short)(threeDimensional ? Map.Size[2] : HeightOn2DMaps);
             if (AddFloor)
             {
                 height++;
@@ -59,7 +80,6 @@ namespace Maze.NBT.Renderers
                 height++;
             }
             var sch = new Schematic(width, length, height);
-
             for (short i = 0; i < width; i++)
             {
                 for (short j = 0; j < length; j++)
@@ -67,7 +87,7 @@ namespace Maze.NBT.Renderers
                     Point point = null;
                     SchematicBlock block = null;
                     var fill = false;
-                    if (Map.Dimensions == 2)
+                    if (twoDimensional)
                     {
                         point = new Point(i, j);
                         if (Map.CellExists(point))
@@ -86,7 +106,7 @@ namespace Maze.NBT.Renderers
 
                     for (; k < heightWithoutCeiling; k++)
                     {
-                        if (Map.Dimensions == 3)
+                        if (threeDimensional)
                         {
                             point = new Point(i,j,k);
                             if (Map.CellExists(point))
