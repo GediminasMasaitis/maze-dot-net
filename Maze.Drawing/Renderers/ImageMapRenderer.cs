@@ -38,10 +38,14 @@ namespace Maze.Drawing.Renderers
         public override void Render(MazeGenerationResults results)
         {
             base.Render(results);
-            if (SaveImageOnCompletion)
+            if (results.ResultsType == GenerationResultsType.GenerationCompleted && SaveImageOnCompletion)
             {
                 Image.Save(ImagePath);
             }
+        }
+
+        private void SaveImage(Image image, string path)
+        {
         }
     }
 }

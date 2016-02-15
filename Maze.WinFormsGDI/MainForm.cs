@@ -43,6 +43,7 @@ namespace Maze.WinFormsGDI
             //IMazeGenerator generator = innerGenerator;
             DoubleBuffered = true;
             var renderer = new PictureBoxMapRenderer(map,MainPictureBox);
+            //renderer.SaveImageOnCompletion = true;
             //renderer.ForceRerender = true;
             var generatorDelay = 10d;
             var rendererDelay = 1000d / 60d;
