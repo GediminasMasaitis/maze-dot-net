@@ -21,10 +21,10 @@ namespace Maze.Drawing.Renderers
 
         private IDictionary<Color, Brush> Brushes { get; }
 
-        protected override void DrawRectangle(Point mapPoint, Rectangle rectangle, Color color)
+        protected override void DrawPolygon(Point mapPoint, System.Drawing.Point[] points, Color color)
         {
             var brush = Brushes[color];
-            Graphics.FillRectangle(brush, rectangle);
+            Graphics.FillPolygon(brush, points);
         }
     }
 }

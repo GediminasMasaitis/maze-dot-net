@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
@@ -112,11 +113,16 @@ namespace Maze.WinFormsOpenTK
             UpdateTarget();
         }
 
-        protected override void DrawRectangle(Point mapPoint, Rectangle rectangle, Color color)
+        protected override void DrawPolygon(Point mapPoint, System.Drawing.Point[] points, Color color)
+        {
+            throw new NotImplementedException();
+        }
+
+        /*protected override void DrawRectangle(Point mapPoint, Rectangle rectangle, Color color)
         {
             var quad = new RectangleWithColor(color, rectangle);
             LocalBuffer[mapPoint[0], mapPoint[1]] = quad;
-        }
+        }*/
 
         public override void Dispose()
         {

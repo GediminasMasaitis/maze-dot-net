@@ -44,12 +44,11 @@ namespace Maze.WinFormsGDI
             UpdateTarget();
         }
 
-        protected override void DrawRectangle(Point mapPoint, Rectangle rectangle, Color color)
+        protected override void DrawPolygon(Point mapPoint, System.Drawing.Point[] points, Color color)
         {
-            base.DrawRectangle(mapPoint, rectangle, color);
-            //var text = mapPoint.ToString();
-            //Graphics.DrawString(text, new Font(FontFamily.GenericMonospace, 10, FontStyle.Bold), Brushes.Red, rectangle);
-            PictureBox.Invalidate(rectangle);
+            base.DrawPolygon(mapPoint, points, color);
+            var invalidateRect = GetSurroundingRectangle(points);
+            PictureBox.Invalidate(invalidateRect);
         }
     }
 }

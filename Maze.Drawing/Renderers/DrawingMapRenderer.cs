@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using Maze.Core.Cells;
@@ -44,14 +45,34 @@ namespace Maze.Drawing.Renderers
             }
         }
 
+        private static readonly double Sqrt2 = Math.Sqrt(2);
+        private static readonly double Sqrt3 = Math.Sqrt(3);
+
+        private bool _hexagonMode;
+        public bool HexagonMode
+        {
+            get { return _hexagonMode; }
+            set
+            {
+                if (!Equals(value, _hexagonMode))
+                {
+                    _hexagonMode = value;
+                    RecalculateParameters(true);
+                }
+            }
+        }
+
         private Point _targetSize;
         public Point TargetSize
         {
             get { return _targetSize; }
             set
             {
-                _targetSize = value;
-                RecalculateParameters(true);
+                if (!Equals(value, _targetSize))
+                {
+                    _targetSize = value;
+                    RecalculateParameters(true);
+                }
             }
         }
         public bool ForceRerender { get; set; }
@@ -67,6 +88,7 @@ namespace Maze.Drawing.Renderers
         private int CellHeight { get; set; }
         private int TotalWidth { get; set; }
         private int TotalHeight { get; set; }
+        private double CellVertexDistance { get; set; }
 
         private void RecalculateParameters(bool squareCells)
         {
@@ -84,6 +106,15 @@ namespace Maze.Drawing.Renderers
                 {
                     CellHeight = CellWidth;
                 }
+            }
+            if (HexagonMode)
+            {
+                CellHeight = (int)(CellHeight * Sqrt3 / 2);
+                CellVertexDistance = 1/Sqrt3;
+            }
+            else
+            {
+                CellVertexDistance = 1/Sqrt2;
             }
             TotalWidth = CellWidth * MapWidth;
             TotalHeight = CellHeight * MapHeight;
@@ -144,19 +175,93 @@ namespace Maze.Drawing.Renderers
                 }
                 MapCache[point] = color;
             }
-            var rect = MapPointToRectangle(point);
-            DrawRectangle(point, rect, color);
+            var poly = HexagonMode ? MapPointToHexagon(point) : MapPointToRectangle(point);
+            DrawPolygon(point, poly, color);
         }
 
-        protected abstract void DrawRectangle(Point mapPoint, Rectangle rectangle, Color color);
-
-        private Rectangle MapPointToRectangle(Point point)
+        protected Rectangle GetSurroundingRectangle(System.Drawing.Point[] points)
         {
-            var cornerX = OffsetX + point[0] * CellWidth;
-            var cornerY = OffsetY + point[1] * CellHeight;
-            var rect = new Rectangle(cornerX, cornerY, CellWidth, CellHeight);
+            var minX = int.MaxValue;
+            var maxX = int.MinValue;
+            var minY = int.MaxValue;
+            var maxY = int.MinValue;
+
+            foreach (var point in points)
+            {
+                if (point.X < minX)
+                {
+                    minX = point.X;
+                }
+                if (point.X > maxX)
+                {
+                    maxX = point.X;
+                }
+                if (point.Y < minY)
+                {
+                    minY = point.Y;
+                }
+                if (point.Y > maxY)
+                {
+                    maxY = point.Y;
+                }
+            }
+
+            var rect = new Rectangle(minX, minY, maxX - minX, maxY - minY);
             return rect;
         }
+
+        private System.Drawing.Point[] MapPointToRectangle(Point point)
+        {
+            var centerPoint = GetRectangleCenterPoint(point);
+            var points = new System.Drawing.Point[4];
+            for (var i = 0; i < points.Length; i++)
+            {
+                points[i] = GetPolygonCorner(centerPoint, i, 90, 45, CellWidth / Sqrt2);
+            }
+            return points;
+        }
+
+        private System.Drawing.Point GetRectangleCenterPoint(Point mapPoint)
+        {
+            var centerPoint = new System.Drawing.Point(OffsetX + mapPoint[0] * CellWidth + CellWidth / 2, OffsetY + mapPoint[1] * CellHeight + CellHeight / 2);
+            return centerPoint;
+        }
+        private System.Drawing.Point GetHexagonCenterPoint(Point mapPoint)
+        {
+            var xPart = Convert.ToInt32(OffsetX + mapPoint[0]* CellWidth + CellWidth / 2);
+            var yPart = Convert.ToInt32(OffsetY + mapPoint[1]* CellHeight + CellHeight / 2);
+            if (mapPoint[1]%2 == 0)
+            {
+                xPart += CellWidth / 2;
+            }
+            var centerPoint = new System.Drawing.Point(xPart, yPart);
+            return centerPoint;
+        }
+
+        private System.Drawing.Point[] MapPointToHexagon(Point point)
+        {
+            var centerPoint = GetHexagonCenterPoint(point);
+            var points = new System.Drawing.Point[6];
+            for (var i = 0; i < points.Length; i++)
+            {
+                points[i] = GetPolygonCorner(centerPoint, i,60,30, CellWidth / 2d);
+            }
+            return points;
+        }
+
+        private System.Drawing.Point GetPolygonCorner(System.Drawing.Point centerPoint, int corner, double cornerAngle, double angleOffset, double cornerDistance)
+        {
+            var angleDeg = cornerAngle * corner + angleOffset;
+            var angleRad = Math.PI/180*angleDeg;
+            var xPart = CellWidth * Math.Cos(angleRad) * CellVertexDistance;
+            var yPart = CellWidth * Math.Sin(angleRad) * CellVertexDistance;
+            var pointX = Convert.ToInt32(centerPoint.X + xPart);
+            var pointY = Convert.ToInt32(centerPoint.Y + yPart);
+            var drawingPoint = new System.Drawing.Point(pointX, pointY);
+            return drawingPoint;
+        }
+
+        protected abstract void DrawPolygon(Point mapPoint, System.Drawing.Point[] points, Color color);
 
         public virtual void Dispose()
         {
