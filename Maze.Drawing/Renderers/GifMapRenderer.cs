@@ -9,15 +9,14 @@ namespace Maze.Drawing.Renderers
 {
     public class GifMapRenderer : ImageMapRenderer
     {
-        public GifMapRenderer(IMap map, Point size) : base(map, new Bitmap(size[0], size[1]))
+        public GifMapRenderer(IMap map, Point targetSize) : base(map, new Bitmap(targetSize[0], targetSize[1]))
         {
             FrameDelay = 10;
             var ms = new MemoryStream();
-
             GifImage = new GifImage(ms);
-            GifImage.DefaultFrameDelay = 1;
-            GifImage.DefaultWidth = size[0];
-            GifImage.DefaultHeight = size[1];
+            GifImage.DefaultFrameDelay = FrameDelay;
+            GifImage.DefaultWidth = targetSize[0];
+            GifImage.DefaultHeight = targetSize[1];
         }
 
         public int FrameDelay { get; set; }
@@ -37,7 +36,7 @@ namespace Maze.Drawing.Renderers
         public override void Render(MazeGenerationResults results)
         {
             base.Render(results);
-            GifImage.AddFrame(Image);
+            GifImage.AddFrame(Image, FrameDelay);
             if (results.ResultsType == GenerationResultsType.GenerationCompleted)
             {
                 GifImage.Complete();

@@ -6,6 +6,7 @@ using Maze.Core.Exceptions;
 using Maze.Core.Maps;
 using Maze.Core.Renderers;
 using Maze.Core.Results;
+using Maze.Drawing.Common;
 using Point = Maze.Core.Common.Point;
 
 namespace Maze.Drawing.Renderers
@@ -176,49 +177,20 @@ namespace Maze.Drawing.Renderers
                 MapCache[point] = color;
             }
             var poly = HexagonMode ? MapPointToHexagon(point) : MapPointToRectangle(point);
-            DrawPolygon(point, poly, color);
+            var coloredPoly = new ColoredPolygon(poly.Points, color);
+            DrawPolygon(point, coloredPoly);
         }
 
-        protected Rectangle GetSurroundingRectangle(System.Drawing.Point[] points)
-        {
-            var minX = int.MaxValue;
-            var maxX = int.MinValue;
-            var minY = int.MaxValue;
-            var maxY = int.MinValue;
-
-            foreach (var point in points)
-            {
-                if (point.X < minX)
-                {
-                    minX = point.X;
-                }
-                if (point.X > maxX)
-                {
-                    maxX = point.X;
-                }
-                if (point.Y < minY)
-                {
-                    minY = point.Y;
-                }
-                if (point.Y > maxY)
-                {
-                    maxY = point.Y;
-                }
-            }
-
-            var rect = new Rectangle(minX, minY, maxX - minX, maxY - minY);
-            return rect;
-        }
-
-        private System.Drawing.Point[] MapPointToRectangle(Point point)
+        private Polygon MapPointToRectangle(Point point)
         {
             var centerPoint = GetRectangleCenterPoint(point);
             var points = new System.Drawing.Point[4];
             for (var i = 0; i < points.Length; i++)
             {
-                points[i] = GetPolygonCorner(centerPoint, i, 90, 45, CellWidth / Sqrt2);
+                points[i] = GetPolygonCorner(centerPoint, i, 90, 45);
             }
-            return points;
+            var polygon = new Polygon(points);
+            return polygon;
         }
 
         private System.Drawing.Point GetRectangleCenterPoint(Point mapPoint)
@@ -238,18 +210,19 @@ namespace Maze.Drawing.Renderers
             return centerPoint;
         }
 
-        private System.Drawing.Point[] MapPointToHexagon(Point point)
+        private Polygon MapPointToHexagon(Point point)
         {
             var centerPoint = GetHexagonCenterPoint(point);
             var points = new System.Drawing.Point[6];
             for (var i = 0; i < points.Length; i++)
             {
-                points[i] = GetPolygonCorner(centerPoint, i,60,30, CellWidth / 2d);
+                points[i] = GetPolygonCorner(centerPoint, i,60,30);
             }
-            return points;
+            var polygon = new Polygon(points);
+            return polygon;
         }
 
-        private System.Drawing.Point GetPolygonCorner(System.Drawing.Point centerPoint, int corner, double cornerAngle, double angleOffset, double cornerDistance)
+        private System.Drawing.Point GetPolygonCorner(System.Drawing.Point centerPoint, int corner, double cornerAngle, double angleOffset)
         {
             var angleDeg = cornerAngle * corner + angleOffset;
             var angleRad = Math.PI/180*angleDeg;
@@ -261,7 +234,7 @@ namespace Maze.Drawing.Renderers
             return drawingPoint;
         }
 
-        protected abstract void DrawPolygon(Point mapPoint, System.Drawing.Point[] points, Color color);
+        protected abstract void DrawPolygon(Point mapPoint, ColoredPolygon polygon);
 
         public virtual void Dispose()
         {

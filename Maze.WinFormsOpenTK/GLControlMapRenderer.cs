@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using Maze.Core.Cells;
 using Maze.Core.Maps;
 using Maze.Core.Results;
+using Maze.Drawing.Common;
 using Maze.Drawing.Renderers;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
@@ -113,7 +114,7 @@ namespace Maze.WinFormsOpenTK
             UpdateTarget();
         }
 
-        protected override void DrawPolygon(Point mapPoint, System.Drawing.Point[] points, Color color)
+        protected override void DrawPolygon(Point mapPoint, ColoredPolygon polygon)
         {
             throw new NotImplementedException();
         }

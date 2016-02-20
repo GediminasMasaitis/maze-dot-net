@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using Maze.Core.Maps;
+using Maze.Drawing.Common;
 using Point = Maze.Core.Common.Point;
 
 namespace Maze.Drawing.Renderers
@@ -19,12 +20,12 @@ namespace Maze.Drawing.Renderers
 
         protected Graphics Graphics { get; set; }
 
-        private IDictionary<Color, Brush> Brushes { get; }
+        protected IDictionary<Color, Brush> Brushes { get; }
 
-        protected override void DrawPolygon(Point mapPoint, System.Drawing.Point[] points, Color color)
+        protected override void DrawPolygon(Point mapPoint, ColoredPolygon polygon)
         {
-            var brush = Brushes[color];
-            Graphics.FillPolygon(brush, points);
+            var brush = Brushes[polygon.Color];
+            Graphics.FillPolygon(brush, polygon.Points);
         }
     }
 }

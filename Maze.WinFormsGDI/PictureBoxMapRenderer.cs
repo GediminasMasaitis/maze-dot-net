@@ -2,6 +2,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using Maze.Core.Maps;
 using Maze.Core.Results;
+using Maze.Drawing.Common;
 using Maze.Drawing.Renderers;
 using Point = Maze.Core.Common.Point;
 
@@ -43,11 +44,11 @@ namespace Maze.WinFormsGDI
             base.Render(results);
             UpdateTarget();
         }
-
-        protected override void DrawPolygon(Point mapPoint, System.Drawing.Point[] points, Color color)
+        
+        protected override void DrawPolygon(Point mapPoint, ColoredPolygon polygon)
         {
-            base.DrawPolygon(mapPoint, points, color);
-            var invalidateRect = GetSurroundingRectangle(points);
+            base.DrawPolygon(mapPoint, polygon);
+            var invalidateRect = polygon.GetSurroundingRectangle();
             PictureBox.Invalidate(invalidateRect);
         }
     }
