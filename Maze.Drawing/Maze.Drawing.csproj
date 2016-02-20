@@ -37,9 +37,11 @@
   <ItemGroup>
     <Compile Include="Common\ColoredPolygon.cs" />
     <Compile Include="Common\GifImage.cs" />
+    <Compile Include="Common\StreamExtensionMethods.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Renderers\DrawingMapRenderer.cs" />
-    <Compile Include="Renderers\GifMapRenderer.cs" />
+    <Compile Include="Renderers\RawGifMapRenderer.cs" />
+    <Compile Include="Renderers\BRGifMapRenderer.cs" />
     <Compile Include="Renderers\GraphicsMapRenderer.cs" />
     <Compile Include="Renderers\ImageMapRenderer.cs" />
     <Compile Include="Common\Polygon.cs" />

@@ -11,7 +11,7 @@ namespace Maze.Drawing.Common
 
         public Point[] Points { get; }
 
-        public Rectangle GetSurroundingRectangle()
+        public Rectangle GetBoundingRectangle()
         {
             var minX = int.MaxValue;
             var maxX = int.MinValue;

@@ -48,7 +48,7 @@ namespace Maze.WinFormsGDI
         protected override void DrawPolygon(Point mapPoint, ColoredPolygon polygon)
         {
             base.DrawPolygon(mapPoint, polygon);
-            var invalidateRect = polygon.GetSurroundingRectangle();
+            var invalidateRect = polygon.GetBoundingRectangle();
             PictureBox.Invalidate(invalidateRect);
         }
     }

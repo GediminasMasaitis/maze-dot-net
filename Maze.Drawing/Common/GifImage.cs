@@ -124,7 +124,9 @@ namespace Maze.Drawing.Common
             Writer.Write((short)(DefaultHeight == 0 ? h : DefaultHeight)); // Initial Logical Height
 
             sourceGif.Position = SourceGlobalColorInfoPosition;
-            Writer.Write((byte)sourceGif.ReadByte()); // Global Color Table Info
+
+            var globalColorTableInfo = (byte)sourceGif.ReadByte();
+            Writer.Write(globalColorTableInfo); // Global Color Table Info
             Writer.Write((byte)0); // Background Color Index
             Writer.Write((byte)0); // Pixel aspect ratio
             WriteColorTable(sourceGif, Writer);
@@ -153,11 +155,15 @@ namespace Maze.Drawing.Common
             var blockhead = new byte[SourceGraphicControlExtensionLength];
             sourceGif.Read(blockhead, 0, blockhead.Length); // Reading source GCE
 
-            unchecked { writer.Write((short)GraphicControlExtensionBlockIdentifier); }; // Identifier
+            unchecked
+            {
+                writer.Write((short)GraphicControlExtensionBlockIdentifier); // Identifier
+            }; 
             writer.Write((byte)GraphicControlExtensionBlockSize); // Block Size
-            writer.Write((byte)(blockhead[3] & 0xf7 | 0x08)); // Setting disposal flag
+            //writer.Write((byte)(blockhead[3] & 0xf7 | 0x08)); // Setting disposal flag
+            writer.Write((byte)4); // No disposal
             writer.Write((short)(frameDelay / 10)); // Setting frame delay
-            writer.Write((byte)blockhead[6]); // Transparent color index
+            writer.Write((byte)0); // Transparent color index
             writer.Write((byte)0); // Terminator
         }
 
