@@ -9,9 +9,10 @@ namespace Maze.Drawing.Renderers
 {
     public class RawGifMapRenderer : ImageMapRenderer
     {
-        public RawGifMapRenderer(IMap map, Point targetSize) : base(map, new Bitmap(targetSize[0], targetSize[1]))
+        public RawGifMapRenderer(IMap map, Point targetSize, string filePath, int frameDelay = 10) : base(map, new Bitmap(targetSize[0], targetSize[1]))
         {
-            FrameDelay = 10;
+            FilePath = filePath;
+            FrameDelay = frameDelay;
             var ms = new MemoryStream();
             GifImage = new GifImage(ms);
             GifImage.DefaultFrameDelay = FrameDelay;
@@ -19,6 +20,7 @@ namespace Maze.Drawing.Renderers
             GifImage.DefaultHeight = targetSize[1];
         }
 
+        public string FilePath { get; set; }
         public int FrameDelay { get; set; }
 
         private GifImage GifImage { get; set; }
@@ -31,7 +33,7 @@ namespace Maze.Drawing.Renderers
             {
                 GifImage.Complete();
                 GifImage.OutStream.Position = 0;
-                using (var fs = new FileStream("test.gif", FileMode.Create))
+                using (var fs = new FileStream(FilePath, FileMode.Create))
                 {
                     GifImage.OutStream.CopyTo(fs);
                 }

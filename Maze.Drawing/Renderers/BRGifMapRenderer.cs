@@ -11,9 +11,10 @@ namespace Maze.Drawing.Renderers
 {
     public class BRGifMapRenderer : DrawingMapRenderer
     {
-        public BRGifMapRenderer(IMap map, Point targetSize) : base(map, targetSize)
+        public BRGifMapRenderer(IMap map, Point targetSize, string filePath, int frameDelay = 10) : base(map, targetSize)
         {
-            FrameDelay = 10;
+            FilePath = filePath;
+            FrameDelay = frameDelay;
             var ms = new MemoryStream();
             GifImage = new GifImage(ms);
             GifImage.DefaultFrameDelay = FrameDelay;
@@ -32,11 +33,12 @@ namespace Maze.Drawing.Renderers
             GifImage.AddFrame(initialImage, FrameDelay);
         }
 
+        public string FilePath { get; set; }
         public int FrameDelay { get; set; }
-        private GifImage GifImage { get; set; }
 
         protected IDictionary<Color, Brush> Brushes { get; }
 
+        private GifImage GifImage { get; set; }
         private IList<ColoredPolygon> Polygons { get; set; }
 
         public override void Render(MazeGenerationResults results)
@@ -60,7 +62,7 @@ namespace Maze.Drawing.Renderers
             {
                 GifImage.Complete();
                 GifImage.OutStream.Position = 0;
-                using (var fs = new FileStream("test.gif", FileMode.Create))
+                using (var fs = new FileStream(FilePath, FileMode.Create))
                 {
                     GifImage.OutStream.CopyTo(fs);
                 }
