@@ -91,6 +91,10 @@
       <Project>{5f79aa45-4a4f-490f-87a7-35deda6875e0}</Project>
       <Name>Maze.Drawing</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Maze.Video\Maze.Video.csproj">
+      <Project>{a133e6eb-ea84-4d6f-8a8a-ae79fe6bbfa3}</Project>
+      <Name>Maze.Video</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
