@@ -12,6 +12,7 @@ using Maze.Core.Generators.RecursiveDivision;
 using Maze.Core.Maps;
 using Maze.Core.Maps.Decorators;
 using Maze.Core.Runners;
+using Maze.WinFormsGDI.Controls;
 using Point = Maze.Core.Common.Point;
 
 namespace Maze.WinFormsGDI
@@ -28,6 +29,14 @@ namespace Maze.WinFormsGDI
         private PictureBoxMapRenderer MapRenderer { get; set; }
         private IGeneratorFactory GeneratorFactory { get; }
         private MazeGenerationRunner Runner { get; set; }
+
+        private TimeSpan CurrentGeneratorDelay => GetTimeSpanFromLogarithmicTrackBar(GeneratorDelayLogarithmicTrackBar);
+        private TimeSpan CurrentRendererDelay => GetTimeSpanFromLogarithmicTrackBar(RendererDelayLogarithmicTrackBar);
+        private MazeGenerationAlgorithm CurrentAlgorithm
+        {
+            get { return (MazeGenerationAlgorithm)AlgorithmComboBox.SelectedItem; }
+            set { AlgorithmComboBox.SelectedItem = value; }
+        }
 
 
         public MainForm()
@@ -46,12 +55,7 @@ namespace Maze.WinFormsGDI
                 AlgorithmComboBox.Items.Add(mazeGenerationAlgorithm);
             }
             AlgorithmComboBox.SelectedIndex = 0;
-        }
-
-        private MazeGenerationAlgorithm CurrentAlgorithm
-        {
-            get { return (MazeGenerationAlgorithm) AlgorithmComboBox.SelectedItem; }
-            set { AlgorithmComboBox.SelectedItem = value; }
+            SyncRunnerParameters();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -62,12 +66,20 @@ namespace Maze.WinFormsGDI
         private TimeSpan GetTimeSpanFromTextBox(TextBox textBox)
         {
             var delayMiliseconds = Convert.ToDouble(textBox.Text);
-            var delayTimeSpan = TimeSpan.FromTicks((long)(delayMiliseconds * TimeSpan.TicksPerMillisecond));
-            return delayTimeSpan;
+            return MilisecondsToTimeSpan(delayMiliseconds);
         }
 
-        private TimeSpan CurrentGeneratorDelay => GetTimeSpanFromTextBox(GeneratorDelayTextBox);
-        private TimeSpan CurrentRendererDelay => GetTimeSpanFromTextBox(RendererDelayTextBox);
+        private TimeSpan GetTimeSpanFromLogarithmicTrackBar(LogarithmicTrackBar trackBar)
+        {
+            var delayMiliseconds = Convert.ToDouble(trackBar.LogValue);
+            return MilisecondsToTimeSpan(delayMiliseconds);
+        }
+
+        private static TimeSpan MilisecondsToTimeSpan(double delayMiliseconds)
+        {
+            var delayTimeSpan = TimeSpan.FromTicks((long) (delayMiliseconds*TimeSpan.TicksPerMillisecond));
+            return delayTimeSpan;
+        }
 
         private void GenerateButton_Click(object sender, EventArgs e)
         {
@@ -87,6 +99,7 @@ namespace Maze.WinFormsGDI
             {
                 case MazeGenerationAlgorithm.GrowingTree:
                     GrowingTreeMazeGenerator = new GrowingTreeMazeGenerator(Map, rng);
+                    //GrowingTreeMazeGenerator.Breadth = 1;
                     MazeGenerator = GrowingTreeMazeGenerator;
                     break;
                 case MazeGenerationAlgorithm.Kruskal:
@@ -111,8 +124,8 @@ namespace Maze.WinFormsGDI
 
             var activeCellsGenerator = new ActiveCellsMazeGeneratorDecorator(MazeGenerator);
             var displayMap = new AsFiniteMapDecorator(Map, Map.Size ?? new Point(width, height));
-            var renderer = new PictureBoxMapRenderer(displayMap, MainPictureBox);
-            Runner = new MazeGenerationRunner(activeCellsGenerator, renderer, CurrentGeneratorDelay, CurrentRendererDelay, true);
+            MapRenderer = new PictureBoxMapRenderer(displayMap, MainPictureBox);
+            Runner = new MazeGenerationRunner(activeCellsGenerator, MapRenderer, CurrentGeneratorDelay, CurrentRendererDelay, true);
             var generatorSteps = 0;
             var rendererSteps = 0;
             Runner.AfterGenerate += results => { generatorSteps++; };
@@ -129,20 +142,37 @@ namespace Maze.WinFormsGDI
 
         private void SyncRunnerParameters()
         {
+            var generatorDelay = CurrentGeneratorDelay;
+            var rendererDelay = CurrentRendererDelay;
+            GeneratorDelayLabel.Text = @"Generator delay: " + TimeSpanToString(generatorDelay);
+            RendererDelayLabel.Text = @"Renderer delay: " + TimeSpanToString(rendererDelay);
             if (Runner == null)
             {
                 return;
             }
-            Runner.GeneratorMinCycleTime = CurrentGeneratorDelay;
-            Runner.RendererMinCycleTime = CurrentRendererDelay;
+            Runner.GeneratorMinCycleTime = generatorDelay;
+            Runner.RendererMinCycleTime = rendererDelay;
         }
 
-        private void GeneratorDelayTextBox_TextChanged(object sender, EventArgs e)
+        private string TimeSpanToString(TimeSpan span)
+        {
+            if (span.TotalSeconds > 1)
+            {
+                return span.TotalSeconds.ToString("0.00") + " s.";
+            }
+            if (span.TotalMilliseconds > 1)
+            {
+                return span.TotalMilliseconds.ToString("0.0") + " ms.";
+            }
+            return (span.TotalMilliseconds * 1000).ToString("000") + " μs.";
+        }
+
+        private void GeneratorDelayLogarithmicTrackBar_ValueChanged(object sender, EventArgs e)
         {
             SyncRunnerParameters();
         }
 
-        private void RendererDelayTextBox_TextChanged(object sender, EventArgs e)
+        private void RendererDelayLogarithmicTrackBar_ValueChanged(object sender, EventArgs e)
         {
             SyncRunnerParameters();
         }

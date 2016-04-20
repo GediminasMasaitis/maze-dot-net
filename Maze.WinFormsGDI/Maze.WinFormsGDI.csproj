@@ -50,6 +50,9 @@
     <Compile Include="GeneratorFactory.cs" />
     <Compile Include="IGeneratorFactory.cs" />
     <Compile Include="LockBitmap.cs" />
+    <Compile Include="Controls\LogarithmicTrackBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,10 +96,6 @@
     <ProjectReference Include="..\Maze.Drawing\Maze.Drawing.csproj">
       <Project>{5f79aa45-4a4f-490f-87a7-35deda6875e0}</Project>
       <Name>Maze.Drawing</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Maze.Video\Maze.Video.csproj">
-      <Project>{a133e6eb-ea84-4d6f-8a8a-ae79fe6bbfa3}</Project>
-      <Name>Maze.Video</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
