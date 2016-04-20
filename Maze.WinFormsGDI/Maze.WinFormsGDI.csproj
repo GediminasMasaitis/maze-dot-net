@@ -56,6 +56,12 @@
     <Compile Include="Controls\PolygonShape.Designer.cs">
       <DependentUpon>PolygonShape.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\TriangleValuePicker.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\TriangleValuePicker.Designer.cs">
+      <DependentUpon>TriangleValuePicker.cs</DependentUpon>
+    </Compile>
     <Compile Include="ExtensionMethods\TimeSpanExtensionMethods.cs" />
     <Compile Include="GeneratorFactory.cs" />
     <Compile Include="IGeneratorFactory.cs" />
