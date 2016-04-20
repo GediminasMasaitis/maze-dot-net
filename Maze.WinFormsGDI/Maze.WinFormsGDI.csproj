@@ -47,6 +47,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ControlMapRenderer.cs" />
+    <Compile Include="Controls\ArrowCrossShape.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\PolygonShape.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\PolygonShape.Designer.cs">
+      <DependentUpon>PolygonShape.cs</DependentUpon>
+    </Compile>
     <Compile Include="ExtensionMethods\TimeSpanExtensionMethods.cs" />
     <Compile Include="GeneratorFactory.cs" />
     <Compile Include="IGeneratorFactory.cs" />

@@ -48,6 +48,10 @@ namespace Maze.WinFormsGDI
         private double GrowingTreeRun => GrowingTreeRunLogarithmicTrackBar.LogValue;
         private double GrowingTreeBraid => GrowingTreeBraidLogarithmicTrackBar.LogValue;
         private int GrowingTreeTrees => (int)GrowingTreeTreesNumericUpDown.Value;
+        private double GrowingTreeBiasUp => GrowingTreeBiasUpLogarithmicTrackBar.LogValue;
+        private double GrowingTreeBiasDown => GrowingTreeBiasDownLogarithmicTrackBar.LogValue;
+        private double GrowingTreeBiasLeft => GrowingTreeBiasLeftLogarithmicTrackBar.LogValue;
+        private double GrowingTreeBiasRight => GrowingTreeBiasRightLogarithmicTrackBar.LogValue;
 
 
         public MainForm()
@@ -96,10 +100,10 @@ namespace Maze.WinFormsGDI
             var delayTimeSpan = TimeSpan.FromTicks((long) (delayMiliseconds*TimeSpan.TicksPerMillisecond));
             return delayTimeSpan;
         }
-
-        private void AlgorithmComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private double ExtendDoubleVal(double val)
         {
-            SyncGroupBoxes();
+            var extendedVal = Math.Abs(val - 1) < 0.0000001 ? double.MaxValue / 1000000 : 1 / (1 - val) - 1;
+            return extendedVal;
         }
 
         private void StopRunner()
@@ -166,21 +170,21 @@ namespace Maze.WinFormsGDI
             Runner.Start();
         }
 
-        private void SyncAll()
+        private void SyncAll(object sender = null, EventArgs e = null)
         {
-            SyncGroupBoxes();
-            SyncRunnerParameters();
-            SyncAllGeneratorParameters();
+            SyncGroupBoxes(sender, e);
+            SyncRunnerParameters(sender, e);
+            SyncAllGeneratorParameters(sender, e);
         }
         
-        private void SyncGroupBoxes()
+        private void SyncGroupBoxes(object sender = null, EventArgs e = null)
         {
             var currentAlgorithm = CurrentAlgorithm;
             GrowingTreeGroupBox.Visible = currentAlgorithm == MazeGenerationAlgorithm.GrowingTree;
             RecursiveDivisionGroupBox.Visible = currentAlgorithm == MazeGenerationAlgorithm.RecursiveDivision;
         }
 
-        private void SyncRunnerParameters()
+        private void SyncRunnerParameters(object sender = null, EventArgs e = null)
         {
             var generatorDelay = CurrentGeneratorDelay;
             var rendererDelay = CurrentRendererDelay;
@@ -194,13 +198,13 @@ namespace Maze.WinFormsGDI
             Runner.RendererMinCycleTime = rendererDelay;
         }
 
-        private void SyncAllGeneratorParameters()
+        private void SyncAllGeneratorParameters(object sender = null, EventArgs e = null)
         {
-            SyncGrowingTreeParameters();
-            SyncRecursiveDivisionParameters();
+            SyncGrowingTreeParameters(sender, e);
+            SyncRecursiveDivisionParameters(sender, e);
         }
 
-        private void SyncGrowingTreeParameters()
+        private void SyncGrowingTreeParameters(object sender = null, EventArgs e = null)
         {
             var breadth = GrowingTreeBreadth;
             var run = GrowingTreeRun;
@@ -213,13 +217,16 @@ namespace Maze.WinFormsGDI
                 return;
             }
             GrowingTreeMazeGenerator.Breadth = breadth;
-            var realRun = Math.Abs(run - 1) < 0.0000001 ? double.MaxValue : 1/(1 - run) - 1;
-            GrowingTreeMazeGenerator.Runs[0] = realRun;
+            GrowingTreeMazeGenerator.Runs[0] = ExtendDoubleVal(run);
             GrowingTreeMazeGenerator.LastChanceLooping = braid;
             GrowingTreeMazeGenerator.TreeCount = GrowingTreeTrees;
+            GrowingTreeMazeGenerator.Biases[2] = ExtendDoubleVal(GrowingTreeBiasUp);
+            GrowingTreeMazeGenerator.Biases[3] = ExtendDoubleVal(GrowingTreeBiasDown);
+            GrowingTreeMazeGenerator.Biases[0] = ExtendDoubleVal(GrowingTreeBiasLeft);
+            GrowingTreeMazeGenerator.Biases[1] = ExtendDoubleVal(GrowingTreeBiasRight);
         }
 
-        private void SyncRecursiveDivisionParameters()
+        private void SyncRecursiveDivisionParameters(object sender = null, EventArgs e = null)
         {
             if (RecursiveDivisionMazeGenerator == null)
             {
@@ -232,29 +239,12 @@ namespace Maze.WinFormsGDI
             MapRenderer.ForceRerender = TrackChanges;
         }
 
-        private void GeneratorDelayLogarithmicTrackBar_ValueChanged(object sender, EventArgs e)
+        private void GrowingTreeResetBiasesButton_Click(object sender, EventArgs e)
         {
-            SyncRunnerParameters();
-        }
-
-        private void RendererDelayLogarithmicTrackBar_ValueChanged(object sender, EventArgs e)
-        {
-            SyncRunnerParameters();
-        }
-
-        private void BreadthLogarithmicTrackBar_ValueChanged(object sender, EventArgs e)
-        {
-            SyncGrowingTreeParameters();
-        }
-
-        private void GrowingTreeRunLogarithmicTrackBar_ValueChanged(object sender, EventArgs e)
-        {
-            SyncGrowingTreeParameters();
-        }
-
-        private void GrowingTreeBraidLogarithmicTrackBar_ValueChanged(object sender, EventArgs e)
-        {
-            SyncGrowingTreeParameters();
+            GrowingTreeBiasUpLogarithmicTrackBar.Value = 500;
+            GrowingTreeBiasDownLogarithmicTrackBar.Value = 500;
+            GrowingTreeBiasLeftLogarithmicTrackBar.Value = 500;
+            GrowingTreeBiasRightLogarithmicTrackBar.Value = 500;
         }
     }
 }
