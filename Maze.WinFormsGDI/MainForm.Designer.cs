@@ -46,22 +46,23 @@ namespace Maze.WinFormsGDI
             this.GrowingTreeGroupBox = new System.Windows.Forms.GroupBox();
             this.GrowingTreeRunLabel = new System.Windows.Forms.Label();
             this.GrowingTreeBraidLabel = new System.Windows.Forms.Label();
-            this.GrowingTreeBraidLogarithmicTrackBar = new Maze.WinFormsGDI.Controls.LogarithmicTrackBar();
-            this.GrowingTreeRunLogarithmicTrackBar = new Maze.WinFormsGDI.Controls.LogarithmicTrackBar();
-            this.GrowingTreeBreadthLogarithmicTrackBar = new Maze.WinFormsGDI.Controls.LogarithmicTrackBar();
-            this.RendererDelayLogarithmicTrackBar = new Maze.WinFormsGDI.Controls.LogarithmicTrackBar();
-            this.GeneratorDelayLogarithmicTrackBar = new Maze.WinFormsGDI.Controls.LogarithmicTrackBar();
             this.BiasesGroupBox = new System.Windows.Forms.GroupBox();
             this.GrowingTreeTreesLabel = new System.Windows.Forms.Label();
             this.GrowingTreeTreesNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.RecursiveDivisionGroupBox = new System.Windows.Forms.GroupBox();
+            this.GrowingTreeRunLogarithmicTrackBar = new Maze.WinFormsGDI.Controls.LogarithmicTrackBar();
+            this.GrowingTreeBraidLogarithmicTrackBar = new Maze.WinFormsGDI.Controls.LogarithmicTrackBar();
+            this.GrowingTreeBreadthLogarithmicTrackBar = new Maze.WinFormsGDI.Controls.LogarithmicTrackBar();
+            this.RendererDelayLogarithmicTrackBar = new Maze.WinFormsGDI.Controls.LogarithmicTrackBar();
+            this.GeneratorDelayLogarithmicTrackBar = new Maze.WinFormsGDI.Controls.LogarithmicTrackBar();
             ((System.ComponentModel.ISupportInitialize)(this.MainPictureBox)).BeginInit();
             this.GrowingTreeGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GrowingTreeBraidLogarithmicTrackBar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GrowingTreeTreesNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GrowingTreeRunLogarithmicTrackBar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GrowingTreeBraidLogarithmicTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GrowingTreeBreadthLogarithmicTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RendererDelayLogarithmicTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GeneratorDelayLogarithmicTrackBar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GrowingTreeTreesNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // MainPictureBox
@@ -201,6 +202,7 @@ namespace Maze.WinFormsGDI
             this.GrowingTreeGroupBox.TabIndex = 19;
             this.GrowingTreeGroupBox.TabStop = false;
             this.GrowingTreeGroupBox.Text = "Growing tree settings";
+            this.GrowingTreeGroupBox.Visible = false;
             // 
             // GrowingTreeRunLabel
             // 
@@ -220,18 +222,50 @@ namespace Maze.WinFormsGDI
             this.GrowingTreeBraidLabel.TabIndex = 21;
             this.GrowingTreeBraidLabel.Text = "Braid: 0%";
             // 
-            // GrowingTreeBraidLogarithmicTrackBar
+            // BiasesGroupBox
             // 
-            this.GrowingTreeBraidLogarithmicTrackBar.Location = new System.Drawing.Point(110, 101);
-            this.GrowingTreeBraidLogarithmicTrackBar.LogMaximum = 1D;
-            this.GrowingTreeBraidLogarithmicTrackBar.LogMiddle = 0.5D;
-            this.GrowingTreeBraidLogarithmicTrackBar.LogMinimum = 0D;
-            this.GrowingTreeBraidLogarithmicTrackBar.Maximum = 1000;
-            this.GrowingTreeBraidLogarithmicTrackBar.Name = "GrowingTreeBraidLogarithmicTrackBar";
-            this.GrowingTreeBraidLogarithmicTrackBar.Size = new System.Drawing.Size(213, 45);
-            this.GrowingTreeBraidLogarithmicTrackBar.TabIndex = 22;
-            this.GrowingTreeBraidLogarithmicTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.GrowingTreeBraidLogarithmicTrackBar.ValueChanged += new System.EventHandler(this.GrowingTreeBraidLogarithmicTrackBar_ValueChanged);
+            this.BiasesGroupBox.Location = new System.Drawing.Point(12, 176);
+            this.BiasesGroupBox.Name = "BiasesGroupBox";
+            this.BiasesGroupBox.Size = new System.Drawing.Size(310, 157);
+            this.BiasesGroupBox.TabIndex = 23;
+            this.BiasesGroupBox.TabStop = false;
+            this.BiasesGroupBox.Text = "Biases";
+            // 
+            // GrowingTreeTreesLabel
+            // 
+            this.GrowingTreeTreesLabel.AutoSize = true;
+            this.GrowingTreeTreesLabel.Location = new System.Drawing.Point(28, 31);
+            this.GrowingTreeTreesLabel.Name = "GrowingTreeTreesLabel";
+            this.GrowingTreeTreesLabel.Size = new System.Drawing.Size(37, 13);
+            this.GrowingTreeTreesLabel.TabIndex = 24;
+            this.GrowingTreeTreesLabel.Text = "Trees:";
+            // 
+            // GrowingTreeTreesNumericUpDown
+            // 
+            this.GrowingTreeTreesNumericUpDown.Location = new System.Drawing.Point(85, 29);
+            this.GrowingTreeTreesNumericUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.GrowingTreeTreesNumericUpDown.Name = "GrowingTreeTreesNumericUpDown";
+            this.GrowingTreeTreesNumericUpDown.Size = new System.Drawing.Size(88, 20);
+            this.GrowingTreeTreesNumericUpDown.TabIndex = 25;
+            this.GrowingTreeTreesNumericUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // RecursiveDivisionGroupBox
+            // 
+            this.RecursiveDivisionGroupBox.Location = new System.Drawing.Point(355, 229);
+            this.RecursiveDivisionGroupBox.Name = "RecursiveDivisionGroupBox";
+            this.RecursiveDivisionGroupBox.Size = new System.Drawing.Size(334, 583);
+            this.RecursiveDivisionGroupBox.TabIndex = 26;
+            this.RecursiveDivisionGroupBox.TabStop = false;
+            this.RecursiveDivisionGroupBox.Text = "Recursive division settings";
+            this.RecursiveDivisionGroupBox.Visible = false;
             // 
             // GrowingTreeRunLogarithmicTrackBar
             // 
@@ -246,6 +280,19 @@ namespace Maze.WinFormsGDI
             this.GrowingTreeRunLogarithmicTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
             this.GrowingTreeRunLogarithmicTrackBar.Value = 500;
             this.GrowingTreeRunLogarithmicTrackBar.ValueChanged += new System.EventHandler(this.GrowingTreeRunLogarithmicTrackBar_ValueChanged);
+            // 
+            // GrowingTreeBraidLogarithmicTrackBar
+            // 
+            this.GrowingTreeBraidLogarithmicTrackBar.Location = new System.Drawing.Point(110, 101);
+            this.GrowingTreeBraidLogarithmicTrackBar.LogMaximum = 1D;
+            this.GrowingTreeBraidLogarithmicTrackBar.LogMiddle = 0.5D;
+            this.GrowingTreeBraidLogarithmicTrackBar.LogMinimum = 0D;
+            this.GrowingTreeBraidLogarithmicTrackBar.Maximum = 1000;
+            this.GrowingTreeBraidLogarithmicTrackBar.Name = "GrowingTreeBraidLogarithmicTrackBar";
+            this.GrowingTreeBraidLogarithmicTrackBar.Size = new System.Drawing.Size(213, 45);
+            this.GrowingTreeBraidLogarithmicTrackBar.TabIndex = 22;
+            this.GrowingTreeBraidLogarithmicTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.GrowingTreeBraidLogarithmicTrackBar.ValueChanged += new System.EventHandler(this.GrowingTreeBraidLogarithmicTrackBar_ValueChanged);
             // 
             // GrowingTreeBreadthLogarithmicTrackBar
             // 
@@ -288,46 +335,12 @@ namespace Maze.WinFormsGDI
             this.GeneratorDelayLogarithmicTrackBar.Value = 500;
             this.GeneratorDelayLogarithmicTrackBar.ValueChanged += new System.EventHandler(this.GeneratorDelayLogarithmicTrackBar_ValueChanged);
             // 
-            // BiasesGroupBox
-            // 
-            this.BiasesGroupBox.Location = new System.Drawing.Point(12, 176);
-            this.BiasesGroupBox.Name = "BiasesGroupBox";
-            this.BiasesGroupBox.Size = new System.Drawing.Size(310, 157);
-            this.BiasesGroupBox.TabIndex = 23;
-            this.BiasesGroupBox.TabStop = false;
-            this.BiasesGroupBox.Text = "Biases";
-            // 
-            // GrowingTreeTreesLabel
-            // 
-            this.GrowingTreeTreesLabel.AutoSize = true;
-            this.GrowingTreeTreesLabel.Location = new System.Drawing.Point(28, 31);
-            this.GrowingTreeTreesLabel.Name = "GrowingTreeTreesLabel";
-            this.GrowingTreeTreesLabel.Size = new System.Drawing.Size(37, 13);
-            this.GrowingTreeTreesLabel.TabIndex = 24;
-            this.GrowingTreeTreesLabel.Text = "Trees:";
-            // 
-            // GrowingTreeTreesNumericUpDown
-            // 
-            this.GrowingTreeTreesNumericUpDown.Location = new System.Drawing.Point(85, 29);
-            this.GrowingTreeTreesNumericUpDown.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.GrowingTreeTreesNumericUpDown.Name = "GrowingTreeTreesNumericUpDown";
-            this.GrowingTreeTreesNumericUpDown.Size = new System.Drawing.Size(88, 20);
-            this.GrowingTreeTreesNumericUpDown.TabIndex = 25;
-            this.GrowingTreeTreesNumericUpDown.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1259, 911);
+            this.Controls.Add(this.RecursiveDivisionGroupBox);
             this.Controls.Add(this.AlgorithmComboBox);
             this.Controls.Add(this.GrowingTreeGroupBox);
             this.Controls.Add(this.TrackChangesCheckBox);
@@ -350,12 +363,12 @@ namespace Maze.WinFormsGDI
             ((System.ComponentModel.ISupportInitialize)(this.MainPictureBox)).EndInit();
             this.GrowingTreeGroupBox.ResumeLayout(false);
             this.GrowingTreeGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GrowingTreeBraidLogarithmicTrackBar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GrowingTreeTreesNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GrowingTreeRunLogarithmicTrackBar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GrowingTreeBraidLogarithmicTrackBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GrowingTreeBreadthLogarithmicTrackBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RendererDelayLogarithmicTrackBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GeneratorDelayLogarithmicTrackBar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GrowingTreeTreesNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -387,6 +400,7 @@ namespace Maze.WinFormsGDI
         private System.Windows.Forms.GroupBox BiasesGroupBox;
         private System.Windows.Forms.NumericUpDown GrowingTreeTreesNumericUpDown;
         private System.Windows.Forms.Label GrowingTreeTreesLabel;
+        private System.Windows.Forms.GroupBox RecursiveDivisionGroupBox;
     }
 }
 
