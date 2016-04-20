@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ControlMapRenderer.cs" />
+    <Compile Include="ExtensionMethods\TimeSpanExtensionMethods.cs" />
     <Compile Include="GeneratorFactory.cs" />
     <Compile Include="IGeneratorFactory.cs" />
     <Compile Include="LockBitmap.cs" />

@@ -30,9 +30,9 @@ namespace Maze.WinFormsGDI.Controls
 
         private double ValToLogVal(double val)
         {
-            if (Math.Abs(LogMinimum + 2 * LogMiddle + LogMaximum) < 0.001)
+            if (Math.Abs(LogMinimum - 2 * LogMiddle + LogMaximum) < 0.001)
             {
-                // TODO: handle division by 0 - linear curve
+                return val;
             }
             var logVal = A + B * Math.Exp(C * val);
             return logVal;
@@ -40,9 +40,9 @@ namespace Maze.WinFormsGDI.Controls
 
         private double LogValToVal(double logVal)
         {
-            if (Math.Abs(LogMinimum + 2 * LogMiddle + LogMaximum) < 0.001)
+            if (Math.Abs(LogMinimum - 2 * LogMiddle + LogMaximum) < 0.001)
             {
-                // TODO: handle division by 0 - linear curve
+                return logVal;
             }
             var val = Math.Log((logVal - A) / B) / C;
             return val;

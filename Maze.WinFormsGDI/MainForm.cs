@@ -13,6 +13,7 @@ using Maze.Core.Maps;
 using Maze.Core.Maps.Decorators;
 using Maze.Core.Runners;
 using Maze.WinFormsGDI.Controls;
+using Maze.WinFormsGDI.ExtensionMethods;
 using Point = Maze.Core.Common.Point;
 
 namespace Maze.WinFormsGDI
@@ -37,6 +38,16 @@ namespace Maze.WinFormsGDI
             get { return (MazeGenerationAlgorithm)AlgorithmComboBox.SelectedItem; }
             set { AlgorithmComboBox.SelectedItem = value; }
         }
+        private bool TrackChanges
+        {
+            get { return TrackChangesCheckBox.Checked; }
+            set { TrackChangesCheckBox.Checked = value; }
+        }
+
+        private double GrowingTreeBreadth => GrowingTreeBreadthLogarithmicTrackBar.LogValue;
+        private double GrowingTreeRun => GrowingTreeRunLogarithmicTrackBar.LogValue;
+        private double GrowingTreeBraid => GrowingTreeBraidLogarithmicTrackBar.LogValue;
+        private int GrowingTreeTrees => (int)GrowingTreeTreesNumericUpDown.Value;
 
 
         public MainForm()
@@ -51,7 +62,6 @@ namespace Maze.WinFormsGDI
             var algorithms = GeneratorFactory.GetAvailableAlgorithms();
             foreach (var mazeGenerationAlgorithm in algorithms)
             {
-                var algorithmStr = mazeGenerationAlgorithm.ToString();
                 AlgorithmComboBox.Items.Add(mazeGenerationAlgorithm);
             }
             AlgorithmComboBox.SelectedIndex = 0;
@@ -61,6 +71,11 @@ namespace Maze.WinFormsGDI
         private void MainForm_Load(object sender, EventArgs e)
         {
             
+        }
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            StopRunner();
         }
 
         private TimeSpan GetTimeSpanFromTextBox(TextBox textBox)
@@ -80,10 +95,21 @@ namespace Maze.WinFormsGDI
             var delayTimeSpan = TimeSpan.FromTicks((long) (delayMiliseconds*TimeSpan.TicksPerMillisecond));
             return delayTimeSpan;
         }
+        private void AlgorithmComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var currentAlgorithm = CurrentAlgorithm;
+            GrowingTreeGroupBox.Visible = currentAlgorithm == MazeGenerationAlgorithm.GrowingTree;
+        }
+
+        private void StopRunner()
+        {
+            Runner?.Stop();
+            Runner = null;
+        }
 
         private void GenerateButton_Click(object sender, EventArgs e)
         {
-            var track = false;
+            StopRunner();
             var width = Convert.ToInt32(WidthTextBox.Text);
             var height = Convert.ToInt32(HeightTextBox.Text);
             if (InfiniteMapCheckBox.Checked)
@@ -99,7 +125,6 @@ namespace Maze.WinFormsGDI
             {
                 case MazeGenerationAlgorithm.GrowingTree:
                     GrowingTreeMazeGenerator = new GrowingTreeMazeGenerator(Map, rng);
-                    //GrowingTreeMazeGenerator.Breadth = 1;
                     MazeGenerator = GrowingTreeMazeGenerator;
                     break;
                 case MazeGenerationAlgorithm.Kruskal:
@@ -121,7 +146,7 @@ namespace Maze.WinFormsGDI
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-
+            SyncAllMazeGeneratorParameters();
             var activeCellsGenerator = new ActiveCellsMazeGeneratorDecorator(MazeGenerator);
             var displayMap = new AsFiniteMapDecorator(Map, Map.Size ?? new Point(width, height));
             MapRenderer = new PictureBoxMapRenderer(displayMap, MainPictureBox);
@@ -131,7 +156,7 @@ namespace Maze.WinFormsGDI
             Runner.AfterGenerate += results => { generatorSteps++; };
             Runner.BeforeRender += results =>
             {
-                if (track && results.Results.Count > 0)
+                if (TrackChanges && results.Results.Count > 0)
                 {
                     displayMap.Offset = displayMap.Size/2 - results.Results[0].Point;
                 }
@@ -144,8 +169,8 @@ namespace Maze.WinFormsGDI
         {
             var generatorDelay = CurrentGeneratorDelay;
             var rendererDelay = CurrentRendererDelay;
-            GeneratorDelayLabel.Text = @"Generator delay: " + TimeSpanToString(generatorDelay);
-            RendererDelayLabel.Text = @"Renderer delay: " + TimeSpanToString(rendererDelay);
+            GeneratorDelayLabel.Text = @"Generator delay: " + generatorDelay.ToSuffixedString();
+            RendererDelayLabel.Text = @"Renderer delay: " + rendererDelay.ToSuffixedString();
             if (Runner == null)
             {
                 return;
@@ -154,17 +179,33 @@ namespace Maze.WinFormsGDI
             Runner.RendererMinCycleTime = rendererDelay;
         }
 
-        private string TimeSpanToString(TimeSpan span)
+        private void SyncAllMazeGeneratorParameters()
         {
-            if (span.TotalSeconds > 1)
+            SyncGrowingTreeMazeGeneratorParameters();
+        }
+
+        private void SyncGrowingTreeMazeGeneratorParameters()
+        {
+            var breadth = GrowingTreeBreadth;
+            var run = GrowingTreeRun;
+            var braid = GrowingTreeBraid;
+            GrowingTreeBreadthLabel.Text = @"Breadth: " + breadth.ToString("0.0%");
+            GrowingTreeRunLabel.Text = @"Run: " + run.ToString("0.0%");
+            GrowingTreeBraidLabel.Text = @"Braid: " + braid.ToString("0.0%");
+            if (GrowingTreeMazeGenerator == null)
             {
-                return span.TotalSeconds.ToString("0.00") + " s.";
+                return;
             }
-            if (span.TotalMilliseconds > 1)
-            {
-                return span.TotalMilliseconds.ToString("0.0") + " ms.";
-            }
-            return (span.TotalMilliseconds * 1000).ToString("000") + " μs.";
+            GrowingTreeMazeGenerator.Breadth = breadth;
+            var realRun = Math.Abs(run - 1) < 0.0000001 ? double.MaxValue : 1/(1 - run) - 1;
+            GrowingTreeMazeGenerator.Runs[0] = realRun;
+            GrowingTreeMazeGenerator.LastChanceLooping = braid;
+            GrowingTreeMazeGenerator.TreeCount = GrowingTreeTrees;
+        }
+
+        private void TrackChangesCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            MapRenderer.ForceRerender = TrackChanges;
         }
 
         private void GeneratorDelayLogarithmicTrackBar_ValueChanged(object sender, EventArgs e)
@@ -175,6 +216,21 @@ namespace Maze.WinFormsGDI
         private void RendererDelayLogarithmicTrackBar_ValueChanged(object sender, EventArgs e)
         {
             SyncRunnerParameters();
+        }
+
+        private void BreadthLogarithmicTrackBar_ValueChanged(object sender, EventArgs e)
+        {
+            SyncGrowingTreeMazeGeneratorParameters();
+        }
+
+        private void GrowingTreeRunLogarithmicTrackBar_ValueChanged(object sender, EventArgs e)
+        {
+            SyncGrowingTreeMazeGeneratorParameters();
+        }
+
+        private void GrowingTreeBraidLogarithmicTrackBar_ValueChanged(object sender, EventArgs e)
+        {
+            SyncGrowingTreeMazeGeneratorParameters();
         }
     }
 }
