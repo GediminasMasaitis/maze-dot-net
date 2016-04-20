@@ -51,6 +51,7 @@ namespace Maze.WinFormsGDI
             this.BiasesGroupBox = new System.Windows.Forms.GroupBox();
             this.RecursiveDivisionGroupBox = new System.Windows.Forms.GroupBox();
             this.GrowingTreeResetBiasesButton = new System.Windows.Forms.Button();
+            this.ShowAdvancedSettingsCheckBox = new System.Windows.Forms.CheckBox();
             this.GrowingTreeRunLogarithmicTrackBar = new Maze.WinFormsGDI.Controls.LogarithmicTrackBar();
             this.GrowingTreeBraidLogarithmicTrackBar = new Maze.WinFormsGDI.Controls.LogarithmicTrackBar();
             this.arrowCrossShape1 = new Maze.WinFormsGDI.Controls.ArrowCrossShape();
@@ -101,7 +102,7 @@ namespace Maze.WinFormsGDI
             this.AlgorithmComboBox.FormattingEnabled = true;
             this.AlgorithmComboBox.Location = new System.Drawing.Point(74, 198);
             this.AlgorithmComboBox.Name = "AlgorithmComboBox";
-            this.AlgorithmComboBox.Size = new System.Drawing.Size(156, 21);
+            this.AlgorithmComboBox.Size = new System.Drawing.Size(145, 21);
             this.AlgorithmComboBox.TabIndex = 2;
             this.AlgorithmComboBox.SelectedIndexChanged += new System.EventHandler(this.SyncGroupBoxes);
             // 
@@ -295,6 +296,19 @@ namespace Maze.WinFormsGDI
             this.GrowingTreeResetBiasesButton.UseVisualStyleBackColor = true;
             this.GrowingTreeResetBiasesButton.Click += new System.EventHandler(this.GrowingTreeResetBiasesButton_Click);
             // 
+            // ShowAdvancedSettingsCheckBox
+            // 
+            this.ShowAdvancedSettingsCheckBox.AutoSize = true;
+            this.ShowAdvancedSettingsCheckBox.Checked = true;
+            this.ShowAdvancedSettingsCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ShowAdvancedSettingsCheckBox.Location = new System.Drawing.Point(231, 200);
+            this.ShowAdvancedSettingsCheckBox.Name = "ShowAdvancedSettingsCheckBox";
+            this.ShowAdvancedSettingsCheckBox.Size = new System.Drawing.Size(114, 17);
+            this.ShowAdvancedSettingsCheckBox.TabIndex = 27;
+            this.ShowAdvancedSettingsCheckBox.Text = "Advanced settings";
+            this.ShowAdvancedSettingsCheckBox.UseVisualStyleBackColor = true;
+            this.ShowAdvancedSettingsCheckBox.CheckedChanged += new System.EventHandler(this.SyncGroupBoxes);
+            // 
             // GrowingTreeRunLogarithmicTrackBar
             // 
             this.GrowingTreeRunLogarithmicTrackBar.Location = new System.Drawing.Point(110, 135);
@@ -458,6 +472,7 @@ namespace Maze.WinFormsGDI
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1259, 911);
+            this.Controls.Add(this.ShowAdvancedSettingsCheckBox);
             this.Controls.Add(this.RecursiveDivisionGroupBox);
             this.Controls.Add(this.AlgorithmComboBox);
             this.Controls.Add(this.GrowingTreeGroupBox);
@@ -531,6 +546,7 @@ namespace Maze.WinFormsGDI
         private LogarithmicTrackBar GrowingTreeBiasUpLogarithmicTrackBar;
         private ArrowCrossShape arrowCrossShape1;
         private System.Windows.Forms.Button GrowingTreeResetBiasesButton;
+        private System.Windows.Forms.CheckBox ShowAdvancedSettingsCheckBox;
     }
 }
 

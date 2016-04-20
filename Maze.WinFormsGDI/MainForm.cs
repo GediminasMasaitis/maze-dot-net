@@ -44,6 +44,12 @@ namespace Maze.WinFormsGDI
             set { TrackChangesCheckBox.Checked = value; }
         }
 
+        private bool ShowAdvancedSettings
+        {
+            get { return ShowAdvancedSettingsCheckBox.Checked; }
+            set { ShowAdvancedSettingsCheckBox.Checked = value; }
+        }
+
         private double GrowingTreeBreadth => GrowingTreeBreadthLogarithmicTrackBar.LogValue;
         private double GrowingTreeRun => GrowingTreeRunLogarithmicTrackBar.LogValue;
         private double GrowingTreeBraid => GrowingTreeBraidLogarithmicTrackBar.LogValue;
@@ -180,8 +186,8 @@ namespace Maze.WinFormsGDI
         private void SyncGroupBoxes(object sender = null, EventArgs e = null)
         {
             var currentAlgorithm = CurrentAlgorithm;
-            GrowingTreeGroupBox.Visible = currentAlgorithm == MazeGenerationAlgorithm.GrowingTree;
-            RecursiveDivisionGroupBox.Visible = currentAlgorithm == MazeGenerationAlgorithm.RecursiveDivision;
+            GrowingTreeGroupBox.Visible = currentAlgorithm == MazeGenerationAlgorithm.GrowingTree && ShowAdvancedSettings;
+            RecursiveDivisionGroupBox.Visible = currentAlgorithm == MazeGenerationAlgorithm.RecursiveDivision && ShowAdvancedSettings;
         }
 
         private void SyncRunnerParameters(object sender = null, EventArgs e = null)
