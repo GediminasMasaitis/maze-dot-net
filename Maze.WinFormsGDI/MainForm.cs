@@ -54,6 +54,7 @@ namespace Maze.WinFormsGDI
         private double GrowingTreeRun => GrowingTreeRunLogarithmicTrackBar.LogValue;
         private double GrowingTreeBraid => GrowingTreeBraidLogarithmicTrackBar.LogValue;
         private int GrowingTreeTrees => (int)GrowingTreeTreesNumericUpDown.Value;
+        private int GrowingTreeSparseness => (int)GrowingTreeSparsenessNumericUpDown.Value;
         private double GrowingTreeBiasUp => GrowingTreeBiasUpLogarithmicTrackBar.LogValue;
         private double GrowingTreeBiasDown => GrowingTreeBiasDownLogarithmicTrackBar.LogValue;
         private double GrowingTreeBiasLeft => GrowingTreeBiasLeftLogarithmicTrackBar.LogValue;
@@ -226,6 +227,7 @@ namespace Maze.WinFormsGDI
             GrowingTreeMazeGenerator.Runs[0] = ExtendDoubleVal(run);
             GrowingTreeMazeGenerator.LastChanceLooping = braid;
             GrowingTreeMazeGenerator.TreeCount = GrowingTreeTrees;
+            GrowingTreeMazeGenerator.Sparseness = GrowingTreeSparseness;
             GrowingTreeMazeGenerator.Biases[2] = ExtendDoubleVal(GrowingTreeBiasUp);
             GrowingTreeMazeGenerator.Biases[3] = ExtendDoubleVal(GrowingTreeBiasDown);
             GrowingTreeMazeGenerator.Biases[0] = ExtendDoubleVal(GrowingTreeBiasLeft);
