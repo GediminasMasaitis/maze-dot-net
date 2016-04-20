@@ -15,7 +15,7 @@ namespace Maze.Core.Generators.RecursiveDivision
             ShowMapInitializationStep = true;
             ProcessSingleCellBlocks = false;
             Biases = new[] {1d, 1d};
-            ProportionalSplits = 1;
+            ProportionalSplits = 0.5;
             FixedSplits = 0;
             FixedSplitLocation = 0.5;
             FixedRecursion = 1;
@@ -47,7 +47,17 @@ namespace Maze.Core.Generators.RecursiveDivision
         public bool ProcessSingleCellBlocks { get; set; }
         public double[] Biases { get; }
         public bool ShowMapInitializationStep { get; }
-        public double ProportionalSplits { get; set; }
+
+        private double _proportionalSplits;
+        public double ProportionalSplits
+        {
+            get { return _proportionalSplits; }
+            set
+            {
+                DoubleParameterCheck(value);
+                _proportionalSplits = value;
+            }
+        }
 
         private double _fixedSplits;
         public double FixedSplits
@@ -213,13 +223,14 @@ namespace Maze.Core.Generators.RecursiveDivision
             {
                 var horizontalChance = Biases[0];
                 var verticalChance = Biases[1];
+                var proportionalSplitsMultiplier = Math.Abs(ProportionalSplits - 1) < 0.000001 ? double.MaxValue :  1 /(1 - ProportionalSplits) - 1;
                 if (size[0] > size[1])
                 {
-                    horizontalChance *= ProportionalSplits;
+                    horizontalChance *= proportionalSplitsMultiplier;
                 }
                 else if(size[0] < size[1])
                 {
-                    verticalChance *= ProportionalSplits;
+                    verticalChance *= proportionalSplitsMultiplier;
                 }
 
                 var sum = horizontalChance + verticalChance;
