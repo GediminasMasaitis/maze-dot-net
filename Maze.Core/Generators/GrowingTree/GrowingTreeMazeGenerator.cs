@@ -12,7 +12,6 @@ namespace Maze.Core.Generators.GrowingTree
     {
         public GrowingTreeMazeGenerator(IMap map, Random rng = null) : base(map, rng)
         {
-            //Path = new LinkedList<Point>();
             TreeCount = 1;
             Sparseness = 2;
             Biases = Enumerable.Repeat(1d, map.Dimensions*2).ToArray();

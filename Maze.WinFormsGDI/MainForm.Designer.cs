@@ -44,6 +44,8 @@ namespace Maze.WinFormsGDI
             this.InfiniteMapCheckBox = new System.Windows.Forms.CheckBox();
             this.TrackChangesCheckBox = new System.Windows.Forms.CheckBox();
             this.GrowingTreeGroupBox = new System.Windows.Forms.GroupBox();
+            this.GrowingTreeSparsenessNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.GrowingTreeSparsenessLabel = new System.Windows.Forms.Label();
             this.GrowingTreeTreesNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.GrowingTreeTreesLabel = new System.Windows.Forms.Label();
             this.GrowingTreeRunLabel = new System.Windows.Forms.Label();
@@ -52,8 +54,20 @@ namespace Maze.WinFormsGDI
             this.GrowingTreeResetBiasesButton = new System.Windows.Forms.Button();
             this.RecursiveDivisionGroupBox = new System.Windows.Forms.GroupBox();
             this.ShowAdvancedSettingsCheckBox = new System.Windows.Forms.CheckBox();
-            this.GrowingTreeSparsenessNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.GrowingTreeSparsenessLabel = new System.Windows.Forms.Label();
+            this.RecursiveDivisionRecursionLocationLabel = new System.Windows.Forms.Label();
+            this.RecursiveDivisionFixedRecursionLabel = new System.Windows.Forms.Label();
+            this.RecursiveDivisionSplitLocationLabel = new System.Windows.Forms.Label();
+            this.RecursiveDivisionFixedSplitsLabel = new System.Windows.Forms.Label();
+            this.RecursiveDivisionProportionalSplitsLabel = new System.Windows.Forms.Label();
+            this.RecursiveDivisionReverseOrderLabel = new System.Windows.Forms.Label();
+            this.RecursiveDivisionProcessSingleCellBlocksCheckBox = new System.Windows.Forms.CheckBox();
+            this.RecursiveDivisionShowInitializationStepCheckBox = new System.Windows.Forms.CheckBox();
+            this.RecursiveDivisionReverseOrderLTB = new Maze.WinFormsGDI.Controls.LogarithmicTrackBar();
+            this.RecursiveDivisionProportionalSplitsLTB = new Maze.WinFormsGDI.Controls.LogarithmicTrackBar();
+            this.RecursiveDivisionSplitLocationLTB = new Maze.WinFormsGDI.Controls.LogarithmicTrackBar();
+            this.RecursiveDivisionFixedSplitsLTB = new Maze.WinFormsGDI.Controls.LogarithmicTrackBar();
+            this.RecursiveDivisionRecursionLocationLTB = new Maze.WinFormsGDI.Controls.LogarithmicTrackBar();
+            this.RecursiveDivisionFixedRecursionLTB = new Maze.WinFormsGDI.Controls.LogarithmicTrackBar();
             this.GrowingTreeRunLogarithmicTrackBar = new Maze.WinFormsGDI.Controls.LogarithmicTrackBar();
             this.GrowingTreeBraidLogarithmicTrackBar = new Maze.WinFormsGDI.Controls.LogarithmicTrackBar();
             this.arrowCrossShape1 = new Maze.WinFormsGDI.Controls.ArrowCrossShape();
@@ -66,9 +80,16 @@ namespace Maze.WinFormsGDI
             this.GeneratorDelayLogarithmicTrackBar = new Maze.WinFormsGDI.Controls.LogarithmicTrackBar();
             ((System.ComponentModel.ISupportInitialize)(this.MainPictureBox)).BeginInit();
             this.GrowingTreeGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GrowingTreeSparsenessNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GrowingTreeTreesNumericUpDown)).BeginInit();
             this.BiasesGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GrowingTreeSparsenessNumericUpDown)).BeginInit();
+            this.RecursiveDivisionGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.RecursiveDivisionReverseOrderLTB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RecursiveDivisionProportionalSplitsLTB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RecursiveDivisionSplitLocationLTB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RecursiveDivisionFixedSplitsLTB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RecursiveDivisionRecursionLocationLTB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RecursiveDivisionFixedRecursionLTB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GrowingTreeRunLogarithmicTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GrowingTreeBraidLogarithmicTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GrowingTreeBiasDownLogarithmicTrackBar)).BeginInit();
@@ -221,6 +242,33 @@ namespace Maze.WinFormsGDI
             this.GrowingTreeGroupBox.Text = "Growing tree settings";
             this.GrowingTreeGroupBox.Visible = false;
             // 
+            // GrowingTreeSparsenessNumericUpDown
+            // 
+            this.GrowingTreeSparsenessNumericUpDown.Location = new System.Drawing.Point(146, 56);
+            this.GrowingTreeSparsenessNumericUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.GrowingTreeSparsenessNumericUpDown.Name = "GrowingTreeSparsenessNumericUpDown";
+            this.GrowingTreeSparsenessNumericUpDown.Size = new System.Drawing.Size(88, 20);
+            this.GrowingTreeSparsenessNumericUpDown.TabIndex = 27;
+            this.GrowingTreeSparsenessNumericUpDown.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.GrowingTreeSparsenessNumericUpDown.ValueChanged += new System.EventHandler(this.SyncGrowingTreeParameters);
+            // 
+            // GrowingTreeSparsenessLabel
+            // 
+            this.GrowingTreeSparsenessLabel.AutoSize = true;
+            this.GrowingTreeSparsenessLabel.Location = new System.Drawing.Point(70, 58);
+            this.GrowingTreeSparsenessLabel.Name = "GrowingTreeSparsenessLabel";
+            this.GrowingTreeSparsenessLabel.Size = new System.Drawing.Size(65, 13);
+            this.GrowingTreeSparsenessLabel.TabIndex = 26;
+            this.GrowingTreeSparsenessLabel.Text = "Sparseness:";
+            // 
             // GrowingTreeTreesNumericUpDown
             // 
             this.GrowingTreeTreesNumericUpDown.Location = new System.Drawing.Point(146, 30);
@@ -293,9 +341,23 @@ namespace Maze.WinFormsGDI
             // 
             // RecursiveDivisionGroupBox
             // 
-            this.RecursiveDivisionGroupBox.Location = new System.Drawing.Point(355, 229);
+            this.RecursiveDivisionGroupBox.Controls.Add(this.RecursiveDivisionShowInitializationStepCheckBox);
+            this.RecursiveDivisionGroupBox.Controls.Add(this.RecursiveDivisionProcessSingleCellBlocksCheckBox);
+            this.RecursiveDivisionGroupBox.Controls.Add(this.RecursiveDivisionReverseOrderLabel);
+            this.RecursiveDivisionGroupBox.Controls.Add(this.RecursiveDivisionReverseOrderLTB);
+            this.RecursiveDivisionGroupBox.Controls.Add(this.RecursiveDivisionProportionalSplitsLabel);
+            this.RecursiveDivisionGroupBox.Controls.Add(this.RecursiveDivisionProportionalSplitsLTB);
+            this.RecursiveDivisionGroupBox.Controls.Add(this.RecursiveDivisionSplitLocationLabel);
+            this.RecursiveDivisionGroupBox.Controls.Add(this.RecursiveDivisionSplitLocationLTB);
+            this.RecursiveDivisionGroupBox.Controls.Add(this.RecursiveDivisionFixedSplitsLabel);
+            this.RecursiveDivisionGroupBox.Controls.Add(this.RecursiveDivisionFixedSplitsLTB);
+            this.RecursiveDivisionGroupBox.Controls.Add(this.RecursiveDivisionRecursionLocationLabel);
+            this.RecursiveDivisionGroupBox.Controls.Add(this.RecursiveDivisionRecursionLocationLTB);
+            this.RecursiveDivisionGroupBox.Controls.Add(this.RecursiveDivisionFixedRecursionLabel);
+            this.RecursiveDivisionGroupBox.Controls.Add(this.RecursiveDivisionFixedRecursionLTB);
+            this.RecursiveDivisionGroupBox.Location = new System.Drawing.Point(358, 6);
             this.RecursiveDivisionGroupBox.Name = "RecursiveDivisionGroupBox";
-            this.RecursiveDivisionGroupBox.Size = new System.Drawing.Size(334, 583);
+            this.RecursiveDivisionGroupBox.Size = new System.Drawing.Size(334, 429);
             this.RecursiveDivisionGroupBox.TabIndex = 26;
             this.RecursiveDivisionGroupBox.TabStop = false;
             this.RecursiveDivisionGroupBox.Text = "Recursive division settings";
@@ -314,32 +376,164 @@ namespace Maze.WinFormsGDI
             this.ShowAdvancedSettingsCheckBox.UseVisualStyleBackColor = true;
             this.ShowAdvancedSettingsCheckBox.CheckedChanged += new System.EventHandler(this.SyncGroupBoxes);
             // 
-            // GrowingTreeSparsenessNumericUpDown
+            // RecursiveDivisionRecursionLocationLabel
             // 
-            this.GrowingTreeSparsenessNumericUpDown.Location = new System.Drawing.Point(146, 56);
-            this.GrowingTreeSparsenessNumericUpDown.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.GrowingTreeSparsenessNumericUpDown.Name = "GrowingTreeSparsenessNumericUpDown";
-            this.GrowingTreeSparsenessNumericUpDown.Size = new System.Drawing.Size(88, 20);
-            this.GrowingTreeSparsenessNumericUpDown.TabIndex = 27;
-            this.GrowingTreeSparsenessNumericUpDown.Value = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-            this.GrowingTreeSparsenessNumericUpDown.ValueChanged += new System.EventHandler(this.SyncGrowingTreeParameters);
+            this.RecursiveDivisionRecursionLocationLabel.AutoSize = true;
+            this.RecursiveDivisionRecursionLocationLabel.Location = new System.Drawing.Point(20, 68);
+            this.RecursiveDivisionRecursionLocationLabel.Name = "RecursiveDivisionRecursionLocationLabel";
+            this.RecursiveDivisionRecursionLocationLabel.Size = new System.Drawing.Size(115, 13);
+            this.RecursiveDivisionRecursionLocationLabel.TabIndex = 30;
+            this.RecursiveDivisionRecursionLocationLabel.Text = "Recursion location: 0%";
             // 
-            // GrowingTreeSparsenessLabel
+            // RecursiveDivisionFixedRecursionLabel
             // 
-            this.GrowingTreeSparsenessLabel.AutoSize = true;
-            this.GrowingTreeSparsenessLabel.Location = new System.Drawing.Point(70, 58);
-            this.GrowingTreeSparsenessLabel.Name = "GrowingTreeSparsenessLabel";
-            this.GrowingTreeSparsenessLabel.Size = new System.Drawing.Size(65, 13);
-            this.GrowingTreeSparsenessLabel.TabIndex = 26;
-            this.GrowingTreeSparsenessLabel.Text = "Sparseness:";
+            this.RecursiveDivisionFixedRecursionLabel.AutoSize = true;
+            this.RecursiveDivisionFixedRecursionLabel.Location = new System.Drawing.Point(20, 35);
+            this.RecursiveDivisionFixedRecursionLabel.Name = "RecursiveDivisionFixedRecursionLabel";
+            this.RecursiveDivisionFixedRecursionLabel.Size = new System.Drawing.Size(98, 13);
+            this.RecursiveDivisionFixedRecursionLabel.TabIndex = 28;
+            this.RecursiveDivisionFixedRecursionLabel.Text = "Fixed recursion: 0%";
+            // 
+            // RecursiveDivisionSplitLocationLabel
+            // 
+            this.RecursiveDivisionSplitLocationLabel.AutoSize = true;
+            this.RecursiveDivisionSplitLocationLabel.Location = new System.Drawing.Point(20, 152);
+            this.RecursiveDivisionSplitLocationLabel.Name = "RecursiveDivisionSplitLocationLabel";
+            this.RecursiveDivisionSplitLocationLabel.Size = new System.Drawing.Size(87, 13);
+            this.RecursiveDivisionSplitLocationLabel.TabIndex = 34;
+            this.RecursiveDivisionSplitLocationLabel.Text = "Split location: 0%";
+            // 
+            // RecursiveDivisionFixedSplitsLabel
+            // 
+            this.RecursiveDivisionFixedSplitsLabel.AutoSize = true;
+            this.RecursiveDivisionFixedSplitsLabel.Location = new System.Drawing.Point(20, 119);
+            this.RecursiveDivisionFixedSplitsLabel.Name = "RecursiveDivisionFixedSplitsLabel";
+            this.RecursiveDivisionFixedSplitsLabel.Size = new System.Drawing.Size(78, 13);
+            this.RecursiveDivisionFixedSplitsLabel.TabIndex = 32;
+            this.RecursiveDivisionFixedSplitsLabel.Text = "Fixed splits: 0%";
+            // 
+            // RecursiveDivisionProportionalSplitsLabel
+            // 
+            this.RecursiveDivisionProportionalSplitsLabel.AutoSize = true;
+            this.RecursiveDivisionProportionalSplitsLabel.Location = new System.Drawing.Point(21, 203);
+            this.RecursiveDivisionProportionalSplitsLabel.Name = "RecursiveDivisionProportionalSplitsLabel";
+            this.RecursiveDivisionProportionalSplitsLabel.Size = new System.Drawing.Size(109, 13);
+            this.RecursiveDivisionProportionalSplitsLabel.TabIndex = 36;
+            this.RecursiveDivisionProportionalSplitsLabel.Text = "Proportional splits: 0%";
+            // 
+            // RecursiveDivisionReverseOrderLabel
+            // 
+            this.RecursiveDivisionReverseOrderLabel.AutoSize = true;
+            this.RecursiveDivisionReverseOrderLabel.Location = new System.Drawing.Point(21, 254);
+            this.RecursiveDivisionReverseOrderLabel.Name = "RecursiveDivisionReverseOrderLabel";
+            this.RecursiveDivisionReverseOrderLabel.Size = new System.Drawing.Size(94, 13);
+            this.RecursiveDivisionReverseOrderLabel.TabIndex = 38;
+            this.RecursiveDivisionReverseOrderLabel.Text = "Reverse order: 0%";
+            // 
+            // RecursiveDivisionProcessSingleCellBlocksCheckBox
+            // 
+            this.RecursiveDivisionProcessSingleCellBlocksCheckBox.AutoSize = true;
+            this.RecursiveDivisionProcessSingleCellBlocksCheckBox.Location = new System.Drawing.Point(23, 304);
+            this.RecursiveDivisionProcessSingleCellBlocksCheckBox.Name = "RecursiveDivisionProcessSingleCellBlocksCheckBox";
+            this.RecursiveDivisionProcessSingleCellBlocksCheckBox.Size = new System.Drawing.Size(147, 17);
+            this.RecursiveDivisionProcessSingleCellBlocksCheckBox.TabIndex = 28;
+            this.RecursiveDivisionProcessSingleCellBlocksCheckBox.Text = "Process single cell blocks";
+            this.RecursiveDivisionProcessSingleCellBlocksCheckBox.UseVisualStyleBackColor = true;
+            this.RecursiveDivisionProcessSingleCellBlocksCheckBox.CheckedChanged += new System.EventHandler(this.SyncRecursiveDivisionParameters);
+            // 
+            // RecursiveDivisionShowInitializationStepCheckBox
+            // 
+            this.RecursiveDivisionShowInitializationStepCheckBox.AutoSize = true;
+            this.RecursiveDivisionShowInitializationStepCheckBox.Checked = true;
+            this.RecursiveDivisionShowInitializationStepCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.RecursiveDivisionShowInitializationStepCheckBox.Location = new System.Drawing.Point(23, 328);
+            this.RecursiveDivisionShowInitializationStepCheckBox.Name = "RecursiveDivisionShowInitializationStepCheckBox";
+            this.RecursiveDivisionShowInitializationStepCheckBox.Size = new System.Drawing.Size(132, 17);
+            this.RecursiveDivisionShowInitializationStepCheckBox.TabIndex = 40;
+            this.RecursiveDivisionShowInitializationStepCheckBox.Text = "Show initialization step";
+            this.RecursiveDivisionShowInitializationStepCheckBox.UseVisualStyleBackColor = true;
+            this.RecursiveDivisionShowInitializationStepCheckBox.CheckedChanged += new System.EventHandler(this.SyncRecursiveDivisionParameters);
+            // 
+            // RecursiveDivisionReverseOrderLTB
+            // 
+            this.RecursiveDivisionReverseOrderLTB.Location = new System.Drawing.Point(142, 254);
+            this.RecursiveDivisionReverseOrderLTB.LogMaximum = 1D;
+            this.RecursiveDivisionReverseOrderLTB.LogMiddle = 0.5D;
+            this.RecursiveDivisionReverseOrderLTB.LogMinimum = 0D;
+            this.RecursiveDivisionReverseOrderLTB.Maximum = 1000;
+            this.RecursiveDivisionReverseOrderLTB.Name = "RecursiveDivisionReverseOrderLTB";
+            this.RecursiveDivisionReverseOrderLTB.Size = new System.Drawing.Size(174, 45);
+            this.RecursiveDivisionReverseOrderLTB.TabIndex = 39;
+            this.RecursiveDivisionReverseOrderLTB.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.RecursiveDivisionReverseOrderLTB.ValueChanged += new System.EventHandler(this.SyncRecursiveDivisionParameters);
+            // 
+            // RecursiveDivisionProportionalSplitsLTB
+            // 
+            this.RecursiveDivisionProportionalSplitsLTB.Location = new System.Drawing.Point(142, 203);
+            this.RecursiveDivisionProportionalSplitsLTB.LogMaximum = 1D;
+            this.RecursiveDivisionProportionalSplitsLTB.LogMiddle = 0.5D;
+            this.RecursiveDivisionProportionalSplitsLTB.LogMinimum = 0D;
+            this.RecursiveDivisionProportionalSplitsLTB.Maximum = 1000;
+            this.RecursiveDivisionProportionalSplitsLTB.Name = "RecursiveDivisionProportionalSplitsLTB";
+            this.RecursiveDivisionProportionalSplitsLTB.Size = new System.Drawing.Size(174, 45);
+            this.RecursiveDivisionProportionalSplitsLTB.TabIndex = 37;
+            this.RecursiveDivisionProportionalSplitsLTB.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.RecursiveDivisionProportionalSplitsLTB.Value = 1000;
+            this.RecursiveDivisionProportionalSplitsLTB.ValueChanged += new System.EventHandler(this.SyncRecursiveDivisionParameters);
+            // 
+            // RecursiveDivisionSplitLocationLTB
+            // 
+            this.RecursiveDivisionSplitLocationLTB.Location = new System.Drawing.Point(141, 152);
+            this.RecursiveDivisionSplitLocationLTB.LogMaximum = 1D;
+            this.RecursiveDivisionSplitLocationLTB.LogMiddle = 0.5D;
+            this.RecursiveDivisionSplitLocationLTB.LogMinimum = 0D;
+            this.RecursiveDivisionSplitLocationLTB.Maximum = 1000;
+            this.RecursiveDivisionSplitLocationLTB.Name = "RecursiveDivisionSplitLocationLTB";
+            this.RecursiveDivisionSplitLocationLTB.Size = new System.Drawing.Size(174, 45);
+            this.RecursiveDivisionSplitLocationLTB.TabIndex = 35;
+            this.RecursiveDivisionSplitLocationLTB.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.RecursiveDivisionSplitLocationLTB.Value = 500;
+            this.RecursiveDivisionSplitLocationLTB.ValueChanged += new System.EventHandler(this.SyncRecursiveDivisionParameters);
+            // 
+            // RecursiveDivisionFixedSplitsLTB
+            // 
+            this.RecursiveDivisionFixedSplitsLTB.Location = new System.Drawing.Point(141, 119);
+            this.RecursiveDivisionFixedSplitsLTB.LogMaximum = 1D;
+            this.RecursiveDivisionFixedSplitsLTB.LogMiddle = 0.2D;
+            this.RecursiveDivisionFixedSplitsLTB.LogMinimum = 0D;
+            this.RecursiveDivisionFixedSplitsLTB.Maximum = 1000;
+            this.RecursiveDivisionFixedSplitsLTB.Name = "RecursiveDivisionFixedSplitsLTB";
+            this.RecursiveDivisionFixedSplitsLTB.Size = new System.Drawing.Size(174, 45);
+            this.RecursiveDivisionFixedSplitsLTB.TabIndex = 33;
+            this.RecursiveDivisionFixedSplitsLTB.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.RecursiveDivisionFixedSplitsLTB.ValueChanged += new System.EventHandler(this.SyncRecursiveDivisionParameters);
+            // 
+            // RecursiveDivisionRecursionLocationLTB
+            // 
+            this.RecursiveDivisionRecursionLocationLTB.Location = new System.Drawing.Point(141, 68);
+            this.RecursiveDivisionRecursionLocationLTB.LogMaximum = 1D;
+            this.RecursiveDivisionRecursionLocationLTB.LogMiddle = 0.5D;
+            this.RecursiveDivisionRecursionLocationLTB.LogMinimum = 0D;
+            this.RecursiveDivisionRecursionLocationLTB.Maximum = 1000;
+            this.RecursiveDivisionRecursionLocationLTB.Name = "RecursiveDivisionRecursionLocationLTB";
+            this.RecursiveDivisionRecursionLocationLTB.Size = new System.Drawing.Size(174, 45);
+            this.RecursiveDivisionRecursionLocationLTB.TabIndex = 31;
+            this.RecursiveDivisionRecursionLocationLTB.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.RecursiveDivisionRecursionLocationLTB.Value = 1000;
+            this.RecursiveDivisionRecursionLocationLTB.ValueChanged += new System.EventHandler(this.SyncRecursiveDivisionParameters);
+            // 
+            // RecursiveDivisionFixedRecursionLTB
+            // 
+            this.RecursiveDivisionFixedRecursionLTB.Location = new System.Drawing.Point(141, 35);
+            this.RecursiveDivisionFixedRecursionLTB.LogMaximum = 1D;
+            this.RecursiveDivisionFixedRecursionLTB.LogMiddle = 0.2D;
+            this.RecursiveDivisionFixedRecursionLTB.LogMinimum = 0D;
+            this.RecursiveDivisionFixedRecursionLTB.Maximum = 1000;
+            this.RecursiveDivisionFixedRecursionLTB.Name = "RecursiveDivisionFixedRecursionLTB";
+            this.RecursiveDivisionFixedRecursionLTB.Size = new System.Drawing.Size(174, 45);
+            this.RecursiveDivisionFixedRecursionLTB.TabIndex = 29;
+            this.RecursiveDivisionFixedRecursionLTB.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.RecursiveDivisionFixedRecursionLTB.ValueChanged += new System.EventHandler(this.SyncRecursiveDivisionParameters);
             // 
             // GrowingTreeRunLogarithmicTrackBar
             // 
@@ -528,10 +722,18 @@ namespace Maze.WinFormsGDI
             ((System.ComponentModel.ISupportInitialize)(this.MainPictureBox)).EndInit();
             this.GrowingTreeGroupBox.ResumeLayout(false);
             this.GrowingTreeGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GrowingTreeSparsenessNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GrowingTreeTreesNumericUpDown)).EndInit();
             this.BiasesGroupBox.ResumeLayout(false);
             this.BiasesGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GrowingTreeSparsenessNumericUpDown)).EndInit();
+            this.RecursiveDivisionGroupBox.ResumeLayout(false);
+            this.RecursiveDivisionGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.RecursiveDivisionReverseOrderLTB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RecursiveDivisionProportionalSplitsLTB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RecursiveDivisionSplitLocationLTB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RecursiveDivisionFixedSplitsLTB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RecursiveDivisionRecursionLocationLTB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RecursiveDivisionFixedRecursionLTB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GrowingTreeRunLogarithmicTrackBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GrowingTreeBraidLogarithmicTrackBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GrowingTreeBiasDownLogarithmicTrackBar)).EndInit();
@@ -582,6 +784,20 @@ namespace Maze.WinFormsGDI
         private System.Windows.Forms.CheckBox ShowAdvancedSettingsCheckBox;
         private System.Windows.Forms.NumericUpDown GrowingTreeSparsenessNumericUpDown;
         private System.Windows.Forms.Label GrowingTreeSparsenessLabel;
+        private System.Windows.Forms.Label RecursiveDivisionRecursionLocationLabel;
+        private LogarithmicTrackBar RecursiveDivisionRecursionLocationLTB;
+        private System.Windows.Forms.Label RecursiveDivisionFixedRecursionLabel;
+        private LogarithmicTrackBar RecursiveDivisionFixedRecursionLTB;
+        private System.Windows.Forms.Label RecursiveDivisionSplitLocationLabel;
+        private LogarithmicTrackBar RecursiveDivisionSplitLocationLTB;
+        private System.Windows.Forms.Label RecursiveDivisionFixedSplitsLabel;
+        private LogarithmicTrackBar RecursiveDivisionFixedSplitsLTB;
+        private System.Windows.Forms.Label RecursiveDivisionProportionalSplitsLabel;
+        private LogarithmicTrackBar RecursiveDivisionProportionalSplitsLTB;
+        private System.Windows.Forms.Label RecursiveDivisionReverseOrderLabel;
+        private LogarithmicTrackBar RecursiveDivisionReverseOrderLTB;
+        private System.Windows.Forms.CheckBox RecursiveDivisionShowInitializationStepCheckBox;
+        private System.Windows.Forms.CheckBox RecursiveDivisionProcessSingleCellBlocksCheckBox;
     }
 }
 

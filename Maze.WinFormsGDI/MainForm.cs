@@ -60,6 +60,14 @@ namespace Maze.WinFormsGDI
         private double GrowingTreeBiasLeft => GrowingTreeBiasLeftLogarithmicTrackBar.LogValue;
         private double GrowingTreeBiasRight => GrowingTreeBiasRightLogarithmicTrackBar.LogValue;
 
+        private double RecursiveDivisionFixedRecursion => RecursiveDivisionFixedRecursionLTB.LogValue;
+        private double RecursiveDivisionRecursionLocation => RecursiveDivisionRecursionLocationLTB.LogValue;
+        private double RecursiveDivisionFixedSplits => RecursiveDivisionFixedSplitsLTB.LogValue;
+        private double RecursiveDivisionSplitLocation => RecursiveDivisionSplitLocationLTB.LogValue;
+        private double RecursiveDivisionProportionalSplits => RecursiveDivisionProportionalSplitsLTB.LogValue;
+        private double RecursiveDivisionReverseOrder => RecursiveDivisionReverseOrderLTB.LogValue;
+        private bool RecursiveDivisionProcessSingleCellBlocks => RecursiveDivisionProcessSingleCellBlocksCheckBox.Checked;
+        private bool RecursiveDivisionShowInitializationStep => RecursiveDivisionShowInitializationStepCheckBox.Checked;
 
         public MainForm()
         {
@@ -236,10 +244,32 @@ namespace Maze.WinFormsGDI
 
         private void SyncRecursiveDivisionParameters(object sender = null, EventArgs e = null)
         {
+            var fixedRecursion = RecursiveDivisionFixedRecursion;
+            var recursionLocation = RecursiveDivisionRecursionLocation;
+            var fixedSplits = RecursiveDivisionFixedSplits;
+            var splitLocation = RecursiveDivisionSplitLocation;
+            var proportionalSplits = RecursiveDivisionProportionalSplits;
+            var reverseOrder = RecursiveDivisionReverseOrder;
+            var showInitializationStep = RecursiveDivisionShowInitializationStep;
+            var processSingleCellBlocks = RecursiveDivisionProcessSingleCellBlocks;
+            RecursiveDivisionFixedRecursionLabel.Text = @"Fixed recursion: " + fixedRecursion.ToString("0.0%");
+            RecursiveDivisionRecursionLocationLabel.Text = @"Recursion location: " + recursionLocation.ToString("0.0%");
+            RecursiveDivisionFixedSplitsLabel.Text = @"Fixed splits: " + fixedSplits.ToString("0.0%");
+            RecursiveDivisionSplitLocationLabel.Text = @"Split location: " + splitLocation.ToString("0.0%");
+            RecursiveDivisionProportionalSplitsLabel.Text = @"Proportional splits: " + proportionalSplits.ToString("0.0%");
+            RecursiveDivisionReverseOrderLabel.Text = @"Reverse order: " + reverseOrder.ToString("0.0%");
             if (RecursiveDivisionMazeGenerator == null)
             {
                 return;
             }
+            RecursiveDivisionMazeGenerator.FixedRecursion = fixedRecursion;
+            RecursiveDivisionMazeGenerator.FixedRecursionLocation = recursionLocation;
+            RecursiveDivisionMazeGenerator.FixedSplits = fixedSplits;
+            RecursiveDivisionMazeGenerator.FixedSplitLocation = splitLocation;
+            RecursiveDivisionMazeGenerator.ProportionalSplits = proportionalSplits;
+            RecursiveDivisionMazeGenerator.ReverseRecursionOrder = reverseOrder;
+            RecursiveDivisionMazeGenerator.ShowMapInitializationStep = showInitializationStep;
+            RecursiveDivisionMazeGenerator.ProcessSingleCellBlocks = processSingleCellBlocks;
         }
 
         private void TrackChangesCheckBox_CheckedChanged(object sender, EventArgs e)

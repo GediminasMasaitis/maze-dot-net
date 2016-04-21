@@ -46,7 +46,7 @@ namespace Maze.Core.Generators.RecursiveDivision
 
         public bool ProcessSingleCellBlocks { get; set; }
         public double[] Biases { get; }
-        public bool ShowMapInitializationStep { get; }
+        public bool ShowMapInitializationStep { get; set; }
 
         private double _proportionalSplits;
         public double ProportionalSplits
