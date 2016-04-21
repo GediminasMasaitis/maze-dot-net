@@ -39,7 +39,7 @@ namespace Maze.Core.Generators.Kruskal
             }
         }
 
-        public bool ShowAllWallChecking { get; }
+        public bool ShowAllWallChecking { get; set; }
 
         private double _looping;
         public double Looping

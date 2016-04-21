@@ -69,6 +69,12 @@ namespace Maze.WinFormsGDI
         private bool RecursiveDivisionProcessSingleCellBlocks => RecursiveDivisionProcessSingleCellBlocksCheckBox.Checked;
         private bool RecursiveDivisionShowInitializationStep => RecursiveDivisionShowInitializationStepCheckBox.Checked;
 
+        private double KruskalBraid => KruskalBraidLTB.LogValue;
+        private bool KruskalShowAllWallChekcing => KruskalShowAllWallCheckingCheckBox.Checked;
+
+        private double BinaryTreeSidewinder => BinaryTreeSidewinderLTB.LogValue;
+        private double BinaryTreeVerticalBias => BinaryTreeBiasLTB.LogValue;
+
         public MainForm()
         {
             InitializeComponent();
@@ -85,6 +91,8 @@ namespace Maze.WinFormsGDI
             }
             AlgorithmComboBox.SelectedIndex = 0;
             RecursiveDivisionGroupBox.Location = GrowingTreeGroupBox.Location;
+            KruskalGroupBox.Location = GrowingTreeGroupBox.Location;
+            BinaryTreeGroupBox.Location = GrowingTreeGroupBox.Location;
             SyncAll();
         }
 
@@ -195,8 +203,11 @@ namespace Maze.WinFormsGDI
         private void SyncGroupBoxes(object sender = null, EventArgs e = null)
         {
             var currentAlgorithm = CurrentAlgorithm;
-            GrowingTreeGroupBox.Visible = currentAlgorithm == MazeGenerationAlgorithm.GrowingTree && ShowAdvancedSettings;
-            RecursiveDivisionGroupBox.Visible = currentAlgorithm == MazeGenerationAlgorithm.RecursiveDivision && ShowAdvancedSettings;
+            var showAdvancedSettings = ShowAdvancedSettings;
+            GrowingTreeGroupBox.Visible = currentAlgorithm == MazeGenerationAlgorithm.GrowingTree && showAdvancedSettings;
+            RecursiveDivisionGroupBox.Visible = currentAlgorithm == MazeGenerationAlgorithm.RecursiveDivision && showAdvancedSettings;
+            KruskalGroupBox.Visible = currentAlgorithm == MazeGenerationAlgorithm.Kruskal && showAdvancedSettings;
+            BinaryTreeGroupBox.Visible = currentAlgorithm == MazeGenerationAlgorithm.BinaryTree && showAdvancedSettings;
         }
 
         private void SyncRunnerParameters(object sender = null, EventArgs e = null)
@@ -217,6 +228,8 @@ namespace Maze.WinFormsGDI
         {
             SyncGrowingTreeParameters(sender, e);
             SyncRecursiveDivisionParameters(sender, e);
+            SyncKruskalParameters(sender, e);
+            SyncBinaryTreeParameters(sender, e);
         }
 
         private void SyncGrowingTreeParameters(object sender = null, EventArgs e = null)
@@ -270,6 +283,32 @@ namespace Maze.WinFormsGDI
             RecursiveDivisionMazeGenerator.ReverseRecursionOrder = reverseOrder;
             RecursiveDivisionMazeGenerator.ShowMapInitializationStep = showInitializationStep;
             RecursiveDivisionMazeGenerator.ProcessSingleCellBlocks = processSingleCellBlocks;
+        }
+
+        private void SyncKruskalParameters(object sender = null, EventArgs e = null)
+        {
+            var braid = KruskalBraid;
+            KruskalBraidLabel.Text = @"Braid: " + braid.ToString("0.0%");
+            if (KruskalMazeGenerator == null)
+            {
+                return;
+            }
+            KruskalMazeGenerator.Looping = braid;
+            KruskalMazeGenerator.ShowAllWallChecking = KruskalShowAllWallChekcing;
+        }
+
+        private void SyncBinaryTreeParameters(object sender = null, EventArgs e = null)
+        {
+            var sidewinder = BinaryTreeSidewinder;
+            var verticalBias = BinaryTreeVerticalBias;
+            BinaryTreeSidewinderLabel.Text = @"Sidewinder: " + sidewinder.ToString("0.0%");
+            BinaryTreeBiasLabel.Text = @"Bias: " + verticalBias.ToString("0.0%");
+            if (BinaryTreeMazeGenerator == null)
+            {
+                return;
+            }
+            BinaryTreeMazeGenerator.UseSidewinder = sidewinder;
+            BinaryTreeMazeGenerator.VerticalBias = verticalBias;
         }
 
         private void TrackChangesCheckBox_CheckedChanged(object sender, EventArgs e)
