@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
-using System.Drawing;
 using System.Windows.Forms;
 using Maze.Core.Generators;
 using Maze.Core.Generators.AldousBroder;
@@ -16,7 +14,7 @@ using Maze.WinFormsGDI.Controls;
 using Maze.WinFormsGDI.ExtensionMethods;
 using Point = Maze.Core.Common.Point;
 
-namespace Maze.WinFormsGDI
+namespace Maze.WinFormsGDI.Forms
 {
     public partial class MainForm : Form
     {
@@ -98,7 +96,7 @@ namespace Maze.WinFormsGDI
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            
+            new SaveForm().Show();
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)

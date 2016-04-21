@@ -138,11 +138,14 @@ namespace Maze.Core.Runners
                 Queue<MazeGenerationResults> bulkQueue = null;
                 lock (Synchro)
                 {
-                    while (ResultsQueue.Count == 0)
+                    while (ResultsQueue.Count == 0 && RendererRunning)
                     {
                         Monitor.Wait(Synchro);
                     }
-
+                    if (!RendererRunning)
+                    {
+                        return;
+                    }
                     if (BulkRender)
                     {
                         bulkQueue = ResultsQueue;
@@ -240,6 +243,10 @@ namespace Maze.Core.Runners
                 return;
             }
             RendererRunning = false;
+            lock (Synchro)
+            {
+                Monitor.Pulse(Synchro);
+            }
             if (wait)
             {
                 RendererThread.Join();

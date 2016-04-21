@@ -56,6 +56,9 @@
     <Compile Include="Controls\PolygonShape.Designer.cs">
       <DependentUpon>PolygonShape.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\TablessTabControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\TriangleValuePicker.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -63,24 +66,33 @@
       <DependentUpon>TriangleValuePicker.cs</DependentUpon>
     </Compile>
     <Compile Include="ExtensionMethods\TimeSpanExtensionMethods.cs" />
+    <Compile Include="Forms\SaveForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SaveForm.Designer.cs">
+      <DependentUpon>SaveForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GeneratorFactory.cs" />
     <Compile Include="IGeneratorFactory.cs" />
     <Compile Include="LockBitmap.cs" />
     <Compile Include="Controls\LogarithmicTrackBar.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="MainForm.cs">
+    <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MazeGenerationAlgorithm.cs" />
     <Compile Include="PictureBoxMapRenderer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="MainForm.resx">
+    <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SaveForm.resx">
+      <DependentUpon>SaveForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
