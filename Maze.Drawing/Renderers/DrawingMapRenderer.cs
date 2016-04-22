@@ -136,7 +136,7 @@ namespace Maze.Drawing.Renderers
             }
         }
 
-        protected void RerenderMap()
+        protected void RerenderMap(bool disableCacheReading = false)
         {
             for (var i = 0; i < Map.Size[0]; i++)
             {
@@ -146,7 +146,7 @@ namespace Maze.Drawing.Renderers
                     var cell = Map.GetCell(point);
                     var displayState = cell.DisplayState;
                     var color = Colors[displayState];
-                    DrawCell(point, color);
+                    DrawCell(point, color, disableCacheReading);
                 }
             }
         }
@@ -161,17 +161,20 @@ namespace Maze.Drawing.Renderers
             }
         }
 
-        private void DrawCell(Point point, Color color)
+        private void DrawCell(Point point, Color color, bool disableCacheReading = false)
         {
             if (Cache)
             {
-                Color cachedColor;
-                var exists = MapCache.TryGetValue(point, out cachedColor);
-                if (exists)
+                if (!disableCacheReading)
                 {
-                    if (cachedColor.Equals(color))
+                    Color cachedColor;
+                    var exists = MapCache.TryGetValue(point, out cachedColor);
+                    if (exists)
                     {
-                        return;
+                        if (cachedColor.Equals(color))
+                        {
+                            return;
+                        }
                     }
                 }
                 MapCache[point] = color;

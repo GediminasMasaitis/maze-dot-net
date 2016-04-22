@@ -18,6 +18,7 @@ namespace Maze.WinFormsGDI.Forms
 {
     public partial class MainForm : Form
     {
+        private FormWindowState LastWindowState { get; set; }
         private IMap Map { get; set; }
         private GrowingTreeMazeGenerator GrowingTreeMazeGenerator { get; set; }
         private KruskalMazeGenerator KruskalMazeGenerator { get; set; }
@@ -91,6 +92,7 @@ namespace Maze.WinFormsGDI.Forms
             RecursiveDivisionGroupBox.Location = GrowingTreeGroupBox.Location;
             KruskalGroupBox.Location = GrowingTreeGroupBox.Location;
             BinaryTreeGroupBox.Location = GrowingTreeGroupBox.Location;
+            LastWindowState = WindowState;
             SyncAll();
         }
 
@@ -320,6 +322,20 @@ namespace Maze.WinFormsGDI.Forms
             GrowingTreeBiasDownLogarithmicTrackBar.Value = 500;
             GrowingTreeBiasLeftLogarithmicTrackBar.Value = 500;
             GrowingTreeBiasRightLogarithmicTrackBar.Value = 500;
+        }
+
+        private void MainForm_ResizeEnd(object sender, EventArgs e)
+        {
+            MapRenderer?.SyncSize();
+        }
+        
+        private void MainForm_SizeChanged(object sender, EventArgs e)
+        {
+            if (WindowState != LastWindowState && WindowState != FormWindowState.Minimized)
+            {
+                MapRenderer?.SyncSize();
+                LastWindowState = WindowState;
+            }
         }
     }
 }

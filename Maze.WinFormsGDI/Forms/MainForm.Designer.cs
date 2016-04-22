@@ -68,6 +68,7 @@ namespace Maze.WinFormsGDI.Forms
             this.BinaryTreeGroupBox = new System.Windows.Forms.GroupBox();
             this.BinaryTreeBiasLabel = new System.Windows.Forms.Label();
             this.BinaryTreeSidewinderLabel = new System.Windows.Forms.Label();
+            this.SaveButton = new System.Windows.Forms.Button();
             this.BinaryTreeBiasLTB = new Maze.WinFormsGDI.Controls.LogarithmicTrackBar();
             this.BinaryTreeSidewinderLTB = new Maze.WinFormsGDI.Controls.LogarithmicTrackBar();
             this.KruskalBraidLTB = new Maze.WinFormsGDI.Controls.LogarithmicTrackBar();
@@ -87,7 +88,6 @@ namespace Maze.WinFormsGDI.Forms
             this.GrowingTreeBreadthLogarithmicTrackBar = new Maze.WinFormsGDI.Controls.LogarithmicTrackBar();
             this.RendererDelayLogarithmicTrackBar = new Maze.WinFormsGDI.Controls.LogarithmicTrackBar();
             this.GeneratorDelayLogarithmicTrackBar = new Maze.WinFormsGDI.Controls.LogarithmicTrackBar();
-            this.SaveButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.MainPictureBox)).BeginInit();
             this.GrowingTreeGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GrowingTreeSparsenessNumericUpDown)).BeginInit();
@@ -118,10 +118,13 @@ namespace Maze.WinFormsGDI.Forms
             // 
             // MainPictureBox
             // 
+            this.MainPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.MainPictureBox.BackColor = System.Drawing.Color.Black;
-            this.MainPictureBox.Location = new System.Drawing.Point(355, 3);
+            this.MainPictureBox.Location = new System.Drawing.Point(358, 0);
             this.MainPictureBox.Name = "MainPictureBox";
-            this.MainPictureBox.Size = new System.Drawing.Size(900, 900);
+            this.MainPictureBox.Size = new System.Drawing.Size(899, 900);
             this.MainPictureBox.TabIndex = 0;
             this.MainPictureBox.TabStop = false;
             // 
@@ -534,6 +537,15 @@ namespace Maze.WinFormsGDI.Forms
             this.BinaryTreeSidewinderLabel.TabIndex = 30;
             this.BinaryTreeSidewinderLabel.Text = "Sidewinder: 0%";
             // 
+            // SaveButton
+            // 
+            this.SaveButton.Location = new System.Drawing.Point(12, 614);
+            this.SaveButton.Name = "SaveButton";
+            this.SaveButton.Size = new System.Drawing.Size(144, 27);
+            this.SaveButton.TabIndex = 44;
+            this.SaveButton.Text = "Save";
+            this.SaveButton.UseVisualStyleBackColor = true;
+            // 
             // BinaryTreeBiasLTB
             // 
             this.BinaryTreeBiasLTB.Location = new System.Drawing.Point(103, 75);
@@ -813,20 +825,11 @@ namespace Maze.WinFormsGDI.Forms
             this.GeneratorDelayLogarithmicTrackBar.Value = 500;
             this.GeneratorDelayLogarithmicTrackBar.ValueChanged += new System.EventHandler(this.SyncRunnerParameters);
             // 
-            // SaveButton
-            // 
-            this.SaveButton.Location = new System.Drawing.Point(12, 614);
-            this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(144, 27);
-            this.SaveButton.TabIndex = 44;
-            this.SaveButton.Text = "Save";
-            this.SaveButton.UseVisualStyleBackColor = true;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1259, 911);
+            this.ClientSize = new System.Drawing.Size(1258, 899);
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.BinaryTreeGroupBox);
             this.Controls.Add(this.KruskalGroupBox);
@@ -851,6 +854,8 @@ namespace Maze.WinFormsGDI.Forms
             this.Text = "Maze generator";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.MainForm_Load);
+            this.ResizeEnd += new System.EventHandler(this.MainForm_ResizeEnd);
+            this.SizeChanged += new System.EventHandler(this.MainForm_SizeChanged);
             ((System.ComponentModel.ISupportInitialize)(this.MainPictureBox)).EndInit();
             this.GrowingTreeGroupBox.ResumeLayout(false);
             this.GrowingTreeGroupBox.PerformLayout();

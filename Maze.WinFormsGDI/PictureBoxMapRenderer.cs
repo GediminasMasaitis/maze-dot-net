@@ -10,9 +10,27 @@ namespace Maze.WinFormsGDI
 {
     internal class PictureBoxMapRenderer : ImageMapRenderer
     {
+        public bool AutoSyncSize { get; set; }
+        private PictureBox PictureBox { get; }
+        
         public PictureBoxMapRenderer(IMap map, PictureBox pictureBox) : base(map, MakeImageForPictureBox(pictureBox))
         {
             PictureBox = pictureBox;
+            PictureBox.SizeChanged += PictureBoxResize;
+        }
+
+        public void SyncSize()
+        {
+            PictureBox.Image = MakeImageForPictureBox(PictureBox);
+            Image = PictureBox.Image;
+        }
+
+        private void PictureBoxResize(object sender, System.EventArgs e)
+        {
+            if (AutoSyncSize)
+            {
+                SyncSize();
+            }
         }
 
         private static Image MakeImageForPictureBox(PictureBox target)
@@ -22,8 +40,6 @@ namespace Maze.WinFormsGDI
             return bitmap;
         }
         
-        private PictureBox PictureBox { get; }
-       
         private void UpdateTarget()
         {
             if (PictureBox.InvokeRequired)
@@ -47,9 +63,19 @@ namespace Maze.WinFormsGDI
         
         protected override void DrawPolygon(Point mapPoint, ColoredPolygon polygon)
         {
+            if (PictureBox == null)
+            {
+                return;
+            }
             base.DrawPolygon(mapPoint, polygon);
             var invalidateRect = polygon.GetBoundingRectangle();
             PictureBox.Invalidate(invalidateRect);
+        }
+
+        public override void Dispose()
+        {
+            PictureBox.SizeChanged -= PictureBoxResize;
+            base.Dispose();
         }
     }
 }

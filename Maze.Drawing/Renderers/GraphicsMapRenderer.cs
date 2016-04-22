@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using Maze.Core.Maps;
@@ -25,7 +26,14 @@ namespace Maze.Drawing.Renderers
         protected override void DrawPolygon(Point mapPoint, ColoredPolygon polygon)
         {
             var brush = Brushes[polygon.Color];
-            Graphics.FillPolygon(brush, polygon.Points);
+            try
+            {
+                Graphics.FillPolygon(brush, polygon.Points);
+            }
+            catch (InvalidOperationException ex) when(ex.Message == @"Object is currently in use elsewhere.")
+            {
+                // TODO: handle this in a proper way
+            }
         }
     }
 }
