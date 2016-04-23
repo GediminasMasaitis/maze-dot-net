@@ -1,3 +1,4 @@
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 using Maze.Core.Maps;
@@ -15,6 +16,7 @@ namespace Maze.WinFormsGDI
         
         public PictureBoxMapRenderer(IMap map, PictureBox pictureBox) : base(map, MakeImageForPictureBox(pictureBox))
         {
+            UpdateTargetInnerInvoker = UpdateTargetInner;
             PictureBox = pictureBox;
             PictureBox.SizeChanged += PictureBoxResize;
         }
@@ -44,15 +46,26 @@ namespace Maze.WinFormsGDI
         {
             if (PictureBox.InvokeRequired)
             {
-                PictureBox.Invoke(new MethodInvoker(() =>
+                try
                 {
-                    PictureBox.Update();
-                }));
+                    PictureBox.Invoke(UpdateTargetInnerInvoker);
+                }
+                catch (ObjectDisposedException)
+                {
+                    // Om nom nom.
+                }
             }
             else
             {
-                PictureBox.Update();
+                UpdateTargetInner();
             }
+        }
+
+        private MethodInvoker UpdateTargetInnerInvoker { get; }
+
+        private void UpdateTargetInner()
+        {
+            PictureBox.Update();
         }
 
         public override void Render(MazeGenerationResults results)
