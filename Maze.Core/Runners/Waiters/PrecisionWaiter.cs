@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Threading;
 
-namespace Maze.Core.Runners.Sleepers
+namespace Maze.Core.Runners.Waiters
 {
     sealed class PrecisionWaiter : DriftAwareWaiterBase
     {

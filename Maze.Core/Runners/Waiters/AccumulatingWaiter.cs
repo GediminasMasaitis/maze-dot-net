@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading;
 
-namespace Maze.Core.Runners.Sleepers
+namespace Maze.Core.Runners.Waiters
 {
     sealed class AccumulatingWaiter : DriftAwareWaiterBase
     {

@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 
-namespace Maze.Core.Runners.Sleepers
+namespace Maze.Core.Runners.Waiters
 {
     abstract class DriftAwareWaiterBase : IWaiter
     {

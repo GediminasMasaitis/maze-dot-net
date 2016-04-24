@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Diagnostics;
 
-namespace Maze.Core.Runners.Sleepers
+namespace Maze.Core.Runners.Waiters
 {
     interface IWaiter
     {

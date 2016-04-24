@@ -5,7 +5,7 @@ using System.Threading;
 using Maze.Core.Generators;
 using Maze.Core.Renderers;
 using Maze.Core.Results;
-using Maze.Core.Runners.Sleepers;
+using Maze.Core.Runners.Waiters;
 
 namespace Maze.Core.Runners
 {
