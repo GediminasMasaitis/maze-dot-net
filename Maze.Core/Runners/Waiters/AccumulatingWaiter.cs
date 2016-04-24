@@ -8,16 +8,16 @@ namespace Maze.Core.Runners.Sleepers
         public AccumulatingWaiter()
         {
             SyncDrift();
-            Tolerance = TimeSpan.FromTicks(Drift.Ticks * 5);
+            Thereshold = TimeSpan.FromTicks(Drift.Ticks * 5).Add(TimeSpan.FromMilliseconds(1));
         }
 
-        public TimeSpan Tolerance { get; set; }
+        public TimeSpan Thereshold { get; set; }
         public TimeSpan AccumulatedTime { get; private set; }
 
         public override void Wait(TimeSpan delay)
         {
             AccumulatedTime += delay;
-            if (AccumulatedTime > Tolerance)
+            if (AccumulatedTime > Thereshold)
             {
                 WaitInner(AccumulatedTime);
                 AccumulatedTime = TimeSpan.Zero;

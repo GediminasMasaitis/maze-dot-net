@@ -13,7 +13,7 @@ namespace Maze.Core.Runners.Sleepers
 
         public override void Wait(TimeSpan delay)
         {
-            var thereshold = TimeSpan.FromTicks(Drift.Ticks * 5);
+            var thereshold = TimeSpan.FromTicks(Drift.Ticks * 5).Add(TimeSpan.FromMilliseconds(1));
             if (delay > thereshold)
             {
                 SleepWait(delay);
