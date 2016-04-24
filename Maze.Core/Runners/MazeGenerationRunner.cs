@@ -5,6 +5,7 @@ using System.Threading;
 using Maze.Core.Generators;
 using Maze.Core.Renderers;
 using Maze.Core.Results;
+using Maze.Core.Runners.Sleepers;
 
 namespace Maze.Core.Runners
 {
@@ -45,6 +46,9 @@ namespace Maze.Core.Runners
             GeneratorStopwatch = new Stopwatch();
             RendererStopwatch = new Stopwatch();
 
+            GeneratorWaiter = new AccumulatingWaiter();
+            RendererWaiter = new AccumulatingWaiter();
+
             GeneratorThread = new Thread(RunGenerator);
             RendererThread = new Thread(RunRenderer);
             ResultsQueue = new Queue<MazeGenerationResults>();
@@ -63,6 +67,9 @@ namespace Maze.Core.Runners
         private Stopwatch GeneratorStopwatch { get; }
         private Stopwatch RendererStopwatch { get; }
 
+        private IWaiter GeneratorWaiter { get; }
+        private IWaiter RendererWaiter { get; }
+
         public bool GeneratorRunning { get; private set; }
         public bool RendererRunning { get; private set; }
 
@@ -76,26 +83,6 @@ namespace Maze.Core.Runners
 
         public Queue<MazeGenerationResults> ResultsQueue { get; set; }
 
-        private void SmartSleep(TimeSpan delay)
-        {
-            var drift = TimeSpan.FromMilliseconds(10);
-            // TODO: make it smart
-            if (delay < drift.Add(TimeSpan.FromMilliseconds(1)))
-            {
-                var sw = new Stopwatch();
-                sw.Start();
-                while (sw.Elapsed < delay)
-                {
-                    // Wait.
-                }
-            }
-            else
-            {
-                var sleepDelay = delay - drift;
-                Thread.Sleep(sleepDelay);
-            }
-        }
-
         private void RunGenerator()
         {
             while (GeneratorRunning)
@@ -103,7 +90,7 @@ namespace Maze.Core.Runners
                 var remainingTime = GeneratorMinCycleTime - GeneratorStopwatch.Elapsed;
                 if (remainingTime > TimeSpan.Zero)
                 {
-                    SmartSleep(remainingTime);
+                    GeneratorWaiter.Wait(remainingTime);
                 }
                 GeneratorStopwatch.Reset();
                 GeneratorStopwatch.Start();
@@ -160,7 +147,7 @@ namespace Maze.Core.Runners
                 var remainingTime = RendererMinCycleTime - RendererStopwatch.Elapsed;
                 if (remainingTime > TimeSpan.Zero)
                 {
-                    SmartSleep(remainingTime);
+                    RendererWaiter.Wait(remainingTime);
                 }
                 GeneratorStopwatch.Reset();
                 GeneratorStopwatch.Start();

@@ -87,6 +87,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Renderers\Text\TextFileMapRenderer.cs" />
     <Compile Include="Renderers\Text\TextMapRenderer.cs" />
+    <Compile Include="Runners\Waiters\AccumulatingWaiter.cs" />
+    <Compile Include="Runners\Waiters\DefaultWaiter.cs" />
+    <Compile Include="Runners\Waiters\DriftAwareWaiterBase.cs" />
+    <Compile Include="Runners\Waiters\IWaiter.cs" />
+    <Compile Include="Runners\Waiters\PrecisionWaiter.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

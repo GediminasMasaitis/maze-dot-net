@@ -98,7 +98,6 @@ namespace Maze.WinFormsGDI.Forms
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            new SaveForm().Show();
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -336,6 +335,11 @@ namespace Maze.WinFormsGDI.Forms
                 MapRenderer?.SyncSize();
                 LastWindowState = WindowState;
             }
+        }
+
+        private void SaveButton_Click(object sender, EventArgs e)
+        {
+            new SaveForm().Show();
         }
     }
 }
