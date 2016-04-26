@@ -72,6 +72,7 @@
     <Compile Include="Forms\SaveForm.Designer.cs">
       <DependentUpon>SaveForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SaveMethod.cs" />
     <Compile Include="GeneratorFactory.cs" />
     <Compile Include="IGeneratorFactory.cs" />
     <Compile Include="LockBitmap.cs" />
