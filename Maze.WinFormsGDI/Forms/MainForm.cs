@@ -339,7 +339,7 @@ namespace Maze.WinFormsGDI.Forms
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            new SaveForm().Show();
+            new SaveForm(Map).Show();
         }
     }
 }

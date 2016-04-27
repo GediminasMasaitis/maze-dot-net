@@ -57,19 +57,24 @@ namespace Maze.NBT.Renderers
         {
             if (results?.ResultsType == GenerationResultsType.GenerationCompleted)
             {
-                var sch = MapToSchematic();
-                sch.SaveFile(Path);
+                ForceRenderNow();
             }
         }
 
-        private Schematic MapToSchematic()
+        public void ForceRenderNow()
         {
-            var twoDimensional = Map.Dimensions == 2;
-            var threeDimensional = Map.Dimensions == 3;
+            var sch = MapToSchematic(Map);
+            sch.SaveFile(Path);
+        }
 
-            var width = (short)Map.Size[0];
-            var length = (short)Map.Size[1];
-            var height = (short)(threeDimensional ? Map.Size[2] : HeightOn2DMaps);
+        private Schematic MapToSchematic(IMap map)
+        {
+            var twoDimensional = map.Dimensions == 2;
+            var threeDimensional = map.Dimensions == 3;
+
+            var width = (short)map.Size[0];
+            var length = (short)map.Size[1];
+            var height = (short)(threeDimensional ? map.Size[2] : HeightOn2DMaps);
             if (AddFloor)
             {
                 height++;
@@ -90,10 +95,10 @@ namespace Maze.NBT.Renderers
                     if (twoDimensional)
                     {
                         point = new Point(i, j);
-                        if (Map.CellExists(point))
+                        if (map.CellExists(point))
                         {
                             fill = true;
-                            var state = Map.GetCell(point).State;
+                            var state = map.GetCell(point).State;
                             block = Blocks[state];
                         }
                     }
@@ -109,10 +114,10 @@ namespace Maze.NBT.Renderers
                         if (threeDimensional)
                         {
                             point = new Point(i,j,k);
-                            if (Map.CellExists(point))
+                            if (map.CellExists(point))
                             {
                                 fill = true;
-                                var state = Map.GetCell(point).State;
+                                var state = map.GetCell(point).State;
                                 block = Blocks[state];
                             }
                         }

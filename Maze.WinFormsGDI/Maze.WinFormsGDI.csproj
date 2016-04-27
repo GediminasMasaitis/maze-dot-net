@@ -126,6 +126,10 @@
       <Project>{5f79aa45-4a4f-490f-87a7-35deda6875e0}</Project>
       <Name>Maze.Drawing</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Maze.NBT\Maze.NBT.csproj">
+      <Project>{f2658371-d2f2-45b5-a951-835b79de95f6}</Project>
+      <Name>Maze.NBT</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
