@@ -35,38 +35,51 @@
             this.SaveMethodGroupBox = new System.Windows.Forms.GroupBox();
             this.ImageSaveMethodRB = new System.Windows.Forms.RadioButton();
             this.NBTSaveMethodRB = new System.Windows.Forms.RadioButton();
+            this.ImageSettingsTabPage = new System.Windows.Forms.TabPage();
+            this.ImageSettingsBackButton = new System.Windows.Forms.Button();
+            this.ImageSettingsNextButton = new System.Windows.Forms.Button();
+            this.ImageHeightPxLabel = new System.Windows.Forms.Label();
+            this.ImageWidthPxLabel = new System.Windows.Forms.Label();
+            this.ImageHeightLabel = new System.Windows.Forms.Label();
+            this.ImageWidthLabel = new System.Windows.Forms.Label();
+            this.ImageHeightNUD = new System.Windows.Forms.NumericUpDown();
+            this.ImageWidthNUD = new System.Windows.Forms.NumericUpDown();
             this.NBTSettingsTabPage = new System.Windows.Forms.TabPage();
-            this.NBTSettingsBackButton = new System.Windows.Forms.Button();
-            this.NBTSettingsNextButton = new System.Windows.Forms.Button();
-            this.NBTAddFloorCheckBox = new System.Windows.Forms.CheckBox();
-            this.NBTAddCeilingCheckBox = new System.Windows.Forms.CheckBox();
-            this.NBTFloorIDNUD = new System.Windows.Forms.NumericUpDown();
-            this.NBTCeilingIDNUD = new System.Windows.Forms.NumericUpDown();
-            this.NBTWallsIDNUD = new System.Windows.Forms.NumericUpDown();
-            this.NBTWallIDLabel = new System.Windows.Forms.Label();
-            this.NBTWallsDataNUD = new System.Windows.Forms.NumericUpDown();
-            this.NBTCeilingDataNUD = new System.Windows.Forms.NumericUpDown();
-            this.NBTFloorDataNUD = new System.Windows.Forms.NumericUpDown();
             this.NBTPathDataNUD = new System.Windows.Forms.NumericUpDown();
             this.NBTPathIDLabel = new System.Windows.Forms.Label();
             this.NBTPathIDNUD = new System.Windows.Forms.NumericUpDown();
+            this.NBTWallsDataNUD = new System.Windows.Forms.NumericUpDown();
+            this.NBTCeilingDataNUD = new System.Windows.Forms.NumericUpDown();
+            this.NBTFloorDataNUD = new System.Windows.Forms.NumericUpDown();
+            this.NBTWallIDLabel = new System.Windows.Forms.Label();
+            this.NBTWallsIDNUD = new System.Windows.Forms.NumericUpDown();
+            this.NBTCeilingIDNUD = new System.Windows.Forms.NumericUpDown();
+            this.NBTFloorIDNUD = new System.Windows.Forms.NumericUpDown();
+            this.NBTAddCeilingCheckBox = new System.Windows.Forms.CheckBox();
+            this.NBTAddFloorCheckBox = new System.Windows.Forms.CheckBox();
+            this.NBTSettingsBackButton = new System.Windows.Forms.Button();
+            this.NBTSettingsNextButton = new System.Windows.Forms.Button();
             this.MainTablessTabControl.SuspendLayout();
             this.SaveMethodTabPage.SuspendLayout();
             this.SaveMethodGroupBox.SuspendLayout();
+            this.ImageSettingsTabPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ImageHeightNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ImageWidthNUD)).BeginInit();
             this.NBTSettingsTabPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.NBTFloorIDNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NBTCeilingIDNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NBTWallsIDNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NBTPathDataNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NBTPathIDNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NBTWallsDataNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NBTCeilingDataNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NBTFloorDataNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NBTPathDataNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NBTPathIDNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NBTWallsIDNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NBTCeilingIDNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NBTFloorIDNUD)).BeginInit();
             this.SuspendLayout();
             // 
             // MainTablessTabControl
             // 
             this.MainTablessTabControl.Controls.Add(this.SaveMethodTabPage);
+            this.MainTablessTabControl.Controls.Add(this.ImageSettingsTabPage);
             this.MainTablessTabControl.Controls.Add(this.NBTSettingsTabPage);
             this.MainTablessTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainTablessTabControl.Location = new System.Drawing.Point(0, 0);
@@ -130,6 +143,114 @@
             this.NBTSaveMethodRB.Text = "NBT schematic";
             this.NBTSaveMethodRB.UseVisualStyleBackColor = true;
             // 
+            // ImageSettingsTabPage
+            // 
+            this.ImageSettingsTabPage.BackColor = System.Drawing.SystemColors.Control;
+            this.ImageSettingsTabPage.Controls.Add(this.ImageSettingsBackButton);
+            this.ImageSettingsTabPage.Controls.Add(this.ImageSettingsNextButton);
+            this.ImageSettingsTabPage.Controls.Add(this.ImageHeightPxLabel);
+            this.ImageSettingsTabPage.Controls.Add(this.ImageWidthPxLabel);
+            this.ImageSettingsTabPage.Controls.Add(this.ImageHeightLabel);
+            this.ImageSettingsTabPage.Controls.Add(this.ImageWidthLabel);
+            this.ImageSettingsTabPage.Controls.Add(this.ImageHeightNUD);
+            this.ImageSettingsTabPage.Controls.Add(this.ImageWidthNUD);
+            this.ImageSettingsTabPage.Location = new System.Drawing.Point(4, 22);
+            this.ImageSettingsTabPage.Name = "ImageSettingsTabPage";
+            this.ImageSettingsTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.ImageSettingsTabPage.Size = new System.Drawing.Size(276, 235);
+            this.ImageSettingsTabPage.TabIndex = 2;
+            this.ImageSettingsTabPage.Text = "Image settings";
+            // 
+            // ImageSettingsBackButton
+            // 
+            this.ImageSettingsBackButton.Location = new System.Drawing.Point(112, 212);
+            this.ImageSettingsBackButton.Name = "ImageSettingsBackButton";
+            this.ImageSettingsBackButton.Size = new System.Drawing.Size(75, 23);
+            this.ImageSettingsBackButton.TabIndex = 7;
+            this.ImageSettingsBackButton.Text = "<< Back";
+            this.ImageSettingsBackButton.UseVisualStyleBackColor = true;
+            this.ImageSettingsBackButton.Click += new System.EventHandler(this.BackToMethodSelection);
+            // 
+            // ImageSettingsNextButton
+            // 
+            this.ImageSettingsNextButton.Location = new System.Drawing.Point(193, 212);
+            this.ImageSettingsNextButton.Name = "ImageSettingsNextButton";
+            this.ImageSettingsNextButton.Size = new System.Drawing.Size(75, 23);
+            this.ImageSettingsNextButton.TabIndex = 6;
+            this.ImageSettingsNextButton.Text = "Next >>";
+            this.ImageSettingsNextButton.UseVisualStyleBackColor = true;
+            this.ImageSettingsNextButton.Click += new System.EventHandler(this.ImageSettingsNextButton_Click);
+            // 
+            // ImageHeightPxLabel
+            // 
+            this.ImageHeightPxLabel.AutoSize = true;
+            this.ImageHeightPxLabel.Location = new System.Drawing.Point(197, 43);
+            this.ImageHeightPxLabel.Name = "ImageHeightPxLabel";
+            this.ImageHeightPxLabel.Size = new System.Drawing.Size(21, 13);
+            this.ImageHeightPxLabel.TabIndex = 5;
+            this.ImageHeightPxLabel.Text = "px.";
+            // 
+            // ImageWidthPxLabel
+            // 
+            this.ImageWidthPxLabel.AutoSize = true;
+            this.ImageWidthPxLabel.Location = new System.Drawing.Point(197, 17);
+            this.ImageWidthPxLabel.Name = "ImageWidthPxLabel";
+            this.ImageWidthPxLabel.Size = new System.Drawing.Size(21, 13);
+            this.ImageWidthPxLabel.TabIndex = 4;
+            this.ImageWidthPxLabel.Text = "px.";
+            // 
+            // ImageHeightLabel
+            // 
+            this.ImageHeightLabel.AutoSize = true;
+            this.ImageHeightLabel.Location = new System.Drawing.Point(45, 43);
+            this.ImageHeightLabel.Name = "ImageHeightLabel";
+            this.ImageHeightLabel.Size = new System.Drawing.Size(41, 13);
+            this.ImageHeightLabel.TabIndex = 3;
+            this.ImageHeightLabel.Text = "Height:";
+            // 
+            // ImageWidthLabel
+            // 
+            this.ImageWidthLabel.AutoSize = true;
+            this.ImageWidthLabel.Location = new System.Drawing.Point(45, 17);
+            this.ImageWidthLabel.Name = "ImageWidthLabel";
+            this.ImageWidthLabel.Size = new System.Drawing.Size(38, 13);
+            this.ImageWidthLabel.TabIndex = 2;
+            this.ImageWidthLabel.Text = "Width:";
+            // 
+            // ImageHeightNUD
+            // 
+            this.ImageHeightNUD.Location = new System.Drawing.Point(99, 41);
+            this.ImageHeightNUD.Maximum = new decimal(new int[] {
+            50000,
+            0,
+            0,
+            0});
+            this.ImageHeightNUD.Name = "ImageHeightNUD";
+            this.ImageHeightNUD.Size = new System.Drawing.Size(92, 20);
+            this.ImageHeightNUD.TabIndex = 1;
+            this.ImageHeightNUD.Value = new decimal(new int[] {
+            800,
+            0,
+            0,
+            0});
+            // 
+            // ImageWidthNUD
+            // 
+            this.ImageWidthNUD.Location = new System.Drawing.Point(99, 15);
+            this.ImageWidthNUD.Maximum = new decimal(new int[] {
+            50000,
+            0,
+            0,
+            0});
+            this.ImageWidthNUD.Name = "ImageWidthNUD";
+            this.ImageWidthNUD.Size = new System.Drawing.Size(92, 20);
+            this.ImageWidthNUD.TabIndex = 0;
+            this.ImageWidthNUD.Value = new decimal(new int[] {
+            800,
+            0,
+            0,
+            0});
+            // 
             // NBTSettingsTabPage
             // 
             this.NBTSettingsTabPage.BackColor = System.Drawing.SystemColors.Control;
@@ -154,105 +275,38 @@
             this.NBTSettingsTabPage.TabIndex = 1;
             this.NBTSettingsTabPage.Text = "NBT Settings";
             // 
-            // NBTSettingsBackButton
+            // NBTPathDataNUD
             // 
-            this.NBTSettingsBackButton.Location = new System.Drawing.Point(112, 212);
-            this.NBTSettingsBackButton.Name = "NBTSettingsBackButton";
-            this.NBTSettingsBackButton.Size = new System.Drawing.Size(75, 23);
-            this.NBTSettingsBackButton.TabIndex = 5;
-            this.NBTSettingsBackButton.Text = "<< Back";
-            this.NBTSettingsBackButton.UseVisualStyleBackColor = true;
-            this.NBTSettingsBackButton.Click += new System.EventHandler(this.NBTSettingsBackButton_Click);
-            // 
-            // NBTSettingsNextButton
-            // 
-            this.NBTSettingsNextButton.Location = new System.Drawing.Point(193, 212);
-            this.NBTSettingsNextButton.Name = "NBTSettingsNextButton";
-            this.NBTSettingsNextButton.Size = new System.Drawing.Size(75, 23);
-            this.NBTSettingsNextButton.TabIndex = 4;
-            this.NBTSettingsNextButton.Text = "Next >>";
-            this.NBTSettingsNextButton.UseVisualStyleBackColor = true;
-            this.NBTSettingsNextButton.Click += new System.EventHandler(this.NBTSettingsNextButton_Click);
-            // 
-            // NBTAddFloorCheckBox
-            // 
-            this.NBTAddFloorCheckBox.AutoSize = true;
-            this.NBTAddFloorCheckBox.Location = new System.Drawing.Point(8, 6);
-            this.NBTAddFloorCheckBox.Name = "NBTAddFloorCheckBox";
-            this.NBTAddFloorCheckBox.Size = new System.Drawing.Size(107, 17);
-            this.NBTAddFloorCheckBox.TabIndex = 6;
-            this.NBTAddFloorCheckBox.Text = "Add floor with ID:";
-            this.NBTAddFloorCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // NBTAddCeilingCheckBox
-            // 
-            this.NBTAddCeilingCheckBox.AutoSize = true;
-            this.NBTAddCeilingCheckBox.Location = new System.Drawing.Point(8, 32);
-            this.NBTAddCeilingCheckBox.Name = "NBTAddCeilingCheckBox";
-            this.NBTAddCeilingCheckBox.Size = new System.Drawing.Size(117, 17);
-            this.NBTAddCeilingCheckBox.TabIndex = 7;
-            this.NBTAddCeilingCheckBox.Text = "Add ceiling with ID:";
-            this.NBTAddCeilingCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // NBTFloorIDNUD
-            // 
-            this.NBTFloorIDNUD.Location = new System.Drawing.Point(121, 5);
-            this.NBTFloorIDNUD.Maximum = new decimal(new int[] {
+            this.NBTPathDataNUD.Location = new System.Drawing.Point(193, 83);
+            this.NBTPathDataNUD.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
-            this.NBTFloorIDNUD.Name = "NBTFloorIDNUD";
-            this.NBTFloorIDNUD.Size = new System.Drawing.Size(66, 20);
-            this.NBTFloorIDNUD.TabIndex = 10;
-            this.NBTFloorIDNUD.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.NBTPathDataNUD.Name = "NBTPathDataNUD";
+            this.NBTPathDataNUD.Size = new System.Drawing.Size(66, 20);
+            this.NBTPathDataNUD.TabIndex = 20;
             // 
-            // NBTCeilingIDNUD
+            // NBTPathIDLabel
             // 
-            this.NBTCeilingIDNUD.Location = new System.Drawing.Point(121, 31);
-            this.NBTCeilingIDNUD.Maximum = new decimal(new int[] {
+            this.NBTPathIDLabel.AutoSize = true;
+            this.NBTPathIDLabel.Location = new System.Drawing.Point(70, 85);
+            this.NBTPathIDLabel.Name = "NBTPathIDLabel";
+            this.NBTPathIDLabel.Size = new System.Drawing.Size(46, 13);
+            this.NBTPathIDLabel.TabIndex = 19;
+            this.NBTPathIDLabel.Text = "Path ID:";
+            // 
+            // NBTPathIDNUD
+            // 
+            this.NBTPathIDNUD.Location = new System.Drawing.Point(121, 83);
+            this.NBTPathIDNUD.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
-            this.NBTCeilingIDNUD.Name = "NBTCeilingIDNUD";
-            this.NBTCeilingIDNUD.Size = new System.Drawing.Size(66, 20);
-            this.NBTCeilingIDNUD.TabIndex = 11;
-            this.NBTCeilingIDNUD.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // NBTWallsIDNUD
-            // 
-            this.NBTWallsIDNUD.Location = new System.Drawing.Point(121, 57);
-            this.NBTWallsIDNUD.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.NBTWallsIDNUD.Name = "NBTWallsIDNUD";
-            this.NBTWallsIDNUD.Size = new System.Drawing.Size(66, 20);
-            this.NBTWallsIDNUD.TabIndex = 13;
-            this.NBTWallsIDNUD.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // NBTWallIDLabel
-            // 
-            this.NBTWallIDLabel.AutoSize = true;
-            this.NBTWallIDLabel.Location = new System.Drawing.Point(70, 59);
-            this.NBTWallIDLabel.Name = "NBTWallIDLabel";
-            this.NBTWallIDLabel.Size = new System.Drawing.Size(45, 13);
-            this.NBTWallIDLabel.TabIndex = 14;
-            this.NBTWallIDLabel.Text = "Wall ID:";
+            this.NBTPathIDNUD.Name = "NBTPathIDNUD";
+            this.NBTPathIDNUD.Size = new System.Drawing.Size(66, 20);
+            this.NBTPathIDNUD.TabIndex = 18;
             // 
             // NBTWallsDataNUD
             // 
@@ -290,38 +344,106 @@
             this.NBTFloorDataNUD.Size = new System.Drawing.Size(66, 20);
             this.NBTFloorDataNUD.TabIndex = 15;
             // 
-            // NBTPathDataNUD
+            // NBTWallIDLabel
             // 
-            this.NBTPathDataNUD.Location = new System.Drawing.Point(193, 83);
-            this.NBTPathDataNUD.Maximum = new decimal(new int[] {
+            this.NBTWallIDLabel.AutoSize = true;
+            this.NBTWallIDLabel.Location = new System.Drawing.Point(70, 59);
+            this.NBTWallIDLabel.Name = "NBTWallIDLabel";
+            this.NBTWallIDLabel.Size = new System.Drawing.Size(45, 13);
+            this.NBTWallIDLabel.TabIndex = 14;
+            this.NBTWallIDLabel.Text = "Wall ID:";
+            // 
+            // NBTWallsIDNUD
+            // 
+            this.NBTWallsIDNUD.Location = new System.Drawing.Point(121, 57);
+            this.NBTWallsIDNUD.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
-            this.NBTPathDataNUD.Name = "NBTPathDataNUD";
-            this.NBTPathDataNUD.Size = new System.Drawing.Size(66, 20);
-            this.NBTPathDataNUD.TabIndex = 20;
+            this.NBTWallsIDNUD.Name = "NBTWallsIDNUD";
+            this.NBTWallsIDNUD.Size = new System.Drawing.Size(66, 20);
+            this.NBTWallsIDNUD.TabIndex = 13;
+            this.NBTWallsIDNUD.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
-            // NBTPathIDLabel
+            // NBTCeilingIDNUD
             // 
-            this.NBTPathIDLabel.AutoSize = true;
-            this.NBTPathIDLabel.Location = new System.Drawing.Point(70, 85);
-            this.NBTPathIDLabel.Name = "NBTPathIDLabel";
-            this.NBTPathIDLabel.Size = new System.Drawing.Size(46, 13);
-            this.NBTPathIDLabel.TabIndex = 19;
-            this.NBTPathIDLabel.Text = "Path ID:";
-            // 
-            // NBTPathIDNUD
-            // 
-            this.NBTPathIDNUD.Location = new System.Drawing.Point(121, 83);
-            this.NBTPathIDNUD.Maximum = new decimal(new int[] {
+            this.NBTCeilingIDNUD.Location = new System.Drawing.Point(121, 31);
+            this.NBTCeilingIDNUD.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
-            this.NBTPathIDNUD.Name = "NBTPathIDNUD";
-            this.NBTPathIDNUD.Size = new System.Drawing.Size(66, 20);
-            this.NBTPathIDNUD.TabIndex = 18;
+            this.NBTCeilingIDNUD.Name = "NBTCeilingIDNUD";
+            this.NBTCeilingIDNUD.Size = new System.Drawing.Size(66, 20);
+            this.NBTCeilingIDNUD.TabIndex = 11;
+            this.NBTCeilingIDNUD.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // NBTFloorIDNUD
+            // 
+            this.NBTFloorIDNUD.Location = new System.Drawing.Point(121, 5);
+            this.NBTFloorIDNUD.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.NBTFloorIDNUD.Name = "NBTFloorIDNUD";
+            this.NBTFloorIDNUD.Size = new System.Drawing.Size(66, 20);
+            this.NBTFloorIDNUD.TabIndex = 10;
+            this.NBTFloorIDNUD.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // NBTAddCeilingCheckBox
+            // 
+            this.NBTAddCeilingCheckBox.AutoSize = true;
+            this.NBTAddCeilingCheckBox.Location = new System.Drawing.Point(8, 32);
+            this.NBTAddCeilingCheckBox.Name = "NBTAddCeilingCheckBox";
+            this.NBTAddCeilingCheckBox.Size = new System.Drawing.Size(117, 17);
+            this.NBTAddCeilingCheckBox.TabIndex = 7;
+            this.NBTAddCeilingCheckBox.Text = "Add ceiling with ID:";
+            this.NBTAddCeilingCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // NBTAddFloorCheckBox
+            // 
+            this.NBTAddFloorCheckBox.AutoSize = true;
+            this.NBTAddFloorCheckBox.Location = new System.Drawing.Point(8, 6);
+            this.NBTAddFloorCheckBox.Name = "NBTAddFloorCheckBox";
+            this.NBTAddFloorCheckBox.Size = new System.Drawing.Size(107, 17);
+            this.NBTAddFloorCheckBox.TabIndex = 6;
+            this.NBTAddFloorCheckBox.Text = "Add floor with ID:";
+            this.NBTAddFloorCheckBox.UseVisualStyleBackColor = true;
+            this.NBTAddFloorCheckBox.CheckedChanged += new System.EventHandler(this.SyncNBTSettings);
+            // 
+            // NBTSettingsBackButton
+            // 
+            this.NBTSettingsBackButton.Location = new System.Drawing.Point(112, 212);
+            this.NBTSettingsBackButton.Name = "NBTSettingsBackButton";
+            this.NBTSettingsBackButton.Size = new System.Drawing.Size(75, 23);
+            this.NBTSettingsBackButton.TabIndex = 5;
+            this.NBTSettingsBackButton.Text = "<< Back";
+            this.NBTSettingsBackButton.UseVisualStyleBackColor = true;
+            this.NBTSettingsBackButton.Click += new System.EventHandler(this.BackToMethodSelection);
+            // 
+            // NBTSettingsNextButton
+            // 
+            this.NBTSettingsNextButton.Location = new System.Drawing.Point(193, 212);
+            this.NBTSettingsNextButton.Name = "NBTSettingsNextButton";
+            this.NBTSettingsNextButton.Size = new System.Drawing.Size(75, 23);
+            this.NBTSettingsNextButton.TabIndex = 4;
+            this.NBTSettingsNextButton.Text = "Next >>";
+            this.NBTSettingsNextButton.UseVisualStyleBackColor = true;
+            this.NBTSettingsNextButton.Click += new System.EventHandler(this.NBTSettingsNextButton_Click);
             // 
             // SaveForm
             // 
@@ -335,16 +457,20 @@
             this.SaveMethodTabPage.ResumeLayout(false);
             this.SaveMethodGroupBox.ResumeLayout(false);
             this.SaveMethodGroupBox.PerformLayout();
+            this.ImageSettingsTabPage.ResumeLayout(false);
+            this.ImageSettingsTabPage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ImageHeightNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ImageWidthNUD)).EndInit();
             this.NBTSettingsTabPage.ResumeLayout(false);
             this.NBTSettingsTabPage.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.NBTFloorIDNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NBTCeilingIDNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NBTWallsIDNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NBTPathDataNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NBTPathIDNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NBTWallsDataNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NBTCeilingDataNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NBTFloorDataNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NBTPathDataNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NBTPathIDNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NBTWallsIDNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NBTCeilingIDNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NBTFloorIDNUD)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -373,5 +499,14 @@
         private System.Windows.Forms.NumericUpDown NBTCeilingDataNUD;
         private System.Windows.Forms.NumericUpDown NBTFloorDataNUD;
         private System.Windows.Forms.Label NBTWallIDLabel;
+        private System.Windows.Forms.TabPage ImageSettingsTabPage;
+        private System.Windows.Forms.Button ImageSettingsBackButton;
+        private System.Windows.Forms.Button ImageSettingsNextButton;
+        private System.Windows.Forms.Label ImageHeightPxLabel;
+        private System.Windows.Forms.Label ImageWidthPxLabel;
+        private System.Windows.Forms.Label ImageHeightLabel;
+        private System.Windows.Forms.Label ImageWidthLabel;
+        private System.Windows.Forms.NumericUpDown ImageHeightNUD;
+        private System.Windows.Forms.NumericUpDown ImageWidthNUD;
     }
 }

@@ -46,8 +46,17 @@ namespace Maze.Drawing.Renderers
             base.Render(results);
             if (results.ResultsType == GenerationResultsType.GenerationCompleted && SaveImageOnCompletion)
             {
-                Image.Save(ImagePath);
+                SaveImage(false);
             }
+        }
+
+        public void SaveImage(bool rerender = true)
+        {
+            if (rerender)
+            {
+                RerenderMap();
+            }
+            Image.Save(ImagePath);
         }
 
         private void SaveImage(Image image, string path)

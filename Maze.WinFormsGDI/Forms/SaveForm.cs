@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Maze.Core.Cells;
 using Maze.Core.Maps;
+using Maze.Drawing.Renderers;
 using Maze.NBT.Common;
 using Maze.NBT.Renderers;
 
@@ -45,6 +46,7 @@ namespace Maze.WinFormsGDI.Forms
             switch (CurrentSaveMethod)
             {
                 case SaveMethod.Image:
+                    MainTablessTabControl.SelectedTab = ImageSettingsTabPage;
                     break;
                 case SaveMethod.NBT:
                     MainTablessTabControl.SelectedTab = NBTSettingsTabPage;
@@ -54,7 +56,7 @@ namespace Maze.WinFormsGDI.Forms
             }
         }
 
-        private void NBTSettingsBackButton_Click(object sender, EventArgs e)
+        private void BackToMethodSelection(object sender = null, EventArgs e = null)
         {
             MainTablessTabControl.SelectedTab = SaveMethodTabPage;
         }
@@ -63,7 +65,7 @@ namespace Maze.WinFormsGDI.Forms
         {
             using (var dialog = new SaveFileDialog())
             {
-                dialog.Filter = @"NBT Schematic Files (*.schematic)|*.schematic|All Files|*.*";
+                dialog.Filter = @"NBT Schematic (*.schematic)|*.schematic|All Files|*.*";
                 if (dialog.ShowDialog() != DialogResult.OK)
                 {
                     return;
@@ -76,7 +78,35 @@ namespace Maze.WinFormsGDI.Forms
                 renderer.Blocks[CellState.Empty] = new SchematicBlock((byte)NBTPathIDNUD.Value, (byte)NBTPathDataNUD.Value);
                 renderer.Blocks[CellState.Filled] = new SchematicBlock((byte)NBTWallsIDNUD.Value, (byte)NBTWallsDataNUD.Value);
                 renderer.ForceRenderNow();
+                Close();
             }
         }
+
+        private void ImageSettingsNextButton_Click(object sender, EventArgs e)
+        {
+            using (var dialog = new SaveFileDialog())
+            {
+                dialog.Filter = @"JPG (*.jpg)|*.jpg|PNG (*.png)|*.png";
+                if (dialog.ShowDialog() != DialogResult.OK)
+                {
+                    return;
+                }
+
+                var bitmap = new Bitmap((int)ImageWidthNUD.Value, (int)ImageHeightNUD.Value);
+                var renderer = new ImageMapRenderer(Map, bitmap);
+                renderer.ImagePath = dialog.FileName;
+                renderer.SaveImage();
+                Close();
+            }
+        }
+
+        private void SyncNBTSettings(object sender = null, EventArgs e = null)
+        {
+            NBTFloorIDNUD.Enabled = NBTAddFloorCheckBox.Checked;
+            NBTFloorDataNUD.Enabled = NBTAddFloorCheckBox.Checked;
+            NBTCeilingIDNUD.Enabled = NBTAddCeilingCheckBox.Checked;
+            NBTCeilingDataNUD.Enabled = NBTAddCeilingCheckBox.Checked;
+        }
+
     }
 }
