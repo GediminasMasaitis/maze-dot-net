@@ -41,10 +41,10 @@ namespace Maze.Drawing.Renderers
         private GifImage GifImage { get; set; }
         private IList<ColoredPolygon> Polygons { get; set; }
 
-        public override void Render(MazeGenerationResults results)
+        public override void RenderStep(MazeGenerationResults results)
         {
             Polygons = new List<ColoredPolygon>();
-            base.Render(results);
+            base.RenderStep(results);
             var allPoints = Polygons.SelectMany(x => x.Points).ToArray();
             var commonPolygon = new Polygon(allPoints);
             var boundingRectangle = commonPolygon.GetBoundingRectangle();

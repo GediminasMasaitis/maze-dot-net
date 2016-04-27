@@ -9,7 +9,7 @@ using Maze.NBT.Common;
 
 namespace Maze.NBT.Renderers
 {
-    public class NBTMapRenderer : IMapRenderer
+    public class NBTMapRenderer : IInstantaneousMapRenderer
     {
         public NBTMapRenderer(IMap map, string path)
         {
@@ -53,15 +53,7 @@ namespace Maze.NBT.Renderers
         public SchematicBlock FloorBlock { get; set; }
         public SchematicBlock CeilingBlock { get; set; }
 
-        public void Render(MazeGenerationResults results)
-        {
-            if (results?.ResultsType == GenerationResultsType.GenerationCompleted)
-            {
-                ForceRenderNow();
-            }
-        }
-
-        public void ForceRenderNow()
+        public void RenderMap()
         {
             var sch = MapToSchematic(Map);
             sch.SaveFile(Path);

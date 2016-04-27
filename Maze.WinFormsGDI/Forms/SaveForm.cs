@@ -77,7 +77,7 @@ namespace Maze.WinFormsGDI.Forms
                 renderer.CeilingBlock = new SchematicBlock((byte)NBTCeilingIDNUD.Value, (byte)NBTCeilingDataNUD.Value);
                 renderer.Blocks[CellState.Empty] = new SchematicBlock((byte)NBTPathIDNUD.Value, (byte)NBTPathDataNUD.Value);
                 renderer.Blocks[CellState.Filled] = new SchematicBlock((byte)NBTWallsIDNUD.Value, (byte)NBTWallsDataNUD.Value);
-                renderer.ForceRenderNow();
+                renderer.RenderMap();
                 Close();
             }
         }

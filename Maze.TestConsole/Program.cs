@@ -10,6 +10,7 @@ using Maze.Core.Generators.GrowingTree;
 using Maze.Core.Maps;
 using Maze.Core.Maps.Decorators;
 using Maze.Core.Renderers;
+using Maze.Core.Renderers.Decorators;
 using Maze.Core.Renderers.Text;
 using Maze.Core.Results;
 using Maze.Core.Runners;
@@ -46,12 +47,12 @@ namespace Maze.TestConsole
             //var generator = innerGenerator;
 
             var renderer = new ConsoleMapRenderer(displayMap, true, false);
-
+            var fullRenderer = new InstantAsFullMapRendererDecorator(renderer, true);
             var generatorDelay = 100d;
             var rendererDelay = 1000d / 60d;
             var generatorDelaySpan = TimeSpan.FromTicks((long)(generatorDelay * TimeSpan.TicksPerMillisecond));
             var rendererDelaySpan = TimeSpan.FromTicks((long)(rendererDelay * TimeSpan.TicksPerMillisecond));
-            var runner = new MazeGenerationRunner(generator, renderer, generatorDelaySpan, rendererDelaySpan);
+            var runner = new MazeGenerationRunner(generator, fullRenderer, generatorDelaySpan, rendererDelaySpan);
 
             var generatorSteps = 0;
             var rendererSteps = 0;

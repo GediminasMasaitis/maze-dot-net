@@ -30,7 +30,7 @@ namespace Maze.Drawing.Renderers
                 TargetSize = Image.Size.ToMazePoint();
                 if (Map != null)
                 {
-                    RerenderMap(true);
+                    RenderMap(true);
                 }
             }
         }
@@ -41,9 +41,9 @@ namespace Maze.Drawing.Renderers
             return graphics;
         }
 
-        public override void Render(MazeGenerationResults results)
+        public override void RenderStep(MazeGenerationResults results)
         {
-            base.Render(results);
+            base.RenderStep(results);
             if (results.ResultsType == GenerationResultsType.GenerationCompleted && SaveImageOnCompletion)
             {
                 SaveImage(false);
@@ -54,7 +54,7 @@ namespace Maze.Drawing.Renderers
         {
             if (rerender)
             {
-                RerenderMap();
+                RenderMap();
             }
             Image.Save(ImagePath);
         }

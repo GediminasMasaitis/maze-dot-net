@@ -6,14 +6,14 @@ using Maze.Core.Results;
 
 namespace Maze.Core.Renderers
 {
-    public class CompositeMapRenderer : IMapRenderer
+    public class CompositeMapRenderer : IFullMapRenderer
     {
-        public CompositeMapRenderer(params IMapRenderer[] renderers)
+        public CompositeMapRenderer(params IFullMapRenderer[] renderers)
         {
             Renderers = renderers;
         }
 
-        public IMapRenderer[] Renderers { get; set; }
+        public IFullMapRenderer[] Renderers { get; set; }
         public void Dispose()
         {
             foreach (var renderer in Renderers)
@@ -22,11 +22,19 @@ namespace Maze.Core.Renderers
             }
         }
 
-        public void Render(MazeGenerationResults results)
+        public void RenderMap()
         {
             foreach (var renderer in Renderers)
             {
-                renderer?.Render(results);
+                renderer?.RenderMap();
+            }
+        }
+
+        public void RenderStep(MazeGenerationResults results)
+        {
+            foreach (var renderer in Renderers)
+            {
+                renderer?.RenderStep(results);
             }
         }
     }

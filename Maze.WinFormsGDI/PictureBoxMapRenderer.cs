@@ -68,9 +68,9 @@ namespace Maze.WinFormsGDI
             PictureBox.Update();
         }
 
-        public override void Render(MazeGenerationResults results)
+        public override void RenderStep(MazeGenerationResults results)
         {
-            base.Render(results);
+            base.RenderStep(results);
             UpdateTarget();
         }
         

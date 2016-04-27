@@ -11,22 +11,22 @@ namespace Maze.Core.Runners
 {
     public class MazeGenerationRunner : MazeGenerationRunner<IMazeGenerator>
     {
-        public MazeGenerationRunner(IMazeGenerator mazeGenerator, IMapRenderer mapRenderer, TimeSpan? generatorMinCycleTime = null, TimeSpan? rendererMinCycleTime = null, bool bulkRender = true) : base(mazeGenerator, mapRenderer, generatorMinCycleTime, rendererMinCycleTime, bulkRender)
+        public MazeGenerationRunner(IMazeGenerator mazeGenerator, IFullMapRenderer mapRenderer, TimeSpan? generatorMinCycleTime = null, TimeSpan? rendererMinCycleTime = null, bool bulkRender = true) : base(mazeGenerator, mapRenderer, generatorMinCycleTime, rendererMinCycleTime, bulkRender)
         {
         }
     }
 
-    public class MazeGenerationRunner<TMazeGenerator> : MazeGenerationRunner<TMazeGenerator, IMapRenderer>
+    public class MazeGenerationRunner<TMazeGenerator> : MazeGenerationRunner<TMazeGenerator, IFullMapRenderer>
         where TMazeGenerator : IMazeGenerator
     {
-        public MazeGenerationRunner(TMazeGenerator mazeGenerator, IMapRenderer mapRenderer, TimeSpan? generatorMinCycleTime = null, TimeSpan? rendererMinCycleTime = null, bool bulkRender = true) : base(mazeGenerator, mapRenderer, generatorMinCycleTime, rendererMinCycleTime, bulkRender)
+        public MazeGenerationRunner(TMazeGenerator mazeGenerator, IFullMapRenderer mapRenderer, TimeSpan? generatorMinCycleTime = null, TimeSpan? rendererMinCycleTime = null, bool bulkRender = true) : base(mazeGenerator, mapRenderer, generatorMinCycleTime, rendererMinCycleTime, bulkRender)
         {
         }
     }
 
     public class MazeGenerationRunner<TMazeGenerator, TMapRenderer>
         where TMazeGenerator: IMazeGenerator
-        where TMapRenderer: IMapRenderer
+        where TMapRenderer: IFullMapRenderer
     {
         public MazeGenerationRunner(TMazeGenerator mazeGenerator, TMapRenderer mapRenderer, TimeSpan? generatorMinCycleTime = null, TimeSpan? rendererMinCycleTime = null, bool bulkRender = true)
         {
@@ -170,7 +170,7 @@ namespace Maze.Core.Runners
 
         public virtual void Render(MazeGenerationResults results)
         {
-            MapRenderer.Render(results);
+            MapRenderer.RenderStep(results);
         }
 
         public void Start()

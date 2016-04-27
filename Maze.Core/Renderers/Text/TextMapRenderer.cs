@@ -9,7 +9,7 @@ using Maze.Core.Results;
 
 namespace Maze.Core.Renderers.Text
 {
-    public abstract class TextMapRenderer : IMapRenderer
+    public abstract class TextMapRenderer : IInstantaneousMapRenderer
     {
         public TextMapRenderer(IMap map, bool shouldClear)
         {
@@ -31,32 +31,32 @@ namespace Maze.Core.Renderers.Text
         public IDictionary<CellDisplayState, string> DisplayChars { get; set; }
         public virtual bool Bulk { get; set; }
 
-        public void Render(MazeGenerationResults results)
+        public void RenderStep(MazeGenerationResults results)
         {
-            RenderMap(Map);
+            RenderMap();
         }        
 
-        private void RenderMap(IMap map)
+        public void RenderMap()
         {
-            if (map.Infinite)
+            if (Map.Infinite)
             {
-                throw new IncorrectFinityException(false, map.Infinite);
+                throw new IncorrectFinityException(false, Map.Infinite);
             }
-            if (map.Dimensions != 2 && map.Dimensions != 3)
+            if (Map.Dimensions != 2 && Map.Dimensions != 3)
             {
-                throw new IncorrectDimensionsException(new[] { 2, 3 }, map.Dimensions);
+                throw new IncorrectDimensionsException(new[] { 2, 3 }, Map.Dimensions);
             }
             if (ShouldClear)
             {
                 Clear();
             }
             var builder = new StringBuilder();
-            for (var i = 0; i < map.Size[0]; i++)
+            for (var i = 0; i < Map.Size[0]; i++)
             {
-                for (var j = 0; j < map.Size[1]; j++)
+                for (var j = 0; j < Map.Size[1]; j++)
                 {
                     var point = Map.Dimensions == 2 ? new Point(i, j) : new Point(i, j, Layer);
-                    var cell = map.GetCell(point);
+                    var cell = Map.GetCell(point);
                     var state = cell.DisplayState;
                     var ch = DisplayChars[state];
                     if (Bulk)

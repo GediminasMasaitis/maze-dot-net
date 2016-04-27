@@ -65,9 +65,12 @@
     <Compile Include="Maps\InfiniteMap.cs" />
     <Compile Include="Maps\InfiniteMapDecorator.cs" />
     <Compile Include="Renderers\CompositeMapRenderer.cs" />
+    <Compile Include="Renderers\Decorators\InstantAsFullMapRendererDecorator.cs" />
+    <Compile Include="Renderers\IContinuousMapRenderer.cs" />
+    <Compile Include="Renderers\IInstantaneousMapRenderer.cs" />
     <Compile Include="Renderers\Text\ConsoleMapRenderer.cs" />
     <Compile Include="Renderers\Text\DebugMapRenderer.cs" />
-    <Compile Include="Renderers\IMapRenderer.cs" />
+    <Compile Include="Renderers\IFullMapRenderer.cs" />
     <Compile Include="Exceptions\IncorrectDimensionsException.cs" />
     <Compile Include="Exceptions\IncorrectFinityException.cs" />
     <Compile Include="Results\MazeGenerationResult.cs" />

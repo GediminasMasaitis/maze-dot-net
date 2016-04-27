@@ -19,14 +19,14 @@ namespace Maze.WinFormsGDI
 
         private void ControlOnPaint(object sender, PaintEventArgs paintEventArgs)
         {
-            RerenderMap();
+            RenderMap();
         }
 
         private object RefreshSynchro { get; }
         private Control Control { get; }
         private IAsyncResult RefreshAsyncResult { get; set; }
 
-        public override void Render(MazeGenerationResults results)
+        public override void RenderStep(MazeGenerationResults results)
         {
             if (RefreshAsyncResult?.IsCompleted ?? true)
             {

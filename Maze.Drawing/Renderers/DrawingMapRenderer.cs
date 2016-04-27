@@ -11,7 +11,7 @@ using Point = Maze.Core.Common.Point;
 
 namespace Maze.Drawing.Renderers
 {
-    public abstract class DrawingMapRenderer : IMapRenderer
+    public abstract class DrawingMapRenderer : IFullMapRenderer
     {
         public DrawingMapRenderer(IMap map, Point targetSize)
         {
@@ -124,11 +124,11 @@ namespace Maze.Drawing.Renderers
             OffsetY = (TargetSize[1] - TotalHeight) / 2;
         }
 
-        public virtual void Render(MazeGenerationResults results)
+        public virtual void RenderStep(MazeGenerationResults results)
         {
             if (ForceRerender)
             {
-                RerenderMap();
+                RenderMap();
             }
             else
             {
@@ -136,13 +136,18 @@ namespace Maze.Drawing.Renderers
             }
         }
 
-        protected void RerenderMap(bool disableCacheReading = false)
+        public void RenderMap()
+        {
+            RenderMap(false);
+        }
+
+        public void RenderMap(bool disableCacheReading)
         {
             for (var i = 0; i < Map.Size[0]; i++)
             {
                 for (var j = 0; j < Map.Size[1]; j++)
                 {
-                    var point = new Point(i,j);
+                    var point = new Point(i, j);
                     var cell = Map.GetCell(point);
                     var displayState = cell.DisplayState;
                     var color = Colors[displayState];

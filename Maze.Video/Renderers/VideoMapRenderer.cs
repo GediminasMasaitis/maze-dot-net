@@ -16,9 +16,9 @@ namespace Maze.Video.Renderers
 
         private VideoFileWriter Video { get; }
 
-        public override void Render(MazeGenerationResults results)
+        public override void RenderStep(MazeGenerationResults results)
         {
-            base.Render(results);
+            base.RenderStep(results);
             // TODO: fix ugly casting later.
             var bmp = (Bitmap) Image;
             Video.WriteVideoFrame(bmp);
