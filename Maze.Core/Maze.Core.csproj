@@ -67,7 +67,7 @@
     <Compile Include="Renderers\CompositeMapRenderer.cs" />
     <Compile Include="Renderers\Decorators\InstantAsFullMapRendererDecorator.cs" />
     <Compile Include="Renderers\IContinuousMapRenderer.cs" />
-    <Compile Include="Renderers\IInstantaneousMapRenderer.cs" />
+    <Compile Include="Renderers\IInstantMapRenderer.cs" />
     <Compile Include="Renderers\Text\ConsoleMapRenderer.cs" />
     <Compile Include="Renderers\Text\DebugMapRenderer.cs" />
     <Compile Include="Renderers\IFullMapRenderer.cs" />

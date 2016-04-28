@@ -2,7 +2,7 @@
 
 namespace Maze.Core.Renderers
 {
-    public interface IFullMapRenderer: IContinuousMapRenderer, IInstantaneousMapRenderer
+    public interface IFullMapRenderer: IContinuousMapRenderer, IInstantMapRenderer
     {
         
     }

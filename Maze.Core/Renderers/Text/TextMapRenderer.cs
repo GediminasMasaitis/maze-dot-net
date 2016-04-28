@@ -9,7 +9,7 @@ using Maze.Core.Results;
 
 namespace Maze.Core.Renderers.Text
 {
-    public abstract class TextMapRenderer : IInstantaneousMapRenderer
+    public abstract class TextMapRenderer : IInstantMapRenderer
     {
         public TextMapRenderer(IMap map, bool shouldClear)
         {

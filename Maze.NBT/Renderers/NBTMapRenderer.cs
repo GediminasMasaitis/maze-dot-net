@@ -9,7 +9,7 @@ using Maze.NBT.Common;
 
 namespace Maze.NBT.Renderers
 {
-    public class NBTMapRenderer : IInstantaneousMapRenderer
+    public class NBTMapRenderer : IInstantMapRenderer
     {
         public NBTMapRenderer(IMap map, string path)
         {
