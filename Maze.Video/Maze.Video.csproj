@@ -51,7 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Maze.Core\Maze.Core.csproj">
-      <Project>{ed62d7ac-6e2b-4076-80ed-343f4d1c6f14}</Project>
+      <Project>{be6dcae2-a743-4b99-b4b0-5e29d4cf318f}</Project>
       <Name>Maze.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Maze.Drawing\Maze.Drawing.csproj">

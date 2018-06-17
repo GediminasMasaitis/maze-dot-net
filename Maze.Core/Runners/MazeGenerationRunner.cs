@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
+using System.Threading.Tasks;
 using Maze.Core.Generators;
 using Maze.Core.Renderers;
 using Maze.Core.Results;
@@ -85,6 +86,7 @@ namespace Maze.Core.Runners
 
         private void RunGenerator()
         {
+            var task = new Task(() => { });
             while (GeneratorRunning)
             {
                 var remainingTime = GeneratorMinCycleTime - GeneratorStopwatch.Elapsed;

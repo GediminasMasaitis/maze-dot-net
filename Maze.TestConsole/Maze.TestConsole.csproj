@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Maze.TestConsole</RootNamespace>
     <AssemblyName>Maze.TestConsole</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -43,6 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConsoleMapRenderer.cs" />
+    <Compile Include="DebugMapRenderer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User32Imports.cs" />
@@ -52,11 +55,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Maze.Core\Maze.Core.csproj">
-      <Project>{ed62d7ac-6e2b-4076-80ed-343f4d1c6f14}</Project>
+      <Project>{be6dcae2-a743-4b99-b4b0-5e29d4cf318f}</Project>
       <Name>Maze.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Maze.NBT\Maze.NBT.csproj">
-      <Project>{f2658371-d2f2-45b5-a951-835b79de95f6}</Project>
+      <Project>{740a0207-ada9-494a-a0fb-5e63710f5c18}</Project>
       <Name>Maze.NBT</Name>
     </ProjectReference>
   </ItemGroup>
