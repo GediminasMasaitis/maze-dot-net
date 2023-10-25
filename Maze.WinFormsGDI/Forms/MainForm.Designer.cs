@@ -30,867 +30,910 @@ namespace Maze.WinFormsGDI.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.MainPictureBox = new System.Windows.Forms.PictureBox();
-            this.GenerateButton = new System.Windows.Forms.Button();
-            this.AlgorithmComboBox = new System.Windows.Forms.ComboBox();
-            this.GrowingTreeBreadthLabel = new System.Windows.Forms.Label();
-            this.AlgorithmLabel = new System.Windows.Forms.Label();
-            this.WidthLabel = new System.Windows.Forms.Label();
-            this.WidthTextBox = new System.Windows.Forms.TextBox();
-            this.HeightTextBox = new System.Windows.Forms.TextBox();
-            this.HeightLabel = new System.Windows.Forms.Label();
-            this.GeneratorDelayLabel = new System.Windows.Forms.Label();
-            this.RendererDelayLabel = new System.Windows.Forms.Label();
-            this.InfiniteMapCheckBox = new System.Windows.Forms.CheckBox();
-            this.TrackChangesCheckBox = new System.Windows.Forms.CheckBox();
-            this.GrowingTreeGroupBox = new System.Windows.Forms.GroupBox();
-            this.GrowingTreeSparsenessNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.GrowingTreeSparsenessLabel = new System.Windows.Forms.Label();
-            this.GrowingTreeTreesNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.GrowingTreeTreesLabel = new System.Windows.Forms.Label();
-            this.GrowingTreeRunLogarithmicTrackBar = new Maze.WinFormsGDI.Controls.LogarithmicTrackBar();
-            this.GrowingTreeRunLabel = new System.Windows.Forms.Label();
-            this.GrowingTreeBraidLogarithmicTrackBar = new Maze.WinFormsGDI.Controls.LogarithmicTrackBar();
-            this.GrowingTreeBraidLabel = new System.Windows.Forms.Label();
-            this.BiasesGroupBox = new System.Windows.Forms.GroupBox();
-            this.GrowingTreeResetBiasesButton = new System.Windows.Forms.Button();
-            this.arrowCrossShape1 = new Maze.WinFormsGDI.Controls.ArrowCrossShape();
-            this.GrowingTreeBiasDownLogarithmicTrackBar = new Maze.WinFormsGDI.Controls.LogarithmicTrackBar();
-            this.GrowingTreeBiasRightLogarithmicTrackBar = new Maze.WinFormsGDI.Controls.LogarithmicTrackBar();
-            this.GrowingTreeBiasLeftLogarithmicTrackBar = new Maze.WinFormsGDI.Controls.LogarithmicTrackBar();
-            this.GrowingTreeBiasUpLogarithmicTrackBar = new Maze.WinFormsGDI.Controls.LogarithmicTrackBar();
-            this.GrowingTreeBreadthLogarithmicTrackBar = new Maze.WinFormsGDI.Controls.LogarithmicTrackBar();
-            this.RecursiveDivisionGroupBox = new System.Windows.Forms.GroupBox();
-            this.RecursiveDivisionShowInitializationStepCheckBox = new System.Windows.Forms.CheckBox();
-            this.RecursiveDivisionProcessSingleCellBlocksCheckBox = new System.Windows.Forms.CheckBox();
-            this.RecursiveDivisionReverseOrderLabel = new System.Windows.Forms.Label();
-            this.RecursiveDivisionReverseOrderLTB = new Maze.WinFormsGDI.Controls.LogarithmicTrackBar();
-            this.RecursiveDivisionProportionalSplitsLabel = new System.Windows.Forms.Label();
-            this.RecursiveDivisionProportionalSplitsLTB = new Maze.WinFormsGDI.Controls.LogarithmicTrackBar();
-            this.RecursiveDivisionSplitLocationLabel = new System.Windows.Forms.Label();
-            this.RecursiveDivisionSplitLocationLTB = new Maze.WinFormsGDI.Controls.LogarithmicTrackBar();
-            this.RecursiveDivisionFixedSplitsLabel = new System.Windows.Forms.Label();
-            this.RecursiveDivisionFixedSplitsLTB = new Maze.WinFormsGDI.Controls.LogarithmicTrackBar();
-            this.RecursiveDivisionRecursionLocationLabel = new System.Windows.Forms.Label();
-            this.RecursiveDivisionRecursionLocationLTB = new Maze.WinFormsGDI.Controls.LogarithmicTrackBar();
-            this.RecursiveDivisionFixedRecursionLabel = new System.Windows.Forms.Label();
-            this.RecursiveDivisionFixedRecursionLTB = new Maze.WinFormsGDI.Controls.LogarithmicTrackBar();
-            this.ShowAdvancedSettingsCheckBox = new System.Windows.Forms.CheckBox();
-            this.KruskalGroupBox = new System.Windows.Forms.GroupBox();
-            this.KruskalShowAllWallCheckingCheckBox = new System.Windows.Forms.CheckBox();
-            this.KruskalBraidLTB = new Maze.WinFormsGDI.Controls.LogarithmicTrackBar();
-            this.KruskalBraidLabel = new System.Windows.Forms.Label();
-            this.BinaryTreeGroupBox = new System.Windows.Forms.GroupBox();
-            this.BinaryTreeBiasLTB = new Maze.WinFormsGDI.Controls.LogarithmicTrackBar();
-            this.BinaryTreeBiasLabel = new System.Windows.Forms.Label();
-            this.BinaryTreeSidewinderLTB = new Maze.WinFormsGDI.Controls.LogarithmicTrackBar();
-            this.BinaryTreeSidewinderLabel = new System.Windows.Forms.Label();
-            this.SaveButton = new System.Windows.Forms.Button();
-            this.RendererDelayLogarithmicTrackBar = new Maze.WinFormsGDI.Controls.LogarithmicTrackBar();
-            this.GeneratorDelayLogarithmicTrackBar = new Maze.WinFormsGDI.Controls.LogarithmicTrackBar();
-            ((System.ComponentModel.ISupportInitialize)(this.MainPictureBox)).BeginInit();
-            this.GrowingTreeGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GrowingTreeSparsenessNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GrowingTreeTreesNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GrowingTreeRunLogarithmicTrackBar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GrowingTreeBraidLogarithmicTrackBar)).BeginInit();
-            this.BiasesGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GrowingTreeBiasDownLogarithmicTrackBar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GrowingTreeBiasRightLogarithmicTrackBar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GrowingTreeBiasLeftLogarithmicTrackBar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GrowingTreeBiasUpLogarithmicTrackBar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GrowingTreeBreadthLogarithmicTrackBar)).BeginInit();
-            this.RecursiveDivisionGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.RecursiveDivisionReverseOrderLTB)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RecursiveDivisionProportionalSplitsLTB)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RecursiveDivisionSplitLocationLTB)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RecursiveDivisionFixedSplitsLTB)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RecursiveDivisionRecursionLocationLTB)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RecursiveDivisionFixedRecursionLTB)).BeginInit();
-            this.KruskalGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.KruskalBraidLTB)).BeginInit();
-            this.BinaryTreeGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.BinaryTreeBiasLTB)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BinaryTreeSidewinderLTB)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RendererDelayLogarithmicTrackBar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GeneratorDelayLogarithmicTrackBar)).BeginInit();
-            this.SuspendLayout();
+            MainPictureBox = new System.Windows.Forms.PictureBox();
+            GenerateButton = new System.Windows.Forms.Button();
+            AlgorithmComboBox = new System.Windows.Forms.ComboBox();
+            GrowingTreeBreadthLabel = new System.Windows.Forms.Label();
+            AlgorithmLabel = new System.Windows.Forms.Label();
+            WidthLabel = new System.Windows.Forms.Label();
+            WidthTextBox = new System.Windows.Forms.TextBox();
+            HeightTextBox = new System.Windows.Forms.TextBox();
+            HeightLabel = new System.Windows.Forms.Label();
+            GeneratorDelayLabel = new System.Windows.Forms.Label();
+            RendererDelayLabel = new System.Windows.Forms.Label();
+            InfiniteMapCheckBox = new System.Windows.Forms.CheckBox();
+            TrackChangesCheckBox = new System.Windows.Forms.CheckBox();
+            GrowingTreeGroupBox = new System.Windows.Forms.GroupBox();
+            GrowingTreeSparsenessNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            GrowingTreeSparsenessLabel = new System.Windows.Forms.Label();
+            GrowingTreeTreesNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            GrowingTreeTreesLabel = new System.Windows.Forms.Label();
+            GrowingTreeRunLogarithmicTrackBar = new LogarithmicTrackBar();
+            GrowingTreeRunLabel = new System.Windows.Forms.Label();
+            GrowingTreeBraidLogarithmicTrackBar = new LogarithmicTrackBar();
+            GrowingTreeBraidLabel = new System.Windows.Forms.Label();
+            BiasesGroupBox = new System.Windows.Forms.GroupBox();
+            GrowingTreeResetBiasesButton = new System.Windows.Forms.Button();
+            arrowCrossShape1 = new ArrowCrossShape();
+            GrowingTreeBiasDownLogarithmicTrackBar = new LogarithmicTrackBar();
+            GrowingTreeBiasRightLogarithmicTrackBar = new LogarithmicTrackBar();
+            GrowingTreeBiasLeftLogarithmicTrackBar = new LogarithmicTrackBar();
+            GrowingTreeBiasUpLogarithmicTrackBar = new LogarithmicTrackBar();
+            GrowingTreeBreadthLogarithmicTrackBar = new LogarithmicTrackBar();
+            RecursiveDivisionGroupBox = new System.Windows.Forms.GroupBox();
+            RecursiveDivisionShowInitializationStepCheckBox = new System.Windows.Forms.CheckBox();
+            RecursiveDivisionProcessSingleCellBlocksCheckBox = new System.Windows.Forms.CheckBox();
+            RecursiveDivisionReverseOrderLabel = new System.Windows.Forms.Label();
+            RecursiveDivisionReverseOrderLTB = new LogarithmicTrackBar();
+            RecursiveDivisionProportionalSplitsLabel = new System.Windows.Forms.Label();
+            RecursiveDivisionProportionalSplitsLTB = new LogarithmicTrackBar();
+            RecursiveDivisionSplitLocationLabel = new System.Windows.Forms.Label();
+            RecursiveDivisionSplitLocationLTB = new LogarithmicTrackBar();
+            RecursiveDivisionFixedSplitsLabel = new System.Windows.Forms.Label();
+            RecursiveDivisionFixedSplitsLTB = new LogarithmicTrackBar();
+            RecursiveDivisionRecursionLocationLabel = new System.Windows.Forms.Label();
+            RecursiveDivisionRecursionLocationLTB = new LogarithmicTrackBar();
+            RecursiveDivisionFixedRecursionLabel = new System.Windows.Forms.Label();
+            RecursiveDivisionFixedRecursionLTB = new LogarithmicTrackBar();
+            ShowAdvancedSettingsCheckBox = new System.Windows.Forms.CheckBox();
+            KruskalGroupBox = new System.Windows.Forms.GroupBox();
+            KruskalShowAllWallCheckingCheckBox = new System.Windows.Forms.CheckBox();
+            KruskalBraidLTB = new LogarithmicTrackBar();
+            KruskalBraidLabel = new System.Windows.Forms.Label();
+            BinaryTreeGroupBox = new System.Windows.Forms.GroupBox();
+            BinaryTreeBiasLTB = new LogarithmicTrackBar();
+            BinaryTreeBiasLabel = new System.Windows.Forms.Label();
+            BinaryTreeSidewinderLTB = new LogarithmicTrackBar();
+            BinaryTreeSidewinderLabel = new System.Windows.Forms.Label();
+            SaveButton = new System.Windows.Forms.Button();
+            RendererDelayLogarithmicTrackBar = new LogarithmicTrackBar();
+            GeneratorDelayLogarithmicTrackBar = new LogarithmicTrackBar();
+            SeedLabel = new System.Windows.Forms.Label();
+            SeedTextBox = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)MainPictureBox).BeginInit();
+            GrowingTreeGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)GrowingTreeSparsenessNumericUpDown).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)GrowingTreeTreesNumericUpDown).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)GrowingTreeRunLogarithmicTrackBar).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)GrowingTreeBraidLogarithmicTrackBar).BeginInit();
+            BiasesGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)GrowingTreeBiasDownLogarithmicTrackBar).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)GrowingTreeBiasRightLogarithmicTrackBar).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)GrowingTreeBiasLeftLogarithmicTrackBar).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)GrowingTreeBiasUpLogarithmicTrackBar).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)GrowingTreeBreadthLogarithmicTrackBar).BeginInit();
+            RecursiveDivisionGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)RecursiveDivisionReverseOrderLTB).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)RecursiveDivisionProportionalSplitsLTB).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)RecursiveDivisionSplitLocationLTB).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)RecursiveDivisionFixedSplitsLTB).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)RecursiveDivisionRecursionLocationLTB).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)RecursiveDivisionFixedRecursionLTB).BeginInit();
+            KruskalGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)KruskalBraidLTB).BeginInit();
+            BinaryTreeGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)BinaryTreeBiasLTB).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)BinaryTreeSidewinderLTB).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)RendererDelayLogarithmicTrackBar).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)GeneratorDelayLogarithmicTrackBar).BeginInit();
+            SuspendLayout();
             // 
             // MainPictureBox
             // 
-            this.MainPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.MainPictureBox.BackColor = System.Drawing.Color.Black;
-            this.MainPictureBox.Location = new System.Drawing.Point(358, 0);
-            this.MainPictureBox.Name = "MainPictureBox";
-            this.MainPictureBox.Size = new System.Drawing.Size(899, 900);
-            this.MainPictureBox.TabIndex = 0;
-            this.MainPictureBox.TabStop = false;
+            MainPictureBox.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            MainPictureBox.BackColor = System.Drawing.Color.Black;
+            MainPictureBox.Location = new System.Drawing.Point(418, 0);
+            MainPictureBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            MainPictureBox.Name = "MainPictureBox";
+            MainPictureBox.Size = new System.Drawing.Size(1049, 1038);
+            MainPictureBox.TabIndex = 0;
+            MainPictureBox.TabStop = false;
             // 
             // GenerateButton
             // 
-            this.GenerateButton.Location = new System.Drawing.Point(13, 15);
-            this.GenerateButton.Name = "GenerateButton";
-            this.GenerateButton.Size = new System.Drawing.Size(336, 28);
-            this.GenerateButton.TabIndex = 1;
-            this.GenerateButton.Text = "Generate";
-            this.GenerateButton.UseVisualStyleBackColor = true;
-            this.GenerateButton.Click += new System.EventHandler(this.GenerateButton_Click);
+            GenerateButton.Location = new System.Drawing.Point(15, 17);
+            GenerateButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            GenerateButton.Name = "GenerateButton";
+            GenerateButton.Size = new System.Drawing.Size(392, 32);
+            GenerateButton.TabIndex = 1;
+            GenerateButton.Text = "Generate";
+            GenerateButton.UseVisualStyleBackColor = true;
+            GenerateButton.Click += GenerateButton_Click;
             // 
             // AlgorithmComboBox
             // 
-            this.AlgorithmComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.AlgorithmComboBox.FormattingEnabled = true;
-            this.AlgorithmComboBox.Location = new System.Drawing.Point(74, 198);
-            this.AlgorithmComboBox.Name = "AlgorithmComboBox";
-            this.AlgorithmComboBox.Size = new System.Drawing.Size(145, 21);
-            this.AlgorithmComboBox.TabIndex = 2;
-            this.AlgorithmComboBox.SelectedIndexChanged += new System.EventHandler(this.SyncGroupBoxes);
+            AlgorithmComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            AlgorithmComboBox.FormattingEnabled = true;
+            AlgorithmComboBox.Location = new System.Drawing.Point(87, 209);
+            AlgorithmComboBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            AlgorithmComboBox.Name = "AlgorithmComboBox";
+            AlgorithmComboBox.Size = new System.Drawing.Size(168, 23);
+            AlgorithmComboBox.TabIndex = 2;
+            AlgorithmComboBox.SelectedIndexChanged += SyncGroupBoxes;
             // 
             // GrowingTreeBreadthLabel
             // 
-            this.GrowingTreeBreadthLabel.AutoSize = true;
-            this.GrowingTreeBreadthLabel.Location = new System.Drawing.Point(28, 94);
-            this.GrowingTreeBreadthLabel.Name = "GrowingTreeBreadthLabel";
-            this.GrowingTreeBreadthLabel.Size = new System.Drawing.Size(64, 13);
-            this.GrowingTreeBreadthLabel.TabIndex = 17;
-            this.GrowingTreeBreadthLabel.Text = "Breadth: 0%";
+            GrowingTreeBreadthLabel.AutoSize = true;
+            GrowingTreeBreadthLabel.Location = new System.Drawing.Point(33, 108);
+            GrowingTreeBreadthLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            GrowingTreeBreadthLabel.Name = "GrowingTreeBreadthLabel";
+            GrowingTreeBreadthLabel.Size = new System.Drawing.Size(70, 15);
+            GrowingTreeBreadthLabel.TabIndex = 17;
+            GrowingTreeBreadthLabel.Text = "Breadth: 0%";
             // 
             // AlgorithmLabel
             // 
-            this.AlgorithmLabel.AutoSize = true;
-            this.AlgorithmLabel.Location = new System.Drawing.Point(15, 201);
-            this.AlgorithmLabel.Name = "AlgorithmLabel";
-            this.AlgorithmLabel.Size = new System.Drawing.Size(53, 13);
-            this.AlgorithmLabel.TabIndex = 4;
-            this.AlgorithmLabel.Text = "Algorithm:";
+            AlgorithmLabel.AutoSize = true;
+            AlgorithmLabel.Location = new System.Drawing.Point(15, 212);
+            AlgorithmLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            AlgorithmLabel.Name = "AlgorithmLabel";
+            AlgorithmLabel.Size = new System.Drawing.Size(64, 15);
+            AlgorithmLabel.TabIndex = 4;
+            AlgorithmLabel.Text = "Algorithm:";
             // 
             // WidthLabel
             // 
-            this.WidthLabel.AutoSize = true;
-            this.WidthLabel.Location = new System.Drawing.Point(13, 59);
-            this.WidthLabel.Name = "WidthLabel";
-            this.WidthLabel.Size = new System.Drawing.Size(38, 13);
-            this.WidthLabel.TabIndex = 5;
-            this.WidthLabel.Text = "Width:";
+            WidthLabel.AutoSize = true;
+            WidthLabel.Location = new System.Drawing.Point(15, 68);
+            WidthLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            WidthLabel.Name = "WidthLabel";
+            WidthLabel.Size = new System.Drawing.Size(42, 15);
+            WidthLabel.TabIndex = 5;
+            WidthLabel.Text = "Width:";
             // 
             // WidthTextBox
             // 
-            this.WidthTextBox.Location = new System.Drawing.Point(57, 56);
-            this.WidthTextBox.Name = "WidthTextBox";
-            this.WidthTextBox.Size = new System.Drawing.Size(89, 20);
-            this.WidthTextBox.TabIndex = 6;
-            this.WidthTextBox.Text = "49";
+            WidthTextBox.Location = new System.Drawing.Point(66, 65);
+            WidthTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            WidthTextBox.Name = "WidthTextBox";
+            WidthTextBox.Size = new System.Drawing.Size(103, 23);
+            WidthTextBox.TabIndex = 6;
+            WidthTextBox.Text = "49";
             // 
             // HeightTextBox
             // 
-            this.HeightTextBox.Location = new System.Drawing.Point(57, 82);
-            this.HeightTextBox.Name = "HeightTextBox";
-            this.HeightTextBox.Size = new System.Drawing.Size(89, 20);
-            this.HeightTextBox.TabIndex = 8;
-            this.HeightTextBox.Text = "49";
+            HeightTextBox.Location = new System.Drawing.Point(66, 95);
+            HeightTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            HeightTextBox.Name = "HeightTextBox";
+            HeightTextBox.Size = new System.Drawing.Size(103, 23);
+            HeightTextBox.TabIndex = 8;
+            HeightTextBox.Text = "49";
             // 
             // HeightLabel
             // 
-            this.HeightLabel.AutoSize = true;
-            this.HeightLabel.Location = new System.Drawing.Point(10, 85);
-            this.HeightLabel.Name = "HeightLabel";
-            this.HeightLabel.Size = new System.Drawing.Size(41, 13);
-            this.HeightLabel.TabIndex = 7;
-            this.HeightLabel.Text = "Height:";
+            HeightLabel.AutoSize = true;
+            HeightLabel.Location = new System.Drawing.Point(12, 98);
+            HeightLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            HeightLabel.Name = "HeightLabel";
+            HeightLabel.Size = new System.Drawing.Size(46, 15);
+            HeightLabel.TabIndex = 7;
+            HeightLabel.Text = "Height:";
             // 
             // GeneratorDelayLabel
             // 
-            this.GeneratorDelayLabel.AutoSize = true;
-            this.GeneratorDelayLabel.Location = new System.Drawing.Point(11, 122);
-            this.GeneratorDelayLabel.Name = "GeneratorDelayLabel";
-            this.GeneratorDelayLabel.Size = new System.Drawing.Size(113, 13);
-            this.GeneratorDelayLabel.TabIndex = 9;
-            this.GeneratorDelayLabel.Text = "Generator delay: 0 ms.";
+            GeneratorDelayLabel.AutoSize = true;
+            GeneratorDelayLabel.Location = new System.Drawing.Point(13, 141);
+            GeneratorDelayLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            GeneratorDelayLabel.Name = "GeneratorDelayLabel";
+            GeneratorDelayLabel.Size = new System.Drawing.Size(124, 15);
+            GeneratorDelayLabel.TabIndex = 9;
+            GeneratorDelayLabel.Text = "Generator delay: 0 ms.";
             // 
             // RendererDelayLabel
             // 
-            this.RendererDelayLabel.AutoSize = true;
-            this.RendererDelayLabel.Location = new System.Drawing.Point(11, 154);
-            this.RendererDelayLabel.Name = "RendererDelayLabel";
-            this.RendererDelayLabel.Size = new System.Drawing.Size(110, 13);
-            this.RendererDelayLabel.TabIndex = 11;
-            this.RendererDelayLabel.Text = "Renderer delay: 0 ms.";
+            RendererDelayLabel.AutoSize = true;
+            RendererDelayLabel.Location = new System.Drawing.Point(13, 178);
+            RendererDelayLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            RendererDelayLabel.Name = "RendererDelayLabel";
+            RendererDelayLabel.Size = new System.Drawing.Size(119, 15);
+            RendererDelayLabel.TabIndex = 11;
+            RendererDelayLabel.Text = "Renderer delay: 0 ms.";
             // 
             // InfiniteMapCheckBox
             // 
-            this.InfiniteMapCheckBox.AutoSize = true;
-            this.InfiniteMapCheckBox.Location = new System.Drawing.Point(180, 58);
-            this.InfiniteMapCheckBox.Name = "InfiniteMapCheckBox";
-            this.InfiniteMapCheckBox.Size = new System.Drawing.Size(80, 17);
-            this.InfiniteMapCheckBox.TabIndex = 13;
-            this.InfiniteMapCheckBox.Text = "Infinite map";
-            this.InfiniteMapCheckBox.UseVisualStyleBackColor = true;
+            InfiniteMapCheckBox.AutoSize = true;
+            InfiniteMapCheckBox.Location = new System.Drawing.Point(210, 67);
+            InfiniteMapCheckBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            InfiniteMapCheckBox.Name = "InfiniteMapCheckBox";
+            InfiniteMapCheckBox.Size = new System.Drawing.Size(90, 19);
+            InfiniteMapCheckBox.TabIndex = 13;
+            InfiniteMapCheckBox.Text = "Infinite map";
+            InfiniteMapCheckBox.UseVisualStyleBackColor = true;
             // 
             // TrackChangesCheckBox
             // 
-            this.TrackChangesCheckBox.AutoSize = true;
-            this.TrackChangesCheckBox.Location = new System.Drawing.Point(180, 85);
-            this.TrackChangesCheckBox.Name = "TrackChangesCheckBox";
-            this.TrackChangesCheckBox.Size = new System.Drawing.Size(98, 17);
-            this.TrackChangesCheckBox.TabIndex = 16;
-            this.TrackChangesCheckBox.Text = "Track changes";
-            this.TrackChangesCheckBox.UseVisualStyleBackColor = true;
-            this.TrackChangesCheckBox.CheckedChanged += new System.EventHandler(this.TrackChangesCheckBox_CheckedChanged);
+            TrackChangesCheckBox.AutoSize = true;
+            TrackChangesCheckBox.Location = new System.Drawing.Point(210, 98);
+            TrackChangesCheckBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            TrackChangesCheckBox.Name = "TrackChangesCheckBox";
+            TrackChangesCheckBox.Size = new System.Drawing.Size(100, 19);
+            TrackChangesCheckBox.TabIndex = 16;
+            TrackChangesCheckBox.Text = "Track changes";
+            TrackChangesCheckBox.UseVisualStyleBackColor = true;
+            TrackChangesCheckBox.CheckedChanged += TrackChangesCheckBox_CheckedChanged;
             // 
             // GrowingTreeGroupBox
             // 
-            this.GrowingTreeGroupBox.Controls.Add(this.GrowingTreeSparsenessNumericUpDown);
-            this.GrowingTreeGroupBox.Controls.Add(this.GrowingTreeSparsenessLabel);
-            this.GrowingTreeGroupBox.Controls.Add(this.GrowingTreeTreesNumericUpDown);
-            this.GrowingTreeGroupBox.Controls.Add(this.GrowingTreeTreesLabel);
-            this.GrowingTreeGroupBox.Controls.Add(this.GrowingTreeRunLogarithmicTrackBar);
-            this.GrowingTreeGroupBox.Controls.Add(this.GrowingTreeRunLabel);
-            this.GrowingTreeGroupBox.Controls.Add(this.GrowingTreeBraidLogarithmicTrackBar);
-            this.GrowingTreeGroupBox.Controls.Add(this.GrowingTreeBraidLabel);
-            this.GrowingTreeGroupBox.Controls.Add(this.BiasesGroupBox);
-            this.GrowingTreeGroupBox.Controls.Add(this.GrowingTreeBreadthLogarithmicTrackBar);
-            this.GrowingTreeGroupBox.Controls.Add(this.GrowingTreeBreadthLabel);
-            this.GrowingTreeGroupBox.Location = new System.Drawing.Point(12, 229);
-            this.GrowingTreeGroupBox.Name = "GrowingTreeGroupBox";
-            this.GrowingTreeGroupBox.Size = new System.Drawing.Size(334, 379);
-            this.GrowingTreeGroupBox.TabIndex = 19;
-            this.GrowingTreeGroupBox.TabStop = false;
-            this.GrowingTreeGroupBox.Text = "Growing tree settings";
-            this.GrowingTreeGroupBox.Visible = false;
+            GrowingTreeGroupBox.Controls.Add(GrowingTreeSparsenessNumericUpDown);
+            GrowingTreeGroupBox.Controls.Add(GrowingTreeSparsenessLabel);
+            GrowingTreeGroupBox.Controls.Add(GrowingTreeTreesNumericUpDown);
+            GrowingTreeGroupBox.Controls.Add(GrowingTreeTreesLabel);
+            GrowingTreeGroupBox.Controls.Add(GrowingTreeRunLogarithmicTrackBar);
+            GrowingTreeGroupBox.Controls.Add(GrowingTreeRunLabel);
+            GrowingTreeGroupBox.Controls.Add(GrowingTreeBraidLogarithmicTrackBar);
+            GrowingTreeGroupBox.Controls.Add(GrowingTreeBraidLabel);
+            GrowingTreeGroupBox.Controls.Add(BiasesGroupBox);
+            GrowingTreeGroupBox.Controls.Add(GrowingTreeBreadthLogarithmicTrackBar);
+            GrowingTreeGroupBox.Controls.Add(GrowingTreeBreadthLabel);
+            GrowingTreeGroupBox.Location = new System.Drawing.Point(15, 279);
+            GrowingTreeGroupBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            GrowingTreeGroupBox.Name = "GrowingTreeGroupBox";
+            GrowingTreeGroupBox.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            GrowingTreeGroupBox.Size = new System.Drawing.Size(390, 437);
+            GrowingTreeGroupBox.TabIndex = 19;
+            GrowingTreeGroupBox.TabStop = false;
+            GrowingTreeGroupBox.Text = "Growing tree settings";
+            GrowingTreeGroupBox.Visible = false;
             // 
             // GrowingTreeSparsenessNumericUpDown
             // 
-            this.GrowingTreeSparsenessNumericUpDown.Location = new System.Drawing.Point(146, 56);
-            this.GrowingTreeSparsenessNumericUpDown.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.GrowingTreeSparsenessNumericUpDown.Name = "GrowingTreeSparsenessNumericUpDown";
-            this.GrowingTreeSparsenessNumericUpDown.Size = new System.Drawing.Size(88, 20);
-            this.GrowingTreeSparsenessNumericUpDown.TabIndex = 27;
-            this.GrowingTreeSparsenessNumericUpDown.Value = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-            this.GrowingTreeSparsenessNumericUpDown.ValueChanged += new System.EventHandler(this.SyncGrowingTreeParameters);
+            GrowingTreeSparsenessNumericUpDown.Location = new System.Drawing.Point(170, 65);
+            GrowingTreeSparsenessNumericUpDown.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            GrowingTreeSparsenessNumericUpDown.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            GrowingTreeSparsenessNumericUpDown.Name = "GrowingTreeSparsenessNumericUpDown";
+            GrowingTreeSparsenessNumericUpDown.Size = new System.Drawing.Size(103, 23);
+            GrowingTreeSparsenessNumericUpDown.TabIndex = 27;
+            GrowingTreeSparsenessNumericUpDown.Value = new decimal(new int[] { 2, 0, 0, 0 });
+            GrowingTreeSparsenessNumericUpDown.ValueChanged += SyncGrowingTreeParameters;
             // 
             // GrowingTreeSparsenessLabel
             // 
-            this.GrowingTreeSparsenessLabel.AutoSize = true;
-            this.GrowingTreeSparsenessLabel.Location = new System.Drawing.Point(70, 58);
-            this.GrowingTreeSparsenessLabel.Name = "GrowingTreeSparsenessLabel";
-            this.GrowingTreeSparsenessLabel.Size = new System.Drawing.Size(65, 13);
-            this.GrowingTreeSparsenessLabel.TabIndex = 26;
-            this.GrowingTreeSparsenessLabel.Text = "Sparseness:";
+            GrowingTreeSparsenessLabel.AutoSize = true;
+            GrowingTreeSparsenessLabel.Location = new System.Drawing.Point(82, 67);
+            GrowingTreeSparsenessLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            GrowingTreeSparsenessLabel.Name = "GrowingTreeSparsenessLabel";
+            GrowingTreeSparsenessLabel.Size = new System.Drawing.Size(67, 15);
+            GrowingTreeSparsenessLabel.TabIndex = 26;
+            GrowingTreeSparsenessLabel.Text = "Sparseness:";
             // 
             // GrowingTreeTreesNumericUpDown
             // 
-            this.GrowingTreeTreesNumericUpDown.Location = new System.Drawing.Point(146, 30);
-            this.GrowingTreeTreesNumericUpDown.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.GrowingTreeTreesNumericUpDown.Name = "GrowingTreeTreesNumericUpDown";
-            this.GrowingTreeTreesNumericUpDown.Size = new System.Drawing.Size(88, 20);
-            this.GrowingTreeTreesNumericUpDown.TabIndex = 25;
-            this.GrowingTreeTreesNumericUpDown.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.GrowingTreeTreesNumericUpDown.ValueChanged += new System.EventHandler(this.SyncGrowingTreeParameters);
+            GrowingTreeTreesNumericUpDown.Location = new System.Drawing.Point(170, 35);
+            GrowingTreeTreesNumericUpDown.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            GrowingTreeTreesNumericUpDown.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            GrowingTreeTreesNumericUpDown.Name = "GrowingTreeTreesNumericUpDown";
+            GrowingTreeTreesNumericUpDown.Size = new System.Drawing.Size(103, 23);
+            GrowingTreeTreesNumericUpDown.TabIndex = 25;
+            GrowingTreeTreesNumericUpDown.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            GrowingTreeTreesNumericUpDown.ValueChanged += SyncGrowingTreeParameters;
             // 
             // GrowingTreeTreesLabel
             // 
-            this.GrowingTreeTreesLabel.AutoSize = true;
-            this.GrowingTreeTreesLabel.Location = new System.Drawing.Point(89, 32);
-            this.GrowingTreeTreesLabel.Name = "GrowingTreeTreesLabel";
-            this.GrowingTreeTreesLabel.Size = new System.Drawing.Size(37, 13);
-            this.GrowingTreeTreesLabel.TabIndex = 24;
-            this.GrowingTreeTreesLabel.Text = "Trees:";
+            GrowingTreeTreesLabel.AutoSize = true;
+            GrowingTreeTreesLabel.Location = new System.Drawing.Point(104, 37);
+            GrowingTreeTreesLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            GrowingTreeTreesLabel.Name = "GrowingTreeTreesLabel";
+            GrowingTreeTreesLabel.Size = new System.Drawing.Size(36, 15);
+            GrowingTreeTreesLabel.TabIndex = 24;
+            GrowingTreeTreesLabel.Text = "Trees:";
             // 
             // GrowingTreeRunLogarithmicTrackBar
             // 
-            this.GrowingTreeRunLogarithmicTrackBar.Location = new System.Drawing.Point(110, 161);
-            this.GrowingTreeRunLogarithmicTrackBar.LogMaximum = 1D;
-            this.GrowingTreeRunLogarithmicTrackBar.LogMiddle = 0.5D;
-            this.GrowingTreeRunLogarithmicTrackBar.LogMinimum = 0D;
-            this.GrowingTreeRunLogarithmicTrackBar.Maximum = 1000;
-            this.GrowingTreeRunLogarithmicTrackBar.Name = "GrowingTreeRunLogarithmicTrackBar";
-            this.GrowingTreeRunLogarithmicTrackBar.Size = new System.Drawing.Size(213, 45);
-            this.GrowingTreeRunLogarithmicTrackBar.TabIndex = 20;
-            this.GrowingTreeRunLogarithmicTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.GrowingTreeRunLogarithmicTrackBar.Value = 500;
-            this.GrowingTreeRunLogarithmicTrackBar.ValueChanged += new System.EventHandler(this.SyncGrowingTreeParameters);
+            GrowingTreeRunLogarithmicTrackBar.Location = new System.Drawing.Point(128, 186);
+            GrowingTreeRunLogarithmicTrackBar.LogMaximum = 1D;
+            GrowingTreeRunLogarithmicTrackBar.LogMiddle = 0.5D;
+            GrowingTreeRunLogarithmicTrackBar.LogMinimum = 0D;
+            GrowingTreeRunLogarithmicTrackBar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            GrowingTreeRunLogarithmicTrackBar.Maximum = 1000;
+            GrowingTreeRunLogarithmicTrackBar.Name = "GrowingTreeRunLogarithmicTrackBar";
+            GrowingTreeRunLogarithmicTrackBar.Size = new System.Drawing.Size(248, 45);
+            GrowingTreeRunLogarithmicTrackBar.TabIndex = 20;
+            GrowingTreeRunLogarithmicTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
+            GrowingTreeRunLogarithmicTrackBar.Value = 500;
+            GrowingTreeRunLogarithmicTrackBar.ValueChanged += SyncGrowingTreeParameters;
             // 
             // GrowingTreeRunLabel
             // 
-            this.GrowingTreeRunLabel.AutoSize = true;
-            this.GrowingTreeRunLabel.Location = new System.Drawing.Point(28, 161);
-            this.GrowingTreeRunLabel.Name = "GrowingTreeRunLabel";
-            this.GrowingTreeRunLabel.Size = new System.Drawing.Size(53, 13);
-            this.GrowingTreeRunLabel.TabIndex = 19;
-            this.GrowingTreeRunLabel.Text = "Run: 50%";
+            GrowingTreeRunLabel.AutoSize = true;
+            GrowingTreeRunLabel.Location = new System.Drawing.Point(33, 186);
+            GrowingTreeRunLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            GrowingTreeRunLabel.Name = "GrowingTreeRunLabel";
+            GrowingTreeRunLabel.Size = new System.Drawing.Size(56, 15);
+            GrowingTreeRunLabel.TabIndex = 19;
+            GrowingTreeRunLabel.Text = "Run: 50%";
             // 
             // GrowingTreeBraidLogarithmicTrackBar
             // 
-            this.GrowingTreeBraidLogarithmicTrackBar.Location = new System.Drawing.Point(110, 127);
-            this.GrowingTreeBraidLogarithmicTrackBar.LogMaximum = 1D;
-            this.GrowingTreeBraidLogarithmicTrackBar.LogMiddle = 0.5D;
-            this.GrowingTreeBraidLogarithmicTrackBar.LogMinimum = 0D;
-            this.GrowingTreeBraidLogarithmicTrackBar.Maximum = 1000;
-            this.GrowingTreeBraidLogarithmicTrackBar.Name = "GrowingTreeBraidLogarithmicTrackBar";
-            this.GrowingTreeBraidLogarithmicTrackBar.Size = new System.Drawing.Size(213, 45);
-            this.GrowingTreeBraidLogarithmicTrackBar.TabIndex = 22;
-            this.GrowingTreeBraidLogarithmicTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.GrowingTreeBraidLogarithmicTrackBar.ValueChanged += new System.EventHandler(this.SyncGrowingTreeParameters);
+            GrowingTreeBraidLogarithmicTrackBar.Location = new System.Drawing.Point(128, 147);
+            GrowingTreeBraidLogarithmicTrackBar.LogMaximum = 1D;
+            GrowingTreeBraidLogarithmicTrackBar.LogMiddle = 0.5D;
+            GrowingTreeBraidLogarithmicTrackBar.LogMinimum = 0D;
+            GrowingTreeBraidLogarithmicTrackBar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            GrowingTreeBraidLogarithmicTrackBar.Maximum = 1000;
+            GrowingTreeBraidLogarithmicTrackBar.Name = "GrowingTreeBraidLogarithmicTrackBar";
+            GrowingTreeBraidLogarithmicTrackBar.Size = new System.Drawing.Size(248, 45);
+            GrowingTreeBraidLogarithmicTrackBar.TabIndex = 22;
+            GrowingTreeBraidLogarithmicTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
+            GrowingTreeBraidLogarithmicTrackBar.ValueChanged += SyncGrowingTreeParameters;
             // 
             // GrowingTreeBraidLabel
             // 
-            this.GrowingTreeBraidLabel.AutoSize = true;
-            this.GrowingTreeBraidLabel.Location = new System.Drawing.Point(28, 127);
-            this.GrowingTreeBraidLabel.Name = "GrowingTreeBraidLabel";
-            this.GrowingTreeBraidLabel.Size = new System.Drawing.Size(51, 13);
-            this.GrowingTreeBraidLabel.TabIndex = 21;
-            this.GrowingTreeBraidLabel.Text = "Braid: 0%";
+            GrowingTreeBraidLabel.AutoSize = true;
+            GrowingTreeBraidLabel.Location = new System.Drawing.Point(33, 147);
+            GrowingTreeBraidLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            GrowingTreeBraidLabel.Name = "GrowingTreeBraidLabel";
+            GrowingTreeBraidLabel.Size = new System.Drawing.Size(56, 15);
+            GrowingTreeBraidLabel.TabIndex = 21;
+            GrowingTreeBraidLabel.Text = "Braid: 0%";
             // 
             // BiasesGroupBox
             // 
-            this.BiasesGroupBox.Controls.Add(this.GrowingTreeResetBiasesButton);
-            this.BiasesGroupBox.Controls.Add(this.arrowCrossShape1);
-            this.BiasesGroupBox.Controls.Add(this.GrowingTreeBiasDownLogarithmicTrackBar);
-            this.BiasesGroupBox.Controls.Add(this.GrowingTreeBiasRightLogarithmicTrackBar);
-            this.BiasesGroupBox.Controls.Add(this.GrowingTreeBiasLeftLogarithmicTrackBar);
-            this.BiasesGroupBox.Controls.Add(this.GrowingTreeBiasUpLogarithmicTrackBar);
-            this.BiasesGroupBox.Location = new System.Drawing.Point(12, 202);
-            this.BiasesGroupBox.Name = "BiasesGroupBox";
-            this.BiasesGroupBox.Size = new System.Drawing.Size(310, 165);
-            this.BiasesGroupBox.TabIndex = 23;
-            this.BiasesGroupBox.TabStop = false;
-            this.BiasesGroupBox.Text = "Biases";
+            BiasesGroupBox.Controls.Add(GrowingTreeResetBiasesButton);
+            BiasesGroupBox.Controls.Add(arrowCrossShape1);
+            BiasesGroupBox.Controls.Add(GrowingTreeBiasDownLogarithmicTrackBar);
+            BiasesGroupBox.Controls.Add(GrowingTreeBiasRightLogarithmicTrackBar);
+            BiasesGroupBox.Controls.Add(GrowingTreeBiasLeftLogarithmicTrackBar);
+            BiasesGroupBox.Controls.Add(GrowingTreeBiasUpLogarithmicTrackBar);
+            BiasesGroupBox.Location = new System.Drawing.Point(14, 233);
+            BiasesGroupBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            BiasesGroupBox.Name = "BiasesGroupBox";
+            BiasesGroupBox.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            BiasesGroupBox.Size = new System.Drawing.Size(362, 190);
+            BiasesGroupBox.TabIndex = 23;
+            BiasesGroupBox.TabStop = false;
+            BiasesGroupBox.Text = "Biases";
             // 
             // GrowingTreeResetBiasesButton
             // 
-            this.GrowingTreeResetBiasesButton.Location = new System.Drawing.Point(100, 133);
-            this.GrowingTreeResetBiasesButton.Name = "GrowingTreeResetBiasesButton";
-            this.GrowingTreeResetBiasesButton.Size = new System.Drawing.Size(116, 23);
-            this.GrowingTreeResetBiasesButton.TabIndex = 30;
-            this.GrowingTreeResetBiasesButton.Text = "Reset biases";
-            this.GrowingTreeResetBiasesButton.UseVisualStyleBackColor = true;
-            this.GrowingTreeResetBiasesButton.Click += new System.EventHandler(this.GrowingTreeResetBiasesButton_Click);
+            GrowingTreeResetBiasesButton.Location = new System.Drawing.Point(117, 153);
+            GrowingTreeResetBiasesButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            GrowingTreeResetBiasesButton.Name = "GrowingTreeResetBiasesButton";
+            GrowingTreeResetBiasesButton.Size = new System.Drawing.Size(135, 27);
+            GrowingTreeResetBiasesButton.TabIndex = 30;
+            GrowingTreeResetBiasesButton.Text = "Reset biases";
+            GrowingTreeResetBiasesButton.UseVisualStyleBackColor = true;
+            GrowingTreeResetBiasesButton.Click += GrowingTreeResetBiasesButton_Click;
             // 
             // arrowCrossShape1
             // 
-            this.arrowCrossShape1.Location = new System.Drawing.Point(134, 43);
-            this.arrowCrossShape1.Name = "arrowCrossShape1";
-            this.arrowCrossShape1.Polygon = new System.Drawing.Point[] {
-        new System.Drawing.Point(7, 2),
-        new System.Drawing.Point(6, 2),
-        new System.Drawing.Point(6, 4),
-        new System.Drawing.Point(8, 4),
-        new System.Drawing.Point(8, 3),
-        new System.Drawing.Point(10, 5),
-        new System.Drawing.Point(8, 7),
-        new System.Drawing.Point(8, 6),
-        new System.Drawing.Point(6, 6),
-        new System.Drawing.Point(6, 8),
-        new System.Drawing.Point(7, 8),
-        new System.Drawing.Point(5, 10),
-        new System.Drawing.Point(3, 8),
-        new System.Drawing.Point(4, 8),
-        new System.Drawing.Point(4, 6),
-        new System.Drawing.Point(2, 6),
-        new System.Drawing.Point(2, 7),
-        new System.Drawing.Point(0, 5),
-        new System.Drawing.Point(2, 3),
-        new System.Drawing.Point(2, 4),
-        new System.Drawing.Point(4, 4),
-        new System.Drawing.Point(4, 2),
-        new System.Drawing.Point(3, 2),
-        new System.Drawing.Point(5, 0)};
-            this.arrowCrossShape1.PolygonColor = System.Drawing.SystemColors.ControlDark;
-            this.arrowCrossShape1.PolygonSize = 10;
-            this.arrowCrossShape1.Size = new System.Drawing.Size(51, 55);
-            this.arrowCrossShape1.TabIndex = 26;
+            arrowCrossShape1.Location = new System.Drawing.Point(156, 50);
+            arrowCrossShape1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            arrowCrossShape1.Name = "arrowCrossShape1";
+            arrowCrossShape1.Polygon = (new System.Drawing.Point[] { new System.Drawing.Point(7, 2), new System.Drawing.Point(6, 2), new System.Drawing.Point(6, 4), new System.Drawing.Point(8, 4), new System.Drawing.Point(8, 3), new System.Drawing.Point(10, 5), new System.Drawing.Point(8, 7), new System.Drawing.Point(8, 6), new System.Drawing.Point(6, 6), new System.Drawing.Point(6, 8), new System.Drawing.Point(7, 8), new System.Drawing.Point(5, 10), new System.Drawing.Point(3, 8), new System.Drawing.Point(4, 8), new System.Drawing.Point(4, 6), new System.Drawing.Point(2, 6), new System.Drawing.Point(2, 7), new System.Drawing.Point(0, 5), new System.Drawing.Point(2, 3), new System.Drawing.Point(2, 4), new System.Drawing.Point(4, 4), new System.Drawing.Point(4, 2), new System.Drawing.Point(3, 2), new System.Drawing.Point(5, 0) });
+            arrowCrossShape1.PolygonColor = System.Drawing.SystemColors.ControlDark;
+            arrowCrossShape1.PolygonSize = 10;
+            arrowCrossShape1.Size = new System.Drawing.Size(59, 63);
+            arrowCrossShape1.TabIndex = 26;
             // 
             // GrowingTreeBiasDownLogarithmicTrackBar
             // 
-            this.GrowingTreeBiasDownLogarithmicTrackBar.Location = new System.Drawing.Point(98, 101);
-            this.GrowingTreeBiasDownLogarithmicTrackBar.LogMaximum = 1D;
-            this.GrowingTreeBiasDownLogarithmicTrackBar.LogMiddle = 0.5D;
-            this.GrowingTreeBiasDownLogarithmicTrackBar.LogMinimum = 0D;
-            this.GrowingTreeBiasDownLogarithmicTrackBar.Maximum = 1000;
-            this.GrowingTreeBiasDownLogarithmicTrackBar.Name = "GrowingTreeBiasDownLogarithmicTrackBar";
-            this.GrowingTreeBiasDownLogarithmicTrackBar.Size = new System.Drawing.Size(122, 45);
-            this.GrowingTreeBiasDownLogarithmicTrackBar.TabIndex = 29;
-            this.GrowingTreeBiasDownLogarithmicTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.GrowingTreeBiasDownLogarithmicTrackBar.Value = 500;
-            this.GrowingTreeBiasDownLogarithmicTrackBar.ValueChanged += new System.EventHandler(this.SyncGrowingTreeParameters);
+            GrowingTreeBiasDownLogarithmicTrackBar.Location = new System.Drawing.Point(114, 117);
+            GrowingTreeBiasDownLogarithmicTrackBar.LogMaximum = 1D;
+            GrowingTreeBiasDownLogarithmicTrackBar.LogMiddle = 0.5D;
+            GrowingTreeBiasDownLogarithmicTrackBar.LogMinimum = 0D;
+            GrowingTreeBiasDownLogarithmicTrackBar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            GrowingTreeBiasDownLogarithmicTrackBar.Maximum = 1000;
+            GrowingTreeBiasDownLogarithmicTrackBar.Name = "GrowingTreeBiasDownLogarithmicTrackBar";
+            GrowingTreeBiasDownLogarithmicTrackBar.Size = new System.Drawing.Size(142, 45);
+            GrowingTreeBiasDownLogarithmicTrackBar.TabIndex = 29;
+            GrowingTreeBiasDownLogarithmicTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
+            GrowingTreeBiasDownLogarithmicTrackBar.Value = 500;
+            GrowingTreeBiasDownLogarithmicTrackBar.ValueChanged += SyncGrowingTreeParameters;
             // 
             // GrowingTreeBiasRightLogarithmicTrackBar
             // 
-            this.GrowingTreeBiasRightLogarithmicTrackBar.Location = new System.Drawing.Point(186, 61);
-            this.GrowingTreeBiasRightLogarithmicTrackBar.LogMaximum = 1D;
-            this.GrowingTreeBiasRightLogarithmicTrackBar.LogMiddle = 0.5D;
-            this.GrowingTreeBiasRightLogarithmicTrackBar.LogMinimum = 0D;
-            this.GrowingTreeBiasRightLogarithmicTrackBar.Maximum = 1000;
-            this.GrowingTreeBiasRightLogarithmicTrackBar.Name = "GrowingTreeBiasRightLogarithmicTrackBar";
-            this.GrowingTreeBiasRightLogarithmicTrackBar.Size = new System.Drawing.Size(122, 45);
-            this.GrowingTreeBiasRightLogarithmicTrackBar.TabIndex = 28;
-            this.GrowingTreeBiasRightLogarithmicTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.GrowingTreeBiasRightLogarithmicTrackBar.Value = 500;
-            this.GrowingTreeBiasRightLogarithmicTrackBar.ValueChanged += new System.EventHandler(this.SyncGrowingTreeParameters);
+            GrowingTreeBiasRightLogarithmicTrackBar.Location = new System.Drawing.Point(217, 70);
+            GrowingTreeBiasRightLogarithmicTrackBar.LogMaximum = 1D;
+            GrowingTreeBiasRightLogarithmicTrackBar.LogMiddle = 0.5D;
+            GrowingTreeBiasRightLogarithmicTrackBar.LogMinimum = 0D;
+            GrowingTreeBiasRightLogarithmicTrackBar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            GrowingTreeBiasRightLogarithmicTrackBar.Maximum = 1000;
+            GrowingTreeBiasRightLogarithmicTrackBar.Name = "GrowingTreeBiasRightLogarithmicTrackBar";
+            GrowingTreeBiasRightLogarithmicTrackBar.Size = new System.Drawing.Size(142, 45);
+            GrowingTreeBiasRightLogarithmicTrackBar.TabIndex = 28;
+            GrowingTreeBiasRightLogarithmicTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
+            GrowingTreeBiasRightLogarithmicTrackBar.Value = 500;
+            GrowingTreeBiasRightLogarithmicTrackBar.ValueChanged += SyncGrowingTreeParameters;
             // 
             // GrowingTreeBiasLeftLogarithmicTrackBar
             // 
-            this.GrowingTreeBiasLeftLogarithmicTrackBar.Location = new System.Drawing.Point(10, 61);
-            this.GrowingTreeBiasLeftLogarithmicTrackBar.LogMaximum = 1D;
-            this.GrowingTreeBiasLeftLogarithmicTrackBar.LogMiddle = 0.5D;
-            this.GrowingTreeBiasLeftLogarithmicTrackBar.LogMinimum = 0D;
-            this.GrowingTreeBiasLeftLogarithmicTrackBar.Maximum = 1000;
-            this.GrowingTreeBiasLeftLogarithmicTrackBar.Name = "GrowingTreeBiasLeftLogarithmicTrackBar";
-            this.GrowingTreeBiasLeftLogarithmicTrackBar.Size = new System.Drawing.Size(122, 45);
-            this.GrowingTreeBiasLeftLogarithmicTrackBar.TabIndex = 27;
-            this.GrowingTreeBiasLeftLogarithmicTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.GrowingTreeBiasLeftLogarithmicTrackBar.Value = 500;
-            this.GrowingTreeBiasLeftLogarithmicTrackBar.ValueChanged += new System.EventHandler(this.SyncGrowingTreeParameters);
+            GrowingTreeBiasLeftLogarithmicTrackBar.Location = new System.Drawing.Point(12, 70);
+            GrowingTreeBiasLeftLogarithmicTrackBar.LogMaximum = 1D;
+            GrowingTreeBiasLeftLogarithmicTrackBar.LogMiddle = 0.5D;
+            GrowingTreeBiasLeftLogarithmicTrackBar.LogMinimum = 0D;
+            GrowingTreeBiasLeftLogarithmicTrackBar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            GrowingTreeBiasLeftLogarithmicTrackBar.Maximum = 1000;
+            GrowingTreeBiasLeftLogarithmicTrackBar.Name = "GrowingTreeBiasLeftLogarithmicTrackBar";
+            GrowingTreeBiasLeftLogarithmicTrackBar.Size = new System.Drawing.Size(142, 45);
+            GrowingTreeBiasLeftLogarithmicTrackBar.TabIndex = 27;
+            GrowingTreeBiasLeftLogarithmicTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
+            GrowingTreeBiasLeftLogarithmicTrackBar.Value = 500;
+            GrowingTreeBiasLeftLogarithmicTrackBar.ValueChanged += SyncGrowingTreeParameters;
             // 
             // GrowingTreeBiasUpLogarithmicTrackBar
             // 
-            this.GrowingTreeBiasUpLogarithmicTrackBar.Location = new System.Drawing.Point(98, 19);
-            this.GrowingTreeBiasUpLogarithmicTrackBar.LogMaximum = 1D;
-            this.GrowingTreeBiasUpLogarithmicTrackBar.LogMiddle = 0.5D;
-            this.GrowingTreeBiasUpLogarithmicTrackBar.LogMinimum = 0D;
-            this.GrowingTreeBiasUpLogarithmicTrackBar.Maximum = 1000;
-            this.GrowingTreeBiasUpLogarithmicTrackBar.Name = "GrowingTreeBiasUpLogarithmicTrackBar";
-            this.GrowingTreeBiasUpLogarithmicTrackBar.Size = new System.Drawing.Size(122, 45);
-            this.GrowingTreeBiasUpLogarithmicTrackBar.TabIndex = 26;
-            this.GrowingTreeBiasUpLogarithmicTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.GrowingTreeBiasUpLogarithmicTrackBar.Value = 500;
-            this.GrowingTreeBiasUpLogarithmicTrackBar.ValueChanged += new System.EventHandler(this.SyncGrowingTreeParameters);
+            GrowingTreeBiasUpLogarithmicTrackBar.Location = new System.Drawing.Point(114, 22);
+            GrowingTreeBiasUpLogarithmicTrackBar.LogMaximum = 1D;
+            GrowingTreeBiasUpLogarithmicTrackBar.LogMiddle = 0.5D;
+            GrowingTreeBiasUpLogarithmicTrackBar.LogMinimum = 0D;
+            GrowingTreeBiasUpLogarithmicTrackBar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            GrowingTreeBiasUpLogarithmicTrackBar.Maximum = 1000;
+            GrowingTreeBiasUpLogarithmicTrackBar.Name = "GrowingTreeBiasUpLogarithmicTrackBar";
+            GrowingTreeBiasUpLogarithmicTrackBar.Size = new System.Drawing.Size(142, 45);
+            GrowingTreeBiasUpLogarithmicTrackBar.TabIndex = 26;
+            GrowingTreeBiasUpLogarithmicTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
+            GrowingTreeBiasUpLogarithmicTrackBar.Value = 500;
+            GrowingTreeBiasUpLogarithmicTrackBar.ValueChanged += SyncGrowingTreeParameters;
             // 
             // GrowingTreeBreadthLogarithmicTrackBar
             // 
-            this.GrowingTreeBreadthLogarithmicTrackBar.Location = new System.Drawing.Point(110, 94);
-            this.GrowingTreeBreadthLogarithmicTrackBar.LogMaximum = 1D;
-            this.GrowingTreeBreadthLogarithmicTrackBar.LogMiddle = 0.2D;
-            this.GrowingTreeBreadthLogarithmicTrackBar.LogMinimum = 0D;
-            this.GrowingTreeBreadthLogarithmicTrackBar.Maximum = 1000;
-            this.GrowingTreeBreadthLogarithmicTrackBar.Name = "GrowingTreeBreadthLogarithmicTrackBar";
-            this.GrowingTreeBreadthLogarithmicTrackBar.Size = new System.Drawing.Size(213, 45);
-            this.GrowingTreeBreadthLogarithmicTrackBar.TabIndex = 18;
-            this.GrowingTreeBreadthLogarithmicTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.GrowingTreeBreadthLogarithmicTrackBar.ValueChanged += new System.EventHandler(this.SyncGrowingTreeParameters);
+            GrowingTreeBreadthLogarithmicTrackBar.Location = new System.Drawing.Point(128, 108);
+            GrowingTreeBreadthLogarithmicTrackBar.LogMaximum = 1D;
+            GrowingTreeBreadthLogarithmicTrackBar.LogMiddle = 0.2D;
+            GrowingTreeBreadthLogarithmicTrackBar.LogMinimum = 0D;
+            GrowingTreeBreadthLogarithmicTrackBar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            GrowingTreeBreadthLogarithmicTrackBar.Maximum = 1000;
+            GrowingTreeBreadthLogarithmicTrackBar.Name = "GrowingTreeBreadthLogarithmicTrackBar";
+            GrowingTreeBreadthLogarithmicTrackBar.Size = new System.Drawing.Size(248, 45);
+            GrowingTreeBreadthLogarithmicTrackBar.TabIndex = 18;
+            GrowingTreeBreadthLogarithmicTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
+            GrowingTreeBreadthLogarithmicTrackBar.ValueChanged += SyncGrowingTreeParameters;
             // 
             // RecursiveDivisionGroupBox
             // 
-            this.RecursiveDivisionGroupBox.Controls.Add(this.RecursiveDivisionShowInitializationStepCheckBox);
-            this.RecursiveDivisionGroupBox.Controls.Add(this.RecursiveDivisionProcessSingleCellBlocksCheckBox);
-            this.RecursiveDivisionGroupBox.Controls.Add(this.RecursiveDivisionReverseOrderLabel);
-            this.RecursiveDivisionGroupBox.Controls.Add(this.RecursiveDivisionReverseOrderLTB);
-            this.RecursiveDivisionGroupBox.Controls.Add(this.RecursiveDivisionProportionalSplitsLabel);
-            this.RecursiveDivisionGroupBox.Controls.Add(this.RecursiveDivisionProportionalSplitsLTB);
-            this.RecursiveDivisionGroupBox.Controls.Add(this.RecursiveDivisionSplitLocationLabel);
-            this.RecursiveDivisionGroupBox.Controls.Add(this.RecursiveDivisionSplitLocationLTB);
-            this.RecursiveDivisionGroupBox.Controls.Add(this.RecursiveDivisionFixedSplitsLabel);
-            this.RecursiveDivisionGroupBox.Controls.Add(this.RecursiveDivisionFixedSplitsLTB);
-            this.RecursiveDivisionGroupBox.Controls.Add(this.RecursiveDivisionRecursionLocationLabel);
-            this.RecursiveDivisionGroupBox.Controls.Add(this.RecursiveDivisionRecursionLocationLTB);
-            this.RecursiveDivisionGroupBox.Controls.Add(this.RecursiveDivisionFixedRecursionLabel);
-            this.RecursiveDivisionGroupBox.Controls.Add(this.RecursiveDivisionFixedRecursionLTB);
-            this.RecursiveDivisionGroupBox.Location = new System.Drawing.Point(358, 6);
-            this.RecursiveDivisionGroupBox.Name = "RecursiveDivisionGroupBox";
-            this.RecursiveDivisionGroupBox.Size = new System.Drawing.Size(334, 363);
-            this.RecursiveDivisionGroupBox.TabIndex = 26;
-            this.RecursiveDivisionGroupBox.TabStop = false;
-            this.RecursiveDivisionGroupBox.Text = "Recursive division settings";
-            this.RecursiveDivisionGroupBox.Visible = false;
+            RecursiveDivisionGroupBox.Controls.Add(RecursiveDivisionShowInitializationStepCheckBox);
+            RecursiveDivisionGroupBox.Controls.Add(RecursiveDivisionProcessSingleCellBlocksCheckBox);
+            RecursiveDivisionGroupBox.Controls.Add(RecursiveDivisionReverseOrderLabel);
+            RecursiveDivisionGroupBox.Controls.Add(RecursiveDivisionReverseOrderLTB);
+            RecursiveDivisionGroupBox.Controls.Add(RecursiveDivisionProportionalSplitsLabel);
+            RecursiveDivisionGroupBox.Controls.Add(RecursiveDivisionProportionalSplitsLTB);
+            RecursiveDivisionGroupBox.Controls.Add(RecursiveDivisionSplitLocationLabel);
+            RecursiveDivisionGroupBox.Controls.Add(RecursiveDivisionSplitLocationLTB);
+            RecursiveDivisionGroupBox.Controls.Add(RecursiveDivisionFixedSplitsLabel);
+            RecursiveDivisionGroupBox.Controls.Add(RecursiveDivisionFixedSplitsLTB);
+            RecursiveDivisionGroupBox.Controls.Add(RecursiveDivisionRecursionLocationLabel);
+            RecursiveDivisionGroupBox.Controls.Add(RecursiveDivisionRecursionLocationLTB);
+            RecursiveDivisionGroupBox.Controls.Add(RecursiveDivisionFixedRecursionLabel);
+            RecursiveDivisionGroupBox.Controls.Add(RecursiveDivisionFixedRecursionLTB);
+            RecursiveDivisionGroupBox.Location = new System.Drawing.Point(418, 7);
+            RecursiveDivisionGroupBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            RecursiveDivisionGroupBox.Name = "RecursiveDivisionGroupBox";
+            RecursiveDivisionGroupBox.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            RecursiveDivisionGroupBox.Size = new System.Drawing.Size(390, 419);
+            RecursiveDivisionGroupBox.TabIndex = 26;
+            RecursiveDivisionGroupBox.TabStop = false;
+            RecursiveDivisionGroupBox.Text = "Recursive division settings";
+            RecursiveDivisionGroupBox.Visible = false;
             // 
             // RecursiveDivisionShowInitializationStepCheckBox
             // 
-            this.RecursiveDivisionShowInitializationStepCheckBox.AutoSize = true;
-            this.RecursiveDivisionShowInitializationStepCheckBox.Checked = true;
-            this.RecursiveDivisionShowInitializationStepCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.RecursiveDivisionShowInitializationStepCheckBox.Location = new System.Drawing.Point(23, 328);
-            this.RecursiveDivisionShowInitializationStepCheckBox.Name = "RecursiveDivisionShowInitializationStepCheckBox";
-            this.RecursiveDivisionShowInitializationStepCheckBox.Size = new System.Drawing.Size(132, 17);
-            this.RecursiveDivisionShowInitializationStepCheckBox.TabIndex = 40;
-            this.RecursiveDivisionShowInitializationStepCheckBox.Text = "Show initialization step";
-            this.RecursiveDivisionShowInitializationStepCheckBox.UseVisualStyleBackColor = true;
-            this.RecursiveDivisionShowInitializationStepCheckBox.CheckedChanged += new System.EventHandler(this.SyncRecursiveDivisionParameters);
+            RecursiveDivisionShowInitializationStepCheckBox.AutoSize = true;
+            RecursiveDivisionShowInitializationStepCheckBox.Checked = true;
+            RecursiveDivisionShowInitializationStepCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            RecursiveDivisionShowInitializationStepCheckBox.Location = new System.Drawing.Point(27, 378);
+            RecursiveDivisionShowInitializationStepCheckBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            RecursiveDivisionShowInitializationStepCheckBox.Name = "RecursiveDivisionShowInitializationStepCheckBox";
+            RecursiveDivisionShowInitializationStepCheckBox.Size = new System.Drawing.Size(147, 19);
+            RecursiveDivisionShowInitializationStepCheckBox.TabIndex = 40;
+            RecursiveDivisionShowInitializationStepCheckBox.Text = "Show initialization step";
+            RecursiveDivisionShowInitializationStepCheckBox.UseVisualStyleBackColor = true;
+            RecursiveDivisionShowInitializationStepCheckBox.CheckedChanged += SyncRecursiveDivisionParameters;
             // 
             // RecursiveDivisionProcessSingleCellBlocksCheckBox
             // 
-            this.RecursiveDivisionProcessSingleCellBlocksCheckBox.AutoSize = true;
-            this.RecursiveDivisionProcessSingleCellBlocksCheckBox.Location = new System.Drawing.Point(23, 304);
-            this.RecursiveDivisionProcessSingleCellBlocksCheckBox.Name = "RecursiveDivisionProcessSingleCellBlocksCheckBox";
-            this.RecursiveDivisionProcessSingleCellBlocksCheckBox.Size = new System.Drawing.Size(147, 17);
-            this.RecursiveDivisionProcessSingleCellBlocksCheckBox.TabIndex = 28;
-            this.RecursiveDivisionProcessSingleCellBlocksCheckBox.Text = "Process single cell blocks";
-            this.RecursiveDivisionProcessSingleCellBlocksCheckBox.UseVisualStyleBackColor = true;
-            this.RecursiveDivisionProcessSingleCellBlocksCheckBox.CheckedChanged += new System.EventHandler(this.SyncRecursiveDivisionParameters);
+            RecursiveDivisionProcessSingleCellBlocksCheckBox.AutoSize = true;
+            RecursiveDivisionProcessSingleCellBlocksCheckBox.Location = new System.Drawing.Point(27, 351);
+            RecursiveDivisionProcessSingleCellBlocksCheckBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            RecursiveDivisionProcessSingleCellBlocksCheckBox.Name = "RecursiveDivisionProcessSingleCellBlocksCheckBox";
+            RecursiveDivisionProcessSingleCellBlocksCheckBox.Size = new System.Drawing.Size(158, 19);
+            RecursiveDivisionProcessSingleCellBlocksCheckBox.TabIndex = 28;
+            RecursiveDivisionProcessSingleCellBlocksCheckBox.Text = "Process single cell blocks";
+            RecursiveDivisionProcessSingleCellBlocksCheckBox.UseVisualStyleBackColor = true;
+            RecursiveDivisionProcessSingleCellBlocksCheckBox.CheckedChanged += SyncRecursiveDivisionParameters;
             // 
             // RecursiveDivisionReverseOrderLabel
             // 
-            this.RecursiveDivisionReverseOrderLabel.AutoSize = true;
-            this.RecursiveDivisionReverseOrderLabel.Location = new System.Drawing.Point(21, 254);
-            this.RecursiveDivisionReverseOrderLabel.Name = "RecursiveDivisionReverseOrderLabel";
-            this.RecursiveDivisionReverseOrderLabel.Size = new System.Drawing.Size(94, 13);
-            this.RecursiveDivisionReverseOrderLabel.TabIndex = 38;
-            this.RecursiveDivisionReverseOrderLabel.Text = "Reverse order: 0%";
+            RecursiveDivisionReverseOrderLabel.AutoSize = true;
+            RecursiveDivisionReverseOrderLabel.Location = new System.Drawing.Point(24, 293);
+            RecursiveDivisionReverseOrderLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            RecursiveDivisionReverseOrderLabel.Name = "RecursiveDivisionReverseOrderLabel";
+            RecursiveDivisionReverseOrderLabel.Size = new System.Drawing.Size(100, 15);
+            RecursiveDivisionReverseOrderLabel.TabIndex = 38;
+            RecursiveDivisionReverseOrderLabel.Text = "Reverse order: 0%";
             // 
             // RecursiveDivisionReverseOrderLTB
             // 
-            this.RecursiveDivisionReverseOrderLTB.Location = new System.Drawing.Point(142, 254);
-            this.RecursiveDivisionReverseOrderLTB.LogMaximum = 1D;
-            this.RecursiveDivisionReverseOrderLTB.LogMiddle = 0.5D;
-            this.RecursiveDivisionReverseOrderLTB.LogMinimum = 0D;
-            this.RecursiveDivisionReverseOrderLTB.Maximum = 1000;
-            this.RecursiveDivisionReverseOrderLTB.Name = "RecursiveDivisionReverseOrderLTB";
-            this.RecursiveDivisionReverseOrderLTB.Size = new System.Drawing.Size(174, 45);
-            this.RecursiveDivisionReverseOrderLTB.TabIndex = 39;
-            this.RecursiveDivisionReverseOrderLTB.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.RecursiveDivisionReverseOrderLTB.ValueChanged += new System.EventHandler(this.SyncRecursiveDivisionParameters);
+            RecursiveDivisionReverseOrderLTB.Location = new System.Drawing.Point(166, 293);
+            RecursiveDivisionReverseOrderLTB.LogMaximum = 1D;
+            RecursiveDivisionReverseOrderLTB.LogMiddle = 0.5D;
+            RecursiveDivisionReverseOrderLTB.LogMinimum = 0D;
+            RecursiveDivisionReverseOrderLTB.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            RecursiveDivisionReverseOrderLTB.Maximum = 1000;
+            RecursiveDivisionReverseOrderLTB.Name = "RecursiveDivisionReverseOrderLTB";
+            RecursiveDivisionReverseOrderLTB.Size = new System.Drawing.Size(203, 45);
+            RecursiveDivisionReverseOrderLTB.TabIndex = 39;
+            RecursiveDivisionReverseOrderLTB.TickStyle = System.Windows.Forms.TickStyle.None;
+            RecursiveDivisionReverseOrderLTB.ValueChanged += SyncRecursiveDivisionParameters;
             // 
             // RecursiveDivisionProportionalSplitsLabel
             // 
-            this.RecursiveDivisionProportionalSplitsLabel.AutoSize = true;
-            this.RecursiveDivisionProportionalSplitsLabel.Location = new System.Drawing.Point(21, 203);
-            this.RecursiveDivisionProportionalSplitsLabel.Name = "RecursiveDivisionProportionalSplitsLabel";
-            this.RecursiveDivisionProportionalSplitsLabel.Size = new System.Drawing.Size(109, 13);
-            this.RecursiveDivisionProportionalSplitsLabel.TabIndex = 36;
-            this.RecursiveDivisionProportionalSplitsLabel.Text = "Proportional splits: 0%";
+            RecursiveDivisionProportionalSplitsLabel.AutoSize = true;
+            RecursiveDivisionProportionalSplitsLabel.Location = new System.Drawing.Point(24, 234);
+            RecursiveDivisionProportionalSplitsLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            RecursiveDivisionProportionalSplitsLabel.Name = "RecursiveDivisionProportionalSplitsLabel";
+            RecursiveDivisionProportionalSplitsLabel.Size = new System.Drawing.Size(125, 15);
+            RecursiveDivisionProportionalSplitsLabel.TabIndex = 36;
+            RecursiveDivisionProportionalSplitsLabel.Text = "Proportional splits: 0%";
             // 
             // RecursiveDivisionProportionalSplitsLTB
             // 
-            this.RecursiveDivisionProportionalSplitsLTB.Location = new System.Drawing.Point(142, 203);
-            this.RecursiveDivisionProportionalSplitsLTB.LogMaximum = 1D;
-            this.RecursiveDivisionProportionalSplitsLTB.LogMiddle = 0.5D;
-            this.RecursiveDivisionProportionalSplitsLTB.LogMinimum = 0D;
-            this.RecursiveDivisionProportionalSplitsLTB.Maximum = 1000;
-            this.RecursiveDivisionProportionalSplitsLTB.Name = "RecursiveDivisionProportionalSplitsLTB";
-            this.RecursiveDivisionProportionalSplitsLTB.Size = new System.Drawing.Size(174, 45);
-            this.RecursiveDivisionProportionalSplitsLTB.TabIndex = 37;
-            this.RecursiveDivisionProportionalSplitsLTB.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.RecursiveDivisionProportionalSplitsLTB.Value = 1000;
-            this.RecursiveDivisionProportionalSplitsLTB.ValueChanged += new System.EventHandler(this.SyncRecursiveDivisionParameters);
+            RecursiveDivisionProportionalSplitsLTB.Location = new System.Drawing.Point(166, 234);
+            RecursiveDivisionProportionalSplitsLTB.LogMaximum = 1D;
+            RecursiveDivisionProportionalSplitsLTB.LogMiddle = 0.5D;
+            RecursiveDivisionProportionalSplitsLTB.LogMinimum = 0D;
+            RecursiveDivisionProportionalSplitsLTB.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            RecursiveDivisionProportionalSplitsLTB.Maximum = 1000;
+            RecursiveDivisionProportionalSplitsLTB.Name = "RecursiveDivisionProportionalSplitsLTB";
+            RecursiveDivisionProportionalSplitsLTB.Size = new System.Drawing.Size(203, 45);
+            RecursiveDivisionProportionalSplitsLTB.TabIndex = 37;
+            RecursiveDivisionProportionalSplitsLTB.TickStyle = System.Windows.Forms.TickStyle.None;
+            RecursiveDivisionProportionalSplitsLTB.Value = 1000;
+            RecursiveDivisionProportionalSplitsLTB.ValueChanged += SyncRecursiveDivisionParameters;
             // 
             // RecursiveDivisionSplitLocationLabel
             // 
-            this.RecursiveDivisionSplitLocationLabel.AutoSize = true;
-            this.RecursiveDivisionSplitLocationLabel.Location = new System.Drawing.Point(20, 152);
-            this.RecursiveDivisionSplitLocationLabel.Name = "RecursiveDivisionSplitLocationLabel";
-            this.RecursiveDivisionSplitLocationLabel.Size = new System.Drawing.Size(87, 13);
-            this.RecursiveDivisionSplitLocationLabel.TabIndex = 34;
-            this.RecursiveDivisionSplitLocationLabel.Text = "Split location: 0%";
+            RecursiveDivisionSplitLocationLabel.AutoSize = true;
+            RecursiveDivisionSplitLocationLabel.Location = new System.Drawing.Point(23, 175);
+            RecursiveDivisionSplitLocationLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            RecursiveDivisionSplitLocationLabel.Name = "RecursiveDivisionSplitLocationLabel";
+            RecursiveDivisionSplitLocationLabel.Size = new System.Drawing.Size(98, 15);
+            RecursiveDivisionSplitLocationLabel.TabIndex = 34;
+            RecursiveDivisionSplitLocationLabel.Text = "Split location: 0%";
             // 
             // RecursiveDivisionSplitLocationLTB
             // 
-            this.RecursiveDivisionSplitLocationLTB.Location = new System.Drawing.Point(141, 152);
-            this.RecursiveDivisionSplitLocationLTB.LogMaximum = 1D;
-            this.RecursiveDivisionSplitLocationLTB.LogMiddle = 0.5D;
-            this.RecursiveDivisionSplitLocationLTB.LogMinimum = 0D;
-            this.RecursiveDivisionSplitLocationLTB.Maximum = 1000;
-            this.RecursiveDivisionSplitLocationLTB.Name = "RecursiveDivisionSplitLocationLTB";
-            this.RecursiveDivisionSplitLocationLTB.Size = new System.Drawing.Size(174, 45);
-            this.RecursiveDivisionSplitLocationLTB.TabIndex = 35;
-            this.RecursiveDivisionSplitLocationLTB.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.RecursiveDivisionSplitLocationLTB.Value = 500;
-            this.RecursiveDivisionSplitLocationLTB.ValueChanged += new System.EventHandler(this.SyncRecursiveDivisionParameters);
+            RecursiveDivisionSplitLocationLTB.Location = new System.Drawing.Point(164, 175);
+            RecursiveDivisionSplitLocationLTB.LogMaximum = 1D;
+            RecursiveDivisionSplitLocationLTB.LogMiddle = 0.5D;
+            RecursiveDivisionSplitLocationLTB.LogMinimum = 0D;
+            RecursiveDivisionSplitLocationLTB.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            RecursiveDivisionSplitLocationLTB.Maximum = 1000;
+            RecursiveDivisionSplitLocationLTB.Name = "RecursiveDivisionSplitLocationLTB";
+            RecursiveDivisionSplitLocationLTB.Size = new System.Drawing.Size(203, 45);
+            RecursiveDivisionSplitLocationLTB.TabIndex = 35;
+            RecursiveDivisionSplitLocationLTB.TickStyle = System.Windows.Forms.TickStyle.None;
+            RecursiveDivisionSplitLocationLTB.Value = 500;
+            RecursiveDivisionSplitLocationLTB.ValueChanged += SyncRecursiveDivisionParameters;
             // 
             // RecursiveDivisionFixedSplitsLabel
             // 
-            this.RecursiveDivisionFixedSplitsLabel.AutoSize = true;
-            this.RecursiveDivisionFixedSplitsLabel.Location = new System.Drawing.Point(20, 119);
-            this.RecursiveDivisionFixedSplitsLabel.Name = "RecursiveDivisionFixedSplitsLabel";
-            this.RecursiveDivisionFixedSplitsLabel.Size = new System.Drawing.Size(78, 13);
-            this.RecursiveDivisionFixedSplitsLabel.TabIndex = 32;
-            this.RecursiveDivisionFixedSplitsLabel.Text = "Fixed splits: 0%";
+            RecursiveDivisionFixedSplitsLabel.AutoSize = true;
+            RecursiveDivisionFixedSplitsLabel.Location = new System.Drawing.Point(23, 137);
+            RecursiveDivisionFixedSplitsLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            RecursiveDivisionFixedSplitsLabel.Name = "RecursiveDivisionFixedSplitsLabel";
+            RecursiveDivisionFixedSplitsLabel.Size = new System.Drawing.Size(87, 15);
+            RecursiveDivisionFixedSplitsLabel.TabIndex = 32;
+            RecursiveDivisionFixedSplitsLabel.Text = "Fixed splits: 0%";
             // 
             // RecursiveDivisionFixedSplitsLTB
             // 
-            this.RecursiveDivisionFixedSplitsLTB.Location = new System.Drawing.Point(141, 119);
-            this.RecursiveDivisionFixedSplitsLTB.LogMaximum = 1D;
-            this.RecursiveDivisionFixedSplitsLTB.LogMiddle = 0.2D;
-            this.RecursiveDivisionFixedSplitsLTB.LogMinimum = 0D;
-            this.RecursiveDivisionFixedSplitsLTB.Maximum = 1000;
-            this.RecursiveDivisionFixedSplitsLTB.Name = "RecursiveDivisionFixedSplitsLTB";
-            this.RecursiveDivisionFixedSplitsLTB.Size = new System.Drawing.Size(174, 45);
-            this.RecursiveDivisionFixedSplitsLTB.TabIndex = 33;
-            this.RecursiveDivisionFixedSplitsLTB.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.RecursiveDivisionFixedSplitsLTB.ValueChanged += new System.EventHandler(this.SyncRecursiveDivisionParameters);
+            RecursiveDivisionFixedSplitsLTB.Location = new System.Drawing.Point(164, 137);
+            RecursiveDivisionFixedSplitsLTB.LogMaximum = 1D;
+            RecursiveDivisionFixedSplitsLTB.LogMiddle = 0.2D;
+            RecursiveDivisionFixedSplitsLTB.LogMinimum = 0D;
+            RecursiveDivisionFixedSplitsLTB.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            RecursiveDivisionFixedSplitsLTB.Maximum = 1000;
+            RecursiveDivisionFixedSplitsLTB.Name = "RecursiveDivisionFixedSplitsLTB";
+            RecursiveDivisionFixedSplitsLTB.Size = new System.Drawing.Size(203, 45);
+            RecursiveDivisionFixedSplitsLTB.TabIndex = 33;
+            RecursiveDivisionFixedSplitsLTB.TickStyle = System.Windows.Forms.TickStyle.None;
+            RecursiveDivisionFixedSplitsLTB.ValueChanged += SyncRecursiveDivisionParameters;
             // 
             // RecursiveDivisionRecursionLocationLabel
             // 
-            this.RecursiveDivisionRecursionLocationLabel.AutoSize = true;
-            this.RecursiveDivisionRecursionLocationLabel.Location = new System.Drawing.Point(20, 68);
-            this.RecursiveDivisionRecursionLocationLabel.Name = "RecursiveDivisionRecursionLocationLabel";
-            this.RecursiveDivisionRecursionLocationLabel.Size = new System.Drawing.Size(115, 13);
-            this.RecursiveDivisionRecursionLocationLabel.TabIndex = 30;
-            this.RecursiveDivisionRecursionLocationLabel.Text = "Recursion location: 0%";
+            RecursiveDivisionRecursionLocationLabel.AutoSize = true;
+            RecursiveDivisionRecursionLocationLabel.Location = new System.Drawing.Point(23, 78);
+            RecursiveDivisionRecursionLocationLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            RecursiveDivisionRecursionLocationLabel.Name = "RecursiveDivisionRecursionLocationLabel";
+            RecursiveDivisionRecursionLocationLabel.Size = new System.Drawing.Size(127, 15);
+            RecursiveDivisionRecursionLocationLabel.TabIndex = 30;
+            RecursiveDivisionRecursionLocationLabel.Text = "Recursion location: 0%";
             // 
             // RecursiveDivisionRecursionLocationLTB
             // 
-            this.RecursiveDivisionRecursionLocationLTB.Location = new System.Drawing.Point(141, 68);
-            this.RecursiveDivisionRecursionLocationLTB.LogMaximum = 1D;
-            this.RecursiveDivisionRecursionLocationLTB.LogMiddle = 0.5D;
-            this.RecursiveDivisionRecursionLocationLTB.LogMinimum = 0D;
-            this.RecursiveDivisionRecursionLocationLTB.Maximum = 1000;
-            this.RecursiveDivisionRecursionLocationLTB.Name = "RecursiveDivisionRecursionLocationLTB";
-            this.RecursiveDivisionRecursionLocationLTB.Size = new System.Drawing.Size(174, 45);
-            this.RecursiveDivisionRecursionLocationLTB.TabIndex = 31;
-            this.RecursiveDivisionRecursionLocationLTB.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.RecursiveDivisionRecursionLocationLTB.Value = 1000;
-            this.RecursiveDivisionRecursionLocationLTB.ValueChanged += new System.EventHandler(this.SyncRecursiveDivisionParameters);
+            RecursiveDivisionRecursionLocationLTB.Location = new System.Drawing.Point(164, 78);
+            RecursiveDivisionRecursionLocationLTB.LogMaximum = 1D;
+            RecursiveDivisionRecursionLocationLTB.LogMiddle = 0.5D;
+            RecursiveDivisionRecursionLocationLTB.LogMinimum = 0D;
+            RecursiveDivisionRecursionLocationLTB.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            RecursiveDivisionRecursionLocationLTB.Maximum = 1000;
+            RecursiveDivisionRecursionLocationLTB.Name = "RecursiveDivisionRecursionLocationLTB";
+            RecursiveDivisionRecursionLocationLTB.Size = new System.Drawing.Size(203, 45);
+            RecursiveDivisionRecursionLocationLTB.TabIndex = 31;
+            RecursiveDivisionRecursionLocationLTB.TickStyle = System.Windows.Forms.TickStyle.None;
+            RecursiveDivisionRecursionLocationLTB.Value = 1000;
+            RecursiveDivisionRecursionLocationLTB.ValueChanged += SyncRecursiveDivisionParameters;
             // 
             // RecursiveDivisionFixedRecursionLabel
             // 
-            this.RecursiveDivisionFixedRecursionLabel.AutoSize = true;
-            this.RecursiveDivisionFixedRecursionLabel.Location = new System.Drawing.Point(20, 35);
-            this.RecursiveDivisionFixedRecursionLabel.Name = "RecursiveDivisionFixedRecursionLabel";
-            this.RecursiveDivisionFixedRecursionLabel.Size = new System.Drawing.Size(98, 13);
-            this.RecursiveDivisionFixedRecursionLabel.TabIndex = 28;
-            this.RecursiveDivisionFixedRecursionLabel.Text = "Fixed recursion: 0%";
+            RecursiveDivisionFixedRecursionLabel.AutoSize = true;
+            RecursiveDivisionFixedRecursionLabel.Location = new System.Drawing.Point(23, 40);
+            RecursiveDivisionFixedRecursionLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            RecursiveDivisionFixedRecursionLabel.Name = "RecursiveDivisionFixedRecursionLabel";
+            RecursiveDivisionFixedRecursionLabel.Size = new System.Drawing.Size(109, 15);
+            RecursiveDivisionFixedRecursionLabel.TabIndex = 28;
+            RecursiveDivisionFixedRecursionLabel.Text = "Fixed recursion: 0%";
             // 
             // RecursiveDivisionFixedRecursionLTB
             // 
-            this.RecursiveDivisionFixedRecursionLTB.Location = new System.Drawing.Point(141, 35);
-            this.RecursiveDivisionFixedRecursionLTB.LogMaximum = 1D;
-            this.RecursiveDivisionFixedRecursionLTB.LogMiddle = 0.2D;
-            this.RecursiveDivisionFixedRecursionLTB.LogMinimum = 0D;
-            this.RecursiveDivisionFixedRecursionLTB.Maximum = 1000;
-            this.RecursiveDivisionFixedRecursionLTB.Name = "RecursiveDivisionFixedRecursionLTB";
-            this.RecursiveDivisionFixedRecursionLTB.Size = new System.Drawing.Size(174, 45);
-            this.RecursiveDivisionFixedRecursionLTB.TabIndex = 29;
-            this.RecursiveDivisionFixedRecursionLTB.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.RecursiveDivisionFixedRecursionLTB.ValueChanged += new System.EventHandler(this.SyncRecursiveDivisionParameters);
+            RecursiveDivisionFixedRecursionLTB.Location = new System.Drawing.Point(164, 40);
+            RecursiveDivisionFixedRecursionLTB.LogMaximum = 1D;
+            RecursiveDivisionFixedRecursionLTB.LogMiddle = 0.2D;
+            RecursiveDivisionFixedRecursionLTB.LogMinimum = 0D;
+            RecursiveDivisionFixedRecursionLTB.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            RecursiveDivisionFixedRecursionLTB.Maximum = 1000;
+            RecursiveDivisionFixedRecursionLTB.Name = "RecursiveDivisionFixedRecursionLTB";
+            RecursiveDivisionFixedRecursionLTB.Size = new System.Drawing.Size(203, 45);
+            RecursiveDivisionFixedRecursionLTB.TabIndex = 29;
+            RecursiveDivisionFixedRecursionLTB.TickStyle = System.Windows.Forms.TickStyle.None;
+            RecursiveDivisionFixedRecursionLTB.ValueChanged += SyncRecursiveDivisionParameters;
             // 
             // ShowAdvancedSettingsCheckBox
             // 
-            this.ShowAdvancedSettingsCheckBox.AutoSize = true;
-            this.ShowAdvancedSettingsCheckBox.Checked = true;
-            this.ShowAdvancedSettingsCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ShowAdvancedSettingsCheckBox.Location = new System.Drawing.Point(231, 200);
-            this.ShowAdvancedSettingsCheckBox.Name = "ShowAdvancedSettingsCheckBox";
-            this.ShowAdvancedSettingsCheckBox.Size = new System.Drawing.Size(114, 17);
-            this.ShowAdvancedSettingsCheckBox.TabIndex = 27;
-            this.ShowAdvancedSettingsCheckBox.Text = "Advanced settings";
-            this.ShowAdvancedSettingsCheckBox.UseVisualStyleBackColor = true;
-            this.ShowAdvancedSettingsCheckBox.CheckedChanged += new System.EventHandler(this.SyncGroupBoxes);
+            ShowAdvancedSettingsCheckBox.AutoSize = true;
+            ShowAdvancedSettingsCheckBox.Checked = true;
+            ShowAdvancedSettingsCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            ShowAdvancedSettingsCheckBox.Location = new System.Drawing.Point(266, 211);
+            ShowAdvancedSettingsCheckBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            ShowAdvancedSettingsCheckBox.Name = "ShowAdvancedSettingsCheckBox";
+            ShowAdvancedSettingsCheckBox.Size = new System.Drawing.Size(123, 19);
+            ShowAdvancedSettingsCheckBox.TabIndex = 27;
+            ShowAdvancedSettingsCheckBox.Text = "Advanced settings";
+            ShowAdvancedSettingsCheckBox.UseVisualStyleBackColor = true;
+            ShowAdvancedSettingsCheckBox.CheckedChanged += SyncGroupBoxes;
             // 
             // KruskalGroupBox
             // 
-            this.KruskalGroupBox.Controls.Add(this.KruskalShowAllWallCheckingCheckBox);
-            this.KruskalGroupBox.Controls.Add(this.KruskalBraidLTB);
-            this.KruskalGroupBox.Controls.Add(this.KruskalBraidLabel);
-            this.KruskalGroupBox.Location = new System.Drawing.Point(698, 6);
-            this.KruskalGroupBox.Name = "KruskalGroupBox";
-            this.KruskalGroupBox.Size = new System.Drawing.Size(334, 363);
-            this.KruskalGroupBox.TabIndex = 41;
-            this.KruskalGroupBox.TabStop = false;
-            this.KruskalGroupBox.Text = "Kruskal settings";
-            this.KruskalGroupBox.Visible = false;
+            KruskalGroupBox.Controls.Add(KruskalShowAllWallCheckingCheckBox);
+            KruskalGroupBox.Controls.Add(KruskalBraidLTB);
+            KruskalGroupBox.Controls.Add(KruskalBraidLabel);
+            KruskalGroupBox.Location = new System.Drawing.Point(814, 7);
+            KruskalGroupBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            KruskalGroupBox.Name = "KruskalGroupBox";
+            KruskalGroupBox.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            KruskalGroupBox.Size = new System.Drawing.Size(390, 419);
+            KruskalGroupBox.TabIndex = 41;
+            KruskalGroupBox.TabStop = false;
+            KruskalGroupBox.Text = "Kruskal settings";
+            KruskalGroupBox.Visible = false;
             // 
             // KruskalShowAllWallCheckingCheckBox
             // 
-            this.KruskalShowAllWallCheckingCheckBox.AutoSize = true;
-            this.KruskalShowAllWallCheckingCheckBox.Location = new System.Drawing.Point(24, 76);
-            this.KruskalShowAllWallCheckingCheckBox.Name = "KruskalShowAllWallCheckingCheckBox";
-            this.KruskalShowAllWallCheckingCheckBox.Size = new System.Drawing.Size(134, 17);
-            this.KruskalShowAllWallCheckingCheckBox.TabIndex = 42;
-            this.KruskalShowAllWallCheckingCheckBox.Text = "Show all wall checking";
-            this.KruskalShowAllWallCheckingCheckBox.UseVisualStyleBackColor = true;
-            this.KruskalShowAllWallCheckingCheckBox.CheckedChanged += new System.EventHandler(this.SyncKruskalParameters);
+            KruskalShowAllWallCheckingCheckBox.AutoSize = true;
+            KruskalShowAllWallCheckingCheckBox.Location = new System.Drawing.Point(28, 88);
+            KruskalShowAllWallCheckingCheckBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            KruskalShowAllWallCheckingCheckBox.Name = "KruskalShowAllWallCheckingCheckBox";
+            KruskalShowAllWallCheckingCheckBox.Size = new System.Drawing.Size(145, 19);
+            KruskalShowAllWallCheckingCheckBox.TabIndex = 42;
+            KruskalShowAllWallCheckingCheckBox.Text = "Show all wall checking";
+            KruskalShowAllWallCheckingCheckBox.UseVisualStyleBackColor = true;
+            KruskalShowAllWallCheckingCheckBox.CheckedChanged += SyncKruskalParameters;
             // 
             // KruskalBraidLTB
             // 
-            this.KruskalBraidLTB.Location = new System.Drawing.Point(103, 36);
-            this.KruskalBraidLTB.LogMaximum = 1D;
-            this.KruskalBraidLTB.LogMiddle = 0.5D;
-            this.KruskalBraidLTB.LogMinimum = 0D;
-            this.KruskalBraidLTB.Maximum = 1000;
-            this.KruskalBraidLTB.Name = "KruskalBraidLTB";
-            this.KruskalBraidLTB.Size = new System.Drawing.Size(213, 45);
-            this.KruskalBraidLTB.TabIndex = 29;
-            this.KruskalBraidLTB.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.KruskalBraidLTB.ValueChanged += new System.EventHandler(this.SyncKruskalParameters);
+            KruskalBraidLTB.Location = new System.Drawing.Point(120, 42);
+            KruskalBraidLTB.LogMaximum = 1D;
+            KruskalBraidLTB.LogMiddle = 0.5D;
+            KruskalBraidLTB.LogMinimum = 0D;
+            KruskalBraidLTB.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            KruskalBraidLTB.Maximum = 1000;
+            KruskalBraidLTB.Name = "KruskalBraidLTB";
+            KruskalBraidLTB.Size = new System.Drawing.Size(248, 45);
+            KruskalBraidLTB.TabIndex = 29;
+            KruskalBraidLTB.TickStyle = System.Windows.Forms.TickStyle.None;
+            KruskalBraidLTB.ValueChanged += SyncKruskalParameters;
             // 
             // KruskalBraidLabel
             // 
-            this.KruskalBraidLabel.AutoSize = true;
-            this.KruskalBraidLabel.Location = new System.Drawing.Point(21, 36);
-            this.KruskalBraidLabel.Name = "KruskalBraidLabel";
-            this.KruskalBraidLabel.Size = new System.Drawing.Size(51, 13);
-            this.KruskalBraidLabel.TabIndex = 28;
-            this.KruskalBraidLabel.Text = "Braid: 0%";
+            KruskalBraidLabel.AutoSize = true;
+            KruskalBraidLabel.Location = new System.Drawing.Point(24, 42);
+            KruskalBraidLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            KruskalBraidLabel.Name = "KruskalBraidLabel";
+            KruskalBraidLabel.Size = new System.Drawing.Size(56, 15);
+            KruskalBraidLabel.TabIndex = 28;
+            KruskalBraidLabel.Text = "Braid: 0%";
             // 
             // BinaryTreeGroupBox
             // 
-            this.BinaryTreeGroupBox.Controls.Add(this.BinaryTreeBiasLTB);
-            this.BinaryTreeGroupBox.Controls.Add(this.BinaryTreeBiasLabel);
-            this.BinaryTreeGroupBox.Controls.Add(this.BinaryTreeSidewinderLTB);
-            this.BinaryTreeGroupBox.Controls.Add(this.BinaryTreeSidewinderLabel);
-            this.BinaryTreeGroupBox.Location = new System.Drawing.Point(358, 375);
-            this.BinaryTreeGroupBox.Name = "BinaryTreeGroupBox";
-            this.BinaryTreeGroupBox.Size = new System.Drawing.Size(334, 363);
-            this.BinaryTreeGroupBox.TabIndex = 43;
-            this.BinaryTreeGroupBox.TabStop = false;
-            this.BinaryTreeGroupBox.Text = "Binary tree settings";
-            this.BinaryTreeGroupBox.Visible = false;
+            BinaryTreeGroupBox.Controls.Add(BinaryTreeBiasLTB);
+            BinaryTreeGroupBox.Controls.Add(BinaryTreeBiasLabel);
+            BinaryTreeGroupBox.Controls.Add(BinaryTreeSidewinderLTB);
+            BinaryTreeGroupBox.Controls.Add(BinaryTreeSidewinderLabel);
+            BinaryTreeGroupBox.Location = new System.Drawing.Point(418, 433);
+            BinaryTreeGroupBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            BinaryTreeGroupBox.Name = "BinaryTreeGroupBox";
+            BinaryTreeGroupBox.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            BinaryTreeGroupBox.Size = new System.Drawing.Size(390, 419);
+            BinaryTreeGroupBox.TabIndex = 43;
+            BinaryTreeGroupBox.TabStop = false;
+            BinaryTreeGroupBox.Text = "Binary tree settings";
+            BinaryTreeGroupBox.Visible = false;
             // 
             // BinaryTreeBiasLTB
             // 
-            this.BinaryTreeBiasLTB.Location = new System.Drawing.Point(103, 75);
-            this.BinaryTreeBiasLTB.LogMaximum = 1D;
-            this.BinaryTreeBiasLTB.LogMiddle = 0.5D;
-            this.BinaryTreeBiasLTB.LogMinimum = 0D;
-            this.BinaryTreeBiasLTB.Maximum = 1000;
-            this.BinaryTreeBiasLTB.Name = "BinaryTreeBiasLTB";
-            this.BinaryTreeBiasLTB.Size = new System.Drawing.Size(213, 45);
-            this.BinaryTreeBiasLTB.TabIndex = 33;
-            this.BinaryTreeBiasLTB.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.BinaryTreeBiasLTB.Value = 500;
-            this.BinaryTreeBiasLTB.ValueChanged += new System.EventHandler(this.SyncBinaryTreeParameters);
+            BinaryTreeBiasLTB.Location = new System.Drawing.Point(120, 87);
+            BinaryTreeBiasLTB.LogMaximum = 1D;
+            BinaryTreeBiasLTB.LogMiddle = 0.5D;
+            BinaryTreeBiasLTB.LogMinimum = 0D;
+            BinaryTreeBiasLTB.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            BinaryTreeBiasLTB.Maximum = 1000;
+            BinaryTreeBiasLTB.Name = "BinaryTreeBiasLTB";
+            BinaryTreeBiasLTB.Size = new System.Drawing.Size(248, 45);
+            BinaryTreeBiasLTB.TabIndex = 33;
+            BinaryTreeBiasLTB.TickStyle = System.Windows.Forms.TickStyle.None;
+            BinaryTreeBiasLTB.Value = 500;
+            BinaryTreeBiasLTB.ValueChanged += SyncBinaryTreeParameters;
             // 
             // BinaryTreeBiasLabel
             // 
-            this.BinaryTreeBiasLabel.AutoSize = true;
-            this.BinaryTreeBiasLabel.Location = new System.Drawing.Point(21, 75);
-            this.BinaryTreeBiasLabel.Name = "BinaryTreeBiasLabel";
-            this.BinaryTreeBiasLabel.Size = new System.Drawing.Size(47, 13);
-            this.BinaryTreeBiasLabel.TabIndex = 32;
-            this.BinaryTreeBiasLabel.Text = "Bias: 0%";
+            BinaryTreeBiasLabel.AutoSize = true;
+            BinaryTreeBiasLabel.Location = new System.Drawing.Point(24, 87);
+            BinaryTreeBiasLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            BinaryTreeBiasLabel.Name = "BinaryTreeBiasLabel";
+            BinaryTreeBiasLabel.Size = new System.Drawing.Size(50, 15);
+            BinaryTreeBiasLabel.TabIndex = 32;
+            BinaryTreeBiasLabel.Text = "Bias: 0%";
             // 
             // BinaryTreeSidewinderLTB
             // 
-            this.BinaryTreeSidewinderLTB.Location = new System.Drawing.Point(102, 34);
-            this.BinaryTreeSidewinderLTB.LogMaximum = 1D;
-            this.BinaryTreeSidewinderLTB.LogMiddle = 0.5D;
-            this.BinaryTreeSidewinderLTB.LogMinimum = 0D;
-            this.BinaryTreeSidewinderLTB.Maximum = 1000;
-            this.BinaryTreeSidewinderLTB.Name = "BinaryTreeSidewinderLTB";
-            this.BinaryTreeSidewinderLTB.Size = new System.Drawing.Size(213, 45);
-            this.BinaryTreeSidewinderLTB.TabIndex = 31;
-            this.BinaryTreeSidewinderLTB.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.BinaryTreeSidewinderLTB.ValueChanged += new System.EventHandler(this.SyncBinaryTreeParameters);
+            BinaryTreeSidewinderLTB.Location = new System.Drawing.Point(119, 39);
+            BinaryTreeSidewinderLTB.LogMaximum = 1D;
+            BinaryTreeSidewinderLTB.LogMiddle = 0.5D;
+            BinaryTreeSidewinderLTB.LogMinimum = 0D;
+            BinaryTreeSidewinderLTB.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            BinaryTreeSidewinderLTB.Maximum = 1000;
+            BinaryTreeSidewinderLTB.Name = "BinaryTreeSidewinderLTB";
+            BinaryTreeSidewinderLTB.Size = new System.Drawing.Size(248, 45);
+            BinaryTreeSidewinderLTB.TabIndex = 31;
+            BinaryTreeSidewinderLTB.TickStyle = System.Windows.Forms.TickStyle.None;
+            BinaryTreeSidewinderLTB.ValueChanged += SyncBinaryTreeParameters;
             // 
             // BinaryTreeSidewinderLabel
             // 
-            this.BinaryTreeSidewinderLabel.AutoSize = true;
-            this.BinaryTreeSidewinderLabel.Location = new System.Drawing.Point(20, 34);
-            this.BinaryTreeSidewinderLabel.Name = "BinaryTreeSidewinderLabel";
-            this.BinaryTreeSidewinderLabel.Size = new System.Drawing.Size(79, 13);
-            this.BinaryTreeSidewinderLabel.TabIndex = 30;
-            this.BinaryTreeSidewinderLabel.Text = "Sidewinder: 0%";
+            BinaryTreeSidewinderLabel.AutoSize = true;
+            BinaryTreeSidewinderLabel.Location = new System.Drawing.Point(23, 39);
+            BinaryTreeSidewinderLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            BinaryTreeSidewinderLabel.Name = "BinaryTreeSidewinderLabel";
+            BinaryTreeSidewinderLabel.Size = new System.Drawing.Size(87, 15);
+            BinaryTreeSidewinderLabel.TabIndex = 30;
+            BinaryTreeSidewinderLabel.Text = "Sidewinder: 0%";
             // 
             // SaveButton
             // 
-            this.SaveButton.Location = new System.Drawing.Point(12, 614);
-            this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(144, 27);
-            this.SaveButton.TabIndex = 44;
-            this.SaveButton.Text = "Save";
-            this.SaveButton.UseVisualStyleBackColor = true;
-            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
+            SaveButton.Location = new System.Drawing.Point(12, 740);
+            SaveButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            SaveButton.Name = "SaveButton";
+            SaveButton.Size = new System.Drawing.Size(168, 31);
+            SaveButton.TabIndex = 44;
+            SaveButton.Text = "Save";
+            SaveButton.UseVisualStyleBackColor = true;
+            SaveButton.Click += SaveButton_Click;
             // 
             // RendererDelayLogarithmicTrackBar
             // 
-            this.RendererDelayLogarithmicTrackBar.Location = new System.Drawing.Point(137, 154);
-            this.RendererDelayLogarithmicTrackBar.LogMaximum = 1000D;
-            this.RendererDelayLogarithmicTrackBar.LogMiddle = 16D;
-            this.RendererDelayLogarithmicTrackBar.LogMinimum = 0D;
-            this.RendererDelayLogarithmicTrackBar.Maximum = 1000;
-            this.RendererDelayLogarithmicTrackBar.Name = "RendererDelayLogarithmicTrackBar";
-            this.RendererDelayLogarithmicTrackBar.Size = new System.Drawing.Size(210, 45);
-            this.RendererDelayLogarithmicTrackBar.TabIndex = 15;
-            this.RendererDelayLogarithmicTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.RendererDelayLogarithmicTrackBar.Value = 500;
-            this.RendererDelayLogarithmicTrackBar.ValueChanged += new System.EventHandler(this.SyncRunnerParameters);
+            RendererDelayLogarithmicTrackBar.Location = new System.Drawing.Point(160, 178);
+            RendererDelayLogarithmicTrackBar.LogMaximum = 1000D;
+            RendererDelayLogarithmicTrackBar.LogMiddle = 16D;
+            RendererDelayLogarithmicTrackBar.LogMinimum = 0D;
+            RendererDelayLogarithmicTrackBar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            RendererDelayLogarithmicTrackBar.Maximum = 1000;
+            RendererDelayLogarithmicTrackBar.Name = "RendererDelayLogarithmicTrackBar";
+            RendererDelayLogarithmicTrackBar.Size = new System.Drawing.Size(245, 45);
+            RendererDelayLogarithmicTrackBar.TabIndex = 15;
+            RendererDelayLogarithmicTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
+            RendererDelayLogarithmicTrackBar.Value = 500;
+            RendererDelayLogarithmicTrackBar.ValueChanged += SyncRunnerParameters;
             // 
             // GeneratorDelayLogarithmicTrackBar
             // 
-            this.GeneratorDelayLogarithmicTrackBar.Location = new System.Drawing.Point(137, 122);
-            this.GeneratorDelayLogarithmicTrackBar.LogMaximum = 10000D;
-            this.GeneratorDelayLogarithmicTrackBar.LogMiddle = 100D;
-            this.GeneratorDelayLogarithmicTrackBar.LogMinimum = 0D;
-            this.GeneratorDelayLogarithmicTrackBar.Maximum = 1000;
-            this.GeneratorDelayLogarithmicTrackBar.Name = "GeneratorDelayLogarithmicTrackBar";
-            this.GeneratorDelayLogarithmicTrackBar.Size = new System.Drawing.Size(213, 45);
-            this.GeneratorDelayLogarithmicTrackBar.TabIndex = 14;
-            this.GeneratorDelayLogarithmicTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.GeneratorDelayLogarithmicTrackBar.Value = 500;
-            this.GeneratorDelayLogarithmicTrackBar.ValueChanged += new System.EventHandler(this.SyncRunnerParameters);
+            GeneratorDelayLogarithmicTrackBar.Location = new System.Drawing.Point(160, 141);
+            GeneratorDelayLogarithmicTrackBar.LogMaximum = 10000D;
+            GeneratorDelayLogarithmicTrackBar.LogMiddle = 100D;
+            GeneratorDelayLogarithmicTrackBar.LogMinimum = 0D;
+            GeneratorDelayLogarithmicTrackBar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            GeneratorDelayLogarithmicTrackBar.Maximum = 1000;
+            GeneratorDelayLogarithmicTrackBar.Name = "GeneratorDelayLogarithmicTrackBar";
+            GeneratorDelayLogarithmicTrackBar.Size = new System.Drawing.Size(248, 45);
+            GeneratorDelayLogarithmicTrackBar.TabIndex = 14;
+            GeneratorDelayLogarithmicTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
+            GeneratorDelayLogarithmicTrackBar.Value = 500;
+            GeneratorDelayLogarithmicTrackBar.ValueChanged += SyncRunnerParameters;
+            // 
+            // SeedLabel
+            // 
+            SeedLabel.AutoSize = true;
+            SeedLabel.Location = new System.Drawing.Point(15, 241);
+            SeedLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            SeedLabel.Name = "SeedLabel";
+            SeedLabel.Size = new System.Drawing.Size(35, 15);
+            SeedLabel.TabIndex = 45;
+            SeedLabel.Text = "Seed:";
+            // 
+            // SeedTextBox
+            // 
+            SeedTextBox.Location = new System.Drawing.Point(87, 238);
+            SeedTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            SeedTextBox.Name = "SeedTextBox";
+            SeedTextBox.Size = new System.Drawing.Size(103, 23);
+            SeedTextBox.TabIndex = 46;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1258, 899);
-            this.Controls.Add(this.SaveButton);
-            this.Controls.Add(this.BinaryTreeGroupBox);
-            this.Controls.Add(this.KruskalGroupBox);
-            this.Controls.Add(this.ShowAdvancedSettingsCheckBox);
-            this.Controls.Add(this.RecursiveDivisionGroupBox);
-            this.Controls.Add(this.AlgorithmComboBox);
-            this.Controls.Add(this.GrowingTreeGroupBox);
-            this.Controls.Add(this.TrackChangesCheckBox);
-            this.Controls.Add(this.GeneratorDelayLabel);
-            this.Controls.Add(this.RendererDelayLabel);
-            this.Controls.Add(this.RendererDelayLogarithmicTrackBar);
-            this.Controls.Add(this.GeneratorDelayLogarithmicTrackBar);
-            this.Controls.Add(this.InfiniteMapCheckBox);
-            this.Controls.Add(this.HeightTextBox);
-            this.Controls.Add(this.HeightLabel);
-            this.Controls.Add(this.WidthTextBox);
-            this.Controls.Add(this.WidthLabel);
-            this.Controls.Add(this.AlgorithmLabel);
-            this.Controls.Add(this.GenerateButton);
-            this.Controls.Add(this.MainPictureBox);
-            this.Name = "MainForm";
-            this.Text = "Maze generator";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
-            this.Load += new System.EventHandler(this.MainForm_Load);
-            this.ResizeEnd += new System.EventHandler(this.MainForm_ResizeEnd);
-            this.SizeChanged += new System.EventHandler(this.MainForm_SizeChanged);
-            ((System.ComponentModel.ISupportInitialize)(this.MainPictureBox)).EndInit();
-            this.GrowingTreeGroupBox.ResumeLayout(false);
-            this.GrowingTreeGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GrowingTreeSparsenessNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GrowingTreeTreesNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GrowingTreeRunLogarithmicTrackBar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GrowingTreeBraidLogarithmicTrackBar)).EndInit();
-            this.BiasesGroupBox.ResumeLayout(false);
-            this.BiasesGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GrowingTreeBiasDownLogarithmicTrackBar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GrowingTreeBiasRightLogarithmicTrackBar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GrowingTreeBiasLeftLogarithmicTrackBar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GrowingTreeBiasUpLogarithmicTrackBar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GrowingTreeBreadthLogarithmicTrackBar)).EndInit();
-            this.RecursiveDivisionGroupBox.ResumeLayout(false);
-            this.RecursiveDivisionGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.RecursiveDivisionReverseOrderLTB)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RecursiveDivisionProportionalSplitsLTB)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RecursiveDivisionSplitLocationLTB)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RecursiveDivisionFixedSplitsLTB)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RecursiveDivisionRecursionLocationLTB)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RecursiveDivisionFixedRecursionLTB)).EndInit();
-            this.KruskalGroupBox.ResumeLayout(false);
-            this.KruskalGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.KruskalBraidLTB)).EndInit();
-            this.BinaryTreeGroupBox.ResumeLayout(false);
-            this.BinaryTreeGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.BinaryTreeBiasLTB)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BinaryTreeSidewinderLTB)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RendererDelayLogarithmicTrackBar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GeneratorDelayLogarithmicTrackBar)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(1468, 1037);
+            Controls.Add(SeedTextBox);
+            Controls.Add(SeedLabel);
+            Controls.Add(SaveButton);
+            Controls.Add(BinaryTreeGroupBox);
+            Controls.Add(KruskalGroupBox);
+            Controls.Add(ShowAdvancedSettingsCheckBox);
+            Controls.Add(RecursiveDivisionGroupBox);
+            Controls.Add(AlgorithmComboBox);
+            Controls.Add(GrowingTreeGroupBox);
+            Controls.Add(TrackChangesCheckBox);
+            Controls.Add(GeneratorDelayLabel);
+            Controls.Add(RendererDelayLabel);
+            Controls.Add(RendererDelayLogarithmicTrackBar);
+            Controls.Add(GeneratorDelayLogarithmicTrackBar);
+            Controls.Add(InfiniteMapCheckBox);
+            Controls.Add(HeightTextBox);
+            Controls.Add(HeightLabel);
+            Controls.Add(WidthTextBox);
+            Controls.Add(WidthLabel);
+            Controls.Add(AlgorithmLabel);
+            Controls.Add(GenerateButton);
+            Controls.Add(MainPictureBox);
+            Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            Name = "MainForm";
+            Text = "Maze generator";
+            FormClosed += MainForm_FormClosed;
+            Load += MainForm_Load;
+            ResizeEnd += MainForm_ResizeEnd;
+            SizeChanged += MainForm_SizeChanged;
+            ((System.ComponentModel.ISupportInitialize)MainPictureBox).EndInit();
+            GrowingTreeGroupBox.ResumeLayout(false);
+            GrowingTreeGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)GrowingTreeSparsenessNumericUpDown).EndInit();
+            ((System.ComponentModel.ISupportInitialize)GrowingTreeTreesNumericUpDown).EndInit();
+            ((System.ComponentModel.ISupportInitialize)GrowingTreeRunLogarithmicTrackBar).EndInit();
+            ((System.ComponentModel.ISupportInitialize)GrowingTreeBraidLogarithmicTrackBar).EndInit();
+            BiasesGroupBox.ResumeLayout(false);
+            BiasesGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)GrowingTreeBiasDownLogarithmicTrackBar).EndInit();
+            ((System.ComponentModel.ISupportInitialize)GrowingTreeBiasRightLogarithmicTrackBar).EndInit();
+            ((System.ComponentModel.ISupportInitialize)GrowingTreeBiasLeftLogarithmicTrackBar).EndInit();
+            ((System.ComponentModel.ISupportInitialize)GrowingTreeBiasUpLogarithmicTrackBar).EndInit();
+            ((System.ComponentModel.ISupportInitialize)GrowingTreeBreadthLogarithmicTrackBar).EndInit();
+            RecursiveDivisionGroupBox.ResumeLayout(false);
+            RecursiveDivisionGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)RecursiveDivisionReverseOrderLTB).EndInit();
+            ((System.ComponentModel.ISupportInitialize)RecursiveDivisionProportionalSplitsLTB).EndInit();
+            ((System.ComponentModel.ISupportInitialize)RecursiveDivisionSplitLocationLTB).EndInit();
+            ((System.ComponentModel.ISupportInitialize)RecursiveDivisionFixedSplitsLTB).EndInit();
+            ((System.ComponentModel.ISupportInitialize)RecursiveDivisionRecursionLocationLTB).EndInit();
+            ((System.ComponentModel.ISupportInitialize)RecursiveDivisionFixedRecursionLTB).EndInit();
+            KruskalGroupBox.ResumeLayout(false);
+            KruskalGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)KruskalBraidLTB).EndInit();
+            BinaryTreeGroupBox.ResumeLayout(false);
+            BinaryTreeGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)BinaryTreeBiasLTB).EndInit();
+            ((System.ComponentModel.ISupportInitialize)BinaryTreeSidewinderLTB).EndInit();
+            ((System.ComponentModel.ISupportInitialize)RendererDelayLogarithmicTrackBar).EndInit();
+            ((System.ComponentModel.ISupportInitialize)GeneratorDelayLogarithmicTrackBar).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -953,6 +996,8 @@ namespace Maze.WinFormsGDI.Forms
         private LogarithmicTrackBar BinaryTreeBiasLTB;
         private System.Windows.Forms.Label BinaryTreeBiasLabel;
         private System.Windows.Forms.Button SaveButton;
+        private System.Windows.Forms.Label SeedLabel;
+        private System.Windows.Forms.TextBox SeedTextBox;
     }
 }
 

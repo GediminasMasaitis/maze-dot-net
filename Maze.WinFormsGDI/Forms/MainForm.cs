@@ -119,7 +119,7 @@ namespace Maze.WinFormsGDI.Forms
 
         private static TimeSpan MilisecondsToTimeSpan(double delayMiliseconds)
         {
-            var delayTimeSpan = TimeSpan.FromTicks((long) (delayMiliseconds*TimeSpan.TicksPerMillisecond));
+            var delayTimeSpan = TimeSpan.FromTicks((long)(delayMiliseconds * TimeSpan.TicksPerMillisecond));
             return delayTimeSpan;
         }
         private double ExtendDoubleVal(double val)
@@ -147,7 +147,23 @@ namespace Maze.WinFormsGDI.Forms
             {
                 Map = new FiniteMap2D(width, height);
             }
-            var rng = new Random();
+
+            Random rng;
+            if (string.IsNullOrWhiteSpace(SeedTextBox.Text))
+            {
+                rng = new Random();
+            }
+            else
+            {
+                var seedValid = int.TryParse(SeedTextBox.Text, out var seed);
+                if (!seedValid)
+                {
+                    MessageBox.Show("Seed must be a number, or empty to use a random seed.", "Invalid seed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                rng = new Random(seed);
+            }
+            
             switch (CurrentAlgorithm)
             {
                 case MazeGenerationAlgorithm.GrowingTree:
@@ -185,7 +201,7 @@ namespace Maze.WinFormsGDI.Forms
             {
                 if (TrackChanges && results.Results.Count > 0)
                 {
-                    displayMap.Offset = displayMap.Size/2 - results.Results[0].Point;
+                    displayMap.Offset = displayMap.Size / 2 - results.Results[0].Point;
                 }
             };
             Runner.AfterRender += results => { rendererSteps++; };
@@ -198,7 +214,7 @@ namespace Maze.WinFormsGDI.Forms
             SyncRunnerParameters(sender, e);
             SyncAllGeneratorParameters(sender, e);
         }
-        
+
         private void SyncGroupBoxes(object sender = null, EventArgs e = null)
         {
             var currentAlgorithm = CurrentAlgorithm;
@@ -327,7 +343,7 @@ namespace Maze.WinFormsGDI.Forms
         {
             MapRenderer?.SyncSize();
         }
-        
+
         private void MainForm_SizeChanged(object sender, EventArgs e)
         {
             if (WindowState != LastWindowState && WindowState != FormWindowState.Minimized)
