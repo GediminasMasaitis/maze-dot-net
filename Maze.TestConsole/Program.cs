@@ -27,24 +27,12 @@ namespace Maze.TestConsole
             Console.CursorVisible = false;
 
             var map = new FiniteMap2D(15,25);
-            //var map = new FiniteMap3D(15, 25, 5);
-            //var map = new InfiniteMap(2);
-            //var map = new NonCreatingInfiniteMap(2);
-
             var finiteMap = new AsFiniteMapDecorator(map, map.Size ?? new Point(55,75));
             var map2D = new AsSmallerDimensionMapDecorator(map, new int[]{});
             IMap displayMap = finiteMap;
-            //displayMap = new TransposeMapDecorator(displayMap);
-
-            //var innerGenerator = new TestMazeGenerator(map);
-            //var innerGenerator = new KruskalMazeGenerator(map);
-            //var innerGenerator = new AldousBroderMazeGenerator(map);
-            //var innerGenerator = new GameOfLifeGenerator(map);
-            //var innerGenerator = new BinaryTreeMazeGenerator(map);
             var innerGenerator = new GrowingTreeMazeGenerator(map);
 
             var generator = new ActiveCellsMazeGeneratorDecorator(innerGenerator);
-            //var generator = innerGenerator;
 
             var renderer = new ConsoleMapRenderer(displayMap, true, false);
             var fullRenderer = new InstantAsFullMapRendererDecorator(renderer, true);
