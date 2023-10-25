@@ -18,7 +18,7 @@ namespace Maze.WinFormsGDI.Controls
         private Color _polygonColor;
         public Color PolygonColor
         {
-            get { return _polygonColor; }
+            get => _polygonColor;
             set
             {
                 _polygonColor = value;

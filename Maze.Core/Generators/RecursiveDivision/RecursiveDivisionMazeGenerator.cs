@@ -26,7 +26,7 @@ namespace Maze.Core.Generators.RecursiveDivision
         private IMap _map;
         public override IMap Map
         {
-            get { return _map; }
+            get => _map;
             protected set
             {
                 if (value.Infinite)
@@ -51,7 +51,7 @@ namespace Maze.Core.Generators.RecursiveDivision
         private double _proportionalSplits;
         public double ProportionalSplits
         {
-            get { return _proportionalSplits; }
+            get => _proportionalSplits;
             set
             {
                 DoubleParameterCheck(value);
@@ -62,7 +62,7 @@ namespace Maze.Core.Generators.RecursiveDivision
         private double _fixedSplits;
         public double FixedSplits
         {
-            get { return _fixedSplits; }
+            get => _fixedSplits;
             set
             {
                 DoubleParameterCheck(value);
@@ -73,7 +73,7 @@ namespace Maze.Core.Generators.RecursiveDivision
         private double _fixedSplitLocation;
         public double FixedSplitLocation
         {
-            get { return _fixedSplitLocation; }
+            get => _fixedSplitLocation;
             set
             {
                 DoubleParameterCheck(value);
@@ -84,7 +84,7 @@ namespace Maze.Core.Generators.RecursiveDivision
         private double _fixedRecursion;
         public double FixedRecursion
         {
-            get { return _fixedRecursion; }
+            get => _fixedRecursion;
             set
             {
                 DoubleParameterCheck(value);
@@ -95,7 +95,7 @@ namespace Maze.Core.Generators.RecursiveDivision
         private double _fixedRecursionLocation;
         public double FixedRecursionLocation
         {
-            get { return _fixedRecursionLocation; }
+            get => _fixedRecursionLocation;
             set
             {
                 DoubleParameterCheck(value);
@@ -106,7 +106,7 @@ namespace Maze.Core.Generators.RecursiveDivision
         private double _reverseRecursionOrder;
         public double ReverseRecursionOrder
         {
-            get { return _reverseRecursionOrder; }
+            get => _reverseRecursionOrder;
             set
             {
                 DoubleParameterCheck(value);

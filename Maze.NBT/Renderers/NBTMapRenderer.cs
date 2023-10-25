@@ -30,7 +30,7 @@ namespace Maze.NBT.Renderers
         private IMap _map;
         public IMap Map
         {
-            get { return _map; }
+            get => _map;
             set
             {
                 if (value.Infinite)

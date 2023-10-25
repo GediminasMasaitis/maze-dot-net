@@ -38,7 +38,7 @@ namespace Maze.Drawing.Renderers
         private IMap _map;
         public IMap Map
         {
-            get { return _map; }
+            get => _map;
             set
             {
                 _map = value;
@@ -52,7 +52,7 @@ namespace Maze.Drawing.Renderers
         private bool _hexagonMode;
         public bool HexagonMode
         {
-            get { return _hexagonMode; }
+            get => _hexagonMode;
             set
             {
                 if (!Equals(value, _hexagonMode))
@@ -66,7 +66,7 @@ namespace Maze.Drawing.Renderers
         private Point _targetSize;
         public Point TargetSize
         {
-            get { return _targetSize; }
+            get => _targetSize;
             set
             {
                 if (!Equals(value, _targetSize))

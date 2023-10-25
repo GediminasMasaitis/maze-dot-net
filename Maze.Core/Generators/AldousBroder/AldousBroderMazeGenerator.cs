@@ -13,7 +13,7 @@ namespace Maze.Core.Generators.AldousBroder
 
         public override IMap Map
         {
-            get { return _map; }
+            get => _map;
             protected set
             {
                 _map = value;
@@ -36,7 +36,7 @@ namespace Maze.Core.Generators.AldousBroder
 
         public double Looping
         {
-            get { return _looping; }
+            get => _looping;
             set
             {
                 DoubleParameterCheck(value);

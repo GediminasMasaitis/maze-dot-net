@@ -22,7 +22,7 @@ namespace Maze.Drawing.Renderers
         private Image _image;
         public Image Image
         {
-            get { return _image; }
+            get => _image;
             set
             {
                 _image = value;

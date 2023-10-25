@@ -132,8 +132,8 @@ namespace Maze.Core.Common
 
         public int this[int i]
         {
-            get { return Coordinates[i]; }
-            set { Coordinates[i] = value; }
+            get => Coordinates[i];
+            set => Coordinates[i] = value;
         }
 
         public override string ToString()

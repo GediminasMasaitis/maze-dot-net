@@ -16,7 +16,7 @@ namespace Maze.Core.Generators.BinaryTree
         private IMap _map;
         public override IMap Map
         {
-            get { return _map; }
+            get => _map;
             protected set
             {
                 if (value.Infinite)
@@ -37,7 +37,7 @@ namespace Maze.Core.Generators.BinaryTree
         private double _useSidewinder;
         public double UseSidewinder
         {
-            get { return _useSidewinder; }
+            get => _useSidewinder;
             set
             {
                 DoubleParameterCheck(value);
@@ -48,7 +48,7 @@ namespace Maze.Core.Generators.BinaryTree
         private double _verticalBias;
         public double VerticalBias
         {
-            get { return _verticalBias; }
+            get => _verticalBias;
             set
             {
                 DoubleParameterCheck(value, -1);

@@ -31,7 +31,7 @@ namespace Maze.Core.Results
             GenerationResultsType newResultStatus;
             if (allResultsList.Count > 0)
             {
-                newResultStatus = allResultsList[allResultsList.Count - 1].ResultsType;
+                newResultStatus = allResultsList[^1].ResultsType;
             }
             else
             {

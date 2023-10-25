@@ -34,19 +34,19 @@ namespace Maze.WinFormsGDI.Forms
         private TimeSpan CurrentRendererDelay => GetTimeSpanFromLogarithmicTrackBar(RendererDelayLogarithmicTrackBar);
         private MazeGenerationAlgorithm CurrentAlgorithm
         {
-            get { return (MazeGenerationAlgorithm)AlgorithmComboBox.SelectedItem; }
-            set { AlgorithmComboBox.SelectedItem = value; }
+            get => (MazeGenerationAlgorithm)AlgorithmComboBox.SelectedItem;
+            set => AlgorithmComboBox.SelectedItem = value;
         }
         private bool TrackChanges
         {
-            get { return TrackChangesCheckBox.Checked; }
-            set { TrackChangesCheckBox.Checked = value; }
+            get => TrackChangesCheckBox.Checked;
+            set => TrackChangesCheckBox.Checked = value;
         }
 
         private bool ShowAdvancedSettings
         {
-            get { return ShowAdvancedSettingsCheckBox.Checked; }
-            set { ShowAdvancedSettingsCheckBox.Checked = value; }
+            get => ShowAdvancedSettingsCheckBox.Checked;
+            set => ShowAdvancedSettingsCheckBox.Checked = value;
         }
 
         private double GrowingTreeBreadth => GrowingTreeBreadthLogarithmicTrackBar.LogValue;

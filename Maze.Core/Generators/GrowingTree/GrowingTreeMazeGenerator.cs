@@ -36,11 +36,8 @@ namespace Maze.Core.Generators.GrowingTree
         private IMap _map;
         public override IMap Map
         {
-            get { return _map; }
-            protected set
-            {
-                _map = value;
-            }
+            get => _map;
+            protected set => _map = value;
         }
 
         public int TreeCount { get; set; }
@@ -49,7 +46,7 @@ namespace Maze.Core.Generators.GrowingTree
         private double _breadth;
         public double Breadth
         {
-            get { return _breadth; }
+            get => _breadth;
             set
             {
                 DoubleParameterCheck(value);
@@ -60,7 +57,7 @@ namespace Maze.Core.Generators.GrowingTree
         private double _firstChanceLooping;
         public double FirstChanceLooping
         {
-            get { return _firstChanceLooping; }
+            get => _firstChanceLooping;
             set
             {
                 DoubleParameterCheck(value);
@@ -71,7 +68,7 @@ namespace Maze.Core.Generators.GrowingTree
         private double _lastChanceLooping;
         public double LastChanceLooping
         {
-            get { return _lastChanceLooping; }
+            get => _lastChanceLooping;
             set
             {
                 DoubleParameterCheck(value);
@@ -82,7 +79,7 @@ namespace Maze.Core.Generators.GrowingTree
         private double _dontGoBackAfterLooping;
         public double DontGoBackAfterLooping
         {
-            get { return _dontGoBackAfterLooping; }
+            get => _dontGoBackAfterLooping;
             set
             {
                 DoubleParameterCheck(value);
@@ -93,7 +90,7 @@ namespace Maze.Core.Generators.GrowingTree
         private double _blocking;
         public double Blocking
         {
-            get { return _blocking; }
+            get => _blocking;
             set
             {
                 DoubleParameterCheck(value);
@@ -104,7 +101,7 @@ namespace Maze.Core.Generators.GrowingTree
         private int _sparseness;
         public int Sparseness
         {
-            get { return _sparseness; }
+            get => _sparseness;
             set
             {
                 if (value < 1)
@@ -160,7 +157,7 @@ namespace Maze.Core.Generators.GrowingTree
                     }
                 }
                 var firstPoint = points[0];
-                var lastPoint = points[points.Count - 1];
+                var lastPoint = points[^1];
                 var lastCellExists = Map.CellExists(lastPoint);
                 var testCell = lastCellExists ? Map.GetCell(lastChanceLooping ? firstPoint : lastPoint) : null;
                 
@@ -178,7 +175,7 @@ namespace Maze.Core.Generators.GrowingTree
                 }
 
                 var cells = points.Select(x => Map.GetCell(x)).ToList();
-                var lastCell = cells[cells.Count - 1];
+                var lastCell = cells[^1];
 
                 var wouldLoop = lastCell.State == CellState.Empty;
 

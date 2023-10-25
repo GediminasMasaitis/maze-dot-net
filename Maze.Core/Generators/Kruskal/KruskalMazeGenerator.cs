@@ -20,7 +20,7 @@ namespace Maze.Core.Generators.Kruskal
         private IMap _map;
         public override IMap Map
         {
-            get { return _map; }
+            get => _map;
             protected set
             {
                 if (value.Infinite)
@@ -44,7 +44,7 @@ namespace Maze.Core.Generators.Kruskal
         private double _looping;
         public double Looping
         {
-            get { return _looping; }
+            get => _looping;
             set
             {
                 if (value < 0 || value > 1)
