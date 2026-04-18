@@ -31,10 +31,10 @@ namespace Maze.Core
             return last;
         }
 
-        public static void Shuffle<T>(this LinkedList<T> list)
+        public static void Shuffle<T>(this LinkedList<T> list, Random random = null)
         {
             var tempList = list.ToList();
-            tempList.Shuffle();
+            tempList.Shuffle(random);
             var l = list.First;
             foreach (var v in tempList)
             {
@@ -43,7 +43,7 @@ namespace Maze.Core
             }
         }
 
-        public static void Shuffle<T>(this IList<T> list, Random random = null)
+        private static void Shuffle<T>(this IList<T> list, Random random = null)
         {
             random = random ?? new Random();
             var len = list.Count;

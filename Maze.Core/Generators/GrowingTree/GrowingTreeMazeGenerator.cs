@@ -291,7 +291,7 @@ namespace Maze.Core.Generators.GrowingTree
             do
             {
                 // TODO: This one is retarded. Need to think of a better way.
-                startingPoint = MazeGenerationUtils.PickStartingPoint(Map, RNG);
+                startingPoint = PickStartingPoint(Map, RNG);
                 startingCell = Map.GetCell(startingPoint);
             } while (startingCell.State == CellState.Empty);
             path.Add(startingPoint);

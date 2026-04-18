@@ -7,6 +7,7 @@ using System.Text;
 using Maze.Core.Common;
 using Maze.Core.Generators.Decorators;
 using Maze.Core.Generators.GrowingTree;
+using Maze.Core.Generators.Kruskal;
 using Maze.Core.Maps;
 using Maze.Core.Maps.Decorators;
 using Maze.Core.Renderers;
@@ -30,7 +31,9 @@ namespace Maze.TestConsole
             var finiteMap = new AsFiniteMapDecorator(map, map.Size ?? new Point(55,75));
             var map2D = new AsSmallerDimensionMapDecorator(map, new int[]{});
             IMap displayMap = finiteMap;
-            var innerGenerator = new GrowingTreeMazeGenerator(map);
+            var rng = new Random(0);
+            //var innerGenerator = new GrowingTreeMazeGenerator(map, rng);
+            var innerGenerator = new KruskalMazeGenerator(map, rng);
 
             var generator = new ActiveCellsMazeGeneratorDecorator(innerGenerator);
 

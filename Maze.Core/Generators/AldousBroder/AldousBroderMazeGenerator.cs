@@ -72,7 +72,7 @@ namespace Maze.Core.Generators.AldousBroder
 
             if (CurrentPoint == null)
             {
-                CurrentPoint = MazeGenerationUtils.PickStartingPoint(Map, RNG);
+                CurrentPoint = PickStartingPoint(Map, RNG);
                 var cell = Map.GetCell(CurrentPoint);
 
                 cell.State = CellState.Empty;

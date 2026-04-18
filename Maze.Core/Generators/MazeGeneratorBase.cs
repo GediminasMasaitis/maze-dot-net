@@ -10,8 +10,8 @@ namespace Maze.Core.Generators
     {
         public MazeGeneratorBase(IMap map, Random random = null)
         {
-            Map = map;
             RNG = random ?? new Random();
+            Map = map;
         }
         protected Random RNG { get; }
         public virtual IMap Map { get; protected set; }
@@ -37,6 +37,49 @@ namespace Maze.Core.Generators
             cell.DisplayState = displayState;
             var result = new MazeGenerationResult(point, state, displayState);
             results?.Add(result);
+        }
+
+        protected static Point PickStartingPoint(IMap map, Random rng = null)
+        {
+            if (rng == null)
+            {
+                rng = new Random();
+            }
+            Point startingCoord;
+            if (map.Infinite)
+            {
+                startingCoord = Point.CreateSameAllDimensions(map.Dimensions, 0);
+            }
+            else
+            {
+                var corner1 = Point.CreateSameAllDimensions(map.Dimensions, 1);
+                var corner2 = map.Size;
+                startingCoord = PickRandomPointBetweenTwoPoints(map, corner1, corner2, rng);
+            }
+            return startingCoord;
+        }
+
+        private static Point PickRandomPointBetweenTwoPoints(IMap map, Point corner1, Point corner2, Random rng = null)
+        {
+            if (map.Dimensions != corner1.Dimensions)
+            {
+                throw new ArgumentException("Point dimensions doesn't match map dimensions", nameof(corner1));
+            }
+            if (map.Dimensions != corner2.Dimensions)
+            {
+                throw new ArgumentException("Point dimensions doesn't match map dimensions", nameof(corner2));
+            }
+            if (rng == null)
+            {
+                rng = new Random();
+            }
+            var coords = new int[map.Dimensions];
+            for (var i = 0; i < map.Dimensions; i++)
+            {
+                coords[i] = rng.Next(corner1[i], corner2[i] / 2) * 2 - 1;
+            }
+            var resultCoord = new Point(coords);
+            return resultCoord;
         }
 
         public abstract MazeGenerationResults Generate();

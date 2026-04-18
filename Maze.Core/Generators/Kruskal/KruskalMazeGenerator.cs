@@ -35,7 +35,7 @@ namespace Maze.Core.Generators.Kruskal
                 _map = value;
                 Tree = new ConnectingTree<Point>(true);
                 Walls = GenerateWallsLinkedList(value);
-                Walls.Shuffle();
+                Walls.Shuffle(RNG);
             }
         }
 
